@@ -41,8 +41,12 @@ export function createBrowser({ chromePath = findChrome(), profileDir, allowHost
     mkdirSync(profileDir, { recursive: true });
     const portFile = join(profileDir, 'DevToolsActivePort');
     rmSync(portFile, { force: true });
+    // Chromium in the isolated Linux container has a small /dev/shm and runs as root.
+    // Desktop installs retain Chromium's sandbox; the container opts in explicitly.
+    const containerFlags = process.platform === 'linux' ? ['--disable-dev-shm-usage', ...(process.env.CHROME_NO_SANDBOX === '1' ? ['--no-sandbox'] : [])] : [];
     child = spawn(chromePath, ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profileDir}`, '--no-first-run', '--no-default-browser-check',
-      '--disable-extensions', '--disable-sync', '--mute-audio', '--window-size=1366,900', '--lang=ru-RU', 'about:blank'], { stdio: 'ignore', windowsHide: true });
+      ...containerFlags, '--disk-cache-size=10485760', '--disable-extensions', '--disable-sync', '--mute-audio', '--window-size=1366,900', '--lang=ru-RU', 'about:blank'], { stdio: 'ignore', windowsHide: true });
+    child.on('error', () => { child = null; socket = null; failPending(coded('Не удалось запустить браузер.', 'BROWSER_START')); });
     child.on('exit', () => { child = null; socket = null; failPending(coded('Браузер закрылся.', 'BROWSER_GONE')); });
     let port = null;
     for (const deadline = Date.now() + 20000; !port; await sleep(150)) {

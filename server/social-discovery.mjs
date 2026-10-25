@@ -28,7 +28,7 @@ const backoff = ([base, max], strikes) => Math.min(max, base * 2 ** Math.max(0, 
 export function defaultOpenProfile(profileDir) {
   let browser = null;
   const open = (platform, handle) => {
-    browser ??= createBrowser({ profileDir, allowHosts: ['instagram.com', 'tiktok.com'] });
+    browser ??= createBrowser({ profileDir: process.env.SAFENET_BROWSER_PROFILE_DIR || profileDir, allowHosts: ['instagram.com', 'tiktok.com'] });
     return browser.open(profileUrl(platform, handle), { expression: EXTRACT_PROFILE });
   };
   open.close = () => browser?.close();
@@ -111,6 +111,7 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
         pushLog({ key: account.key, outcome: status });
         return;
       }
+      if (!visible) throw Object.assign(new Error('Публичные тексты профиля не загрузились; оценить риск не удалось.'), { code: 'NO_PUBLIC_CONTENT' });
       const url = profileUrl(platform, handle);
       const posts = (data.posts ?? []).map(post => ({ url: post.url, text: cleanCaption(platform, post.text) })).filter(post => post.text.length >= 8);
       const items = [{ kind: 'profile_bio', url, text: cleanBio([data.name, data.bio].filter(Boolean).join('\n')) }, ...posts.map(post => ({ kind: 'profile_post', ...post }))].filter(item => item.text);
@@ -143,7 +144,7 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
       pushLog({ key: account.key, outcome: status, flagged: flagged.length, posts: posts.length, discovered, saved, score: maxScore, partial: Boolean(data.captcha) });
     } catch (error) {
       const attempts = (account.consecutiveErrors ?? 0) + 1;
-      Object.assign(account, { status: account.status === 'queued' ? 'queued' : 'error', lastCheckedAt: checkedAt, consecutiveErrors: attempts, error: { code: error.code ?? 'ERROR', message: error.message },
+      Object.assign(account, { status: 'error', lastCheckedAt: checkedAt, consecutiveErrors: attempts, error: { code: error.code ?? 'ERROR', message: error.message },
         nextCheckAt: iso(now() + Math.min(24 * 60, RECHECK.error * 2 ** Math.min(attempts - 1, 5)) * MINUTE) });
       pushLog({ key: account.key, outcome: 'error', code: error.code ?? 'ERROR' });
     }
@@ -167,10 +168,12 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
         text: item.text, originalText: item.text, url: item.url, author: `@${account.handle}`, createdAt: observedAt, capturedAt: observedAt,
         analysis, analysisVersion, analyzedAt: observedAt, ...queuePriority(analysis.score, parseFollowers(account.followers)),
         links: [],
-        provenance: { source: 'social_discovery', method, scope: 'publicly_available_page', canonicalUrl: item.url, fingerprint, observedAt, platform: account.platform,
+        provenance: { source: 'social_discovery', method, scope: method === 'search_index' ? 'public_search_index_excerpt' : 'publicly_available_page', canonicalUrl: item.url, fingerprint, observedAt, platform: account.platform,
           account: account.handle, accountName: account.name, depth: account.depth, discoveredVia: account.foundVia.slice(0, 3), query,
-          publicVisibilityVerified: true, loginUsed: false, locationVerified: false, mediaAnalyzed: false, platformTermsNote: TERMS_NOTE,
-          disclaimer: 'Признаки риска в публичном аккаунте, найденном автоматически. Требуется проверка человеком; это не обвинение владельца аккаунта.' },
+          publicVisibilityVerified: method !== 'search_index', loginUsed: false, locationVerified: false, mediaAnalyzed: false, platformTermsNote: TERMS_NOTE,
+          disclaimer: method === 'search_index'
+            ? 'Признаки найдены в выдержке поисковой системы. Содержимое и текущая доступность исходной страницы не подтверждены; требуется ручная проверка. Это не обвинение владельца аккаунта.'
+            : 'Признаки риска в публичном аккаунте, найденном автоматически. Требуется проверка человеком; это не обвинение владельца аккаунта.' },
       });
     }
     if (added.length) { persistCases([...added, ...cases]); state.stats.savedCases += added.length; }

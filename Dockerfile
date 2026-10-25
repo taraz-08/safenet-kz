@@ -11,7 +11,8 @@ RUN npm run build
 
 FROM node:22-bookworm-slim AS runtime
 WORKDIR /app
-ENV NODE_ENV=production HOST=0.0.0.0 SAFENET_HOSTED=1
+RUN apt-get update && apt-get install -y --no-install-recommends chromium ca-certificates fonts-liberation && rm -rf /var/lib/apt/lists/*
+ENV NODE_ENV=production HOST=0.0.0.0 SAFENET_HOSTED=1 CHROME_PATH=/usr/bin/chromium CHROME_NO_SANDBOX=1 SAFENET_BROWSER_PROFILE_DIR=/tmp/safenet-browser
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 COPY --from=build /app/dist ./dist

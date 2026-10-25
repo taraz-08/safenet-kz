@@ -8,6 +8,9 @@ import { ensureLocalAiRuntime } from './local-ai-runtime.mjs';
 
 if(existsSync(resolve('.env')))loadEnvFile(resolve('.env'));
 const telegramSeeds=parseTelegramSeeds(process.env.SAFENET_TELEGRAM_SEEDS);
+const socialEnabledValue=process.env.SAFENET_SOCIAL_ENABLED;
+if(socialEnabledValue!==undefined&&!['0','1'].includes(socialEnabledValue))throw new Error('SAFENET_SOCIAL_ENABLED must be 1 or 0, or unset to preserve the saved setting.');
+const socialEnabled=socialEnabledValue===undefined?undefined:socialEnabledValue==='1';
 // The web app stays reachable while the GPU runtime performs its cold start.
 void ensureLocalAiRuntime().catch(()=>console.error('Local AI runtime could not start; see the AI status panel.'));
 // On Railway (or with SAFENET_HOSTED=1) the server listens publicly; SAFENET_ACCESS_KEY puts the whole site behind a password.
@@ -15,15 +18,16 @@ const hosted=Boolean(process.env.RAILWAY_ENVIRONMENT)||process.env.SAFENET_HOSTE
 const allowedHosts=[process.env.RAILWAY_PUBLIC_DOMAIN,...String(process.env.SAFENET_ALLOWED_HOSTS||'').split(',')].map(value=>String(value||'').trim().toLowerCase()).filter(Boolean);
 // Keep mutable state on a volume without hiding the bundled model, corpus and metrics.
 const dataDir=resolve(process.env.SAFENET_DATA_DIR||process.env.RAILWAY_VOLUME_MOUNT_PATH||'data');
-const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null,telegramSeeds});
+const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null,telegramSeeds,socialEnabled});
 app.locals.watchtower.start();
-// Automatic screening starts with the server: the demo stream is replayed once, humans only review the queue.
-app.locals.pipeline.start();
+// Synthetic replay is available only in local/offline mode.
+if(!app.locals.liveOnly)app.locals.pipeline.start();
 // Discovery of real public Telegram channels runs continuously while the server is up.
 app.locals.discovery.start();
 app.locals.social.start();
 if(app.locals.watchtower.snapshot().enabled)void app.locals.watchtower.run().catch(error=>console.error('Watchtower:',error.code||'START_FAILED'));
 const port=Number(process.env.PORT||4310);
+// createApp rejects these demo-only routes (including /demo-feed.html in dist) in liveOnly mode.
 app.get('/demo-feed',(_req,res)=>res.sendFile(resolve('public/demo-feed.html')));
 app.get('/demo/content.js',(_req,res)=>res.sendFile(resolve('extension/content.js')));
 app.get('/pitch',(_req,res)=>res.sendFile(resolve('docs/pitch.html')));

@@ -1,6 +1,6 @@
 import express from 'express';
 import { readFileSync, existsSync, copyFileSync, constants } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { dirname, resolve, posix } from 'node:path';
 import { randomUUID, randomBytes, timingSafeEqual } from 'node:crypto';
 import { screenContent, analyzeItem, localizeAnalysis } from './engine.mjs';
 import { createPipeline, QUEUE_THRESHOLD } from './pipeline.mjs';
@@ -58,13 +58,14 @@ function refreshedAnalysis(record) {
   return analysis;
 }
 
-export function createApp({storePath=resolve('data/cases.json'),monitoringPath=resolve(dirname(storePath),'monitoring.json'),seed=true,aiService=createAiService(),mediaService=createMediaService({aiService}),watchtowerPath=resolve(dirname(storePath),'watchtower.json'),autoProfile=seed,watchtowerFetchPreview,pipelinePath=resolve(dirname(storePath),'pipeline.json'),corpusPath=resolve('data/stream/corpus.json'),autoPipeline=seed,discoveryPath=resolve(dirname(storePath),'discovery.json'),discoveryFetchPreview,telegramSeeds=[],socialPath=resolve(dirname(storePath),'social-discovery.json'),socialOpenProfile,socialSearch,hosted=false,allowedHosts=[],accessKey=null} = {}) {
+export function createApp({storePath=resolve('data/cases.json'),monitoringPath=resolve(dirname(storePath),'monitoring.json'),seed=true,aiService=createAiService(),mediaService=createMediaService({aiService}),watchtowerPath=resolve(dirname(storePath),'watchtower.json'),autoProfile=seed,watchtowerFetchPreview,pipelinePath=resolve(dirname(storePath),'pipeline.json'),corpusPath=resolve('data/stream/corpus.json'),autoPipeline=seed,discoveryPath=resolve(dirname(storePath),'discovery.json'),discoveryFetchPreview,telegramSeeds=[],socialPath=resolve(dirname(storePath),'social-discovery.json'),socialOpenProfile,socialSearch,socialEnabled,hosted=false,liveOnly=hosted,allowedHosts=[],accessKey=null} = {}) {
   const app = express();
   const extensionToken = randomBytes(32).toString('hex');
   let scanWindow = Date.now(), scansThisMinute = 0;
   let mediaWindow = Date.now(), mediaThisMinute = 0;
   app.locals.mediaService = mediaService;
   app.locals.aiService = aiService;
+  app.locals.liveOnly = liveOnly;
   app.disable('x-powered-by');
   let cases = [];
   if (existsSync(storePath)) {
@@ -76,7 +77,14 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
     writeFileAtomic(storePath, JSON.stringify(next,null,2));
     cases = next;
   };
-  if(cases.some(needsAnalysisMigration)) {
+  if(liveOnly && existsSync(storePath)) {
+    // Archive the exact original once; never replace it on subsequent restarts.
+    try {copyFileSync(storePath,`${storePath}.pre-live-only.bak`,constants.COPYFILE_EXCL);}
+    catch(error){if(error.code!=='EEXIST')throw error;}
+    if(cases.some(record=>record.demo===true))persist(cases.filter(record=>record.demo!==true));
+  }
+  // Live-only conversion preserves genuine records verbatim, including their original analysis and reviews.
+  if(!liveOnly && cases.some(needsAnalysisMigration)) {
     const analyzedAt=new Date().toISOString();
     const upgraded=cases.map(record=>!needsAnalysisMigration(record)?record:{
       ...record,
@@ -91,12 +99,12 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
     catch(error){if(error.code!=='EEXIST')throw error;}
     persist(upgraded);
   }
-  if (seed && !existsSync(storePath)) persist(demoItems.map((item,i)=>makeCase(item,true,i)));
+  if (!liveOnly && seed && !existsSync(storePath)) persist(demoItems.map((item,i)=>makeCase(item,true,i)));
   const monitoring=createMonitoring({storePath:monitoringPath,getCases:()=>cases,persistCases:persist});
   const firstWatchtowerRun=!existsSync(watchtowerPath);
   const watchtower=createWatchtower({storePath:watchtowerPath,getCases:()=>cases,persistCases:persist,defaultSources:KAZAKHSTAN_SOURCES,...(watchtowerFetchPreview?{fetchPreview:watchtowerFetchPreview}:{})});
   app.locals.watchtower=watchtower;
-  const pipeline=createPipeline({statePath:pipelinePath,corpusPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,autoStart:autoPipeline});
+  const pipeline=createPipeline({statePath:pipelinePath,corpusPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,autoStart:autoPipeline,liveOnly});
   app.locals.pipeline=pipeline;
   // Deployment starting points stay separate from analyst seeds and Kazakhstan monitoring sources.
   let social=null;
@@ -105,11 +113,13 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
   // Public Instagram and TikTok profiles, opened by a headless browser without signing in; linked both ways with the Telegram search.
   social=createSocialDiscovery({storePath:socialPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,openProfile:socialOpenProfile??defaultOpenProfile(resolve(dirname(storePath),'browser-profile')),onTelegramRef:(handle,via)=>discovery.addCandidate(handle,via),...(socialSearch?{search:socialSearch}:{})});
   app.locals.social=social;
+  if(socialEnabled!==undefined)social.update({enabled:socialEnabled});
   if(firstWatchtowerRun && autoProfile){watchtower.applyProfile('kazakhstan');monitoring.update({enabled:true,minScore:30,keywords:[]});}
   // Hosting (Railway): a public deployment is read-only unless an access key protects the whole site.
   const mode=!hosted?'local':accessKey?'hosted_private':'public_read_only';
   const readOnly=mode==='public_read_only';
   const publicWrites=new Set(['/api/analyze','/api/screen']);
+  const demoOnlyPaths=new Set(['/demo-feed','/demo/content.js','/demo-feed.html']);
   const hostAllowed=host=>['127.0.0.1','localhost'].includes(host)||(hosted&&(host==='healthcheck.railway.app'||!allowedHosts.length||allowedHosts.includes(host)));
   const keyBuffer=accessKey?Buffer.from(String(accessKey)):null;
   const hasAccessKey=req=>{
@@ -125,9 +135,16 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
     res.setHeader('X-Content-Type-Options','nosniff');
     res.setHeader('Referrer-Policy','no-referrer');
     res.setHeader('X-Frame-Options','DENY');
+    // Block demo documents before authentication and downstream static serving, including dist copies.
+    const apiPath=req.path.toLowerCase().replace(/\/$/,'');
+    if(liveOnly){
+      let demoPath;
+      try {demoPath=posix.normalize(decodeURIComponent(req.path).replaceAll('\\','/')).toLowerCase().replace(/\/$/,'');}
+      catch {return res.sendStatus(400);}
+      if(demoOnlyPaths.has(demoPath))return res.sendStatus(404);
+    }
     if(mode==='hosted_private'&&req.path!=='/api/health'&&!hasAccessKey(req)){res.setHeader('WWW-Authenticate','Basic realm="SafeNet KZ", charset="UTF-8"');return res.status(401).send('Нужен ключ доступа / Кіру кілті қажет');}
     // Express matches route names without case sensitivity and accepts a trailing slash.
-    const apiPath=req.path.toLowerCase().replace(/\/$/,'');
     if (apiPath==='/api'||apiPath.startsWith('/api/')) {
       res.setHeader('Cache-Control','no-store');
       const host = (req.headers.host || '').split(':')[0].toLowerCase();
@@ -174,7 +191,7 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
   const aiStatus=async(_req,res)=>{const [ai,media]=await Promise.all([aiService.status(),mediaService.status?mediaService.status().catch(()=>({})):Promise.resolve({})]);res.json({...ai,media});};
   app.get('/api/ai/status',aiStatus);
   app.post('/api/ai/check',aiStatus);
-  app.get('/api/health',(_req,res)=>res.json({ok:true,engine:ANALYSIS_VERSION,version:'5.0.0',storage:'local',platformApis:false,mode}));
+  app.get('/api/health',(_req,res)=>res.json({ok:true,engine:ANALYSIS_VERSION,version:'5.0.0',storage:'local',platformApis:false,mode,liveOnly}));
   const watchtowerAction=action=>async(req,res)=>{try{res.json(await action(req));}catch(error){res.status(error.status||400).json({code:error.code||'WATCHTOWER_ERROR',error:error.message||'Не удалось обновить мониторинг.'});}};
   app.get('/api/watchtower',(_req,res)=>res.json(watchtower.snapshot()));
   app.put('/api/watchtower',watchtowerAction(req=>watchtower.update(req.body)));
@@ -296,6 +313,7 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
     persist(cases.filter(c=>c.id!==req.params.id));res.json({ok:true});
   });
   app.post('/api/demo',(_req,res)=>{
+    if(liveOnly)return res.status(403).json({error:'Демо-данные недоступны в режиме liveOnly.',liveOnly:true});
     const incoming=demoItems.filter(item=>!cases.some(c=>c.demo&&c.text===item.text)).map((item,i)=>makeCase(item,true,i));
     if(cases.length+incoming.length>5000) return res.status(409).json({error:'Превышен лимит кейсов.'});
     persist([...cases,...incoming]);res.json({cases:incoming,count:incoming.length});

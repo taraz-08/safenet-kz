@@ -199,7 +199,29 @@ function eventsOf(corpus) {
 
 const PLATFORMS = new Set(['instagram', 'tiktok', 'telegram', 'whatsapp', 'youtube', 'other']);
 
-export function createPipeline({ statePath, corpusPath, getCases, persistCases, analysisVersion, now = () => Date.now(), autoStart = true } = {}) {
+function networkSnapshot(entries) {
+  const networks = buildNetworks(entries);
+  return {
+    networks: networks.filter(cluster => cluster.riskyItems > 0).slice(0, 40).map(({ itemIds, ...cluster }) => cluster),
+    accounts: networks.flatMap(cluster => cluster.accounts.map(account => ({ ...account, network: cluster.size > 1 ? cluster.id : null, networkSize: cluster.size }))).filter(account => account.risky > 0).sort((a, b) => b.risky - a.risky || b.maxScore - a.maxScore).slice(0, 60),
+    disclaimer: { ru: 'Связи построены по совпадающим реквизитам, промокодам, ссылкам и доменам. Совпадение — повод для проверки, а не доказательство общего владельца.', kk: 'Байланыстар ортақ деректемелер, промокодтар, сілтемелер мен домендер бойынша құрылды. Сәйкестік — тексеру себебі, ортақ иенің дәлелі емес.' },
+  };
+}
+
+export function createPipeline({ statePath, corpusPath, getCases, persistCases, analysisVersion, now = () => Date.now(), autoStart = true, liveOnly = false } = {}) {
+  // Do not load the corpus or persisted replay state in live mode, even when previously enabled.
+  if (liveOnly) {
+    const disabled = () => { throw Object.assign(new Error('Демо-поток недоступен в режиме liveOnly.'), { status: 403 }); };
+    return {
+      start() {}, close() {}, update: disabled, reset: disabled, step: disabled,
+      snapshot: () => ({ liveOnly: true, enabled: false, running: false, finished: false, total: 0, processed: 0, queued: 0, cleared: 0, log: [], corpus: null, streamQuality: null }),
+      networks: () => networkSnapshot(getCases().filter(record => record.demo !== true).map(record => ({
+        id: record.id, accountKey: record.accountKey || `${record.platform || 'other'}:${record.author || record.url || record.id}`,
+        handle: record.author || record.url || record.id, platform: record.platform || 'other', kind: record.kind || 'account', followers: record.followers ?? null,
+        score: record.analysis?.score ?? 0, category: record.analysis?.category ?? 'none', keys: linkKeys(record.analysis),
+      }))),
+    };
+  }
   let state = { ...DEFAULT_STATE };
   if (statePath && existsSync(statePath)) {
     try { state = { ...DEFAULT_STATE, ...JSON.parse(readFileSync(statePath, 'utf8')) }; } catch { state = { ...DEFAULT_STATE }; }
@@ -437,12 +459,7 @@ export function createPipeline({ statePath, corpusPath, getCases, persistCases, 
       };
     },
     networks() {
-      const networks = buildNetworks(index);
-      return {
-        networks: networks.filter(cluster => cluster.riskyItems > 0).slice(0, 40).map(({ itemIds, ...cluster }) => cluster),
-        accounts: networks.flatMap(cluster => cluster.accounts.map(account => ({ ...account, network: cluster.size > 1 ? cluster.id : null, networkSize: cluster.size }))).filter(account => account.risky > 0).sort((a, b) => b.risky - a.risky || b.maxScore - a.maxScore).slice(0, 60),
-        disclaimer: { ru: 'Связи построены по совпадающим реквизитам, промокодам, ссылкам и доменам. Совпадение — повод для проверки, а не доказательство общего владельца.', kk: 'Байланыстар ортақ деректемелер, промокодтар, сілтемелер мен домендер бойынша құрылды. Сәйкестік — тексеру себебі, ортақ иенің дәлелі емес.' },
-      };
+      return networkSnapshot(index);
     },
     update(patch = {}) {
       if (patch.rate !== undefined) {

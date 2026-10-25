@@ -129,6 +129,21 @@ test('a captcha or login wall pauses the platform with growing waits; the other 
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
+test('an empty public page is a failed check, never a clean account or a saved finding', async () => {
+  const { dir, social, cases } = setup({ search: async () => ({ status: 200, html: '' }), openProfile: async () => ({ name: 'Instagram', bio: '', posts: [], links: [] }) });
+  try {
+    social.addSeed('ig:@quiet_bakery_kz');
+    await social.tick();
+    const snapshot = social.snapshot();
+    assert.equal(snapshot.counts.clean, 0);
+    assert.equal(snapshot.counts.unavailable, 1);
+    assert.equal(snapshot.checked[0].status, 'error');
+    assert.equal(snapshot.checked[0].error.code, 'NO_PUBLIC_CONTENT');
+    assert.equal(cases().length, 0);
+    assert.equal(snapshot.stats.savedCases, 0);
+  } finally { social.close(); rmSync(dir, { recursive: true, force: true }); }
+});
+
 test('search hits become candidates; a refused search waits instead of retrying', async () => {
   let status = 200;
   const { dir, social, cases, advance } = setup({ search: async () => ({ status, html: searchHtml }), openProfile: async () => ({ notFound: true, posts: [] }) });
@@ -139,6 +154,10 @@ test('search hits become candidates; a refused search waits instead of retrying'
     const all = [...snapshot.queued, ...snapshot.checked];
     assert.ok(all.some(item => item.key === 'tiktok:spin_promo_kz' && item.foundVia[0].kind === 'search'));
     assert.ok(cases().some(record => record.kind === 'search_snippet' && record.provenance.method === 'search_index'));
+    const excerpt = cases().find(record => record.kind === 'search_snippet');
+    assert.equal(excerpt.provenance.publicVisibilityVerified, false, 'a search hit does not verify a profile that was unavailable');
+    assert.equal(excerpt.provenance.scope, 'public_search_index_excerpt');
+    assert.match(excerpt.provenance.disclaimer, /не подтверждены/);
     status = 202;
     advance(21);
     await social.tick();

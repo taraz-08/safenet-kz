@@ -2,6 +2,7 @@ import React,{useCallback,useEffect,useMemo,useState} from 'react';
 import {Activity,AlertTriangle,ArrowRight,Ban,Check,CircleCheck,Clock3,FileImage,Globe,Inbox,Instagram,Keyboard,Landmark,LoaderCircle,MessageCircle,Mic,Music2,Network,Pause,Play,RotateCcw,Send,ShieldAlert,Sparkles,Users,X,Youtube,Radio,Workflow,BrainCircuit,Info,Layers,Search,Plus,ExternalLink,Trash2,Telescope} from 'lucide-react';
 import {getLanguage} from './i18n.js';
 import './workbench.css';
+import LiveMonitoring, {isRealCase, SearchExcerptNote, socialPlatformStatus} from './LiveMonitoring.jsx';
 
 const L=(ru,kk)=>getLanguage()==='kk'?kk:ru;
 async function api(path,options={}){const response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.error||`HTTP ${response.status}`);return data;}
@@ -15,7 +16,7 @@ export const TRACKS={
  none:{n:null,ru:'Нет признаков',kk:'Белгі жоқ',shortRu:'Нет признаков',shortKk:'Белгі жоқ'},
 };
 const LEVEL={high:['Высокий','Жоғары'],medium:['Средний','Орташа'],low:['Низкий','Төмен']};
-const KIND={post:['Пост','Жазба'],reel:['Reels','Reels'],story:['Сторис','Сторис'],stream:['Эфир','Эфир'],channel_post:['Пост канала','Арна жазбасы'],comment:['Комментарий','Пікір'],group:['Группа','Топ'],caption:['Подпись','Жазба']};
+const KIND={post:['Пост','Жазба'],reel:['Reels','Reels'],story:['Сторис','Сторис'],stream:['Эфир','Эфир'],channel_post:['Пост канала','Арна жазбасы'],search_snippet:['Фрагмент поисковой выдачи','Іздеу нәтижесінің үзіндісі'],comment:['Комментарий','Пікір'],group:['Группа','Топ'],caption:['Подпись','Жазба']};
 const ROLE={organizer:['Организатор','Ұйымдастырушы'],curator:['Куратор','Куратор'],testimonial:['Отзыв','Пікір'],member:['Участник','Қатысушы'],skeptic:['Сомневается','Күмәнданады'],bot:['Бот','Бот']};
 const MODALITY={text:['Подпись','Жазба',MessageCircle],ocrText:['Скриншот (OCR)','Скриншот (OCR)',FileImage],transcript:['Эфир (речь)','Эфир (сөйлеу)',Mic]};
 const DISMISS=[['free_contest','Обычный бесплатный конкурс','Кәдімгі тегін байқау'],['legal_ad','Легальная реклама','Заңды жарнама'],['news_warning','Новость или предупреждение','Жаңалық не ескерту'],['insufficient','Недостаточно признаков','Белгілер жеткіліксіз'],['other','Другое','Басқа']];
@@ -26,7 +27,7 @@ const percent=value=>value==null?'—':`${Math.round(value*1000)/10}%`;
 const number=value=>new Intl.NumberFormat(getLanguage()==='kk'?'kk-KZ':'ru-RU').format(value??0);
 function ago(iso){if(!iso)return '';const minutes=Math.max(0,Math.round((Date.now()-Date.parse(iso))/60000));if(minutes<1)return L('только что','жаңа ғана');if(minutes<60)return L(`${minutes} мин назад`,`${minutes} мин бұрын`);const hours=Math.round(minutes/60);if(hours<48)return L(`${hours} ч назад`,`${hours} сағ бұрын`);return L(`${Math.round(hours/24)} дн назад`,`${Math.round(hours/24)} күн бұрын`);}
 function localSignals(analysis){const lang=getLanguage()==='kk'?'kk':'ru';const map=new Map((analysis?.translations?.[lang]?.signals??[]).map(item=>[item.id,item]));return (analysis?.signals??[]).map(signal=>({...signal,...(map.get(signal.id)?{label:map.get(signal.id).label,description:map.get(signal.id).description}:{})}));}
-function usePoll(path,interval,deps=[]){const [data,setData]=useState(null),[error,setError]=useState('');const load=useCallback(async()=>{try{setData(await api(path));setError('');}catch(e){setError(e.message);}},[path]);useEffect(()=>{load();if(!interval)return;const timer=setInterval(load,typeof interval==='function'?interval():interval);return()=>clearInterval(timer);},[load,...deps]);return [data,load,error];}
+function usePoll(path,interval,deps=[]){const [data,setData]=useState(null),[error,setError]=useState('');const load=useCallback(async()=>{if(!path)return;try{setData(await api(path));setError('');}catch(e){setError(e.message);}},[path]);useEffect(()=>{if(!path)return;load();if(!interval)return;const timer=setInterval(load,typeof interval==='function'?interval():interval);return()=>clearInterval(timer);},[load,...deps]);return [data,load,error];}
 
 export function PlatformIcon({platform,size=14}){const Icon={instagram:Instagram,tiktok:Music2,telegram:Send,whatsapp:MessageCircle,youtube:Youtube}[platform]??Globe;return <span className={`wb-platform ${platform||'other'}`} title={platform}><Icon size={size} aria-hidden/></span>;}
 export function TrackTag({category,full=false}){if(!TRACKS[category]||category==='none')return <span className="wb-track none">{trackName('none')}</span>;const meta=TRACKS[category];return <span className={`wb-track ${category}`}><i aria-hidden/>{meta.n?`${L('Трек','Трек')} ${meta.n} · `:''}{full?L(meta.ru,meta.kk):trackName(category)}</span>;}
@@ -42,8 +43,13 @@ function Highlighted({text,quotes}){
 }
 
 // ——— Overview: the funnel is the product's job — the machine reads everything, people see only what needs them.
-export function CommandCenter({go,onOpen}){
- const [pipeline]=usePoll('/api/pipeline?limit=0',2500);
+export function CommandCenter({go,onOpen,liveOnly}){
+ const [pipeline,,error]=usePoll(liveOnly?null:'/api/pipeline?limit=0',2500);
+ if(liveOnly||pipeline?.liveOnly)return <LiveMonitoring go={go} onOpen={onOpen} overview/>;
+ if(!pipeline)return <div className="wb"><p className="wb-empty" role="status">{error||L('Загрузка состояния…','Күйі жүктелуде…')}</p></div>;
+ return <DemoCommandCenter pipeline={pipeline} go={go} onOpen={onOpen}/>;
+}
+function DemoCommandCenter({pipeline,go,onOpen}){
  const [queue]=usePoll('/api/queue',4000);
  const [metrics]=usePoll('/api/metrics',0);
  const [review]=usePoll('/api/review-stats',8000);
@@ -85,9 +91,9 @@ export function CommandCenter({go,onOpen}){
     {open.length?<ul className="wb-mini-queue">{open.slice(0,6).map(item=><li key={item.id}><button onClick={()=>onOpen(item.id)}><ScoreDial score={item.analysis.score} level={item.analysis.level} size={38}/><span className="wb-mini-main"><strong>{item.author||L('Без автора','Авторсыз')}</strong><small><PlatformIcon platform={item.platform} size={12}/>{kindName(item.kind)} · {ago(item.createdAt)}</small></span><TrackTag category={item.analysis.category}/></button></li>)}</ul>:<p className="wb-empty">{L('Очередь пуста: всё проверенное либо отсеяно, либо уже решено.','Кезек бос: тексерілгеннің бәрі сүзілді не шешілді.')}</p>}
    </section>
    <section className="wb-panel wb-quality-mini">
-    <header><h3>{L('Качество на слепой выборке','Соқыр іріктемедегі сапа')}</h3><button className="wb-link" onClick={()=>go('quality')}>{L('Подробно','Толығырақ')}<ArrowRight size={14}/></button></header>
+    <header><h3>{L('Качество на синтетической выборке','Синтетикалық іріктемедегі сапа')}</h3><button className="wb-link" onClick={()=>go('quality')}>{L('Подробно','Толығырақ')}<ArrowRight size={14}/></button></header>
     {holdout?<><dl className="wb-kpis"><div><dt>Precision</dt><dd>{percent(holdout.precision)}</dd></div><div><dt>Recall</dt><dd>{percent(holdout.recall)}</dd></div><div><dt>{L('Ложные срабатывания','Жалған белгілер')}</dt><dd>{percent(holdout.falsePositiveRate)}</dd></div></dl>
-     <p className="wb-note">{L(`Отложенная часть независимой выборки (${holdout.total} примеров), которую не видели ни правила, ни модель. Только правила: precision ${percent(rulesHoldout?.precision)}, recall ${percent(rulesHoldout?.recall)}.`,`Ережелер де, модель де көрмеген тәуелсіз іріктеменің бөлігі (${holdout.total} мысал). Тек ережелер: precision ${percent(rulesHoldout?.precision)}, recall ${percent(rulesHoldout?.recall)}.`)}</p></>:<p className="wb-empty">{L('Запустите npm run evaluate.','npm run evaluate іске қосыңыз.')}</p>}
+     <p className="wb-note">{L(`Отложенная часть синтетической выборки (${holdout.total} примеров), которую не видели ни правила, ни модель. Только правила: precision ${percent(rulesHoldout?.precision)}, recall ${percent(rulesHoldout?.recall)}.`,`Ережелер де, модель де көрмеген синтетикалық іріктеменің бөлігі (${holdout.total} мысал). Тек ережелер: precision ${percent(rulesHoldout?.precision)}, recall ${percent(rulesHoldout?.recall)}.`)}</p></>:<p className="wb-empty">{L('Запустите npm run evaluate.','npm run evaluate іске қосыңыз.')}</p>}
    </section>
   </div>
   <p className="wb-principle"><Info size={15}/>{L('Система не объявляет схему незаконной. Она показывает признаки возможного нарушения; законность проверяет человек с учётом законодательства Республики Казахстан.','Жүйе схеманы заңсыз деп жарияламайды. Ол ықтимал бұзушылық белгілерін көрсетеді; заңдылықты адам Қазақстан Республикасының заңнамасын ескере отырып тексереді.')}</p>
@@ -95,10 +101,10 @@ export function CommandCenter({go,onOpen}){
 }
 
 // ——— Review queue: the analyst's only job is to confirm, escalate or dismiss — with the evidence in front of them.
-export function ReviewQueue({initialCase,initialTrack,onChanged,readOnly}){
+export function ReviewQueue({initialCase,initialTrack,onChanged,readOnly,liveOnly}){
  const [data,reload]=usePoll('/api/queue',6000);
  const [tab,setTab]=useState('open'),[track,setTrack]=useState(initialTrack||'all'),[band,setBand]=useState('all'),[selectedId,setSelectedId]=useState(initialCase||null),[busy,setBusy]=useState(false),[notice,setNotice]=useState('');
- const list=useMemo(()=>{const source=tab==='open'?(data?.open??[]):(data?.reviewed??[]);return source.filter(item=>(track==='all'||item.analysis?.category===track)&&(band==='all'||(band==='model')===Boolean(item.analysis?.signals?.some(s=>s.id==='ml_model'))));},[data,tab,track,band]);
+ const list=useMemo(()=>{const source=tab==='open'?(data?.open??[]):(data?.reviewed??[]);return source.filter(item=>(!liveOnly||isRealCase(item))&&(track==='all'||item.analysis?.category===track)&&(band==='all'||(band==='model')===Boolean(item.analysis?.signals?.some(s=>s.id==='ml_model'))));},[data,tab,track,band,liveOnly]);
  const selected=list.find(item=>item.id===selectedId)??list[0]??null;
  useEffect(()=>{if(initialCase)setSelectedId(initialCase);},[initialCase]);
  useEffect(()=>{if(initialTrack)setTrack(initialTrack);},[initialTrack]);
@@ -111,7 +117,7 @@ export function ReviewQueue({initialCase,initialTrack,onChanged,readOnly}){
   catch(e){setNotice(e.message);}finally{setBusy(false);}
  },[selected,busy,list,reload,onChanged,readOnly]);
  useEffect(()=>{const onKey=event=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)||event.metaKey||event.ctrlKey||event.altKey)return;if(event.key==='j'||event.key==='ArrowDown'){event.preventDefault();move(1);}if(event.key==='k'||event.key==='ArrowUp'){event.preventDefault();move(-1);}if(readOnly||tab!=='open')return;if(event.key==='1')decide('confirmed','signs_confirmed');if(event.key==='2')decide('escalated','to_agency');};window.addEventListener('keydown',onKey);return()=>window.removeEventListener('keydown',onKey);},[move,decide,tab,readOnly]);
- const counts=data?.counts;
+ const counts=liveOnly&&data?{open:(data.open??[]).filter(isRealCase).length,reviewed:(data.reviewed??[]).filter(isRealCase).length}:data?.counts;
  return <div className="wb wb-review">
   <div className="wb-review-bar">
    <div className="wb-tabs" role="tablist"><button role="tab" aria-selected={tab==='open'} onClick={()=>setTab('open')}>{L('Ждут решения','Шешім күтуде')} <b>{counts?.open??0}</b></button><button role="tab" aria-selected={tab==='reviewed'} onClick={()=>setTab('reviewed')}>{L('Решённые','Шешілгендер')} <b>{counts?.reviewed??0}</b></button></div>
@@ -123,7 +129,7 @@ export function ReviewQueue({initialCase,initialTrack,onChanged,readOnly}){
   </div>
   <div className="wb-review-grid">
    <aside className="wb-queue" aria-label={L('Очередь','Кезек')}>
-    {!data?<p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Загрузка очереди…','Кезек жүктелуде…')}</p>:!list.length?<p className="wb-empty">{tab==='open'?L('Нет случаев, ожидающих решения. Автопоток продолжит пополнять очередь.','Шешім күтетін жағдай жоқ. Автоағын кезекті толықтыра береді.'):L('Решённых случаев пока нет.','Шешілген жағдай әзірге жоқ.')}</p>:
+    {!data?<p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Загрузка очереди…','Кезек жүктелуде…')}</p>:!list.length?<p className="wb-empty">{tab==='open'?L('Нет случаев, ожидающих решения. Состояние поиска доступно в мониторинге источников.','Шешім күтетін жағдай жоқ. Іздеу күйі дереккөздер мониторингінде көрсетілген.'):L('Решённых случаев пока нет.','Шешілген жағдай әзірге жоқ.')}</p>:
     <ul>{list.map(item=>{const model=item.analysis?.signals?.some(s=>s.id==='ml_model');return <li key={item.id}><button data-case={item.id} className={item.id===selected?.id?'active':''} onClick={()=>setSelectedId(item.id)}>
      <ScoreDial score={item.analysis.score} level={item.analysis.level} size={40}/>
      <span className="wb-q-main"><span className="wb-q-top"><strong>{item.author||L('Без автора','Авторсыз')}</strong><small>{ago(item.createdAt)}</small></span><span className="wb-q-text">{(item.text||item.ocrText||item.transcript||'').slice(0,110)}</span>
@@ -160,6 +166,7 @@ function Dossier({item,busy,onDecide}){
 
   <section className="wb-block">
    <h3>{L('Материал','Материал')}</h3>
+   <SearchExcerptNote item={item}/>
    {item.kind==='group'&&item.group?<GroupEvidence group={item.group} signals={signals}/>:<>
     {parts.length>1&&<div className="wb-tabs small" role="tablist">{parts.map(([key])=>{const [ru,kz,Icon]=MODALITY[key];return <button key={key} role="tab" aria-selected={part===key} onClick={()=>setPart(key)}><Icon size={13}/>{L(ru,kz)}</button>;})}</div>}
     {parts.filter(([key])=>key===part).map(([key,value])=><Highlighted key={key} text={value} quotes={quotesFor(key)}/>)}
@@ -213,12 +220,12 @@ function GroupEvidence({group,signals}){
 }
 
 // ——— Pipeline: what the machine is doing right now, stage by stage.
-export function PipelinePage({go,readOnly}){
- const [running,setRunning]=useState(true);
- const [data,reload]=usePoll('/api/pipeline?limit=60',()=>running?1500:6000,[running]);
- useEffect(()=>{if(data)setRunning(Boolean(data.running));},[data?.running]);
+export function PipelinePage({go,readOnly,liveOnly}){
+ const [data,reload,error]=usePoll(liveOnly?null:'/api/pipeline?limit=60',2500);
  const [busy,setBusy]=useState(false);
- const act=async(path,options)=>{if(readOnly)return false;setBusy(true);try{await api(path,options);await reload();}finally{setBusy(false);}};
+ const act=async(path,options)=>{if(readOnly||liveOnly||data?.liveOnly)return false;setBusy(true);try{await api(path,options);await reload();}finally{setBusy(false);}};
+ if(liveOnly||data?.liveOnly)return <LiveMonitoring go={go}/>;
+ if(error&&!data)return <div className="wb"><p className="wb-error" role="alert">{error}</p></div>;
  if(!data)return <div className="wb"><p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Подключение к потоку…','Ағынға қосылу…')}</p></div>;
  const progress=data.total?data.cursor/data.total:0;
  const stages=[
@@ -313,20 +320,21 @@ function CurveChart({curve,threshold}){
  </svg>
  <figcaption>{hover?L(`Порог ${hover.threshold}: precision ${percent(hover.precision)}, recall ${percent(hover.recall)}, ложные ${percent(hover.falsePositiveRate)}`,`Шек ${hover.threshold}: precision ${percent(hover.precision)}, recall ${percent(hover.recall)}, жалған ${percent(hover.falsePositiveRate)}`):L(`Вертикальная линия — рабочий порог ${threshold}. Наведите на график, чтобы увидеть значения.`,`Тік сызық — жұмыс шегі ${threshold}. Мәндерді көру үшін графикке апарыңыз.`)}</figcaption></figure>;
 }
-export function QualityPage(){
+export function QualityPage({liveOnly}){
  const [metrics]=usePoll('/api/metrics',0);
- const [review]=usePoll('/api/review-stats',10000);
+ const [review]=usePoll(liveOnly?null:'/api/review-stats',10000);
  if(!metrics)return <div className="wb"><p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Загрузка метрик…','Метрикалар жүктелуде…')}</p></div>;
  const test=metrics.test;if(!test)return <div className="wb"><p className="wb-empty">{L('Нет тестовой выборки. Запустите npm run evaluate.','Тест іріктемесі жоқ.')}</p></div>;
  const holdout=test.splits.holdout,rules=metrics.rulesOnly?.test?.splits?.holdout,first=metrics.blindFirstRun;
  const regimes=[
   first&&{name:L('Первый слепой прогон: правила до просмотра выборки','Алғашқы соқыр өту: ережелер'),m:first},
   rules&&{name:L('Правила после разбора ошибок validation','Validation қателерінен кейінгі ережелер'),m:rules},
-  {name:L('Правила + модель — рабочий режим','Ережелер + модель — жұмыс режимі'),m:holdout,main:true},
+  {name:L('Правила + модель — тестовый режим','Ережелер + модель — тест режимі'),m:holdout,main:true},
  ].filter(Boolean);
  const hb=test.holdoutBreakdown??test;const pc=hb.perCategory;const lang=Object.entries(hb.byLanguage);const hard=Object.entries(hb.hardNegatives);
  const hardName={free_giveaway:['Бесплатные конкурсы','Тегін байқаулар'],legal_ad:['Легальная реклама','Заңды жарнама'],news_warning:['Новости и предупреждения','Жаңалық пен ескерту'],charity:['Благотворительность','Қайырымдылық'],gaming_stream:['Игровые стримы','Ойын стримдері'],ordinary:['Обычные посты','Кәдімгі жазбалар'],education:['Обучение','Оқыту'],job:['Вакансии','Бос орындар'],product_draw:['Розыгрыш среди покупателей','Сатып алушылар арасындағы ұтыс']};
  return <div className="wb wb-quality">
+  <p className="wb-principle"><Info size={15}/>{L('Синтетическая тестовая выборка. Эти метрики не измеряют качество на реальных находках. В живом поиске используются признаки правил.','Синтетикалық тест іріктемесі. Бұл метрикалар нақты материалдардағы сапаны өлшемейді. Нақты іздеуде ережелер белгілері қолданылады.')}</p>
   <section className="wb-panel">
    <header><h3>{L('Три режима на одних и тех же отложенных данных','Бірдей кейінге қалдырылған деректердегі үш режим')}</h3></header>
    <table className="wb-table"><thead><tr><th>{L('Режим','Режим')}</th><th>Precision</th><th>Recall</th><th>F1</th><th>{L('Ложные срабатывания','Жалған белгілер')}</th></tr></thead><tbody>{regimes.map(row=><tr key={row.name} className={row.main?'main':''}><td>{row.name}</td><td>{percent(row.m.precision)}</td><td>{percent(row.m.recall)}</td><td>{percent(row.m.f1)}</td><td>{percent(row.m.falsePositiveRate)}</td></tr>)}</tbody></table>
@@ -348,12 +356,12 @@ export function QualityPage(){
   <div className="wb-split">
    <section className="wb-panel"><header><h3>{L('Кто поднял случай и насколько ему верить','Жағдайды кім көтерді және оған қаншалық сенуге болады')}</h3></header>
     <dl className="wb-kpis"><div><dt>{L('Подтверждено правилами','Ережелер растады')}</dt><dd>{percent(test.bands?.rules?.holdoutPrecision)}</dd><small>{L(`точность на holdout, случаев: ${test.bands?.rules?.holdoutFlagged}`,`holdout дәлдігі, жағдай: ${test.bands?.rules?.holdoutFlagged}`)}</small></div><div><dt>{L('Только модель','Тек модель')}</dt><dd>{percent(test.bands?.model?.holdoutPrecision)}</dd><small>{L(`точность на holdout, случаев: ${test.bands?.model?.holdoutFlagged}`,`holdout дәлдігі, жағдай: ${test.bands?.model?.holdoutFlagged}`)}</small></div></dl>
-    <p className="wb-note">{L('Случаи «только модель» отмечены в очереди и стоят ниже по приоритету: аналитик видит, что правила нашли мало признаков.','«Тек модель» жағдайлары кезекте белгіленген және басымдығы төмен.')}</p></section>
-   <section className="wb-panel"><header><h3>{L('Скорость и масштаб','Жылдамдық пен ауқым')}</h3></header>
+    <p className="wb-note">{L('«Только модель» — отдельная группа синтетического теста. В живом поиске случаи отбираются по признакам правил.','«Тек модель» — синтетикалық тесттің бөлек тобы. Нақты іздеуде жағдайлар ереже белгілері бойынша таңдалады.')}</p></section>
+   <section className="wb-panel"><header><h3>{L('Скорость в синтетическом тесте','Синтетикалық тесттегі жылдамдық')}</h3></header>
     <dl className="wb-kpis"><div><dt>{L('Публикаций в секунду','Секундына жарияланым')}</dt><dd>{number(metrics.benchmark?.itemsPerSecond)}</dd><small>{L('одно ядро, без OCR/ASR','бір ядро, OCR/ASR-сыз')}</small></div><div><dt>{L('На публикацию','Бір жарияланымға')}</dt><dd>{metrics.benchmark?.msPerItem} {L('мс','мс')}</dd><small>{L('правила + модель','ережелер + модель')}</small></div></dl>
     <p className="wb-note">{L(`≈ ${number(Math.round((metrics.benchmark?.itemsPerSecond??0)*86400/1e6))} млн текстов в сутки на одно ядро. Анализ не хранит состояния и масштабируется добавлением воркеров за очередью сообщений.`,`Бір ядроға тәулігіне ≈ ${number(Math.round((metrics.benchmark?.itemsPerSecond??0)*86400/1e6))} млн мәтін. Талдау күйсіз және воркерлер қосу арқылы масштабталады.`)}</p></section>
   </div>
-  {review?.total>0&&<section className="wb-panel"><header><h3>{L('Обратная связь аналитиков','Талдаушылардың кері байланысы')}</h3><span className="wb-note">{L(`решений: ${review.total}, подтверждено ${percent(review.confirmRate)}`,`шешім: ${review.total}, расталды ${percent(review.confirmRate)}`)}</span></header>
+  {!liveOnly&&review?.total>0&&<section className="wb-panel"><header><h3>{L('Обратная связь аналитиков','Талдаушылардың кері байланысы')}</h3><span className="wb-note">{L(`решений: ${review.total}, подтверждено ${percent(review.confirmRate)}`,`шешім: ${review.total}, расталды ${percent(review.confirmRate)}`)}</span></header>
    <table className="wb-table"><thead><tr><th>{L('Признак','Белгі')}</th><th>{L('Подтверждено','Расталды')}</th><th>{L('Ложное','Жалған')}</th><th>{L('Доля подтверждений','Растау үлесі')}</th></tr></thead><tbody>{review.signals.slice(0,10).map(row=><tr key={row.id}><td><code>{row.id}</code></td><td>{row.confirmed}</td><td>{row.dismissed}</td><td>{percent(row.confirmRate)}</td></tr>)}</tbody></table>
    <p className="wb-note">{L('Признаки, которые аналитики часто отклоняют, — кандидаты на снижение веса в следующей версии правил и на дообучение модели.','Талдаушылар жиі қабылдамайтын белгілер — келесі нұсқада салмағын азайту үміткерлері.')}</p></section>}
  </div>;
@@ -428,16 +436,15 @@ export function SocialPage({onOpen,readOnly}){
   const openSample=async url=>{try{const queue=await api('/api/queue');const found=[...queue.open,...queue.reviewed].find(item=>item.url===url);if(found)onOpen(found.id);}catch(e){setError(e.message);}};
   if(!data)return <div className="wb"><p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Подключение к поиску в соцсетях…','Әлеуметтік желілердегі іздеуге қосылу…')}</p></div>;
   const kk=getLanguage()==='kk';
-  const paused=platform=>{const scope=data.platforms[platform];return scope?.blockedUntil&&Date.parse(scope.blockedUntil)>Date.now()?scope:null;};
   const searchPaused=data.search.blockedUntil&&Date.parse(data.search.blockedUntil)>Date.now();
   const dominant=account=>Object.entries(account.categories||{}).sort((a,b)=>b[1]-a[1])[0]?.[0]??'none';
   const via=account=>account.foundVia.length?account.foundVia.slice(0,2).map(item=>{const how=L(...(SOCIAL_VIA[item.kind]??[item.kind,item.kind]));return item.from?`${item.from.replace(/^(instagram|tiktok|telegram):/,'@')} (${how})`:how;}).join(', '):L(...SOCIAL_VIA.seed);
   const seedKeys=new Set(data.seeds.map(seed=>`${seed.platform}:${seed.handle}`));
   return <div className="wb wb-discovery">
    <section className="wb-panel wb-pipe-head">
-    <div><p className="wb-live">{data.enabled?<><i className="wb-pulse"/>{L(`Автопоиск работает: один профиль раз в ${data.limits.tickMs/1000} с, без входа в аккаунт`,`Автоіздеу жұмыс істейді: ${data.limits.tickMs/1000} с сайын бір профиль, аккаунтқа кірмей`)}</>:<><Pause size={15}/>{L('Поиск на паузе','Іздеу кідіртілді')}</>}</p>
+    <div><p className="wb-live">{data.enabled?<><i className="wb-pulse"/>{L(`Автопоиск включён: попытка проверки раз в ${data.limits.tickMs/1000} с, без входа в аккаунт`,`Автоіздеу қосылған: ${data.limits.tickMs/1000} с сайын тексеру әрекеті, аккаунтқа кірмей`)}</>:<><Pause size={15}/>{L('Поиск на паузе','Іздеу кідіртілді')}</>}</p>
      <h2>{number(data.counts.risky)} <span>{L(`аккаунтов с признаками схем из ${number(data.counts.accounts)} найденных`,`табылған ${number(data.counts.accounts)} аккаунттың белгілері барлары`)}</span></h2>
-     <dl className="wb-kpis small">{['instagram','tiktok'].map(platform=><div key={platform}><dt>{PLATFORM_NAME[platform]}</dt><dd>{number(data.counts.byPlatform[platform].risky)} <small>/ {number(data.counts.byPlatform[platform].accounts)}</small></dd></div>)}<div><dt>{L('Отправлено аналитику','Талдаушыға жіберілді')}</dt><dd>{number(data.stats.savedCases)}</dd></div><div><dt>{L('Открыто профилей','Ашылған профильдер')}</dt><dd>{number(data.stats.probes)}</dd></div></dl>
+     <dl className="wb-kpis small">{['instagram','tiktok'].map(platform=><div key={platform}><dt>{PLATFORM_NAME[platform]}</dt><dd>{number(data.counts.byPlatform[platform].risky)} <small>/ {number(data.counts.byPlatform[platform].accounts)}</small></dd></div>)}<div><dt>{L('Отправлено аналитику','Талдаушыға жіберілді')}</dt><dd>{number(data.stats.savedCases)}</dd></div><div><dt>{L('Попыток проверки профилей','Профильді тексеру әрекеттері')}</dt><dd>{number(data.stats.probes)}</dd></div></dl>
     </div>
     <div className="wb-pipe-controls">
      {data.enabled?<button className="wb-button" disabled={readOnly||busy} onClick={()=>act('/api/social',{method:'PUT',body:JSON.stringify({enabled:false})})}><Pause size={16}/>{L('Пауза','Кідірту')}</button>:<button className="wb-button primary" disabled={readOnly||busy} onClick={()=>act('/api/social',{method:'PUT',body:JSON.stringify({enabled:true})})}><Play size={16}/>{L('Включить поиск','Іздеуді қосу')}</button>}
@@ -447,7 +454,7 @@ export function SocialPage({onOpen,readOnly}){
    <section className="wb-panel">
     <header><h3>{L('Состояние источников','Дереккөздер күйі')}</h3></header>
     <div className="wb-chips">
-     {['instagram','tiktok'].map(platform=>{const scope=paused(platform);return <span key={platform} className="wb-chip"><PlatformIcon platform={platform} size={12}/>{PLATFORM_NAME[platform]}<small>{scope?L(`пауза до ${clock(scope.blockedUntil)}: ${scope.reason==='login_wall'?'просит вход':'капча'}`,`${clock(scope.blockedUntil)} дейін кідіріс: ${scope.reason==='login_wall'?'кіруді сұрайды':'капча'}`):L('открывается','ашылады')}</small></span>;})}
+     {['instagram','tiktok'].map(platform=><span key={platform} className="wb-chip"><PlatformIcon platform={platform} size={12}/>{PLATFORM_NAME[platform]}<small>{socialPlatformStatus(data,platform)}</small></span>)}
      <span className="wb-chip"><Search size={12}/>{L('Поисковая выдача','Іздеу нәтижесі')}<small>{searchPaused?L(`пауза до ${clock(data.search.blockedUntil)}`,`${clock(data.search.blockedUntil)} дейін кідіріс`):data.search.nextAt?L(`следующий запрос в ${clock(data.search.nextAt)}`,`келесі сұрау ${clock(data.search.nextAt)}`):L('скоро','жақында')}</small></span>
     </div>
     <p className="wb-note wb-terms"><AlertTriangle size={14}/><span>{L('Правила Meta и TikTok запрещают автоматический сбор данных. Режим включён оператором осознанно: открываются только публичные страницы, вход в аккаунт не используется, капчи не обходятся — при капче или требовании входа платформа ставится на паузу.','Meta мен TikTok ережелері деректерді автоматты жинауға тыйым салады. Режимді оператор саналы түрде қосқан: тек ашық беттер ашылады, аккаунтқа кірмейді, капча айналып өтілмейді — капча не кіру талабы шықса, платформа кідіртіледі.')}</span></p>
@@ -467,7 +474,7 @@ export function SocialPage({onOpen,readOnly}){
     {data.risky.length?<ul className="wb-found">{data.risky.map(account=><li key={account.key}>
      <div className="wb-found-head"><ScoreDial score={account.maxScore} level={account.maxScore>=60?'high':'medium'} size={44}/><div><strong><PlatformIcon platform={account.platform} size={12}/> {account.name||`@${account.handle}`}</strong><a href={socialUrl(account)} target="_blank" rel="noopener noreferrer">@{account.handle}<ExternalLink size={12}/></a></div><TrackTag category={dominant(account)}/></div>
      <p className="wb-found-meta">{L(`материалов с признаками: ${account.flaggedPosts}`,`белгілері бар материалдар: ${account.flaggedPosts}`)} · {L('найден через','табылды')}: {via(account)} · {ago(account.lastCheckedAt)}{account.domains?.length?` · ${L('сайты','сайттар')}: ${account.domains.slice(0,3).join(', ')}`:''}{account.telegram?.length?` · Telegram: ${account.telegram.slice(0,3).map(handle=>'@'+handle).join(', ')}`:''}</p>
-     {account.sample&&<blockquote className="wb-found-sample">{account.sample.text}</blockquote>}
+     {account.sample&&<><SearchExcerptNote item={account.sample}/><blockquote className="wb-found-sample">{account.sample.text}</blockquote></>}
      {account.sample&&<button className="wb-link" onClick={()=>openSample(account.sample.url)}>{L('Открыть в очереди проверки','Тексеру кезегінде ашу')}<ArrowRight size={13}/></button>}
     </li>)}</ul>:<p className="wb-empty">{L('Пока не найдено. Добавьте подозрительный профиль или подождите поисковую выдачу — дальше поиск пойдёт сам.','Әзірге табылмады. Күдікті профильді қосыңыз немесе іздеу нәтижесін күтіңіз — әрі қарай іздеу өзі жүреді.')}</p>}
    </section>
