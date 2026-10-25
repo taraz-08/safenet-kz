@@ -38,3 +38,11 @@ button,input,textarea,select{font:inherit}button:disabled{cursor:not-allowed}but
 @media(max-width:760px){.signal-profile{font-size:11px}}
 
 .browser-monitor-settings{margin-top:24px;padding:20px}.browser-monitor-settings>summary{cursor:pointer;font-size:14px;font-weight:600}.browser-monitor-settings[open]>summary{margin-bottom:20px}
+.mode-banner,.unsaved-result{display:flex;align-items:flex-start;gap:12px;border:1px solid #b7ccd3;background:#edf5f7;color:#304d58;border-radius:12px;padding:16px 18px;margin-bottom:24px;line-height:1.6}
+.mode-banner.read-only,.unsaved-result{border-color:#d7c291;background:#fff8e8;color:#604c24}
+.mode-banner>svg,.unsaved-result>svg{flex-shrink:0;margin-top:2px}
+.mode-banner>div,.unsaved-result>div{min-width:0;flex:1}
+.mode-banner strong,.unsaved-result strong{display:block;font-size:14px}
+.mode-banner p,.unsaved-result p{font-size:13px;margin:4px 0 0;overflow-wrap:anywhere}
+.app-shell button:disabled,.app-shell input:disabled,.app-shell select:disabled,.app-shell textarea:disabled{cursor:not-allowed;opacity:.55}
+@media(max-width:600px){.mode-banner{flex-wrap:wrap;padding:14px}.mode-banner>.button{margin-left:32px}.mode-banner p,.unsaved-result p{font-size:12px}}

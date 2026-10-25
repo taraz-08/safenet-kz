@@ -95,7 +95,7 @@ export function CommandCenter({go,onOpen}){
 }
 
 // ——— Review queue: the analyst's only job is to confirm, escalate or dismiss — with the evidence in front of them.
-export function ReviewQueue({initialCase,initialTrack,onChanged}){
+export function ReviewQueue({initialCase,initialTrack,onChanged,readOnly}){
  const [data,reload]=usePoll('/api/queue',6000);
  const [tab,setTab]=useState('open'),[track,setTrack]=useState(initialTrack||'all'),[band,setBand]=useState('all'),[selectedId,setSelectedId]=useState(initialCase||null),[busy,setBusy]=useState(false),[notice,setNotice]=useState('');
  const list=useMemo(()=>{const source=tab==='open'?(data?.open??[]):(data?.reviewed??[]);return source.filter(item=>(track==='all'||item.analysis?.category===track)&&(band==='all'||(band==='model')===Boolean(item.analysis?.signals?.some(s=>s.id==='ml_model'))));},[data,tab,track,band]);
@@ -105,12 +105,12 @@ export function ReviewQueue({initialCase,initialTrack,onChanged}){
  useEffect(()=>{if(!notice)return;const timer=setTimeout(()=>setNotice(''),3500);return()=>clearTimeout(timer);},[notice]);
  const move=useCallback(step=>{if(!list.length)return;const index=Math.max(0,list.findIndex(item=>item.id===selected?.id));const next=list[Math.min(list.length-1,Math.max(0,index+step))];if(!next)return;setSelectedId(next.id);document.querySelector(`[data-case="${next.id}"]`)?.scrollIntoView({block:'nearest'});},[list,selected]);
  const decide=useCallback(async(status,reason,note)=>{
-  if(!selected||busy)return;setBusy(true);
+  if(readOnly||!selected||busy)return;setBusy(true);
   const index=list.findIndex(item=>item.id===selected.id);const following=list[index+1]??list[index-1];
   try{await api(`/api/cases/${encodeURIComponent(selected.id)}`,{method:'PATCH',body:JSON.stringify({status,reason,note})});setNotice(status==='dismissed'?L('Отмечено как ложное срабатывание','Жалған белгі деп белгіленді'):status==='escalated'?L('Передано в профильное ведомство','Бейінді ведомствоға берілді'):L('Признаки подтверждены','Белгілер расталды'));setSelectedId(following?.id??null);await reload();onChanged?.();}
   catch(e){setNotice(e.message);}finally{setBusy(false);}
- },[selected,busy,list,reload,onChanged]);
- useEffect(()=>{const onKey=event=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)||event.metaKey||event.ctrlKey||event.altKey)return;if(event.key==='j'||event.key==='ArrowDown'){event.preventDefault();move(1);}if(event.key==='k'||event.key==='ArrowUp'){event.preventDefault();move(-1);}if(tab!=='open')return;if(event.key==='1')decide('confirmed','signs_confirmed');if(event.key==='2')decide('escalated','to_agency');};window.addEventListener('keydown',onKey);return()=>window.removeEventListener('keydown',onKey);},[move,decide,tab]);
+ },[selected,busy,list,reload,onChanged,readOnly]);
+ useEffect(()=>{const onKey=event=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)||event.metaKey||event.ctrlKey||event.altKey)return;if(event.key==='j'||event.key==='ArrowDown'){event.preventDefault();move(1);}if(event.key==='k'||event.key==='ArrowUp'){event.preventDefault();move(-1);}if(readOnly||tab!=='open')return;if(event.key==='1')decide('confirmed','signs_confirmed');if(event.key==='2')decide('escalated','to_agency');};window.addEventListener('keydown',onKey);return()=>window.removeEventListener('keydown',onKey);},[move,decide,tab,readOnly]);
  const counts=data?.counts;
  return <div className="wb wb-review">
   <div className="wb-review-bar">
@@ -119,7 +119,7 @@ export function ReviewQueue({initialCase,initialTrack,onChanged}){
     <select value={track} onChange={e=>setTrack(e.target.value)} aria-label={L('Трек','Трек')}><option value="all">{L('Все треки','Барлық трек')}</option>{['lottery','casino','pyramid','phishing'].map(id=><option key={id} value={id}>{trackName(id)}</option>)}</select>
     <select value={band} onChange={e=>setBand(e.target.value)} aria-label={L('Кто поднял','Кім көтерді')}><option value="all">{L('Правила и модель','Ережелер мен модель')}</option><option value="rules">{L('Подтверждено правилами','Ережелер растады')}</option><option value="model">{L('Только модель','Тек модель')}</option></select>
    </div>
-   <p className="wb-hint"><Keyboard size={14}/>J/K — {L('следующий/предыдущий','келесі/алдыңғы')} · 1 — {L('подтвердить','растау')} · 2 — {L('передать','беру')}</p>
+   <p className="wb-hint"><Keyboard size={14}/>J/K — {L('следующий/предыдущий','келесі/алдыңғы')}{!readOnly&&<> · 1 — {L('подтвердить','растау')} · 2 — {L('передать','беру')}</>}</p>
   </div>
   <div className="wb-review-grid">
    <aside className="wb-queue" aria-label={L('Очередь','Кезек')}>
@@ -130,7 +130,7 @@ export function ReviewQueue({initialCase,initialTrack,onChanged}){
       <span className="wb-q-meta"><b className={`wb-q-level ${item.analysis.level}`}>{levelName(item.analysis.level)}</b><PlatformIcon platform={item.platform} size={12}/><span>{kindName(item.kind)}</span>{item.ocrText&&<FileImage size={12} aria-label="OCR"/>}{item.transcript&&<Mic size={12} aria-label="ASR"/>}{item.network&&<Network size={12} aria-label={L('Сеть','Желі')}/>}<TrackTag category={item.analysis.category}/>{model&&<span className="wb-badge model">{L('только модель','тек модель')}</span>}{item.demo&&<span className="wb-badge demo" title={L('Вымышленный аккаунт из синтетического демо-потока','Синтетикалық демо-ағындағы ойдан шығарылған аккаунт')}>{L('демо','демо')}</span>}{item.review&&<span className={`wb-badge ${item.review.decision}`}>{item.review.decision==='dismissed'?L('ложное','жалған'):item.review.decision==='escalated'?L('передано','берілді'):L('подтверждено','расталды')}</span>}</span></span>
     </button></li>;})}</ul>}
    </aside>
-   <section className="wb-dossier" aria-live="polite">{selected?<Dossier key={selected.id} item={selected} busy={busy} onDecide={tab==='open'?decide:null}/>:<p className="wb-empty">{L('Выберите случай слева.','Сол жақтан жағдайды таңдаңыз.')}</p>}</section>
+   <section className="wb-dossier" aria-live="polite">{selected?<Dossier key={selected.id} item={selected} busy={busy||readOnly} onDecide={tab==='open'?decide:null}/>:<p className="wb-empty">{L('Выберите случай слева.','Сол жақтан жағдайды таңдаңыз.')}</p>}</section>
   </div>
   {notice&&<div className="wb-toast" role="status"><CircleCheck size={17}/>{notice}</div>}
  </div>;
@@ -194,7 +194,7 @@ function Dossier({item,busy,onDecide}){
     <button className="wb-button confirm" disabled={busy} onClick={()=>onDecide('confirmed','signs_confirmed',note)}><Check size={16}/>{L('Подтвердить признаки','Белгілерді растау')}<kbd>1</kbd></button>
     <button className="wb-button escalate" disabled={busy} onClick={()=>onDecide('escalated','to_agency',note)}><Landmark size={16}/>{L('Передать в ведомство','Ведомствоға беру')}<kbd>2</kbd></button>
     <button className="wb-button ghost" disabled={busy} onClick={()=>setDismissing(true)}><Ban size={16}/>{L('Ложное срабатывание','Жалған белгі')}</button>
-    <input className="wb-note-input" value={note} onChange={e=>setNote(e.target.value)} placeholder={L('Комментарий для отчёта (необязательно)','Есепке пікір (міндетті емес)')} aria-label={L('Комментарий','Пікір')}/>
+    <input disabled={busy} className="wb-note-input" value={note} onChange={e=>setNote(e.target.value)} placeholder={L('Комментарий для отчёта (необязательно)','Есепке пікір (міндетті емес)')} aria-label={L('Комментарий','Пікір')}/>
    </>:<div className="wb-reasons"><span>{L('Почему это не схема?','Неге бұл схема емес?')}</span>{DISMISS.map(([id,ru,kz])=><button key={id} className="wb-button ghost" disabled={busy} onClick={()=>onDecide('dismissed',id,note)}>{L(ru,kz)}</button>)}<button className="wb-link" onClick={()=>setDismissing(false)}>{L('Отмена','Болдырмау')}</button></div>}
   </footer>:item.review&&<footer className="wb-decision done"><CircleCheck size={16}/>{item.review.decision==='dismissed'?L('Отмечено как ложное срабатывание','Жалған белгі деп белгіленді'):item.review.decision==='escalated'?L('Передано в профильное ведомство','Бейінді ведомствоға берілді'):L('Признаки подтверждены','Белгілер расталды')}{item.review.reason&&<small>· {DISMISS.find(([id])=>id===item.review.reason)?.[kk?2:1]??item.review.reason}</small>}{item.review.note&&<small>· {item.review.note}</small>}</footer>}
  </article>;
@@ -213,12 +213,12 @@ function GroupEvidence({group,signals}){
 }
 
 // ——— Pipeline: what the machine is doing right now, stage by stage.
-export function PipelinePage({go}){
+export function PipelinePage({go,readOnly}){
  const [running,setRunning]=useState(true);
  const [data,reload]=usePoll('/api/pipeline?limit=60',()=>running?1500:6000,[running]);
  useEffect(()=>{if(data)setRunning(Boolean(data.running));},[data?.running]);
  const [busy,setBusy]=useState(false);
- const act=async(path,options)=>{setBusy(true);try{await api(path,options);await reload();}finally{setBusy(false);}};
+ const act=async(path,options)=>{if(readOnly)return false;setBusy(true);try{await api(path,options);await reload();}finally{setBusy(false);}};
  if(!data)return <div className="wb"><p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Подключение к потоку…','Ағынға қосылу…')}</p></div>;
  const progress=data.total?data.cursor/data.total:0;
  const stages=[
@@ -237,9 +237,9 @@ export function PipelinePage({go}){
     <dl className="wb-kpis small"><div><dt>{L('Отсеяно автоматически','Автоматты сүзілді')}</dt><dd>{number(data.cleared)}</dd></div><div><dt>{L('В очередь аналитику','Талдаушы кезегіне')}</dt><dd>{number(data.queued)}</dd></div><div><dt>{L('Задержка анализа','Талдау кідірісі')}</dt><dd>{data.avgLatencyMs} {L('мс','мс')}</dd></div><div><dt>{L('Время работы','Жұмыс уақыты')}</dt><dd>{data.elapsedSeconds} {L('с','с')}</dd></div></dl>
    </div>
    <div className="wb-pipe-controls">
-    {data.enabled&&!data.finished?<button className="wb-button" disabled={busy} onClick={()=>act('/api/pipeline',{method:'PUT',body:JSON.stringify({enabled:false})})}><Pause size={16}/>{L('Пауза','Кідірту')}</button>:!data.finished&&<button className="wb-button primary" disabled={busy} onClick={()=>act('/api/pipeline',{method:'PUT',body:JSON.stringify({enabled:true})})}><Play size={16}/>{L('Продолжить','Жалғастыру')}</button>}
-    <label className="wb-select-label">{L('Скорость','Жылдамдық')}<select value={data.rate} onChange={e=>act('/api/pipeline',{method:'PUT',body:JSON.stringify({rate:Number(e.target.value)})})}>{[1,2,5,10,25].map(rate=><option key={rate} value={rate}>{rate} {L('публ./сек','жар./сек')}</option>)}</select></label>
-    <button className="wb-button ghost" disabled={busy} onClick={()=>{if(confirm(L('Перезапустить демо-поток? Необработанные демо-случаи будут заменены, решения аналитика сохранятся.','Демо-ағынды қайта бастау керек пе? Өңделмеген демо-жағдайлар ауыстырылады, талдаушы шешімдері сақталады.')))act('/api/pipeline/reset',{method:'POST',body:'{}'});}}><RotateCcw size={16}/>{L('Перезапустить демо','Демоны қайта бастау')}</button>
+    {data.enabled&&!data.finished?<button className="wb-button" disabled={readOnly||busy} onClick={()=>act('/api/pipeline',{method:'PUT',body:JSON.stringify({enabled:false})})}><Pause size={16}/>{L('Пауза','Кідірту')}</button>:!data.finished&&<button className="wb-button primary" disabled={readOnly||busy} onClick={()=>act('/api/pipeline',{method:'PUT',body:JSON.stringify({enabled:true})})}><Play size={16}/>{L('Продолжить','Жалғастыру')}</button>}
+    <label className="wb-select-label">{L('Скорость','Жылдамдық')}<select disabled={readOnly||busy} value={data.rate} onChange={e=>act('/api/pipeline',{method:'PUT',body:JSON.stringify({rate:Number(e.target.value)})})}>{[1,2,5,10,25].map(rate=><option key={rate} value={rate}>{rate} {L('публ./сек','жар./сек')}</option>)}</select></label>
+    <button className="wb-button ghost" disabled={readOnly||busy} onClick={()=>{if(confirm(L('Перезапустить демо-поток? Необработанные демо-случаи будут заменены, решения аналитика сохранятся.','Демо-ағынды қайта бастау керек пе? Өңделмеген демо-жағдайлар ауыстырылады, талдаушы шешімдері сақталады.')))act('/api/pipeline/reset',{method:'POST',body:'{}'});}}><RotateCcw size={16}/>{L('Перезапустить демо','Демоны қайта бастау')}</button>
    </div>
   </section>
   <ol className="wb-stages">{stages.map((stage,i)=><li key={i}><stage.icon size={18}/><strong>{stage.title}</strong><b>{stage.value}</b><small>{stage.note}</small></li>)}</ol>
@@ -362,10 +362,10 @@ export function QualityPage(){
 // ——— Discovery: real public Telegram channels found automatically from seed channels.
 const OUTCOME={risky:['признаки найдены','белгілер табылды'],clean:['признаков нет','белгі жоқ'],unavailable:['нет публичного предпросмотра','ашық алдын ала қарау жоқ'],error:['ошибка запроса','сұрау қатесі']};
 const VIA={seed:['стартовый канал','бастапқы арна'],link:['ссылка','сілтеме'],forward:['пересылка','қайта жіберу'],mention:['упоминание','атау'],instagram_link:['ссылка из Instagram','Instagram сілтемесі'],tiktok_link:['ссылка из TikTok','TikTok сілтемесі']};
-export function DiscoveryPage({onOpen}){
+export function DiscoveryPage({onOpen,readOnly}){
  const [data,reload]=usePoll('/api/discovery',4000);
  const [input,setInput]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false);
- const act=async(path,options)=>{setBusy(true);setError('');try{await api(path,options);await reload();return true;}catch(e){setError(e.message);return false;}finally{setBusy(false);}};
+ const act=async(path,options)=>{if(readOnly)return false;setBusy(true);setError('');try{await api(path,options);await reload();return true;}catch(e){setError(e.message);return false;}finally{setBusy(false);}};
  const openSample=async url=>{try{const queue=await api('/api/queue');const found=[...queue.open,...queue.reviewed].find(item=>item.url===url);if(found)onOpen(found.id);}catch(e){setError(e.message);}};
  if(!data)return <div className="wb"><p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Подключение к автопоиску…','Автоіздеуге қосылу…')}</p></div>;
  const kk=getLanguage()==='kk';const limited=data.stats.rateLimitedUntil&&Date.parse(data.stats.rateLimitedUntil)>Date.now();
@@ -379,18 +379,18 @@ export function DiscoveryPage({onOpen}){
     <dl className="wb-kpis small"><div><dt>{L('Постов с признаками','Белгілері бар жазбалар')}</dt><dd>{number(data.stats.flaggedPosts)}</dd></div><div><dt>{L('Отправлено аналитику','Талдаушыға жіберілді')}</dt><dd>{number(data.stats.savedCases)}</dd></div><div><dt>{L('Ждут проверки','Тексеруді күтуде')}</dt><dd>{number(data.counts.queued)}</dd></div><div><dt>{L('Запросов к Telegram','Telegram сұраулары')}</dt><dd>{number(data.stats.probes)}</dd></div></dl>
    </div>
    <div className="wb-pipe-controls">
-    {data.enabled?<button className="wb-button" disabled={busy} onClick={()=>act('/api/discovery',{method:'PUT',body:JSON.stringify({enabled:false})})}><Pause size={16}/>{L('Пауза','Кідірту')}</button>:<button className="wb-button primary" disabled={busy} onClick={()=>act('/api/discovery',{method:'PUT',body:JSON.stringify({enabled:true})})}><Play size={16}/>{L('Включить поиск','Іздеуді қосу')}</button>}
-    <button className="wb-button ghost" disabled={busy||!data.enabled} onClick={()=>act('/api/discovery/run',{method:'POST',body:'{}'})}><Search size={16}/>{L('Проверить сейчас','Қазір тексеру')}</button>
+    {data.enabled?<button className="wb-button" disabled={readOnly||busy} onClick={()=>act('/api/discovery',{method:'PUT',body:JSON.stringify({enabled:false})})}><Pause size={16}/>{L('Пауза','Кідірту')}</button>:<button className="wb-button primary" disabled={readOnly||busy} onClick={()=>act('/api/discovery',{method:'PUT',body:JSON.stringify({enabled:true})})}><Play size={16}/>{L('Включить поиск','Іздеуді қосу')}</button>}
+    <button className="wb-button ghost" disabled={readOnly||busy||!data.enabled} onClick={()=>act('/api/discovery/run',{method:'POST',body:'{}'})}><Search size={16}/>{L('Проверить сейчас','Қазір тексеру')}</button>
    </div>
   </section>
   <section className="wb-panel">
    <header><h3>{L('Откуда начинать поиск','Іздеуді қайдан бастау')}</h3></header>
    <form className="wb-seed-form" onSubmit={async event=>{event.preventDefault();if(input.trim()&&await act('/api/discovery/seeds',{method:'POST',body:JSON.stringify({channel:input.trim()})}))setInput('');}}>
-    <input value={input} onChange={e=>setInput(e.target.value)} placeholder={L('@канал или https://t.me/канал — подозрительный или из новостей','@арна не https://t.me/арна — күдікті не жаңалықтан')} aria-label={L('Публичный Telegram-канал','Ашық Telegram арнасы')}/>
-    <button className="wb-button primary" disabled={busy||!input.trim()}><Plus size={16}/>{L('Добавить','Қосу')}</button>
+    <input disabled={readOnly} value={input} onChange={e=>setInput(e.target.value)} placeholder={L('@канал или https://t.me/канал — подозрительный или из новостей','@арна не https://t.me/арна — күдікті не жаңалықтан')} aria-label={L('Публичный Telegram-канал','Ашық Telegram арнасы')}/>
+    <button className="wb-button primary" disabled={readOnly||busy||!input.trim()}><Plus size={16}/>{L('Добавить','Қосу')}</button>
    </form>
    {error&&<p className="wb-error" role="alert"><AlertTriangle size={14}/>{error}</p>}
-   <div className="wb-chips">{data.configuredSeeds.map(handle=><span key={handle} className="wb-chip"><Send size={12}/>@{handle}{userSeeds.has(handle)?<button className="wb-chip-x" aria-label={L(`Убрать @${handle}`,`@${handle} алып тастау`)} onClick={()=>act(`/api/discovery/seeds/${handle}`,{method:'DELETE'})}><Trash2 size={12}/></button>:<small>{L('мониторинг','мониторинг')}</small>}</span>)}</div>
+   <div className="wb-chips">{data.configuredSeeds.map(handle=><span key={handle} className="wb-chip"><Send size={12}/>@{handle}{userSeeds.has(handle)?<button disabled={readOnly||busy} className="wb-chip-x" aria-label={L(`Убрать @${handle}`,`@${handle} алып тастау`)} onClick={()=>act(`/api/discovery/seeds/${handle}`,{method:'DELETE'})}><Trash2 size={12}/></button>:<small>{L('мониторинг','мониторинг')}</small>}</span>)}</div>
    <p className="wb-note">{L('Система читает стартовые каналы и идёт по ссылкам, пересылкам и @упоминаниям. Дальше поиск расширяется только от каналов, где нашлись признаки схем: он следует за схемой, а не обходит весь Telegram.','Жүйе бастапқы арналарды оқып, сілтемелер, қайта жіберулер мен @атаулар бойынша жүреді. Әрі қарай тек схема белгілері табылған арналардан кеңейеді.')}</p>
   </section>
   <section className="wb-panel">
@@ -421,10 +421,10 @@ const SOCIAL_VIA={seed:['стартовый аккаунт','бастапқы а
 const PLATFORM_NAME={instagram:'Instagram',tiktok:'TikTok'};
 const socialUrl=account=>account.platform==='tiktok'?`https://www.tiktok.com/@${account.handle}`:`https://www.instagram.com/${account.handle}/`;
 const clock=iso=>new Date(iso).toLocaleTimeString(getLanguage()==='kk'?'kk-KZ':'ru-RU',{hour:'2-digit',minute:'2-digit'});
-export function SocialPage({onOpen}){
+export function SocialPage({onOpen,readOnly}){
   const [data,reload]=usePoll('/api/social',5000);
   const [input,setInput]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false);
-  const act=async(path,options)=>{setBusy(true);setError('');try{await api(path,options);await reload();return true;}catch(e){setError(e.message);return false;}finally{setBusy(false);}};
+  const act=async(path,options)=>{if(readOnly)return false;setBusy(true);setError('');try{await api(path,options);await reload();return true;}catch(e){setError(e.message);return false;}finally{setBusy(false);}};
   const openSample=async url=>{try{const queue=await api('/api/queue');const found=[...queue.open,...queue.reviewed].find(item=>item.url===url);if(found)onOpen(found.id);}catch(e){setError(e.message);}};
   if(!data)return <div className="wb"><p className="wb-empty"><LoaderCircle className="wb-spin" size={16}/>{L('Подключение к поиску в соцсетях…','Әлеуметтік желілердегі іздеуге қосылу…')}</p></div>;
   const kk=getLanguage()==='kk';
@@ -440,8 +440,8 @@ export function SocialPage({onOpen}){
      <dl className="wb-kpis small">{['instagram','tiktok'].map(platform=><div key={platform}><dt>{PLATFORM_NAME[platform]}</dt><dd>{number(data.counts.byPlatform[platform].risky)} <small>/ {number(data.counts.byPlatform[platform].accounts)}</small></dd></div>)}<div><dt>{L('Отправлено аналитику','Талдаушыға жіберілді')}</dt><dd>{number(data.stats.savedCases)}</dd></div><div><dt>{L('Открыто профилей','Ашылған профильдер')}</dt><dd>{number(data.stats.probes)}</dd></div></dl>
     </div>
     <div className="wb-pipe-controls">
-     {data.enabled?<button className="wb-button" disabled={busy} onClick={()=>act('/api/social',{method:'PUT',body:JSON.stringify({enabled:false})})}><Pause size={16}/>{L('Пауза','Кідірту')}</button>:<button className="wb-button primary" disabled={busy} onClick={()=>act('/api/social',{method:'PUT',body:JSON.stringify({enabled:true})})}><Play size={16}/>{L('Включить поиск','Іздеуді қосу')}</button>}
-     <button className="wb-button ghost" disabled={busy||!data.enabled} onClick={()=>act('/api/social/run',{method:'POST',body:'{}'})}>{busy?<LoaderCircle className="wb-spin" size={16}/>:<Search size={16}/>}{L('Проверить сейчас','Қазір тексеру')}</button>
+     {data.enabled?<button className="wb-button" disabled={readOnly||busy} onClick={()=>act('/api/social',{method:'PUT',body:JSON.stringify({enabled:false})})}><Pause size={16}/>{L('Пауза','Кідірту')}</button>:<button className="wb-button primary" disabled={readOnly||busy} onClick={()=>act('/api/social',{method:'PUT',body:JSON.stringify({enabled:true})})}><Play size={16}/>{L('Включить поиск','Іздеуді қосу')}</button>}
+     <button className="wb-button ghost" disabled={readOnly||busy||!data.enabled} onClick={()=>act('/api/social/run',{method:'POST',body:'{}'})}>{busy?<LoaderCircle className="wb-spin" size={16}/>:<Search size={16}/>}{L('Проверить сейчас','Қазір тексеру')}</button>
     </div>
    </section>
    <section className="wb-panel">
@@ -455,11 +455,11 @@ export function SocialPage({onOpen}){
    <section className="wb-panel">
     <header><h3>{L('Откуда начинать поиск','Іздеуді қайдан бастау')}</h3></header>
     <form className="wb-seed-form" onSubmit={async event=>{event.preventDefault();if(input.trim()&&await act('/api/social/seeds',{method:'POST',body:JSON.stringify({account:input.trim()})}))setInput('');}}>
-     <input value={input} onChange={e=>setInput(e.target.value)} placeholder={L('tiktok.com/@имя или instagram.com/имя — подозрительный аккаунт из жалобы или выдачи','tiktok.com/@атау не instagram.com/атау — шағымнан не іздеуден күдікті аккаунт')} aria-label={L('Профиль Instagram или TikTok','Instagram не TikTok профилі')}/>
-     <button className="wb-button primary" disabled={busy||!input.trim()}><Plus size={16}/>{L('Добавить','Қосу')}</button>
+     <input disabled={readOnly} value={input} onChange={e=>setInput(e.target.value)} placeholder={L('tiktok.com/@имя или instagram.com/имя — подозрительный аккаунт из жалобы или выдачи','tiktok.com/@атау не instagram.com/атау — шағымнан не іздеуден күдікті аккаунт')} aria-label={L('Профиль Instagram или TikTok','Instagram не TikTok профилі')}/>
+     <button className="wb-button primary" disabled={readOnly||busy||!input.trim()}><Plus size={16}/>{L('Добавить','Қосу')}</button>
     </form>
     {error&&<p className="wb-error" role="alert"><AlertTriangle size={14}/>{error}</p>}
-    {data.seeds.length>0&&<div className="wb-chips">{data.seeds.map(seed=><span key={`${seed.platform}:${seed.handle}`} className="wb-chip"><PlatformIcon platform={seed.platform} size={12}/>@{seed.handle}<button className="wb-chip-x" aria-label={L(`Убрать @${seed.handle}`,`@${seed.handle} алып тастау`)} onClick={()=>act(`/api/social/seeds/${seed.platform}/${seed.handle}`,{method:'DELETE'})}><Trash2 size={12}/></button></span>)}</div>}
+    {data.seeds.length>0&&<div className="wb-chips">{data.seeds.map(seed=><span key={`${seed.platform}:${seed.handle}`} className="wb-chip"><PlatformIcon platform={seed.platform} size={12}/>@{seed.handle}<button disabled={readOnly||busy} className="wb-chip-x" aria-label={L(`Убрать @${seed.handle}`,`@${seed.handle} алып тастау`)} onClick={()=>act(`/api/social/seeds/${seed.platform}/${seed.handle}`,{method:'DELETE'})}><Trash2 size={12}/></button></span>)}</div>}
     <p className="wb-note">{L(`Кроме стартовых аккаунтов система берёт кандидатов из поисковой выдачи (${data.search.queries} запросов на русском и казахском, один раз в ${data.limits.searchEveryMinutes} минут), из ссылок в Telegram-каналах с признаками схем и из постов, которые аналитик видел через расширение. Дальше она идёт по @упоминаниям и ссылкам только от аккаунтов с признаками.`,`Бастапқы аккаунттардан бөлек, жүйе үміткерлерді іздеу нәтижесінен (${data.search.queries} сұрау, ${data.limits.searchEveryMinutes} минут сайын біреу), белгілері бар Telegram арналарындағы сілтемелерден және талдаушы кеңейтім арқылы көрген жазбалардан алады. Әрі қарай тек белгілері бар аккаунттардан @атаулар мен сілтемелер бойынша жүреді.`)}</p>
    </section>
    <section className="wb-panel">

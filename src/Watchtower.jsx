@@ -45,7 +45,7 @@ async function request(path, options = {}) {
   return body;
 }
 
-export default function Watchtower({locale, onCasesChange}) {
+export default function Watchtower({locale, onCasesChange, readOnly}) {
   const language = locale || getLanguage();
   const L = (ru, kk) => language === 'kk' ? kk : ru;
   const [data, setData] = useState(null);
@@ -103,6 +103,7 @@ export default function Watchtower({locale, onCasesChange}) {
     return L('Запрос не выполнен. Проверьте соединение и повторите.','Сұрау орындалмады. Байланысты тексеріп, қайталаңыз.');
   };
   async function action(key, path, method, body, success) {
+    if (readOnly) return false;
     setBusy(key); setError(null); setNotice('');
     ++requestVersion.current;
     try {
@@ -130,6 +131,7 @@ export default function Watchtower({locale, onCasesChange}) {
     if (await action('rules', '/api/watchtower', 'PUT', {enabled:data.enabled, intervalMinutes:Number(rules.intervalMinutes), minScore:Number(rules.minScore), keywords}, 'saved')) setDirty(false);
   }
   async function restoreProfile() {
+    if (readOnly) return;
     initialized.current = false;
     if (await action('profile', '/api/watchtower/profile', 'POST', {profile:'kazakhstan'}, 'restored')) setDirty(false);
     else initialized.current = true;
@@ -137,7 +139,7 @@ export default function Watchtower({locale, onCasesChange}) {
   const sources = data?.sources || [];
   const activeSources = sources.filter(source => source.enabled).length;
   const checkedSources = sources.filter(source => source.lastSuccessAt).length;
-  const pending = !!busy || !!data?.running;
+  const pending = readOnly || !!busy || !!data?.running;
   const notices = {
     added:L('Источник добавлен. Он будет проверяться вместе с остальными каналами.','Дереккөз қосылды. Ол басқа арналармен бірге тексеріледі.'),
     saved:L('Правила сохранены.','Ережелер сақталды.'),
@@ -158,7 +160,7 @@ export default function Watchtower({locale, onCasesChange}) {
         <h2>{L('Мониторинг Казахстана','Қазақстан бойынша бақылау')}</h2>
         <p>{L('Проверяем открытые источники, находим признаки рискованных схем и сохраняем объяснения в кейсах. На русском и казахском.','Ашық дереккөздерді тексеріп, қауіпті схемалардың белгілерін табамыз және түсіндірмелерді кейстерде сақтаймыз. Қазақша және орысша.')}</p>
         <div className="wt-hero-actions">
-          <button type="button" className="button wt-light-button" disabled={!data || !!busy} onClick={() => action('toggle','/api/watchtower','PUT',{enabled:!data.enabled})}>
+          <button type="button" className="button wt-light-button" disabled={readOnly || !data || !!busy} onClick={() => action('toggle','/api/watchtower','PUT',{enabled:!data.enabled})}>
             {busy === 'toggle' ? <LoaderCircle className="spin" size={17}/> : data?.enabled ? <Pause size={17}/> : <Play size={17}/>}
             {data?.enabled ? L('Приостановить','Кідірту') : L('Продолжить мониторинг','Бақылауды жалғастыру')}
           </button>
@@ -190,7 +192,7 @@ export default function Watchtower({locale, onCasesChange}) {
     <div className="wt-main-grid">
       <section className="panel wt-sources">
         <div className="panel-heading"><div><h2><Radio size={18}/>{L('Открытые каналы','Ашық арналар')}<span className="count-badge">{sources.length}</span></h2><p>{L('Проверяем доступный публичный предпросмотр. Приватные чаты и личные сообщения не читаются.','Қолжетімді ашық алдын ала қарауды тексереміз. Жабық чаттар мен жеке хаттар оқылмайды.')}</p></div><button type="button" className="icon-button" disabled={!!busy} onClick={reload} aria-label={L('Обновить состояние','Күйін жаңарту')}><RefreshCw size={17}/></button></div>
-        {!data ? <div className="wt-empty"><LoaderCircle className="spin" size={27}/><p>{L('Загрузка источников…','Дереккөздер жүктелуде…')}</p></div> : !sources.length ? <div className="wt-empty"><Globe2 size={33}/><h3>{L('Источники ещё не подключены','Дереккөздер әлі қосылмаған')}</h3><p>{L('Подключите профиль Казахстана или добавьте открытый Telegram-канал ниже.','Қазақстан профилін қосыңыз немесе төменде ашық Telegram арнасын қосыңыз.')}</p><button type="button" className="button primary" disabled={!!busy} onClick={restoreProfile}>{busy === 'profile' ? <LoaderCircle className="spin" size={16}/> : <Plus size={16}/>} {L('Подключить профиль Казахстана','Қазақстан профилін қосу')}</button></div> : <div className="wt-source-list">{sources.map(source => {
+        {!data ? <div className="wt-empty"><LoaderCircle className="spin" size={27}/><p>{L('Загрузка источников…','Дереккөздер жүктелуде…')}</p></div> : !sources.length ? <div className="wt-empty"><Globe2 size={33}/><h3>{L('Источники ещё не подключены','Дереккөздер әлі қосылмаған')}</h3><p>{L('Подключите профиль Казахстана или добавьте открытый Telegram-канал ниже.','Қазақстан профилін қосыңыз немесе төменде ашық Telegram арнасын қосыңыз.')}</p><button type="button" className="button primary" disabled={readOnly || !!busy} onClick={restoreProfile}>{busy === 'profile' ? <LoaderCircle className="spin" size={16}/> : <Plus size={16}/>} {L('Подключить профиль Казахстана','Қазақстан профилін қосу')}</button></div> : <div className="wt-source-list">{sources.map(source => {
           const status = source.enabled ? source.status : 'paused';
           const statusText = SOURCE_STATUS[status] || SOURCE_STATUS.never_checked;
           const failed = status === 'error' || status === 'unavailable';
@@ -202,7 +204,7 @@ export default function Watchtower({locale, onCasesChange}) {
             {removeId === source.id && <div className="wt-remove-confirm"><span>{L('Убрать канал из наблюдения? Кейсы сохранятся.','Арнаны бақылаудан алу керек пе? Кейстер сақталады.')}</span><button type="button" disabled={pending} onClick={async () => {if (await action(`remove-${source.id}`,`/api/watchtower/sources/${encodeURIComponent(source.id)}`,'DELETE',undefined,'removed')) setRemoveId(null);}}>{L('Убрать','Алып тастау')}</button><button type="button" onClick={() => setRemoveId(null)}>{L('Отмена','Бас тарту')}</button></div>}
           </article>;
         })}</div>}
-        <form className="wt-add-source" onSubmit={addSource}><label htmlFor="wt-channel">{L('Добавить свой открытый канал','Өзіңіздің ашық арнаңызды қосу')}</label><div><input id="wt-channel" className="standalone-input" value={handle} onChange={event => setHandle(event.target.value)} placeholder="@channel_name" maxLength={33} pattern="@?[A-Za-z][A-Za-z0-9_]{4,31}" autoComplete="off" required aria-describedby="wt-channel-help"/><button type="submit" className="button primary" disabled={!!busy || !handle.trim() || sources.length >= 20}>{busy === 'add' ? <LoaderCircle className="spin" size={16}/> : <Plus size={16}/>} {L('Добавить','Қосу')}</button></div><p id="wt-channel-help">{L('До 20 каналов. Укажите @username: 5–32 латинских символа, цифры или подчёркивание.','20 арнаға дейін. @username көрсетіңіз: 5–32 латын әрпі, сан немесе астыңғы сызық.')}</p></form>
+        <form className="wt-add-source" onSubmit={addSource}><label htmlFor="wt-channel">{L('Добавить свой открытый канал','Өзіңіздің ашық арнаңызды қосу')}</label><div><input disabled={readOnly} id="wt-channel" className="standalone-input" value={handle} onChange={event => setHandle(event.target.value)} placeholder="@channel_name" maxLength={33} pattern="@?[A-Za-z][A-Za-z0-9_]{4,31}" autoComplete="off" required aria-describedby="wt-channel-help"/><button type="submit" className="button primary" disabled={readOnly || !!busy || !handle.trim() || sources.length >= 20}>{busy === 'add' ? <LoaderCircle className="spin" size={16}/> : <Plus size={16}/>} {L('Добавить','Қосу')}</button></div><p id="wt-channel-help">{L('До 20 каналов. Укажите @username: 5–32 латинских символа, цифры или подчёркивание.','20 арнаға дейін. @username көрсетіңіз: 5–32 латын әрпі, сан немесе астыңғы сызық.')}</p></form>
       </section>
 
       <aside className="wt-sidebar">
@@ -211,7 +213,7 @@ export default function Watchtower({locale, onCasesChange}) {
       </aside>
     </div>
 
-    <details className="panel wt-settings"><summary><Settings2 size={19}/><span><strong>{L('Изменить правила мониторинга','Бақылау ережелерін өзгерту')}</strong><small>{L('Расписание, порог и поисковые фразы','Кесте, шек және іздеу тіркестері')}</small></span><ChevronDown size={19}/></summary><form onSubmit={saveRules}><div className="wt-settings-fields"><label><span>{L('Интервал проверки, минуты','Тексеру аралығы, минут')}</span><input className="standalone-input" type="number" min="5" max="1440" step="1" required value={rules.intervalMinutes} onChange={event => {setRules(old => ({...old,intervalMinutes:event.target.value}));setDirty(true);}}/><small>{L('От 5 минут до 24 часов','5 минуттан 24 сағатқа дейін')}</small></label><label><span>{L('Минимальный балл риска','Қауіптің ең төменгі балы')}</span><input className="standalone-input" type="number" min="0" max="100" step="1" required value={rules.minScore} onChange={event => {setRules(old => ({...old,minScore:event.target.value}));setDirty(true);}}/><small>{L('0–100. Это оценка признаков, не вероятность.','0–100. Бұл ықтималдық емес, белгілердің бағасы.')}</small></label></div><label className="wt-keywords-label" htmlFor="wt-keywords">{L('Слова и фразы через запятую','Үтірмен бөлінген сөздер мен тіркестер')}</label><textarea id="wt-keywords" rows={3} value={rules.keywords} onChange={event => {setRules(old => ({...old,keywords:event.target.value}));setDirty(true);}}/><p className="wt-settings-hint">{L('До 20 фраз по 2–80 символов. Совпадение сохранит пост независимо от балла, в том числе новость или предупреждение об обмане.','Ұзындығы 2–80 таңба болатын 20 тіркеске дейін. Сәйкестік болса, жазба балға қарамастан сақталады, соның ішінде жаңалық немесе алаяқтық туралы ескерту де.')}</p><button type="button" className="wt-text-link" onClick={() => {setRules(old => ({...old,keywords:PRESET_WORDS.join(', ')}));setDirty(true);}}>{L('Подставить фразы Казахстана','Қазақстанға арналған тіркестерді қою')}<ArrowUpRight size={14}/></button><div className="wt-settings-footer"><button className="button primary" disabled={!data || !!busy}>{busy === 'rules' ? <LoaderCircle className="spin" size={16}/> : <Check size={16}/>} {L('Сохранить правила','Ережелерді сақтау')}</button><span>{dirty ? L('Есть несохранённые изменения','Сақталмаған өзгерістер бар') : ''}</span><button type="button" className="wt-text-link" disabled={!!busy} onClick={restoreProfile}>{L('Восстановить профиль Казахстана','Қазақстан профилін қалпына келтіру')}</button></div></form></details>
-    <p className="wt-footnote"><ShieldCheck size={15}/>{L('Обработка и кейсы — на вашем сервере. Telegram предоставляет ограниченное число последних постов; исчезнувшие и недоступные записи могут быть пропущены.','Өңдеу мен кейстер өз серверіңізде сақталады. Telegram соңғы жазбалардың шектеулі санын береді; жойылған не қолжетімсіз жазбалар тексерілмеуі мүмкін.')}</p>
+    <details className="panel wt-settings"><summary><Settings2 size={19}/><span><strong>{L('Изменить правила мониторинга','Бақылау ережелерін өзгерту')}</strong><small>{L('Расписание, порог и поисковые фразы','Кесте, шек және іздеу тіркестері')}</small></span><ChevronDown size={19}/></summary><form onSubmit={saveRules}><div className="wt-settings-fields"><label><span>{L('Интервал проверки, минуты','Тексеру аралығы, минут')}</span><input disabled={readOnly} className="standalone-input" type="number" min="5" max="1440" step="1" required value={rules.intervalMinutes} onChange={event => {setRules(old => ({...old,intervalMinutes:event.target.value}));setDirty(true);}}/><small>{L('От 5 минут до 24 часов','5 минуттан 24 сағатқа дейін')}</small></label><label><span>{L('Минимальный балл риска','Қауіптің ең төменгі балы')}</span><input disabled={readOnly} className="standalone-input" type="number" min="0" max="100" step="1" required value={rules.minScore} onChange={event => {setRules(old => ({...old,minScore:event.target.value}));setDirty(true);}}/><small>{L('0–100. Это оценка признаков, не вероятность.','0–100. Бұл ықтималдық емес, белгілердің бағасы.')}</small></label></div><label className="wt-keywords-label" htmlFor="wt-keywords">{L('Слова и фразы через запятую','Үтірмен бөлінген сөздер мен тіркестер')}</label><textarea disabled={readOnly} id="wt-keywords" rows={3} value={rules.keywords} onChange={event => {setRules(old => ({...old,keywords:event.target.value}));setDirty(true);}}/><p className="wt-settings-hint">{L('До 20 фраз по 2–80 символов. Совпадение сохранит пост независимо от балла, в том числе новость или предупреждение об обмане.','Ұзындығы 2–80 таңба болатын 20 тіркеске дейін. Сәйкестік болса, жазба балға қарамастан сақталады, соның ішінде жаңалық немесе алаяқтық туралы ескерту де.')}</p><button type="button" disabled={readOnly} className="wt-text-link" onClick={() => {setRules(old => ({...old,keywords:PRESET_WORDS.join(', ')}));setDirty(true);}}>{L('Подставить фразы Казахстана','Қазақстанға арналған тіркестерді қою')}<ArrowUpRight size={14}/></button><div className="wt-settings-footer"><button className="button primary" disabled={readOnly || !data || !!busy}>{busy === 'rules' ? <LoaderCircle className="spin" size={16}/> : <Check size={16}/>} {L('Сохранить правила','Ережелерді сақтау')}</button><span>{dirty ? L('Есть несохранённые изменения','Сақталмаған өзгерістер бар') : ''}</span><button type="button" className="wt-text-link" disabled={readOnly || !!busy} onClick={restoreProfile}>{L('Восстановить профиль Казахстана','Қазақстан профилін қалпына келтіру')}</button></div></form></details>
+    <p className="wt-footnote"><ShieldCheck size={15}/>{L('Обработка и случаи — на этом сервере. Telegram предоставляет ограниченное число последних постов; исчезнувшие и недоступные записи могут быть пропущены.','Өңдеу мен жағдайлар осы серверде сақталады. Telegram соңғы жазбалардың шектеулі санын береді; жойылған не қолжетімсіз жазбалар тексерілмеуі мүмкін.')}</p>
   </div>;
 }

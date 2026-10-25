@@ -13,7 +13,7 @@ const REASONS = {
   closed: ['Сервис анализа остановлен.', 'Талдау сервисі тоқтатылған.'],
 };
 
-export default function AiPanel({locale}) {
+export default function AiPanel({locale,readOnly,mode}) {
   const language = locale === 'kk' || (!locale && getLanguage() === 'kk') ? 'kk' : 'ru';
   const L = (ru, kk) => language === 'kk' ? kk : ru;
   const [data, setData] = useState(null);
@@ -27,7 +27,7 @@ export default function AiPanel({locale}) {
     let live = true;
     let inFlight = false;
     async function refresh(manual = false) {
-      if (inFlight || !live) return;
+      if (inFlight || !live || (manual && readOnly)) return;
       inFlight = true;
       const controller = new AbortController();
       requestRef.current = controller;
@@ -69,7 +69,7 @@ export default function AiPanel({locale}) {
       clearInterval(interval);
       requestRef.current?.abort();
     };
-  }, []);
+  }, [readOnly]);
 
   const fresh = !!data && !error;
   const visionReady = fresh && data.available === true && data.vision === true;
@@ -106,9 +106,9 @@ export default function AiPanel({locale}) {
       <div className="ai-panel-heading-copy">
         <span className="section-kicker">{L('ВИДЕО · РЕЧЬ · КОНТЕКСТ', 'ВИДЕО · СӨЙЛЕУ · МӘНМӘТІН')}</span>
         <h2 id="ai-panel-title">{L('Предобученная AI-модель', 'Алдын ала үйретілген AI')}</h2>
-        <p>{L('Модель анализирует отобранные кадры и распознанную речь на вашем компьютере.', 'Модель іріктелген кадрлар мен танылған сөйлеуді компьютеріңізде талдайды.')}</p>
+        <p>{L('Показано состояние модели на сервере. Анализ кадров и речи требует отдельного подключения расширения.', 'Сервердегі модель күйі көрсетілген. Кадрлар мен сөйлеуді талдау үшін кеңейтімді бөлек қосу қажет.')}</p>
       </div>
-      <span className="ai-local-tag"><LockKeyhole size={13} aria-hidden="true"/>{L('Локально', 'Жергілікті')}</span>
+      <span className="ai-local-tag"><LockKeyhole size={13} aria-hidden="true"/>{mode==='local'?L('Локально', 'Жергілікті'):L('На сервере', 'Серверде')}</span>
     </div>
 
     <div className="ai-model-status">
@@ -121,9 +121,9 @@ export default function AiPanel({locale}) {
         <p className={error ? 'ai-status-explanation ai-status-error-text' : 'ai-status-explanation'} role={error ? 'alert' : undefined}>{detail}</p>
       </div>
       <div className="ai-check-control">
-        <button type="button" className="button secondary" disabled={checking} onClick={() => refreshRef.current?.(true)}>
+        <button type="button" className="button secondary" disabled={checking} onClick={() => refreshRef.current?.(!readOnly)}>
           <RefreshCw size={15} className={checking ? 'spin' : undefined} aria-hidden="true"/>
-          {checking ? L('Проверка…', 'Тексерілуде…') : L('Проверить модель', 'Модельді тексеру')}
+          {checking ? L('Проверка…', 'Тексерілуде…') : readOnly?L('Обновить состояние', 'Күйін жаңарту'):L('Проверить модель', 'Модельді тексеру')}
         </button>
         <small>{checkedAt ? L('Ответ сервера: ', 'Сервер жауабы: ') + checkedAt.toLocaleTimeString(language === 'kk' ? 'kk-KZ' : 'ru-RU', {hour: '2-digit', minute: '2-digit', second: '2-digit'}) : L('Ожидаем ответ сервера', 'Сервер жауабы күтілуде')}</small>
       </div>
@@ -167,7 +167,7 @@ export default function AiPanel({locale}) {
       {L('Он читает надписи и коды; сам по себе не понимает сцену. Если AI недоступен, результат OCR не выдаётся за заключение модели.', 'Ол жазулар мен кодтарды оқиды, көріністің мәнін өздігінен түсінбейді. AI қолжетімсіз болса, OCR нәтижесі модельдің қорытындысы ретінде көрсетілмейді.')}
     </p></div>
 
-    <div className="ai-start-flow">
+    {readOnly?<div className="scope-note"><Info size={17}/><p>{L('В режиме просмотра доступны текстовый анализ и OCR в разделе «Проверить вручную». Запуск AI-проверок и приём находок расширения отключены.', 'Қарау режимінде «Қолмен тексеру» бөліміндегі мәтін талдауы мен OCR қолжетімді. AI тексерулерін іске қосу және кеңейтім нәтижелерін қабылдау өшірілген.')}</p></div>:<div className="ai-start-flow">
       <h3>{L('Как запустить в Instagram', 'Instagram-да қалай қосылады')}</h3>
       <ol>
         <li><span>1</span>{L('Откройте главную ленту Instagram или Reels в Chrome с расширением SafeNet.', 'SafeNet кеңейтімі бар Chrome-да Instagram-ның басты лентасын немесе Reels бөлімін ашыңыз.')}</li>
@@ -175,6 +175,6 @@ export default function AiPanel({locale}) {
         <li><span>3</span>{L('Оставьте вкладку активной. Проверяются доступные посты этой ленты; автопрокрутка останавливается при подозрительной находке.', 'Қойындыны белсенді қалдырыңыз. Осы лентаның қолжетімді жазбалары тексеріледі; күдікті белгі табылғанда айналдыру тоқтайды.')}</li>
       </ol>
     </div>
-    <div className="ai-panel-limit"><Info size={15} aria-hidden="true"/><p>{L('AI может ошибаться. Проверяйте исходный кадр, текст и объяснение; модель не подтверждает факт мошенничества. Анализируется доступная активная лента, а не весь Instagram.', 'AI қателесуі мүмкін. Бастапқы кадрды, мәтінді және түсіндірмені тексеріңіз: модель алаяқтық фактісін растамайды. Бүкіл Instagram емес, қолжетімді белсенді лента талданады.')}</p></div>
+    }<div className="ai-panel-limit"><Info size={15} aria-hidden="true"/><p>{L('AI может ошибаться. Проверяйте исходный кадр, текст и объяснение; модель не подтверждает факт мошенничества. Анализируется доступная активная лента, а не весь Instagram.', 'AI қателесуі мүмкін. Бастапқы кадрды, мәтінді және түсіндірмені тексеріңіз: модель алаяқтық фактісін растамайды. Бүкіл Instagram емес, қолжетімді белсенді лента талданады.')}</p></div>
   </section>;
 }

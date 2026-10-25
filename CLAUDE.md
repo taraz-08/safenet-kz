@@ -17,6 +17,8 @@
 
 ## Agent skills
 
+Инженерные навыки Matt Pocock и их установка: [docs/agents/matt-pocock.md](docs/agents/matt-pocock.md).
+
 ### Issue tracker
 
 Задачи и спецификации ведутся в GitHub Issues репозитория `taraz-08/safenet-kz` через `gh`. See `docs/agents/issue-tracker.md`.

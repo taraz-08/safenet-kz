@@ -58,7 +58,7 @@ function refreshedAnalysis(record) {
   return analysis;
 }
 
-export function createApp({storePath=resolve('data/cases.json'),monitoringPath=resolve(dirname(storePath),'monitoring.json'),seed=true,aiService=createAiService(),mediaService=createMediaService({aiService}),watchtowerPath=resolve(dirname(storePath),'watchtower.json'),autoProfile=seed,watchtowerFetchPreview,pipelinePath=resolve(dirname(storePath),'pipeline.json'),corpusPath=resolve('data/stream/corpus.json'),autoPipeline=seed,discoveryPath=resolve(dirname(storePath),'discovery.json'),discoveryFetchPreview,socialPath=resolve(dirname(storePath),'social-discovery.json'),socialOpenProfile,socialSearch} = {}) {
+export function createApp({storePath=resolve('data/cases.json'),monitoringPath=resolve(dirname(storePath),'monitoring.json'),seed=true,aiService=createAiService(),mediaService=createMediaService({aiService}),watchtowerPath=resolve(dirname(storePath),'watchtower.json'),autoProfile=seed,watchtowerFetchPreview,pipelinePath=resolve(dirname(storePath),'pipeline.json'),corpusPath=resolve('data/stream/corpus.json'),autoPipeline=seed,discoveryPath=resolve(dirname(storePath),'discovery.json'),discoveryFetchPreview,socialPath=resolve(dirname(storePath),'social-discovery.json'),socialOpenProfile,socialSearch,hosted=false,allowedHosts=[],accessKey=null} = {}) {
   const app = express();
   const extensionToken = randomBytes(32).toString('hex');
   let scanWindow = Date.now(), scansThisMinute = 0;
@@ -106,15 +106,33 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
   social=createSocialDiscovery({storePath:socialPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,openProfile:socialOpenProfile??defaultOpenProfile(resolve(dirname(storePath),'browser-profile')),onTelegramRef:(handle,via)=>discovery.addCandidate(handle,via),...(socialSearch?{search:socialSearch}:{})});
   app.locals.social=social;
   if(firstWatchtowerRun && autoProfile){watchtower.applyProfile('kazakhstan');monitoring.update({enabled:true,minScore:30,keywords:[]});}
+  // Hosting (Railway): a public deployment is read-only unless an access key protects the whole site.
+  const mode=!hosted?'local':accessKey?'hosted_private':'public_read_only';
+  const readOnly=mode==='public_read_only';
+  const publicWrites=new Set(['/api/analyze','/api/screen']);
+  const hostAllowed=host=>['127.0.0.1','localhost'].includes(host)||(hosted&&(host==='healthcheck.railway.app'||!allowedHosts.length||allowedHosts.includes(host)));
+  const keyBuffer=accessKey?Buffer.from(String(accessKey)):null;
+  const hasAccessKey=req=>{
+    const match=/^Basic\s+(.+)$/i.exec(req.headers.authorization||'');
+    if(!match||!keyBuffer)return false;
+    const decoded=Buffer.from(match[1],'base64').toString('utf8');
+    if(!decoded.includes(':'))return false;
+    const supplied=Buffer.from(decoded.slice(decoded.indexOf(':')+1));
+    return supplied.length===keyBuffer.length&&timingSafeEqual(supplied,keyBuffer);
+  };
   const scanContext=req=>({source:req.body?.source,extensionOrigin:/^chrome-extension:\/\/[a-p]{32}$/.test(req.headers.origin||''),capturedAt:req.body?.capturedAt,clientVersion:req.body?.clientVersion});
   app.use((req,res,next)=>{
     res.setHeader('X-Content-Type-Options','nosniff');
     res.setHeader('Referrer-Policy','no-referrer');
     res.setHeader('X-Frame-Options','DENY');
-    if (req.path.startsWith('/api/')) {
+    if(mode==='hosted_private'&&req.path!=='/api/health'&&!hasAccessKey(req)){res.setHeader('WWW-Authenticate','Basic realm="SafeNet KZ", charset="UTF-8"');return res.status(401).send('Нужен ключ доступа / Кіру кілті қажет');}
+    // Express matches route names without case sensitivity and accepts a trailing slash.
+    const apiPath=req.path.toLowerCase().replace(/\/$/,'');
+    if (apiPath==='/api'||apiPath.startsWith('/api/')) {
       res.setHeader('Cache-Control','no-store');
-      const host = (req.headers.host || '').split(':')[0];
-      if (!['127.0.0.1','localhost'].includes(host)) return res.status(403).json({error:'Local access only.'});
+      const host = (req.headers.host || '').split(':')[0].toLowerCase();
+      if (!hostAllowed(host)) return res.status(403).json({error:hosted?'Unknown host.':'Local access only.'});
+      if(readOnly&&!['GET','HEAD','OPTIONS'].includes(req.method)&&!publicWrites.has(apiPath))return res.status(403).json({error:'Публичная версия только для чтения: изменения доступны с ключом доступа. / Ашық нұсқа тек оқуға арналған: өзгерістер кіру кілтімен қолжетімді.'});
       const origin = req.headers.origin;
       const extensionRoute = ['/api/extension-token','/api/scan','/api/media-status','/api/media-scan'].includes(req.path);
       const extensionOrigin = extensionRoute && /^chrome-extension:\/\/[a-p]{32}$/.test(origin||'');
@@ -156,7 +174,7 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
   const aiStatus=async(_req,res)=>{const [ai,media]=await Promise.all([aiService.status(),mediaService.status?mediaService.status().catch(()=>({})):Promise.resolve({})]);res.json({...ai,media});};
   app.get('/api/ai/status',aiStatus);
   app.post('/api/ai/check',aiStatus);
-  app.get('/api/health',(_req,res)=>res.json({ok:true,engine:ANALYSIS_VERSION,version:'5.0.0',storage:'local',platformApis:false}));
+  app.get('/api/health',(_req,res)=>res.json({ok:true,engine:ANALYSIS_VERSION,version:'5.0.0',storage:'local',platformApis:false,mode}));
   const watchtowerAction=action=>async(req,res)=>{try{res.json(await action(req));}catch(error){res.status(error.status||400).json({code:error.code||'WATCHTOWER_ERROR',error:error.message||'Не удалось обновить мониторинг.'});}};
   app.get('/api/watchtower',(_req,res)=>res.json(watchtower.snapshot()));
   app.put('/api/watchtower',watchtowerAction(req=>watchtower.update(req.body)));
@@ -195,6 +213,8 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
   });
   app.post('/api/analyze',(req,res)=>{
     try {
+      // The public demo analyses without storing, so visitors cannot fill the shared queue.
+      if(readOnly) return res.json({...makeCase(inputCase(req.body)),stored:false});
       if(cases.length>=5000) return res.status(409).json({error:'Лимит 5000 кейсов. Экспортируйте и удалите ненужные записи.'});
       const record = makeCase(inputCase(req.body)); persist([record,...cases]); res.status(201).json(record);
     } catch(e) {res.status(400).json({error:e.message});}
