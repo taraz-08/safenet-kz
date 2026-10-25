@@ -1,0 +1,2687 @@
+{
+  "master": {
+    "path": "C:\\Users\\dimas\\OneDrive\\Изображения\\Рабочий стол\\Treval\\хакатон\\artifacts\\video-project\\assets\\instagram-caption-recording.mp4",
+    "frames": 219,
+    "durationSeconds": 73.406822,
+    "width": 1600,
+    "height": 916,
+    "editedGaps": false,
+    "chronologyPreserved": true,
+    "interpolatedFrames": 0,
+    "source": "Actual Page.startScreencast JPEG frames with metadata timestamps",
+    "redactionsCssPixels": [
+      [
+        730,
+        498,
+        1037,
+        593
+      ],
+      [
+        0,
+        0,
+        170,
+        420
+      ]
+    ],
+    "sha256": "2136e66196d19ee8c18042997d191cf6a5103126295631bfa24ad780c8577f13",
+    "frameMapping": [
+      {
+        "frame": "00000.jpg",
+        "originalSeconds": 0.0,
+        "outputSeconds": 0.0,
+        "gapShortened": false
+      },
+      {
+        "frame": "00001.jpg",
+        "originalSeconds": 0.058329,
+        "outputSeconds": 0.058329,
+        "gapShortened": false
+      },
+      {
+        "frame": "00002.jpg",
+        "originalSeconds": 0.125039,
+        "outputSeconds": 0.125039,
+        "gapShortened": false
+      },
+      {
+        "frame": "00003.jpg",
+        "originalSeconds": 14.041377,
+        "outputSeconds": 14.041377,
+        "gapShortened": false
+      },
+      {
+        "frame": "00004.jpg",
+        "originalSeconds": 14.108003,
+        "outputSeconds": 14.108003,
+        "gapShortened": false
+      },
+      {
+        "frame": "00005.jpg",
+        "originalSeconds": 14.183042,
+        "outputSeconds": 14.183042,
+        "gapShortened": false
+      },
+      {
+        "frame": "00006.jpg",
+        "originalSeconds": 27.966197,
+        "outputSeconds": 27.966197,
+        "gapShortened": false
+      },
+      {
+        "frame": "00007.jpg",
+        "originalSeconds": 28.024425,
+        "outputSeconds": 28.024425,
+        "gapShortened": false
+      },
+      {
+        "frame": "00008.jpg",
+        "originalSeconds": 28.091198,
+        "outputSeconds": 28.091198,
+        "gapShortened": false
+      },
+      {
+        "frame": "00009.jpg",
+        "originalSeconds": 28.157759,
+        "outputSeconds": 28.157759,
+        "gapShortened": false
+      },
+      {
+        "frame": "00010.jpg",
+        "originalSeconds": 28.224474,
+        "outputSeconds": 28.224474,
+        "gapShortened": false
+      },
+      {
+        "frame": "00011.jpg",
+        "originalSeconds": 28.291052,
+        "outputSeconds": 28.291052,
+        "gapShortened": false
+      },
+      {
+        "frame": "00012.jpg",
+        "originalSeconds": 28.366211,
+        "outputSeconds": 28.366211,
+        "gapShortened": false
+      },
+      {
+        "frame": "00013.jpg",
+        "originalSeconds": 28.432744,
+        "outputSeconds": 28.432744,
+        "gapShortened": false
+      },
+      {
+        "frame": "00014.jpg",
+        "originalSeconds": 28.499506,
+        "outputSeconds": 28.499506,
+        "gapShortened": false
+      },
+      {
+        "frame": "00015.jpg",
+        "originalSeconds": 28.566188,
+        "outputSeconds": 28.566188,
+        "gapShortened": false
+      },
+      {
+        "frame": "00016.jpg",
+        "originalSeconds": 28.632868,
+        "outputSeconds": 28.632868,
+        "gapShortened": false
+      },
+      {
+        "frame": "00017.jpg",
+        "originalSeconds": 28.700188,
+        "outputSeconds": 28.700188,
+        "gapShortened": false
+      },
+      {
+        "frame": "00018.jpg",
+        "originalSeconds": 28.766082,
+        "outputSeconds": 28.766082,
+        "gapShortened": false
+      },
+      {
+        "frame": "00019.jpg",
+        "originalSeconds": 28.899407,
+        "outputSeconds": 28.899407,
+        "gapShortened": false
+      },
+      {
+        "frame": "00020.jpg",
+        "originalSeconds": 29.182701,
+        "outputSeconds": 29.182701,
+        "gapShortened": false
+      },
+      {
+        "frame": "00021.jpg",
+        "originalSeconds": 30.757665,
+        "outputSeconds": 30.757665,
+        "gapShortened": false
+      },
+      {
+        "frame": "00022.jpg",
+        "originalSeconds": 31.90765,
+        "outputSeconds": 31.90765,
+        "gapShortened": false
+      },
+      {
+        "frame": "00023.jpg",
+        "originalSeconds": 31.974351,
+        "outputSeconds": 31.974351,
+        "gapShortened": false
+      },
+      {
+        "frame": "00024.jpg",
+        "originalSeconds": 32.057664,
+        "outputSeconds": 32.057664,
+        "gapShortened": false
+      },
+      {
+        "frame": "00025.jpg",
+        "originalSeconds": 32.124353,
+        "outputSeconds": 32.124353,
+        "gapShortened": false
+      },
+      {
+        "frame": "00026.jpg",
+        "originalSeconds": 32.257656,
+        "outputSeconds": 32.257656,
+        "gapShortened": false
+      },
+      {
+        "frame": "00027.jpg",
+        "originalSeconds": 32.324303,
+        "outputSeconds": 32.324303,
+        "gapShortened": false
+      },
+      {
+        "frame": "00028.jpg",
+        "originalSeconds": 32.466081,
+        "outputSeconds": 32.466081,
+        "gapShortened": false
+      },
+      {
+        "frame": "00029.jpg",
+        "originalSeconds": 32.532773,
+        "outputSeconds": 32.532773,
+        "gapShortened": false
+      },
+      {
+        "frame": "00030.jpg",
+        "originalSeconds": 32.599431,
+        "outputSeconds": 32.599431,
+        "gapShortened": false
+      },
+      {
+        "frame": "00031.jpg",
+        "originalSeconds": 32.666094,
+        "outputSeconds": 32.666094,
+        "gapShortened": false
+      },
+      {
+        "frame": "00032.jpg",
+        "originalSeconds": 32.732766,
+        "outputSeconds": 32.732766,
+        "gapShortened": false
+      },
+      {
+        "frame": "00033.jpg",
+        "originalSeconds": 32.799433,
+        "outputSeconds": 32.799433,
+        "gapShortened": false
+      },
+      {
+        "frame": "00034.jpg",
+        "originalSeconds": 32.866108,
+        "outputSeconds": 32.866108,
+        "gapShortened": false
+      },
+      {
+        "frame": "00035.jpg",
+        "originalSeconds": 32.949426,
+        "outputSeconds": 32.949426,
+        "gapShortened": false
+      },
+      {
+        "frame": "00036.jpg",
+        "originalSeconds": 33.0661,
+        "outputSeconds": 33.0661,
+        "gapShortened": false
+      },
+      {
+        "frame": "00037.jpg",
+        "originalSeconds": 33.132742,
+        "outputSeconds": 33.132742,
+        "gapShortened": false
+      },
+      {
+        "frame": "00038.jpg",
+        "originalSeconds": 33.19946,
+        "outputSeconds": 33.19946,
+        "gapShortened": false
+      },
+      {
+        "frame": "00039.jpg",
+        "originalSeconds": 33.266099,
+        "outputSeconds": 33.266099,
+        "gapShortened": false
+      },
+      {
+        "frame": "00040.jpg",
+        "originalSeconds": 33.332739,
+        "outputSeconds": 33.332739,
+        "gapShortened": false
+      },
+      {
+        "frame": "00041.jpg",
+        "originalSeconds": 33.399431,
+        "outputSeconds": 33.399431,
+        "gapShortened": false
+      },
+      {
+        "frame": "00042.jpg",
+        "originalSeconds": 33.47444,
+        "outputSeconds": 33.47444,
+        "gapShortened": false
+      },
+      {
+        "frame": "00043.jpg",
+        "originalSeconds": 33.532738,
+        "outputSeconds": 33.532738,
+        "gapShortened": false
+      },
+      {
+        "frame": "00044.jpg",
+        "originalSeconds": 33.59943,
+        "outputSeconds": 33.59943,
+        "gapShortened": false
+      },
+      {
+        "frame": "00045.jpg",
+        "originalSeconds": 33.665961,
+        "outputSeconds": 33.665961,
+        "gapShortened": false
+      },
+      {
+        "frame": "00046.jpg",
+        "originalSeconds": 33.732708,
+        "outputSeconds": 33.732708,
+        "gapShortened": false
+      },
+      {
+        "frame": "00047.jpg",
+        "originalSeconds": 33.79937,
+        "outputSeconds": 33.79937,
+        "gapShortened": false
+      },
+      {
+        "frame": "00048.jpg",
+        "originalSeconds": 33.866077,
+        "outputSeconds": 33.866077,
+        "gapShortened": false
+      },
+      {
+        "frame": "00049.jpg",
+        "originalSeconds": 33.932632,
+        "outputSeconds": 33.932632,
+        "gapShortened": false
+      },
+      {
+        "frame": "00050.jpg",
+        "originalSeconds": 33.999293,
+        "outputSeconds": 33.999293,
+        "gapShortened": false
+      },
+      {
+        "frame": "00051.jpg",
+        "originalSeconds": 34.066073,
+        "outputSeconds": 34.066073,
+        "gapShortened": false
+      },
+      {
+        "frame": "00052.jpg",
+        "originalSeconds": 34.132741,
+        "outputSeconds": 34.132741,
+        "gapShortened": false
+      },
+      {
+        "frame": "00053.jpg",
+        "originalSeconds": 34.19929,
+        "outputSeconds": 34.19929,
+        "gapShortened": false
+      },
+      {
+        "frame": "00054.jpg",
+        "originalSeconds": 34.266065,
+        "outputSeconds": 34.266065,
+        "gapShortened": false
+      },
+      {
+        "frame": "00055.jpg",
+        "originalSeconds": 34.332613,
+        "outputSeconds": 34.332613,
+        "gapShortened": false
+      },
+      {
+        "frame": "00056.jpg",
+        "originalSeconds": 34.399412,
+        "outputSeconds": 34.399412,
+        "gapShortened": false
+      },
+      {
+        "frame": "00057.jpg",
+        "originalSeconds": 34.466032,
+        "outputSeconds": 34.466032,
+        "gapShortened": false
+      },
+      {
+        "frame": "00058.jpg",
+        "originalSeconds": 34.53274,
+        "outputSeconds": 34.53274,
+        "gapShortened": false
+      },
+      {
+        "frame": "00059.jpg",
+        "originalSeconds": 34.599313,
+        "outputSeconds": 34.599313,
+        "gapShortened": false
+      },
+      {
+        "frame": "00060.jpg",
+        "originalSeconds": 34.666065,
+        "outputSeconds": 34.666065,
+        "gapShortened": false
+      },
+      {
+        "frame": "00061.jpg",
+        "originalSeconds": 34.732758,
+        "outputSeconds": 34.732758,
+        "gapShortened": false
+      },
+      {
+        "frame": "00062.jpg",
+        "originalSeconds": 34.799269,
+        "outputSeconds": 34.799269,
+        "gapShortened": false
+      },
+      {
+        "frame": "00063.jpg",
+        "originalSeconds": 34.866037,
+        "outputSeconds": 34.866037,
+        "gapShortened": false
+      },
+      {
+        "frame": "00064.jpg",
+        "originalSeconds": 34.932719,
+        "outputSeconds": 34.932719,
+        "gapShortened": false
+      },
+      {
+        "frame": "00065.jpg",
+        "originalSeconds": 34.999292,
+        "outputSeconds": 34.999292,
+        "gapShortened": false
+      },
+      {
+        "frame": "00066.jpg",
+        "originalSeconds": 35.066053,
+        "outputSeconds": 35.066053,
+        "gapShortened": false
+      },
+      {
+        "frame": "00067.jpg",
+        "originalSeconds": 35.132726,
+        "outputSeconds": 35.132726,
+        "gapShortened": false
+      },
+      {
+        "frame": "00068.jpg",
+        "originalSeconds": 35.199274,
+        "outputSeconds": 35.199274,
+        "gapShortened": false
+      },
+      {
+        "frame": "00069.jpg",
+        "originalSeconds": 35.266045,
+        "outputSeconds": 35.266045,
+        "gapShortened": false
+      },
+      {
+        "frame": "00070.jpg",
+        "originalSeconds": 35.332607,
+        "outputSeconds": 35.332607,
+        "gapShortened": false
+      },
+      {
+        "frame": "00071.jpg",
+        "originalSeconds": 35.399375,
+        "outputSeconds": 35.399375,
+        "gapShortened": false
+      },
+      {
+        "frame": "00072.jpg",
+        "originalSeconds": 35.465927,
+        "outputSeconds": 35.465927,
+        "gapShortened": false
+      },
+      {
+        "frame": "00073.jpg",
+        "originalSeconds": 35.532601,
+        "outputSeconds": 35.532601,
+        "gapShortened": false
+      },
+      {
+        "frame": "00074.jpg",
+        "originalSeconds": 35.599378,
+        "outputSeconds": 35.599378,
+        "gapShortened": false
+      },
+      {
+        "frame": "00075.jpg",
+        "originalSeconds": 35.665939,
+        "outputSeconds": 35.665939,
+        "gapShortened": false
+      },
+      {
+        "frame": "00076.jpg",
+        "originalSeconds": 35.757533,
+        "outputSeconds": 35.757533,
+        "gapShortened": false
+      },
+      {
+        "frame": "00077.jpg",
+        "originalSeconds": 35.799347,
+        "outputSeconds": 35.799347,
+        "gapShortened": false
+      },
+      {
+        "frame": "00078.jpg",
+        "originalSeconds": 35.866053,
+        "outputSeconds": 35.866053,
+        "gapShortened": false
+      },
+      {
+        "frame": "00079.jpg",
+        "originalSeconds": 35.932712,
+        "outputSeconds": 35.932712,
+        "gapShortened": false
+      },
+      {
+        "frame": "00080.jpg",
+        "originalSeconds": 35.999373,
+        "outputSeconds": 35.999373,
+        "gapShortened": false
+      },
+      {
+        "frame": "00081.jpg",
+        "originalSeconds": 36.06603,
+        "outputSeconds": 36.06603,
+        "gapShortened": false
+      },
+      {
+        "frame": "00082.jpg",
+        "originalSeconds": 36.132692,
+        "outputSeconds": 36.132692,
+        "gapShortened": false
+      },
+      {
+        "frame": "00083.jpg",
+        "originalSeconds": 36.199365,
+        "outputSeconds": 36.199365,
+        "gapShortened": false
+      },
+      {
+        "frame": "00084.jpg",
+        "originalSeconds": 36.266031,
+        "outputSeconds": 36.266031,
+        "gapShortened": false
+      },
+      {
+        "frame": "00085.jpg",
+        "originalSeconds": 36.332698,
+        "outputSeconds": 36.332698,
+        "gapShortened": false
+      },
+      {
+        "frame": "00086.jpg",
+        "originalSeconds": 36.399372,
+        "outputSeconds": 36.399372,
+        "gapShortened": false
+      },
+      {
+        "frame": "00087.jpg",
+        "originalSeconds": 36.465919,
+        "outputSeconds": 36.465919,
+        "gapShortened": false
+      },
+      {
+        "frame": "00088.jpg",
+        "originalSeconds": 36.532611,
+        "outputSeconds": 36.532611,
+        "gapShortened": false
+      },
+      {
+        "frame": "00089.jpg",
+        "originalSeconds": 36.599377,
+        "outputSeconds": 36.599377,
+        "gapShortened": false
+      },
+      {
+        "frame": "00090.jpg",
+        "originalSeconds": 36.666022,
+        "outputSeconds": 36.666022,
+        "gapShortened": false
+      },
+      {
+        "frame": "00091.jpg",
+        "originalSeconds": 36.732679,
+        "outputSeconds": 36.732679,
+        "gapShortened": false
+      },
+      {
+        "frame": "00092.jpg",
+        "originalSeconds": 36.799244,
+        "outputSeconds": 36.799244,
+        "gapShortened": false
+      },
+      {
+        "frame": "00093.jpg",
+        "originalSeconds": 36.866024,
+        "outputSeconds": 36.866024,
+        "gapShortened": false
+      },
+      {
+        "frame": "00094.jpg",
+        "originalSeconds": 36.932681,
+        "outputSeconds": 36.932681,
+        "gapShortened": false
+      },
+      {
+        "frame": "00095.jpg",
+        "originalSeconds": 36.999303,
+        "outputSeconds": 36.999303,
+        "gapShortened": false
+      },
+      {
+        "frame": "00096.jpg",
+        "originalSeconds": 37.066037,
+        "outputSeconds": 37.066037,
+        "gapShortened": false
+      },
+      {
+        "frame": "00097.jpg",
+        "originalSeconds": 37.132573,
+        "outputSeconds": 37.132573,
+        "gapShortened": false
+      },
+      {
+        "frame": "00098.jpg",
+        "originalSeconds": 37.199254,
+        "outputSeconds": 37.199254,
+        "gapShortened": false
+      },
+      {
+        "frame": "00099.jpg",
+        "originalSeconds": 37.265902,
+        "outputSeconds": 37.265902,
+        "gapShortened": false
+      },
+      {
+        "frame": "00100.jpg",
+        "originalSeconds": 37.332707,
+        "outputSeconds": 37.332707,
+        "gapShortened": false
+      },
+      {
+        "frame": "00101.jpg",
+        "originalSeconds": 37.399297,
+        "outputSeconds": 37.399297,
+        "gapShortened": false
+      },
+      {
+        "frame": "00102.jpg",
+        "originalSeconds": 37.4659,
+        "outputSeconds": 37.4659,
+        "gapShortened": false
+      },
+      {
+        "frame": "00103.jpg",
+        "originalSeconds": 37.532626,
+        "outputSeconds": 37.532626,
+        "gapShortened": false
+      },
+      {
+        "frame": "00104.jpg",
+        "originalSeconds": 37.599226,
+        "outputSeconds": 37.599226,
+        "gapShortened": false
+      },
+      {
+        "frame": "00105.jpg",
+        "originalSeconds": 37.665996,
+        "outputSeconds": 37.665996,
+        "gapShortened": false
+      },
+      {
+        "frame": "00106.jpg",
+        "originalSeconds": 37.732569,
+        "outputSeconds": 37.732569,
+        "gapShortened": false
+      },
+      {
+        "frame": "00107.jpg",
+        "originalSeconds": 37.799334,
+        "outputSeconds": 37.799334,
+        "gapShortened": false
+      },
+      {
+        "frame": "00108.jpg",
+        "originalSeconds": 37.865981,
+        "outputSeconds": 37.865981,
+        "gapShortened": false
+      },
+      {
+        "frame": "00109.jpg",
+        "originalSeconds": 37.932636,
+        "outputSeconds": 37.932636,
+        "gapShortened": false
+      },
+      {
+        "frame": "00110.jpg",
+        "originalSeconds": 37.999226,
+        "outputSeconds": 37.999226,
+        "gapShortened": false
+      },
+      {
+        "frame": "00111.jpg",
+        "originalSeconds": 38.065988,
+        "outputSeconds": 38.065988,
+        "gapShortened": false
+      },
+      {
+        "frame": "00112.jpg",
+        "originalSeconds": 38.132655,
+        "outputSeconds": 38.132655,
+        "gapShortened": false
+      },
+      {
+        "frame": "00113.jpg",
+        "originalSeconds": 38.19935,
+        "outputSeconds": 38.19935,
+        "gapShortened": false
+      },
+      {
+        "frame": "00114.jpg",
+        "originalSeconds": 38.265874,
+        "outputSeconds": 38.265874,
+        "gapShortened": false
+      },
+      {
+        "frame": "00115.jpg",
+        "originalSeconds": 38.332664,
+        "outputSeconds": 38.332664,
+        "gapShortened": false
+      },
+      {
+        "frame": "00116.jpg",
+        "originalSeconds": 38.39929,
+        "outputSeconds": 38.39929,
+        "gapShortened": false
+      },
+      {
+        "frame": "00117.jpg",
+        "originalSeconds": 38.465991,
+        "outputSeconds": 38.465991,
+        "gapShortened": false
+      },
+      {
+        "frame": "00118.jpg",
+        "originalSeconds": 38.532673,
+        "outputSeconds": 38.532673,
+        "gapShortened": false
+      },
+      {
+        "frame": "00119.jpg",
+        "originalSeconds": 38.599314,
+        "outputSeconds": 38.599314,
+        "gapShortened": false
+      },
+      {
+        "frame": "00120.jpg",
+        "originalSeconds": 38.7576,
+        "outputSeconds": 38.7576,
+        "gapShortened": false
+      },
+      {
+        "frame": "00121.jpg",
+        "originalSeconds": 38.824213,
+        "outputSeconds": 38.824213,
+        "gapShortened": false
+      },
+      {
+        "frame": "00122.jpg",
+        "originalSeconds": 38.89097,
+        "outputSeconds": 38.89097,
+        "gapShortened": false
+      },
+      {
+        "frame": "00123.jpg",
+        "originalSeconds": 38.957543,
+        "outputSeconds": 38.957543,
+        "gapShortened": false
+      },
+      {
+        "frame": "00124.jpg",
+        "originalSeconds": 39.024302,
+        "outputSeconds": 39.024302,
+        "gapShortened": false
+      },
+      {
+        "frame": "00125.jpg",
+        "originalSeconds": 39.091002,
+        "outputSeconds": 39.091002,
+        "gapShortened": false
+      },
+      {
+        "frame": "00126.jpg",
+        "originalSeconds": 39.157642,
+        "outputSeconds": 39.157642,
+        "gapShortened": false
+      },
+      {
+        "frame": "00127.jpg",
+        "originalSeconds": 39.22422,
+        "outputSeconds": 39.22422,
+        "gapShortened": false
+      },
+      {
+        "frame": "00128.jpg",
+        "originalSeconds": 39.290974,
+        "outputSeconds": 39.290974,
+        "gapShortened": false
+      },
+      {
+        "frame": "00129.jpg",
+        "originalSeconds": 39.357632,
+        "outputSeconds": 39.357632,
+        "gapShortened": false
+      },
+      {
+        "frame": "00130.jpg",
+        "originalSeconds": 39.424296,
+        "outputSeconds": 39.424296,
+        "gapShortened": false
+      },
+      {
+        "frame": "00131.jpg",
+        "originalSeconds": 39.54083,
+        "outputSeconds": 39.54083,
+        "gapShortened": false
+      },
+      {
+        "frame": "00132.jpg",
+        "originalSeconds": 39.674198,
+        "outputSeconds": 39.674198,
+        "gapShortened": false
+      },
+      {
+        "frame": "00133.jpg",
+        "originalSeconds": 39.740829,
+        "outputSeconds": 39.740829,
+        "gapShortened": false
+      },
+      {
+        "frame": "00134.jpg",
+        "originalSeconds": 39.807533,
+        "outputSeconds": 39.807533,
+        "gapShortened": false
+      },
+      {
+        "frame": "00135.jpg",
+        "originalSeconds": 39.882517,
+        "outputSeconds": 39.882517,
+        "gapShortened": false
+      },
+      {
+        "frame": "00136.jpg",
+        "originalSeconds": 39.940959,
+        "outputSeconds": 39.940959,
+        "gapShortened": false
+      },
+      {
+        "frame": "00137.jpg",
+        "originalSeconds": 49.407452,
+        "outputSeconds": 49.407452,
+        "gapShortened": false
+      },
+      {
+        "frame": "00138.jpg",
+        "originalSeconds": 49.474108,
+        "outputSeconds": 49.474108,
+        "gapShortened": false
+      },
+      {
+        "frame": "00139.jpg",
+        "originalSeconds": 49.540792,
+        "outputSeconds": 49.540792,
+        "gapShortened": false
+      },
+      {
+        "frame": "00140.jpg",
+        "originalSeconds": 49.607442,
+        "outputSeconds": 49.607442,
+        "gapShortened": false
+      },
+      {
+        "frame": "00141.jpg",
+        "originalSeconds": 49.674118,
+        "outputSeconds": 49.674118,
+        "gapShortened": false
+      },
+      {
+        "frame": "00142.jpg",
+        "originalSeconds": 49.740691,
+        "outputSeconds": 49.740691,
+        "gapShortened": false
+      },
+      {
+        "frame": "00143.jpg",
+        "originalSeconds": 49.815757,
+        "outputSeconds": 49.815757,
+        "gapShortened": false
+      },
+      {
+        "frame": "00144.jpg",
+        "originalSeconds": 49.882432,
+        "outputSeconds": 49.882432,
+        "gapShortened": false
+      },
+      {
+        "frame": "00145.jpg",
+        "originalSeconds": 49.949089,
+        "outputSeconds": 49.949089,
+        "gapShortened": false
+      },
+      {
+        "frame": "00146.jpg",
+        "originalSeconds": 50.015775,
+        "outputSeconds": 50.015775,
+        "gapShortened": false
+      },
+      {
+        "frame": "00147.jpg",
+        "originalSeconds": 50.082431,
+        "outputSeconds": 50.082431,
+        "gapShortened": false
+      },
+      {
+        "frame": "00148.jpg",
+        "originalSeconds": 50.149089,
+        "outputSeconds": 50.149089,
+        "gapShortened": false
+      },
+      {
+        "frame": "00149.jpg",
+        "originalSeconds": 50.215762,
+        "outputSeconds": 50.215762,
+        "gapShortened": false
+      },
+      {
+        "frame": "00150.jpg",
+        "originalSeconds": 50.282314,
+        "outputSeconds": 50.282314,
+        "gapShortened": false
+      },
+      {
+        "frame": "00151.jpg",
+        "originalSeconds": 50.415756,
+        "outputSeconds": 50.415756,
+        "gapShortened": false
+      },
+      {
+        "frame": "00152.jpg",
+        "originalSeconds": 50.482423,
+        "outputSeconds": 50.482423,
+        "gapShortened": false
+      },
+      {
+        "frame": "00153.jpg",
+        "originalSeconds": 50.548968,
+        "outputSeconds": 50.548968,
+        "gapShortened": false
+      },
+      {
+        "frame": "00154.jpg",
+        "originalSeconds": 50.615748,
+        "outputSeconds": 50.615748,
+        "gapShortened": false
+      },
+      {
+        "frame": "00155.jpg",
+        "originalSeconds": 50.682429,
+        "outputSeconds": 50.682429,
+        "gapShortened": false
+      },
+      {
+        "frame": "00156.jpg",
+        "originalSeconds": 50.749095,
+        "outputSeconds": 50.749095,
+        "gapShortened": false
+      },
+      {
+        "frame": "00157.jpg",
+        "originalSeconds": 50.81575,
+        "outputSeconds": 50.81575,
+        "gapShortened": false
+      },
+      {
+        "frame": "00158.jpg",
+        "originalSeconds": 50.882316,
+        "outputSeconds": 50.882316,
+        "gapShortened": false
+      },
+      {
+        "frame": "00159.jpg",
+        "originalSeconds": 50.949092,
+        "outputSeconds": 50.949092,
+        "gapShortened": false
+      },
+      {
+        "frame": "00160.jpg",
+        "originalSeconds": 51.015749,
+        "outputSeconds": 51.015749,
+        "gapShortened": false
+      },
+      {
+        "frame": "00161.jpg",
+        "originalSeconds": 51.082279,
+        "outputSeconds": 51.082279,
+        "gapShortened": false
+      },
+      {
+        "frame": "00162.jpg",
+        "originalSeconds": 51.149075,
+        "outputSeconds": 51.149075,
+        "gapShortened": false
+      },
+      {
+        "frame": "00163.jpg",
+        "originalSeconds": 51.215728,
+        "outputSeconds": 51.215728,
+        "gapShortened": false
+      },
+      {
+        "frame": "00164.jpg",
+        "originalSeconds": 51.34902,
+        "outputSeconds": 51.34902,
+        "gapShortened": false
+      },
+      {
+        "frame": "00165.jpg",
+        "originalSeconds": 51.415641,
+        "outputSeconds": 51.415641,
+        "gapShortened": false
+      },
+      {
+        "frame": "00166.jpg",
+        "originalSeconds": 51.482409,
+        "outputSeconds": 51.482409,
+        "gapShortened": false
+      },
+      {
+        "frame": "00167.jpg",
+        "originalSeconds": 51.549081,
+        "outputSeconds": 51.549081,
+        "gapShortened": false
+      },
+      {
+        "frame": "00168.jpg",
+        "originalSeconds": 51.615726,
+        "outputSeconds": 51.615726,
+        "gapShortened": false
+      },
+      {
+        "frame": "00169.jpg",
+        "originalSeconds": 51.682404,
+        "outputSeconds": 51.682404,
+        "gapShortened": false
+      },
+      {
+        "frame": "00170.jpg",
+        "originalSeconds": 51.749052,
+        "outputSeconds": 51.749052,
+        "gapShortened": false
+      },
+      {
+        "frame": "00171.jpg",
+        "originalSeconds": 51.815679,
+        "outputSeconds": 51.815679,
+        "gapShortened": false
+      },
+      {
+        "frame": "00172.jpg",
+        "originalSeconds": 51.882402,
+        "outputSeconds": 51.882402,
+        "gapShortened": false
+      },
+      {
+        "frame": "00173.jpg",
+        "originalSeconds": 51.949046,
+        "outputSeconds": 51.949046,
+        "gapShortened": false
+      },
+      {
+        "frame": "00174.jpg",
+        "originalSeconds": 52.015725,
+        "outputSeconds": 52.015725,
+        "gapShortened": false
+      },
+      {
+        "frame": "00175.jpg",
+        "originalSeconds": 52.082378,
+        "outputSeconds": 52.082378,
+        "gapShortened": false
+      },
+      {
+        "frame": "00176.jpg",
+        "originalSeconds": 52.149036,
+        "outputSeconds": 52.149036,
+        "gapShortened": false
+      },
+      {
+        "frame": "00177.jpg",
+        "originalSeconds": 52.215705,
+        "outputSeconds": 52.215705,
+        "gapShortened": false
+      },
+      {
+        "frame": "00178.jpg",
+        "originalSeconds": 52.282405,
+        "outputSeconds": 52.282405,
+        "gapShortened": false
+      },
+      {
+        "frame": "00179.jpg",
+        "originalSeconds": 52.348921,
+        "outputSeconds": 52.348921,
+        "gapShortened": false
+      },
+      {
+        "frame": "00180.jpg",
+        "originalSeconds": 52.415713,
+        "outputSeconds": 52.415713,
+        "gapShortened": false
+      },
+      {
+        "frame": "00181.jpg",
+        "originalSeconds": 52.482369,
+        "outputSeconds": 52.482369,
+        "gapShortened": false
+      },
+      {
+        "frame": "00182.jpg",
+        "originalSeconds": 52.549054,
+        "outputSeconds": 52.549054,
+        "gapShortened": false
+      },
+      {
+        "frame": "00183.jpg",
+        "originalSeconds": 52.615662,
+        "outputSeconds": 52.615662,
+        "gapShortened": false
+      },
+      {
+        "frame": "00184.jpg",
+        "originalSeconds": 52.682386,
+        "outputSeconds": 52.682386,
+        "gapShortened": false
+      },
+      {
+        "frame": "00185.jpg",
+        "originalSeconds": 52.748935,
+        "outputSeconds": 52.748935,
+        "gapShortened": false
+      },
+      {
+        "frame": "00186.jpg",
+        "originalSeconds": 52.815728,
+        "outputSeconds": 52.815728,
+        "gapShortened": false
+      },
+      {
+        "frame": "00187.jpg",
+        "originalSeconds": 52.882353,
+        "outputSeconds": 52.882353,
+        "gapShortened": false
+      },
+      {
+        "frame": "00188.jpg",
+        "originalSeconds": 52.949,
+        "outputSeconds": 52.949,
+        "gapShortened": false
+      },
+      {
+        "frame": "00189.jpg",
+        "originalSeconds": 53.015677,
+        "outputSeconds": 53.015677,
+        "gapShortened": false
+      },
+      {
+        "frame": "00190.jpg",
+        "originalSeconds": 53.082352,
+        "outputSeconds": 53.082352,
+        "gapShortened": false
+      },
+      {
+        "frame": "00191.jpg",
+        "originalSeconds": 53.148893,
+        "outputSeconds": 53.148893,
+        "gapShortened": false
+      },
+      {
+        "frame": "00192.jpg",
+        "originalSeconds": 53.215555,
+        "outputSeconds": 53.215555,
+        "gapShortened": false
+      },
+      {
+        "frame": "00193.jpg",
+        "originalSeconds": 53.282215,
+        "outputSeconds": 53.282215,
+        "gapShortened": false
+      },
+      {
+        "frame": "00194.jpg",
+        "originalSeconds": 53.348881,
+        "outputSeconds": 53.348881,
+        "gapShortened": false
+      },
+      {
+        "frame": "00195.jpg",
+        "originalSeconds": 53.415559,
+        "outputSeconds": 53.415559,
+        "gapShortened": false
+      },
+      {
+        "frame": "00196.jpg",
+        "originalSeconds": 53.482222,
+        "outputSeconds": 53.482222,
+        "gapShortened": false
+      },
+      {
+        "frame": "00197.jpg",
+        "originalSeconds": 53.548907,
+        "outputSeconds": 53.548907,
+        "gapShortened": false
+      },
+      {
+        "frame": "00198.jpg",
+        "originalSeconds": 53.615546,
+        "outputSeconds": 53.615546,
+        "gapShortened": false
+      },
+      {
+        "frame": "00199.jpg",
+        "originalSeconds": 53.682223,
+        "outputSeconds": 53.682223,
+        "gapShortened": false
+      },
+      {
+        "frame": "00200.jpg",
+        "originalSeconds": 53.74887,
+        "outputSeconds": 53.74887,
+        "gapShortened": false
+      },
+      {
+        "frame": "00201.jpg",
+        "originalSeconds": 53.815644,
+        "outputSeconds": 53.815644,
+        "gapShortened": false
+      },
+      {
+        "frame": "00202.jpg",
+        "originalSeconds": 53.88222,
+        "outputSeconds": 53.88222,
+        "gapShortened": false
+      },
+      {
+        "frame": "00203.jpg",
+        "originalSeconds": 53.957208,
+        "outputSeconds": 53.957208,
+        "gapShortened": false
+      },
+      {
+        "frame": "00204.jpg",
+        "originalSeconds": 54.015543,
+        "outputSeconds": 54.015543,
+        "gapShortened": false
+      },
+      {
+        "frame": "00205.jpg",
+        "originalSeconds": 54.082204,
+        "outputSeconds": 54.082204,
+        "gapShortened": false
+      },
+      {
+        "frame": "00206.jpg",
+        "originalSeconds": 54.148912,
+        "outputSeconds": 54.148912,
+        "gapShortened": false
+      },
+      {
+        "frame": "00207.jpg",
+        "originalSeconds": 54.215548,
+        "outputSeconds": 54.215548,
+        "gapShortened": false
+      },
+      {
+        "frame": "00208.jpg",
+        "originalSeconds": 54.282215,
+        "outputSeconds": 54.282215,
+        "gapShortened": false
+      },
+      {
+        "frame": "00209.jpg",
+        "originalSeconds": 54.348897,
+        "outputSeconds": 54.348897,
+        "gapShortened": false
+      },
+      {
+        "frame": "00210.jpg",
+        "originalSeconds": 69.756887,
+        "outputSeconds": 69.756887,
+        "gapShortened": false
+      },
+      {
+        "frame": "00211.jpg",
+        "originalSeconds": 69.815229,
+        "outputSeconds": 69.815229,
+        "gapShortened": false
+      },
+      {
+        "frame": "00212.jpg",
+        "originalSeconds": 70.315233,
+        "outputSeconds": 70.315233,
+        "gapShortened": false
+      },
+      {
+        "frame": "00213.jpg",
+        "originalSeconds": 70.615214,
+        "outputSeconds": 70.615214,
+        "gapShortened": false
+      },
+      {
+        "frame": "00214.jpg",
+        "originalSeconds": 71.656853,
+        "outputSeconds": 71.656853,
+        "gapShortened": false
+      },
+      {
+        "frame": "00215.jpg",
+        "originalSeconds": 72.115263,
+        "outputSeconds": 72.115263,
+        "gapShortened": false
+      },
+      {
+        "frame": "00216.jpg",
+        "originalSeconds": 72.806949,
+        "outputSeconds": 72.806949,
+        "gapShortened": false
+      },
+      {
+        "frame": "00217.jpg",
+        "originalSeconds": 73.273505,
+        "outputSeconds": 73.273505,
+        "gapShortened": false
+      },
+      {
+        "frame": "00218.jpg",
+        "originalSeconds": 73.34016,
+        "outputSeconds": 73.34016,
+        "gapShortened": false
+      }
+    ]
+  },
+  "montage": {
+    "path": "C:\\Users\\dimas\\OneDrive\\Изображения\\Рабочий стол\\Treval\\хакатон\\artifacts\\video-project\\assets\\instagram-caption-recording-edited.mp4",
+    "frames": 219,
+    "durationSeconds": 18.124578,
+    "width": 1600,
+    "height": 916,
+    "editedGaps": true,
+    "chronologyPreserved": true,
+    "interpolatedFrames": 0,
+    "source": "Actual Page.startScreencast JPEG frames with metadata timestamps",
+    "redactionsCssPixels": [
+      [
+        730,
+        498,
+        1037,
+        593
+      ],
+      [
+        0,
+        0,
+        170,
+        420
+      ]
+    ],
+    "sha256": "5def4e1acc9d7a323d585ccf037db486f824e5cebdba4e6b6d5f1a2d1ef3c87a",
+    "frameMapping": [
+      {
+        "frame": "00000.jpg",
+        "originalSeconds": 0.0,
+        "outputSeconds": 0.0,
+        "gapShortened": false
+      },
+      {
+        "frame": "00001.jpg",
+        "originalSeconds": 0.058329,
+        "outputSeconds": 0.058329,
+        "gapShortened": false
+      },
+      {
+        "frame": "00002.jpg",
+        "originalSeconds": 0.125039,
+        "outputSeconds": 0.125039,
+        "gapShortened": false
+      },
+      {
+        "frame": "00003.jpg",
+        "originalSeconds": 14.041377,
+        "outputSeconds": 0.375039,
+        "gapShortened": true
+      },
+      {
+        "frame": "00004.jpg",
+        "originalSeconds": 14.108003,
+        "outputSeconds": 0.441665,
+        "gapShortened": false
+      },
+      {
+        "frame": "00005.jpg",
+        "originalSeconds": 14.183042,
+        "outputSeconds": 0.516704,
+        "gapShortened": false
+      },
+      {
+        "frame": "00006.jpg",
+        "originalSeconds": 27.966197,
+        "outputSeconds": 0.766704,
+        "gapShortened": true
+      },
+      {
+        "frame": "00007.jpg",
+        "originalSeconds": 28.024425,
+        "outputSeconds": 0.824932,
+        "gapShortened": false
+      },
+      {
+        "frame": "00008.jpg",
+        "originalSeconds": 28.091198,
+        "outputSeconds": 0.891705,
+        "gapShortened": false
+      },
+      {
+        "frame": "00009.jpg",
+        "originalSeconds": 28.157759,
+        "outputSeconds": 0.958266,
+        "gapShortened": false
+      },
+      {
+        "frame": "00010.jpg",
+        "originalSeconds": 28.224474,
+        "outputSeconds": 1.024981,
+        "gapShortened": false
+      },
+      {
+        "frame": "00011.jpg",
+        "originalSeconds": 28.291052,
+        "outputSeconds": 1.091559,
+        "gapShortened": false
+      },
+      {
+        "frame": "00012.jpg",
+        "originalSeconds": 28.366211,
+        "outputSeconds": 1.166718,
+        "gapShortened": false
+      },
+      {
+        "frame": "00013.jpg",
+        "originalSeconds": 28.432744,
+        "outputSeconds": 1.233251,
+        "gapShortened": false
+      },
+      {
+        "frame": "00014.jpg",
+        "originalSeconds": 28.499506,
+        "outputSeconds": 1.300013,
+        "gapShortened": false
+      },
+      {
+        "frame": "00015.jpg",
+        "originalSeconds": 28.566188,
+        "outputSeconds": 1.366695,
+        "gapShortened": false
+      },
+      {
+        "frame": "00016.jpg",
+        "originalSeconds": 28.632868,
+        "outputSeconds": 1.433375,
+        "gapShortened": false
+      },
+      {
+        "frame": "00017.jpg",
+        "originalSeconds": 28.700188,
+        "outputSeconds": 1.500695,
+        "gapShortened": false
+      },
+      {
+        "frame": "00018.jpg",
+        "originalSeconds": 28.766082,
+        "outputSeconds": 1.566589,
+        "gapShortened": false
+      },
+      {
+        "frame": "00019.jpg",
+        "originalSeconds": 28.899407,
+        "outputSeconds": 1.699914,
+        "gapShortened": false
+      },
+      {
+        "frame": "00020.jpg",
+        "originalSeconds": 29.182701,
+        "outputSeconds": 1.983208,
+        "gapShortened": false
+      },
+      {
+        "frame": "00021.jpg",
+        "originalSeconds": 30.757665,
+        "outputSeconds": 2.233208,
+        "gapShortened": true
+      },
+      {
+        "frame": "00022.jpg",
+        "originalSeconds": 31.90765,
+        "outputSeconds": 2.483208,
+        "gapShortened": true
+      },
+      {
+        "frame": "00023.jpg",
+        "originalSeconds": 31.974351,
+        "outputSeconds": 2.549909,
+        "gapShortened": false
+      },
+      {
+        "frame": "00024.jpg",
+        "originalSeconds": 32.057664,
+        "outputSeconds": 2.633222,
+        "gapShortened": false
+      },
+      {
+        "frame": "00025.jpg",
+        "originalSeconds": 32.124353,
+        "outputSeconds": 2.699911,
+        "gapShortened": false
+      },
+      {
+        "frame": "00026.jpg",
+        "originalSeconds": 32.257656,
+        "outputSeconds": 2.833214,
+        "gapShortened": false
+      },
+      {
+        "frame": "00027.jpg",
+        "originalSeconds": 32.324303,
+        "outputSeconds": 2.899861,
+        "gapShortened": false
+      },
+      {
+        "frame": "00028.jpg",
+        "originalSeconds": 32.466081,
+        "outputSeconds": 3.041639,
+        "gapShortened": false
+      },
+      {
+        "frame": "00029.jpg",
+        "originalSeconds": 32.532773,
+        "outputSeconds": 3.108331,
+        "gapShortened": false
+      },
+      {
+        "frame": "00030.jpg",
+        "originalSeconds": 32.599431,
+        "outputSeconds": 3.174989,
+        "gapShortened": false
+      },
+      {
+        "frame": "00031.jpg",
+        "originalSeconds": 32.666094,
+        "outputSeconds": 3.241652,
+        "gapShortened": false
+      },
+      {
+        "frame": "00032.jpg",
+        "originalSeconds": 32.732766,
+        "outputSeconds": 3.308324,
+        "gapShortened": false
+      },
+      {
+        "frame": "00033.jpg",
+        "originalSeconds": 32.799433,
+        "outputSeconds": 3.374991,
+        "gapShortened": false
+      },
+      {
+        "frame": "00034.jpg",
+        "originalSeconds": 32.866108,
+        "outputSeconds": 3.441666,
+        "gapShortened": false
+      },
+      {
+        "frame": "00035.jpg",
+        "originalSeconds": 32.949426,
+        "outputSeconds": 3.524984,
+        "gapShortened": false
+      },
+      {
+        "frame": "00036.jpg",
+        "originalSeconds": 33.0661,
+        "outputSeconds": 3.641658,
+        "gapShortened": false
+      },
+      {
+        "frame": "00037.jpg",
+        "originalSeconds": 33.132742,
+        "outputSeconds": 3.7083,
+        "gapShortened": false
+      },
+      {
+        "frame": "00038.jpg",
+        "originalSeconds": 33.19946,
+        "outputSeconds": 3.775018,
+        "gapShortened": false
+      },
+      {
+        "frame": "00039.jpg",
+        "originalSeconds": 33.266099,
+        "outputSeconds": 3.841657,
+        "gapShortened": false
+      },
+      {
+        "frame": "00040.jpg",
+        "originalSeconds": 33.332739,
+        "outputSeconds": 3.908297,
+        "gapShortened": false
+      },
+      {
+        "frame": "00041.jpg",
+        "originalSeconds": 33.399431,
+        "outputSeconds": 3.974989,
+        "gapShortened": false
+      },
+      {
+        "frame": "00042.jpg",
+        "originalSeconds": 33.47444,
+        "outputSeconds": 4.049998,
+        "gapShortened": false
+      },
+      {
+        "frame": "00043.jpg",
+        "originalSeconds": 33.532738,
+        "outputSeconds": 4.108296,
+        "gapShortened": false
+      },
+      {
+        "frame": "00044.jpg",
+        "originalSeconds": 33.59943,
+        "outputSeconds": 4.174988,
+        "gapShortened": false
+      },
+      {
+        "frame": "00045.jpg",
+        "originalSeconds": 33.665961,
+        "outputSeconds": 4.241519,
+        "gapShortened": false
+      },
+      {
+        "frame": "00046.jpg",
+        "originalSeconds": 33.732708,
+        "outputSeconds": 4.308266,
+        "gapShortened": false
+      },
+      {
+        "frame": "00047.jpg",
+        "originalSeconds": 33.79937,
+        "outputSeconds": 4.374928,
+        "gapShortened": false
+      },
+      {
+        "frame": "00048.jpg",
+        "originalSeconds": 33.866077,
+        "outputSeconds": 4.441635,
+        "gapShortened": false
+      },
+      {
+        "frame": "00049.jpg",
+        "originalSeconds": 33.932632,
+        "outputSeconds": 4.50819,
+        "gapShortened": false
+      },
+      {
+        "frame": "00050.jpg",
+        "originalSeconds": 33.999293,
+        "outputSeconds": 4.574851,
+        "gapShortened": false
+      },
+      {
+        "frame": "00051.jpg",
+        "originalSeconds": 34.066073,
+        "outputSeconds": 4.641631,
+        "gapShortened": false
+      },
+      {
+        "frame": "00052.jpg",
+        "originalSeconds": 34.132741,
+        "outputSeconds": 4.708299,
+        "gapShortened": false
+      },
+      {
+        "frame": "00053.jpg",
+        "originalSeconds": 34.19929,
+        "outputSeconds": 4.774848,
+        "gapShortened": false
+      },
+      {
+        "frame": "00054.jpg",
+        "originalSeconds": 34.266065,
+        "outputSeconds": 4.841623,
+        "gapShortened": false
+      },
+      {
+        "frame": "00055.jpg",
+        "originalSeconds": 34.332613,
+        "outputSeconds": 4.908171,
+        "gapShortened": false
+      },
+      {
+        "frame": "00056.jpg",
+        "originalSeconds": 34.399412,
+        "outputSeconds": 4.97497,
+        "gapShortened": false
+      },
+      {
+        "frame": "00057.jpg",
+        "originalSeconds": 34.466032,
+        "outputSeconds": 5.04159,
+        "gapShortened": false
+      },
+      {
+        "frame": "00058.jpg",
+        "originalSeconds": 34.53274,
+        "outputSeconds": 5.108298,
+        "gapShortened": false
+      },
+      {
+        "frame": "00059.jpg",
+        "originalSeconds": 34.599313,
+        "outputSeconds": 5.174871,
+        "gapShortened": false
+      },
+      {
+        "frame": "00060.jpg",
+        "originalSeconds": 34.666065,
+        "outputSeconds": 5.241623,
+        "gapShortened": false
+      },
+      {
+        "frame": "00061.jpg",
+        "originalSeconds": 34.732758,
+        "outputSeconds": 5.308316,
+        "gapShortened": false
+      },
+      {
+        "frame": "00062.jpg",
+        "originalSeconds": 34.799269,
+        "outputSeconds": 5.374827,
+        "gapShortened": false
+      },
+      {
+        "frame": "00063.jpg",
+        "originalSeconds": 34.866037,
+        "outputSeconds": 5.441595,
+        "gapShortened": false
+      },
+      {
+        "frame": "00064.jpg",
+        "originalSeconds": 34.932719,
+        "outputSeconds": 5.508277,
+        "gapShortened": false
+      },
+      {
+        "frame": "00065.jpg",
+        "originalSeconds": 34.999292,
+        "outputSeconds": 5.57485,
+        "gapShortened": false
+      },
+      {
+        "frame": "00066.jpg",
+        "originalSeconds": 35.066053,
+        "outputSeconds": 5.641611,
+        "gapShortened": false
+      },
+      {
+        "frame": "00067.jpg",
+        "originalSeconds": 35.132726,
+        "outputSeconds": 5.708284,
+        "gapShortened": false
+      },
+      {
+        "frame": "00068.jpg",
+        "originalSeconds": 35.199274,
+        "outputSeconds": 5.774832,
+        "gapShortened": false
+      },
+      {
+        "frame": "00069.jpg",
+        "originalSeconds": 35.266045,
+        "outputSeconds": 5.841603,
+        "gapShortened": false
+      },
+      {
+        "frame": "00070.jpg",
+        "originalSeconds": 35.332607,
+        "outputSeconds": 5.908165,
+        "gapShortened": false
+      },
+      {
+        "frame": "00071.jpg",
+        "originalSeconds": 35.399375,
+        "outputSeconds": 5.974933,
+        "gapShortened": false
+      },
+      {
+        "frame": "00072.jpg",
+        "originalSeconds": 35.465927,
+        "outputSeconds": 6.041485,
+        "gapShortened": false
+      },
+      {
+        "frame": "00073.jpg",
+        "originalSeconds": 35.532601,
+        "outputSeconds": 6.108159,
+        "gapShortened": false
+      },
+      {
+        "frame": "00074.jpg",
+        "originalSeconds": 35.599378,
+        "outputSeconds": 6.174936,
+        "gapShortened": false
+      },
+      {
+        "frame": "00075.jpg",
+        "originalSeconds": 35.665939,
+        "outputSeconds": 6.241497,
+        "gapShortened": false
+      },
+      {
+        "frame": "00076.jpg",
+        "originalSeconds": 35.757533,
+        "outputSeconds": 6.333091,
+        "gapShortened": false
+      },
+      {
+        "frame": "00077.jpg",
+        "originalSeconds": 35.799347,
+        "outputSeconds": 6.374905,
+        "gapShortened": false
+      },
+      {
+        "frame": "00078.jpg",
+        "originalSeconds": 35.866053,
+        "outputSeconds": 6.441611,
+        "gapShortened": false
+      },
+      {
+        "frame": "00079.jpg",
+        "originalSeconds": 35.932712,
+        "outputSeconds": 6.50827,
+        "gapShortened": false
+      },
+      {
+        "frame": "00080.jpg",
+        "originalSeconds": 35.999373,
+        "outputSeconds": 6.574931,
+        "gapShortened": false
+      },
+      {
+        "frame": "00081.jpg",
+        "originalSeconds": 36.06603,
+        "outputSeconds": 6.641588,
+        "gapShortened": false
+      },
+      {
+        "frame": "00082.jpg",
+        "originalSeconds": 36.132692,
+        "outputSeconds": 6.70825,
+        "gapShortened": false
+      },
+      {
+        "frame": "00083.jpg",
+        "originalSeconds": 36.199365,
+        "outputSeconds": 6.774923,
+        "gapShortened": false
+      },
+      {
+        "frame": "00084.jpg",
+        "originalSeconds": 36.266031,
+        "outputSeconds": 6.841589,
+        "gapShortened": false
+      },
+      {
+        "frame": "00085.jpg",
+        "originalSeconds": 36.332698,
+        "outputSeconds": 6.908256,
+        "gapShortened": false
+      },
+      {
+        "frame": "00086.jpg",
+        "originalSeconds": 36.399372,
+        "outputSeconds": 6.97493,
+        "gapShortened": false
+      },
+      {
+        "frame": "00087.jpg",
+        "originalSeconds": 36.465919,
+        "outputSeconds": 7.041477,
+        "gapShortened": false
+      },
+      {
+        "frame": "00088.jpg",
+        "originalSeconds": 36.532611,
+        "outputSeconds": 7.108169,
+        "gapShortened": false
+      },
+      {
+        "frame": "00089.jpg",
+        "originalSeconds": 36.599377,
+        "outputSeconds": 7.174935,
+        "gapShortened": false
+      },
+      {
+        "frame": "00090.jpg",
+        "originalSeconds": 36.666022,
+        "outputSeconds": 7.24158,
+        "gapShortened": false
+      },
+      {
+        "frame": "00091.jpg",
+        "originalSeconds": 36.732679,
+        "outputSeconds": 7.308237,
+        "gapShortened": false
+      },
+      {
+        "frame": "00092.jpg",
+        "originalSeconds": 36.799244,
+        "outputSeconds": 7.374802,
+        "gapShortened": false
+      },
+      {
+        "frame": "00093.jpg",
+        "originalSeconds": 36.866024,
+        "outputSeconds": 7.441582,
+        "gapShortened": false
+      },
+      {
+        "frame": "00094.jpg",
+        "originalSeconds": 36.932681,
+        "outputSeconds": 7.508239,
+        "gapShortened": false
+      },
+      {
+        "frame": "00095.jpg",
+        "originalSeconds": 36.999303,
+        "outputSeconds": 7.574861,
+        "gapShortened": false
+      },
+      {
+        "frame": "00096.jpg",
+        "originalSeconds": 37.066037,
+        "outputSeconds": 7.641595,
+        "gapShortened": false
+      },
+      {
+        "frame": "00097.jpg",
+        "originalSeconds": 37.132573,
+        "outputSeconds": 7.708131,
+        "gapShortened": false
+      },
+      {
+        "frame": "00098.jpg",
+        "originalSeconds": 37.199254,
+        "outputSeconds": 7.774812,
+        "gapShortened": false
+      },
+      {
+        "frame": "00099.jpg",
+        "originalSeconds": 37.265902,
+        "outputSeconds": 7.84146,
+        "gapShortened": false
+      },
+      {
+        "frame": "00100.jpg",
+        "originalSeconds": 37.332707,
+        "outputSeconds": 7.908265,
+        "gapShortened": false
+      },
+      {
+        "frame": "00101.jpg",
+        "originalSeconds": 37.399297,
+        "outputSeconds": 7.974855,
+        "gapShortened": false
+      },
+      {
+        "frame": "00102.jpg",
+        "originalSeconds": 37.4659,
+        "outputSeconds": 8.041458,
+        "gapShortened": false
+      },
+      {
+        "frame": "00103.jpg",
+        "originalSeconds": 37.532626,
+        "outputSeconds": 8.108184,
+        "gapShortened": false
+      },
+      {
+        "frame": "00104.jpg",
+        "originalSeconds": 37.599226,
+        "outputSeconds": 8.174784,
+        "gapShortened": false
+      },
+      {
+        "frame": "00105.jpg",
+        "originalSeconds": 37.665996,
+        "outputSeconds": 8.241554,
+        "gapShortened": false
+      },
+      {
+        "frame": "00106.jpg",
+        "originalSeconds": 37.732569,
+        "outputSeconds": 8.308127,
+        "gapShortened": false
+      },
+      {
+        "frame": "00107.jpg",
+        "originalSeconds": 37.799334,
+        "outputSeconds": 8.374892,
+        "gapShortened": false
+      },
+      {
+        "frame": "00108.jpg",
+        "originalSeconds": 37.865981,
+        "outputSeconds": 8.441539,
+        "gapShortened": false
+      },
+      {
+        "frame": "00109.jpg",
+        "originalSeconds": 37.932636,
+        "outputSeconds": 8.508194,
+        "gapShortened": false
+      },
+      {
+        "frame": "00110.jpg",
+        "originalSeconds": 37.999226,
+        "outputSeconds": 8.574784,
+        "gapShortened": false
+      },
+      {
+        "frame": "00111.jpg",
+        "originalSeconds": 38.065988,
+        "outputSeconds": 8.641546,
+        "gapShortened": false
+      },
+      {
+        "frame": "00112.jpg",
+        "originalSeconds": 38.132655,
+        "outputSeconds": 8.708213,
+        "gapShortened": false
+      },
+      {
+        "frame": "00113.jpg",
+        "originalSeconds": 38.19935,
+        "outputSeconds": 8.774908,
+        "gapShortened": false
+      },
+      {
+        "frame": "00114.jpg",
+        "originalSeconds": 38.265874,
+        "outputSeconds": 8.841432,
+        "gapShortened": false
+      },
+      {
+        "frame": "00115.jpg",
+        "originalSeconds": 38.332664,
+        "outputSeconds": 8.908222,
+        "gapShortened": false
+      },
+      {
+        "frame": "00116.jpg",
+        "originalSeconds": 38.39929,
+        "outputSeconds": 8.974848,
+        "gapShortened": false
+      },
+      {
+        "frame": "00117.jpg",
+        "originalSeconds": 38.465991,
+        "outputSeconds": 9.041549,
+        "gapShortened": false
+      },
+      {
+        "frame": "00118.jpg",
+        "originalSeconds": 38.532673,
+        "outputSeconds": 9.108231,
+        "gapShortened": false
+      },
+      {
+        "frame": "00119.jpg",
+        "originalSeconds": 38.599314,
+        "outputSeconds": 9.174872,
+        "gapShortened": false
+      },
+      {
+        "frame": "00120.jpg",
+        "originalSeconds": 38.7576,
+        "outputSeconds": 9.333158,
+        "gapShortened": false
+      },
+      {
+        "frame": "00121.jpg",
+        "originalSeconds": 38.824213,
+        "outputSeconds": 9.399771,
+        "gapShortened": false
+      },
+      {
+        "frame": "00122.jpg",
+        "originalSeconds": 38.89097,
+        "outputSeconds": 9.466528,
+        "gapShortened": false
+      },
+      {
+        "frame": "00123.jpg",
+        "originalSeconds": 38.957543,
+        "outputSeconds": 9.533101,
+        "gapShortened": false
+      },
+      {
+        "frame": "00124.jpg",
+        "originalSeconds": 39.024302,
+        "outputSeconds": 9.59986,
+        "gapShortened": false
+      },
+      {
+        "frame": "00125.jpg",
+        "originalSeconds": 39.091002,
+        "outputSeconds": 9.66656,
+        "gapShortened": false
+      },
+      {
+        "frame": "00126.jpg",
+        "originalSeconds": 39.157642,
+        "outputSeconds": 9.7332,
+        "gapShortened": false
+      },
+      {
+        "frame": "00127.jpg",
+        "originalSeconds": 39.22422,
+        "outputSeconds": 9.799778,
+        "gapShortened": false
+      },
+      {
+        "frame": "00128.jpg",
+        "originalSeconds": 39.290974,
+        "outputSeconds": 9.866532,
+        "gapShortened": false
+      },
+      {
+        "frame": "00129.jpg",
+        "originalSeconds": 39.357632,
+        "outputSeconds": 9.93319,
+        "gapShortened": false
+      },
+      {
+        "frame": "00130.jpg",
+        "originalSeconds": 39.424296,
+        "outputSeconds": 9.999854,
+        "gapShortened": false
+      },
+      {
+        "frame": "00131.jpg",
+        "originalSeconds": 39.54083,
+        "outputSeconds": 10.116388,
+        "gapShortened": false
+      },
+      {
+        "frame": "00132.jpg",
+        "originalSeconds": 39.674198,
+        "outputSeconds": 10.249756,
+        "gapShortened": false
+      },
+      {
+        "frame": "00133.jpg",
+        "originalSeconds": 39.740829,
+        "outputSeconds": 10.316387,
+        "gapShortened": false
+      },
+      {
+        "frame": "00134.jpg",
+        "originalSeconds": 39.807533,
+        "outputSeconds": 10.383091,
+        "gapShortened": false
+      },
+      {
+        "frame": "00135.jpg",
+        "originalSeconds": 39.882517,
+        "outputSeconds": 10.458075,
+        "gapShortened": false
+      },
+      {
+        "frame": "00136.jpg",
+        "originalSeconds": 39.940959,
+        "outputSeconds": 10.516517,
+        "gapShortened": false
+      },
+      {
+        "frame": "00137.jpg",
+        "originalSeconds": 49.407452,
+        "outputSeconds": 10.766517,
+        "gapShortened": true
+      },
+      {
+        "frame": "00138.jpg",
+        "originalSeconds": 49.474108,
+        "outputSeconds": 10.833173,
+        "gapShortened": false
+      },
+      {
+        "frame": "00139.jpg",
+        "originalSeconds": 49.540792,
+        "outputSeconds": 10.899857,
+        "gapShortened": false
+      },
+      {
+        "frame": "00140.jpg",
+        "originalSeconds": 49.607442,
+        "outputSeconds": 10.966507,
+        "gapShortened": false
+      },
+      {
+        "frame": "00141.jpg",
+        "originalSeconds": 49.674118,
+        "outputSeconds": 11.033183,
+        "gapShortened": false
+      },
+      {
+        "frame": "00142.jpg",
+        "originalSeconds": 49.740691,
+        "outputSeconds": 11.099756,
+        "gapShortened": false
+      },
+      {
+        "frame": "00143.jpg",
+        "originalSeconds": 49.815757,
+        "outputSeconds": 11.174822,
+        "gapShortened": false
+      },
+      {
+        "frame": "00144.jpg",
+        "originalSeconds": 49.882432,
+        "outputSeconds": 11.241497,
+        "gapShortened": false
+      },
+      {
+        "frame": "00145.jpg",
+        "originalSeconds": 49.949089,
+        "outputSeconds": 11.308154,
+        "gapShortened": false
+      },
+      {
+        "frame": "00146.jpg",
+        "originalSeconds": 50.015775,
+        "outputSeconds": 11.37484,
+        "gapShortened": false
+      },
+      {
+        "frame": "00147.jpg",
+        "originalSeconds": 50.082431,
+        "outputSeconds": 11.441496,
+        "gapShortened": false
+      },
+      {
+        "frame": "00148.jpg",
+        "originalSeconds": 50.149089,
+        "outputSeconds": 11.508154,
+        "gapShortened": false
+      },
+      {
+        "frame": "00149.jpg",
+        "originalSeconds": 50.215762,
+        "outputSeconds": 11.574827,
+        "gapShortened": false
+      },
+      {
+        "frame": "00150.jpg",
+        "originalSeconds": 50.282314,
+        "outputSeconds": 11.641379,
+        "gapShortened": false
+      },
+      {
+        "frame": "00151.jpg",
+        "originalSeconds": 50.415756,
+        "outputSeconds": 11.774821,
+        "gapShortened": false
+      },
+      {
+        "frame": "00152.jpg",
+        "originalSeconds": 50.482423,
+        "outputSeconds": 11.841488,
+        "gapShortened": false
+      },
+      {
+        "frame": "00153.jpg",
+        "originalSeconds": 50.548968,
+        "outputSeconds": 11.908033,
+        "gapShortened": false
+      },
+      {
+        "frame": "00154.jpg",
+        "originalSeconds": 50.615748,
+        "outputSeconds": 11.974813,
+        "gapShortened": false
+      },
+      {
+        "frame": "00155.jpg",
+        "originalSeconds": 50.682429,
+        "outputSeconds": 12.041494,
+        "gapShortened": false
+      },
+      {
+        "frame": "00156.jpg",
+        "originalSeconds": 50.749095,
+        "outputSeconds": 12.10816,
+        "gapShortened": false
+      },
+      {
+        "frame": "00157.jpg",
+        "originalSeconds": 50.81575,
+        "outputSeconds": 12.174815,
+        "gapShortened": false
+      },
+      {
+        "frame": "00158.jpg",
+        "originalSeconds": 50.882316,
+        "outputSeconds": 12.241381,
+        "gapShortened": false
+      },
+      {
+        "frame": "00159.jpg",
+        "originalSeconds": 50.949092,
+        "outputSeconds": 12.308157,
+        "gapShortened": false
+      },
+      {
+        "frame": "00160.jpg",
+        "originalSeconds": 51.015749,
+        "outputSeconds": 12.374814,
+        "gapShortened": false
+      },
+      {
+        "frame": "00161.jpg",
+        "originalSeconds": 51.082279,
+        "outputSeconds": 12.441344,
+        "gapShortened": false
+      },
+      {
+        "frame": "00162.jpg",
+        "originalSeconds": 51.149075,
+        "outputSeconds": 12.50814,
+        "gapShortened": false
+      },
+      {
+        "frame": "00163.jpg",
+        "originalSeconds": 51.215728,
+        "outputSeconds": 12.574793,
+        "gapShortened": false
+      },
+      {
+        "frame": "00164.jpg",
+        "originalSeconds": 51.34902,
+        "outputSeconds": 12.708085,
+        "gapShortened": false
+      },
+      {
+        "frame": "00165.jpg",
+        "originalSeconds": 51.415641,
+        "outputSeconds": 12.774706,
+        "gapShortened": false
+      },
+      {
+        "frame": "00166.jpg",
+        "originalSeconds": 51.482409,
+        "outputSeconds": 12.841474,
+        "gapShortened": false
+      },
+      {
+        "frame": "00167.jpg",
+        "originalSeconds": 51.549081,
+        "outputSeconds": 12.908146,
+        "gapShortened": false
+      },
+      {
+        "frame": "00168.jpg",
+        "originalSeconds": 51.615726,
+        "outputSeconds": 12.974791,
+        "gapShortened": false
+      },
+      {
+        "frame": "00169.jpg",
+        "originalSeconds": 51.682404,
+        "outputSeconds": 13.041469,
+        "gapShortened": false
+      },
+      {
+        "frame": "00170.jpg",
+        "originalSeconds": 51.749052,
+        "outputSeconds": 13.108117,
+        "gapShortened": false
+      },
+      {
+        "frame": "00171.jpg",
+        "originalSeconds": 51.815679,
+        "outputSeconds": 13.174744,
+        "gapShortened": false
+      },
+      {
+        "frame": "00172.jpg",
+        "originalSeconds": 51.882402,
+        "outputSeconds": 13.241467,
+        "gapShortened": false
+      },
+      {
+        "frame": "00173.jpg",
+        "originalSeconds": 51.949046,
+        "outputSeconds": 13.308111,
+        "gapShortened": false
+      },
+      {
+        "frame": "00174.jpg",
+        "originalSeconds": 52.015725,
+        "outputSeconds": 13.37479,
+        "gapShortened": false
+      },
+      {
+        "frame": "00175.jpg",
+        "originalSeconds": 52.082378,
+        "outputSeconds": 13.441443,
+        "gapShortened": false
+      },
+      {
+        "frame": "00176.jpg",
+        "originalSeconds": 52.149036,
+        "outputSeconds": 13.508101,
+        "gapShortened": false
+      },
+      {
+        "frame": "00177.jpg",
+        "originalSeconds": 52.215705,
+        "outputSeconds": 13.57477,
+        "gapShortened": false
+      },
+      {
+        "frame": "00178.jpg",
+        "originalSeconds": 52.282405,
+        "outputSeconds": 13.64147,
+        "gapShortened": false
+      },
+      {
+        "frame": "00179.jpg",
+        "originalSeconds": 52.348921,
+        "outputSeconds": 13.707986,
+        "gapShortened": false
+      },
+      {
+        "frame": "00180.jpg",
+        "originalSeconds": 52.415713,
+        "outputSeconds": 13.774778,
+        "gapShortened": false
+      },
+      {
+        "frame": "00181.jpg",
+        "originalSeconds": 52.482369,
+        "outputSeconds": 13.841434,
+        "gapShortened": false
+      },
+      {
+        "frame": "00182.jpg",
+        "originalSeconds": 52.549054,
+        "outputSeconds": 13.908119,
+        "gapShortened": false
+      },
+      {
+        "frame": "00183.jpg",
+        "originalSeconds": 52.615662,
+        "outputSeconds": 13.974727,
+        "gapShortened": false
+      },
+      {
+        "frame": "00184.jpg",
+        "originalSeconds": 52.682386,
+        "outputSeconds": 14.041451,
+        "gapShortened": false
+      },
+      {
+        "frame": "00185.jpg",
+        "originalSeconds": 52.748935,
+        "outputSeconds": 14.108,
+        "gapShortened": false
+      },
+      {
+        "frame": "00186.jpg",
+        "originalSeconds": 52.815728,
+        "outputSeconds": 14.174793,
+        "gapShortened": false
+      },
+      {
+        "frame": "00187.jpg",
+        "originalSeconds": 52.882353,
+        "outputSeconds": 14.241418,
+        "gapShortened": false
+      },
+      {
+        "frame": "00188.jpg",
+        "originalSeconds": 52.949,
+        "outputSeconds": 14.308065,
+        "gapShortened": false
+      },
+      {
+        "frame": "00189.jpg",
+        "originalSeconds": 53.015677,
+        "outputSeconds": 14.374742,
+        "gapShortened": false
+      },
+      {
+        "frame": "00190.jpg",
+        "originalSeconds": 53.082352,
+        "outputSeconds": 14.441417,
+        "gapShortened": false
+      },
+      {
+        "frame": "00191.jpg",
+        "originalSeconds": 53.148893,
+        "outputSeconds": 14.507958,
+        "gapShortened": false
+      },
+      {
+        "frame": "00192.jpg",
+        "originalSeconds": 53.215555,
+        "outputSeconds": 14.57462,
+        "gapShortened": false
+      },
+      {
+        "frame": "00193.jpg",
+        "originalSeconds": 53.282215,
+        "outputSeconds": 14.64128,
+        "gapShortened": false
+      },
+      {
+        "frame": "00194.jpg",
+        "originalSeconds": 53.348881,
+        "outputSeconds": 14.707946,
+        "gapShortened": false
+      },
+      {
+        "frame": "00195.jpg",
+        "originalSeconds": 53.415559,
+        "outputSeconds": 14.774624,
+        "gapShortened": false
+      },
+      {
+        "frame": "00196.jpg",
+        "originalSeconds": 53.482222,
+        "outputSeconds": 14.841287,
+        "gapShortened": false
+      },
+      {
+        "frame": "00197.jpg",
+        "originalSeconds": 53.548907,
+        "outputSeconds": 14.907972,
+        "gapShortened": false
+      },
+      {
+        "frame": "00198.jpg",
+        "originalSeconds": 53.615546,
+        "outputSeconds": 14.974611,
+        "gapShortened": false
+      },
+      {
+        "frame": "00199.jpg",
+        "originalSeconds": 53.682223,
+        "outputSeconds": 15.041288,
+        "gapShortened": false
+      },
+      {
+        "frame": "00200.jpg",
+        "originalSeconds": 53.74887,
+        "outputSeconds": 15.107935,
+        "gapShortened": false
+      },
+      {
+        "frame": "00201.jpg",
+        "originalSeconds": 53.815644,
+        "outputSeconds": 15.174709,
+        "gapShortened": false
+      },
+      {
+        "frame": "00202.jpg",
+        "originalSeconds": 53.88222,
+        "outputSeconds": 15.241285,
+        "gapShortened": false
+      },
+      {
+        "frame": "00203.jpg",
+        "originalSeconds": 53.957208,
+        "outputSeconds": 15.316273,
+        "gapShortened": false
+      },
+      {
+        "frame": "00204.jpg",
+        "originalSeconds": 54.015543,
+        "outputSeconds": 15.374608,
+        "gapShortened": false
+      },
+      {
+        "frame": "00205.jpg",
+        "originalSeconds": 54.082204,
+        "outputSeconds": 15.441269,
+        "gapShortened": false
+      },
+      {
+        "frame": "00206.jpg",
+        "originalSeconds": 54.148912,
+        "outputSeconds": 15.507977,
+        "gapShortened": false
+      },
+      {
+        "frame": "00207.jpg",
+        "originalSeconds": 54.215548,
+        "outputSeconds": 15.574613,
+        "gapShortened": false
+      },
+      {
+        "frame": "00208.jpg",
+        "originalSeconds": 54.282215,
+        "outputSeconds": 15.64128,
+        "gapShortened": false
+      },
+      {
+        "frame": "00209.jpg",
+        "originalSeconds": 54.348897,
+        "outputSeconds": 15.707962,
+        "gapShortened": false
+      },
+      {
+        "frame": "00210.jpg",
+        "originalSeconds": 69.756887,
+        "outputSeconds": 15.957962,
+        "gapShortened": true
+      },
+      {
+        "frame": "00211.jpg",
+        "originalSeconds": 69.815229,
+        "outputSeconds": 16.016304,
+        "gapShortened": false
+      },
+      {
+        "frame": "00212.jpg",
+        "originalSeconds": 70.315233,
+        "outputSeconds": 16.266304,
+        "gapShortened": true
+      },
+      {
+        "frame": "00213.jpg",
+        "originalSeconds": 70.615214,
+        "outputSeconds": 16.566285,
+        "gapShortened": false
+      },
+      {
+        "frame": "00214.jpg",
+        "originalSeconds": 71.656853,
+        "outputSeconds": 16.816285,
+        "gapShortened": true
+      },
+      {
+        "frame": "00215.jpg",
+        "originalSeconds": 72.115263,
+        "outputSeconds": 17.274695,
+        "gapShortened": false
+      },
+      {
+        "frame": "00216.jpg",
+        "originalSeconds": 72.806949,
+        "outputSeconds": 17.524695,
+        "gapShortened": true
+      },
+      {
+        "frame": "00217.jpg",
+        "originalSeconds": 73.273505,
+        "outputSeconds": 17.991251,
+        "gapShortened": false
+      },
+      {
+        "frame": "00218.jpg",
+        "originalSeconds": 73.34016,
+        "outputSeconds": 18.057906,
+        "gapShortened": false
+      }
+    ]
+  },
+  "note": "Master retains original timestamps. Montage removes long capture gaps in chronological order; duplicated/generated browser actions are not introduced."
+}

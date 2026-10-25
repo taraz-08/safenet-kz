@@ -1,0 +1,58 @@
+{
+  "status": "rendered_decode_and_visual_checks_passed",
+  "output": "C:\\Users\\dimas\\OneDrive\\Изображения\\Рабочий стол\\Treval\\хакатон\\artifacts\\video-project\\output\\SafeNet-KZ-instagram-demo.mp4",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "durationSeconds": 65.264,
+  "narrationDurationSeconds": 63.164,
+  "subtitleTiming": "reviewed_local_asr_phrase_alignment",
+  "burnedSubtitles": true,
+  "flow_included": false,
+  "introSource": "Local designed typography and motion; Google Flow not included",
+  "sourceRecordingRepeated": true,
+  "recordingLabel": "Нақты экран жазбасының монтаждалған үзіндісі",
+  "claim": "Visible Instagram caption automatically flagged51/100; not proof of fraud or video/audio recognition",
+  "evidenceUrl": "https://www.instagram.com/ludohousee/reel/DLuy0ShNSrZ/",
+  "evidenceSha256": "b0666e21faddc9a90254d6e99bc80904a56d8617ab2a23e10296974f68e02ac5",
+  "assets": [
+    {
+      "kind": "actual_recording",
+      "path": "C:\\Users\\dimas\\OneDrive\\Изображения\\Рабочий стол\\Treval\\хакатон\\artifacts\\video-project\\assets\\instagram-caption-recording-edited.mp4",
+      "sha256": "5def4e1acc9d7a323d585ccf037db486f824e5cebdba4e6b6d5f1a2d1ef3c87a"
+    },
+    {
+      "kind": "narration",
+      "path": "C:\\Users\\dimas\\OneDrive\\Изображения\\Рабочий стол\\Treval\\хакатон\\artifacts\\video-project\\assets\\voice-kk.mp3",
+      "sha256": "3855bc0e56abc72ae18d1e2e5669995f093bcc8b9b00967aaa95271a88d4c299"
+    }
+  ],
+  "audioNote": "Peak guard applied; no LUFS measurement claimed.",
+  "outputBytes": 4082761,
+  "outputSha256": "2372804eb8df944650564091eec2c0dbf2995ea475dee8183878f5682194807a",
+  "presentationRecordingExtensionVersion": "2.2.0",
+  "historicalCaptionProofVersion": "2.1.1",
+  "flowProjectUrl": "https://flow.google.com/project/888ecb10-94e6-473a-bf97-555862818066",
+  "validation": {
+    "fullVideoDecode": true,
+    "fullAudioDecode": true,
+    "frames": 1958,
+    "representativeFrameSeconds": [
+      3,
+      23.5,
+      29.9,
+      39,
+      49.5,
+      55,
+      62.5
+    ],
+    "visuallyReviewedSeconds": [
+      23.5,
+      29.9,
+      49.5,
+      62.5
+    ],
+    "subtitleMethod": "reviewed_local_asr_phrase_alignment",
+    "wholeVideoHumanListeningClaimed": false
+  }
+}

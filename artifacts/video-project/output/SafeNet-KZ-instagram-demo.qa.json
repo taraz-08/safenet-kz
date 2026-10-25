@@ -1,0 +1,19 @@
+{
+  "file": "C:\\Users\\dimas\\OneDrive\\Изображения\\Рабочий стол\\Treval\\хакатон\\artifacts\\video-project\\output\\SafeNet-KZ-instagram-demo.mp4",
+  "bytes": 4082761,
+  "videoCodec": "h264",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "durationSeconds": 65.266667,
+  "videoFrames": 1958,
+  "frameTimeMonotonic": true,
+  "lastVideoFrameSeconds": 65.23333333333333,
+  "audioCodec": "aac",
+  "audioRate": 48000,
+  "audioChannels": 2,
+  "audioDecodedSeconds": 65.28,
+  "audioPeak": 0.6121530532836914,
+  "checks": "Full video and audio decode passed; representative frames extracted for visual inspection.",
+  "flow_included": false
+}

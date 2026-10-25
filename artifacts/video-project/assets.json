@@ -1,0 +1,92 @@
+{
+  "project": "SafeNet KZ — real Instagram demonstration",
+  "preparedAt": "2026-10-23",
+  "status": "final_local_intro_ready",
+  "output": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "targetSeconds": 65.264,
+    "container": "mp4",
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "path": "output/SafeNet-KZ-instagram-demo.mp4",
+    "durationSeconds": 65.266667,
+    "bytes": 4082761
+  },
+  "verifiedFinding": {
+    "url": "https://www.instagram.com/ludohousee/reel/DLuy0ShNSrZ/",
+    "extensionVersionAtCapture": "2.1.1",
+    "score": 51,
+    "scoreMeaning": "rule-based risk score; not a probability or finding of fraud",
+    "exactQuote": "ФРИСПИНОВ",
+    "signals": [
+      "Упоминание азартных игр",
+      "Привлечение бонусом"
+    ],
+    "discovery": "Agent searched Instagram and opened a Reel; extension automatically analyzed its visible caption.",
+    "evidenceJson": "../../qa/instagram-real-flag.json",
+    "evidenceScreenshot": "../../qa/instagram-real-flag.png",
+    "historicalEvidenceExtensionVersion": "2.1.1"
+  },
+  "assets": [
+    {
+      "id": "caption_recording",
+      "path": "assets/instagram-caption-recording-edited.mp4",
+      "status": "existing",
+      "kind": "actual_screen_recording",
+      "required": true,
+      "provenance": "assets/capture-provenance.json"
+    },
+    {
+      "id": "media_recording",
+      "path": "assets/instagram-media-recording.webm",
+      "status": "pending_feature_validation",
+      "kind": "actual_screen_recording",
+      "required": false
+    },
+    {
+      "id": "voice_kk",
+      "path": "assets/voice-kk.mp3",
+      "status": "existing",
+      "kind": "elevenlabs_narration",
+      "script": "narration-kk.txt",
+      "required": true,
+      "voice": "Nurlan Kazakhvoicev4",
+      "source": "ElevenLabs UI download"
+    },
+    {
+      "id": "flow_intro",
+      "path": "assets/flow-intro.mp4",
+      "status": "unavailable_current_cut_uses_local_titles",
+      "kind": "generated_abstract_intro_not_evidence",
+      "prompt": "flow-intro-prompt.txt",
+      "required": false
+    },
+    {
+      "id": "saved_evidence",
+      "path": "../../qa/instagram-real-flag.png",
+      "status": "existing",
+      "kind": "screenshot_not_recording",
+      "required": false
+    }
+  ],
+  "claimGates": {
+    "captionAnalysis": "verified",
+    "wholeInstagramAutonomousDiscovery": "not_supported_by_this_evidence",
+    "videoFrameOcr": "pending_live_verification",
+    "audioTranscription": "pending_live_verification"
+  },
+  "flow_included": false,
+  "presentationRecordingExtensionVersion": "2.2.0",
+  "flow": {
+    "included": false,
+    "projectId": "888ecb10-94e6-473a-bf97-555862818066",
+    "status": "asset_retrieval_blocked_chrome_connection_offline",
+    "fallback": "local_designed_typography_intro",
+    "projectUrl": "https://flow.google.com/project/888ecb10-94e6-473a-bf97-555862818066",
+    "requestedSeconds": 6,
+    "model": "Omni 1.1 Flash",
+    "requestedCredits": 10
+  }
+}

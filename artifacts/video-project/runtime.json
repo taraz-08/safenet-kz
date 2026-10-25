@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-23",
+  "systemPython": "C:\\Users\\dimas\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "modules": {"av": "12.3.0", "PIL": true, "numpy": true, "cv2": true, "imageio": true, "moviepy": false, "imageio_ffmpeg": false},
+  "availableEncoders": ["libx264", "aac"],
+  "ffmpegOnPath": false,
+  "ffprobeOnPath": false,
+  "bundledPythonHasPyAV": false,
+  "recommendedRenderer": "System Python + PyAV + Pillow, after actual recording and narration assets exist",
+  "videoRendered": false
+}

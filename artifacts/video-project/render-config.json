@@ -1,0 +1,29 @@
+{
+  "recording": "assets/instagram-caption-recording-edited.mp4",
+  "voice": "assets/voice-kk.mp3",
+  "intro": null,
+  "evidence": "../../qa/instagram-real-flag.json",
+  "subtitles": "subtitle-aligned.json",
+  "output": "output/SafeNet-KZ-instagram-demo.mp4",
+  "minimum_duration": 60,
+  "intro_seconds": 6,
+  "outro_seconds": 5.5,
+  "narration_start": 0.6,
+  "voice_gain_db": 0,
+  "recording_in": 0,
+  "recording_seconds": null,
+  "recording_ranges": {
+    "real": {"in": 0, "seconds": 10.4},
+    "score": {"in": 0.8, "seconds": 9.5},
+    "why": {"in": 1.4, "seconds": 8.9},
+    "languages": {"in": 9.6, "seconds": 8.5},
+    "context": {"in": 15.97, "seconds": 2.0}
+  },
+  "crops": {
+    "real": [0.164, 0.041, 0.641, 0.783],
+    "score": [0.53, 0.14, 0.26, 0.68],
+    "why": [0.53, 0.32, 0.26, 0.50],
+    "languages": [0.53, 0.14, 0.26, 0.68],
+    "context": [0.164, 0.041, 0.641, 0.783]
+  }
+}

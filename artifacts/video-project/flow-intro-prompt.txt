@@ -1,0 +1,5 @@
+OPTIONAL ABSTRACT INTRO — NOT PRODUCT EVIDENCE
+
+Create a restrained 5-second 16:9 product-film opening, 1920x1080 composition. Deep forest-green background (#123C2E), a subtle lime (#C8F565) scanning line passes across several abstract translucent rectangles suggesting a social feed. One rectangle receives a small lime outline; the rest remain quiet. Gentle camera drift, precise simple motion, soft ambient lighting, refined clean typography-free visual design, plenty of empty space in the center and left for a title added during editing. End on a calm nearly static frame suitable for a cut into a real browser screen recording. No text, no logos, no fake Instagram interface, no people, no gambling imagery, no alarm or danger symbols, no generated claim about successful detection. No sound is necessary.
+
+Editing note: Add the real SafeNet KZ title locally. Use this only as an abstract opening. All UI, URLs, scores, evidence quotes and detection results must come from actual screen recording or a clearly labelled saved screenshot.

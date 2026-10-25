@@ -1,0 +1,185 @@
+{
+  "source": "assets/voice-kk.mp3",
+  "duration": 63.164063,
+  "processing_seconds": 81.27,
+  "engine": "faster-whisper 1.2.1",
+  "model": "small",
+  "local_only": true,
+  "external_uploads": false,
+  "language": "kk",
+  "script_supplied_as_prompt": false,
+  "script_cues": 17,
+  "matched_cues": 17,
+  "obvious_missing_phrases": [],
+  "pronunciation_verdict": "not_certified_by_ASR; local small Kazakh transcription has phonetic errors",
+  "score_51": {
+    "expected": "жүзден елу бір ұпай",
+    "asr": "жүздін елюбір өпай",
+    "audio_start": 21.94,
+    "audio_end": 24.3,
+    "verdict": "phonetic match to 51 out of 100; no contradictory score recognized"
+  },
+  "review_word": {
+    "expected": "фриспинов",
+    "asr": "фриспи үніф",
+    "audio_start": 28.4,
+    "audio_end": 30.54,
+    "verdict": "speech present at expected place; exact pronunciation needs listening"
+  },
+  "subtitle_status": "phrase-aligned, exact script, offset already included; suitable for render QA",
+  "checks": [
+    {
+      "cue": 1,
+      "audio_start": 0.0,
+      "audio_end": 2.98,
+      "original": "Instagram-дағы әр жарнаманы бірден тану қиын.",
+      "asr": "Инстаграмдағы әр жарнаманы бірден таңу қейін.",
+      "character_similarity": 0.909,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 2,
+      "audio_start": 3.46,
+      "audio_end": 7.94,
+      "original": "SafeNet KZ күмәнді белгілерді көрсетіп, олардың себебін түсіндіреді.",
+      "asr": "SafeNet KZ күменді белгілерді гүрсетіп олардың СББін түсіндірет.",
+      "character_similarity": 0.904,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 3,
+      "audio_start": 8.32,
+      "audio_end": 10.42,
+      "original": "Бұл — нақты жазбадағы сынақ.",
+      "asr": "Бұл нақты жазба дағы сынақ.",
+      "character_similarity": 1.0,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 4,
+      "audio_start": 10.84,
+      "audio_end": 14.06,
+      "original": "Instagram іздеуінен құмар ойынға қатысты жазбаны аштық.",
+      "asr": "Инстаграмыз деунең қмароыңға ғатсты жазба нақштық.",
+      "character_similarity": 0.848,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 5,
+      "audio_start": 14.4,
+      "audio_end": 18.48,
+      "original": "Кеңейтім оның көрініп тұрған сипаттамасын автоматты түрде талдады.",
+      "asr": "Кен әйтім оның көрніп тұрған сипаттамасын афтаматты түрде талдады.",
+      "character_similarity": 0.922,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 6,
+      "audio_start": 18.48,
+      "audio_end": 21.76,
+      "original": "Мәтінді қолмен көшіріп салудың қажеті болған жоқ.",
+      "asr": "Мәтінді қолмен көшеріп салудың қажеті болған жоқ.",
+      "character_similarity": 0.976,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 7,
+      "audio_start": 21.94,
+      "audio_end": 24.3,
+      "original": "Нәтиже — жүзден елу бір ұпай.",
+      "asr": "Нәтиже, жүздін елюбір өпай.",
+      "character_similarity": 0.864,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 8,
+      "audio_start": 24.82,
+      "audio_end": 27.88,
+      "original": "Жазба қосымша тексеруді қажет етеді. Неге?",
+      "asr": "Жазба қосымша текстеріюді қажетет. Неге?",
+      "character_similarity": 0.899,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 9,
+      "audio_start": 28.4,
+      "audio_end": 30.54,
+      "original": "Сипаттамада «фриспинов» сөзі бар.",
+      "asr": "Сипаттамады фриспи үніф сөзі бар.",
+      "character_similarity": 0.873,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 10,
+      "audio_start": 30.98,
+      "audio_end": 36.14,
+      "original": "Бағдарлама мұны құмар ойын термині және бонуспен тарту белгісі ретінде көрсетті.",
+      "asr": "Бағдарламамыну қумароуен терміне және бонуспен тарту бельгісер етінде гөрсетті.",
+      "character_similarity": 0.863,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 11,
+      "audio_start": 36.46,
+      "audio_end": 39.04,
+      "original": "Әр белгі нақты дәйекпен түсіндірілді.",
+      "asr": "Эр бельгі нақты деекпен түсіндірілді.",
+      "character_similarity": 0.906,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 12,
+      "audio_start": 39.04,
+      "audio_end": 42.32,
+      "original": "Түсіндірмені қазақша да, орысша да көруге болады.",
+      "asr": "түсіндірмені қазақша да өршша да көрігі болат.",
+      "character_similarity": 0.85,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 13,
+      "audio_start": 42.78,
+      "audio_end": 44.66,
+      "original": "Ұпай — тәуекел көрсеткіші.",
+      "asr": "Опай төғіл ғөрсет күші.",
+      "character_similarity": 0.65,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 14,
+      "audio_start": 45.04,
+      "audio_end": 49.92,
+      "original": "Ол аккаунтты алаяқ деп айыптамайды және алаяқтық ықтималдығының пайызы емес.",
+      "asr": "Ол акаунтты алаяқті байыптамайд, және алаяқтық қтеймалдығының пайзейміз.",
+      "character_similarity": 0.853,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 15,
+      "audio_start": 50.34,
+      "audio_end": 53.82,
+      "original": "Сондықтан ұсыныстың мазмұны мен дереккөзін де тексеру керек.",
+      "asr": "Сондықтан, Құсынустың мазмыну мен дирік қөзін дәтиксері үрің.",
+      "character_similarity": 0.75,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 16,
+      "audio_start": 54.22,
+      "audio_end": 57.0,
+      "original": "Осы сынақта ашылған жазбаның мәтіні талданды.",
+      "asr": "Осы снақта ашылған жазбаның мәтіні талданды.",
+      "character_similarity": 0.987,
+      "review": "phrase present; ASR phonetic variation possible"
+    },
+    {
+      "cue": 17,
+      "audio_start": 57.52,
+      "audio_end": 62.94,
+      "original": "SafeNet KZ: белгіні көр, себебін түсін, шешімді саналы қабылда.",
+      "asr": "SafeNet KZ Беліңін қүр, сибебін түсін, шейшімді саналы ғабылда.",
+      "character_similarity": 0.874,
+      "review": "phrase present; ASR phonetic variation possible"
+    }
+  ]
+}
