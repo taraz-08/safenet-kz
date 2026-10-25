@@ -1,3 +1,4 @@
+import {fetchWithAccess, SESSION_DATA_EVENT} from './access-session.js';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Activity, ArrowUpRight, Check, ChevronDown, Clock3, ExternalLink, FileCheck2, Globe2, Info, LoaderCircle, Pause, Play, Plus, Radio, RefreshCw, Search, Settings2, ShieldCheck, Trash2, X} from 'lucide-react';
 import {getLanguage} from './i18n.js';
@@ -35,7 +36,7 @@ const ERROR_TEXT = {
 };
 
 async function request(path, options = {}) {
-  const response = await fetch(path, {...options, headers: {'Content-Type': 'application/json', ...options.headers}});
+  const response = await fetchWithAccess(path, {...options, headers: {'Content-Type': 'application/json', ...options.headers}});
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
     const error = new Error(typeof body.error === 'string' ? body.error : body.error?.message || body.message || 'REQUEST_FAILED');
@@ -83,7 +84,7 @@ export default function Watchtower({locale, onCasesChange, readOnly}) {
       setError(null);
     } catch (e) {if (version === requestVersion.current && mounted.current) setError(e);}
   }, [applyData]);
-  useEffect(() => {reload();}, [reload]);
+  useEffect(() => {reload();window.addEventListener(SESSION_DATA_EVENT,reload);return()=>window.removeEventListener(SESSION_DATA_EVENT,reload);}, [reload]);
   useEffect(() => {
     if (busy || (!data?.enabled && !data?.running)) return;
     const interval = setInterval(reload, 10000);

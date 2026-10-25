@@ -18,7 +18,7 @@ const hosted=Boolean(process.env.RAILWAY_ENVIRONMENT)||process.env.SAFENET_HOSTE
 const allowedHosts=[process.env.RAILWAY_PUBLIC_DOMAIN,...String(process.env.SAFENET_ALLOWED_HOSTS||'').split(',')].map(value=>String(value||'').trim().toLowerCase()).filter(Boolean);
 // Keep mutable state on a volume without hiding the bundled model, corpus and metrics.
 const dataDir=resolve(process.env.SAFENET_DATA_DIR||process.env.RAILWAY_VOLUME_MOUNT_PATH||'data');
-const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null,telegramSeeds,socialEnabled});
+const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null,adminCode:process.env.SAFENET_ADMIN_CODE||null,telegramSeeds,socialEnabled});
 app.locals.watchtower.start();
 // Synthetic replay is available only in local/offline mode.
 if(!app.locals.liveOnly)app.locals.pipeline.start();

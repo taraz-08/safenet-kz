@@ -1,3 +1,4 @@
+import {SESSION_DATA_EVENT} from './access-session.js';
 import React, {useEffect, useState} from 'react';
 import {ArrowRight, Info, Inbox, Radio, RefreshCw} from 'lucide-react';
 import {getLanguage} from './i18n.js';
@@ -30,8 +31,8 @@ function useSnapshot(path){
    }catch(error){if(active)setState(old=>({...old,error:error.message}));}
    finally{inFlight=false;}
   }
-  load();const timer=setInterval(load,6000);
-  return()=>{active=false;controller.abort();clearInterval(timer);};
+  load();window.addEventListener(SESSION_DATA_EVENT,load);const timer=setInterval(load,6000);
+  return()=>{active=false;controller.abort();clearInterval(timer);window.removeEventListener(SESSION_DATA_EVENT,load);};
  },[path,revision]);
  return {...state,retry:()=>setRevision(value=>value+1)};
 }

@@ -1,3 +1,4 @@
+import {fetchWithAccess, SESSION_DATA_EVENT} from './access-session.js';
 import React,{useCallback,useEffect,useMemo,useState} from 'react';
 import {Activity,AlertTriangle,ArrowRight,Ban,Check,CircleCheck,Clock3,FileImage,Globe,Inbox,Instagram,Keyboard,Landmark,LoaderCircle,MessageCircle,Mic,Music2,Network,Pause,Play,RotateCcw,Send,ShieldAlert,Sparkles,Users,X,Youtube,Radio,Workflow,BrainCircuit,Info,Layers,Search,Plus,ExternalLink,Trash2,Telescope} from 'lucide-react';
 import {getLanguage} from './i18n.js';
@@ -5,7 +6,7 @@ import './workbench.css';
 import LiveMonitoring, {isRealCase, SearchExcerptNote, socialPlatformStatus} from './LiveMonitoring.jsx';
 
 const L=(ru,kk)=>getLanguage()==='kk'?kk:ru;
-async function api(path,options={}){const response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.error||`HTTP ${response.status}`);return data;}
+async function api(path,options={}){const response=await fetchWithAccess(path,{...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.error||`HTTP ${response.status}`);return data;}
 
 // Tracks follow the hackathon brief; colours are validated for colour-blind separation and always shown with a name.
 export const TRACKS={
@@ -27,7 +28,7 @@ const percent=value=>value==null?'—':`${Math.round(value*1000)/10}%`;
 const number=value=>new Intl.NumberFormat(getLanguage()==='kk'?'kk-KZ':'ru-RU').format(value??0);
 function ago(iso){if(!iso)return '';const minutes=Math.max(0,Math.round((Date.now()-Date.parse(iso))/60000));if(minutes<1)return L('только что','жаңа ғана');if(minutes<60)return L(`${minutes} мин назад`,`${minutes} мин бұрын`);const hours=Math.round(minutes/60);if(hours<48)return L(`${hours} ч назад`,`${hours} сағ бұрын`);return L(`${Math.round(hours/24)} дн назад`,`${Math.round(hours/24)} күн бұрын`);}
 function localSignals(analysis){const lang=getLanguage()==='kk'?'kk':'ru';const map=new Map((analysis?.translations?.[lang]?.signals??[]).map(item=>[item.id,item]));return (analysis?.signals??[]).map(signal=>({...signal,...(map.get(signal.id)?{label:map.get(signal.id).label,description:map.get(signal.id).description}:{})}));}
-function usePoll(path,interval,deps=[]){const [data,setData]=useState(null),[error,setError]=useState('');const load=useCallback(async()=>{if(!path)return;try{setData(await api(path));setError('');}catch(e){setError(e.message);}},[path]);useEffect(()=>{if(!path)return;load();if(!interval)return;const timer=setInterval(load,typeof interval==='function'?interval():interval);return()=>clearInterval(timer);},[load,...deps]);return [data,load,error];}
+function usePoll(path,interval,deps=[]){const [data,setData]=useState(null),[error,setError]=useState('');const load=useCallback(async()=>{if(!path)return;try{setData(await api(path));setError('');}catch(e){setError(e.message);}},[path]);useEffect(()=>{if(!path)return;load();window.addEventListener(SESSION_DATA_EVENT,load);const timer=interval?setInterval(load,typeof interval==='function'?interval():interval):null;return()=>{clearInterval(timer);window.removeEventListener(SESSION_DATA_EVENT,load);};},[load,...deps]);return [data,load,error];}
 
 export function PlatformIcon({platform,size=14}){const Icon={instagram:Instagram,tiktok:Music2,telegram:Send,whatsapp:MessageCircle,youtube:Youtube}[platform]??Globe;return <span className={`wb-platform ${platform||'other'}`} title={platform}><Icon size={size} aria-hidden/></span>;}
 export function TrackTag({category,full=false}){if(!TRACKS[category]||category==='none')return <span className="wb-track none">{trackName('none')}</span>;const meta=TRACKS[category];return <span className={`wb-track ${category}`}><i aria-hidden/>{meta.n?`${L('Трек','Трек')} ${meta.n} · `:''}{full?L(meta.ru,meta.kk):trackName(category)}</span>;}

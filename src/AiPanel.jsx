@@ -1,3 +1,4 @@
+import {fetchWithAccess, SESSION_DATA_EVENT} from './access-session.js';
 import React, {useEffect, useRef, useState} from 'react';
 import {BrainCircuit, Check, ChevronRight, Eye, Info, LoaderCircle, LockKeyhole, RefreshCw, ScanText, Volume2} from 'lucide-react';
 import {getLanguage} from './i18n.js';
@@ -34,7 +35,7 @@ export default function AiPanel({locale,readOnly,mode}) {
       const timeout = setTimeout(() => controller.abort(), 25000);
       setChecking(true);
       try {
-        const response = await fetch(manual ? '/api/ai/check' : '/api/ai/status', {
+        const response = await fetchWithAccess(manual ? '/api/ai/check' : '/api/ai/status', {
           method: manual ? 'POST' : 'GET',
           ...(manual ? {headers: {'Content-Type': 'application/json'}, body: '{}'} : {}),
           signal: controller.signal,
@@ -59,7 +60,9 @@ export default function AiPanel({locale,readOnly,mode}) {
       }
     }
     refreshRef.current = refresh;
+    const reload=()=>refresh();
     refresh();
+    window.addEventListener(SESSION_DATA_EVENT,reload);
     const interval = setInterval(() => {
       if (document.visibilityState !== 'hidden') refresh();
     }, 15000);
@@ -67,6 +70,7 @@ export default function AiPanel({locale,readOnly,mode}) {
       live = false;
       refreshRef.current = null;
       clearInterval(interval);
+      window.removeEventListener(SESSION_DATA_EVENT,reload);
       requestRef.current?.abort();
     };
   }, [readOnly]);

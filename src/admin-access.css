@@ -1,0 +1,12 @@
+.admin-access-backdrop{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(24,52,61,.45)}
+.admin-access-dialog{width:min(100%,470px);max-height:calc(100dvh - 40px);overflow:auto;padding:26px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 20px 60px rgba(24,52,61,.2)}
+.admin-access-dialog header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.admin-access-dialog h2{font-size:21px;line-height:1.4;margin:0}
+.admin-access-dialog p{font-size:13px;line-height:1.7;color:var(--muted);margin:12px 0}
+.admin-access-dialog form{margin-top:22px}
+.admin-access-dialog input{width:100%;font-size:16px}
+.admin-access-dialog [role=status]{display:flex;align-items:center;gap:8px}
+.admin-access-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:22px}
+.admin-access-dialog .admin-access-error,.mode-banner .admin-access-error{color:#b42318}
+.mode-banner #admin-session-action{flex-shrink:0}
+@media(max-width:600px){.mode-banner{flex-wrap:wrap}.mode-banner #admin-session-action{white-space:normal;max-width:100%;margin-left:32px}.admin-access-dialog{padding:20px}}
