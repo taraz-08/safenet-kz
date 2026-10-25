@@ -1,0 +1,14 @@
+export const demoItems = [
+  {platform:'instagram',author:'@demo.lucky_shym',text:'Розыгрыш iPhone 16! Купи номер за 2000 тг, всего 100 слотов. Оплата переводом на Kaspi. Победителя выберет рандомайзер в прямом эфире. Успей сегодня!',url:'https://www.instagram.com/demo.lucky_shym/'},
+  {platform:'telegram',author:'@demo_qaz_invest',text:'5000 теңге сал да, 10000 теңге ал! Күніне 30% табыс, кепілді пайда. Екі досыңды шақыр, әр адам үшін бонус. Kaspi арқылы аударым жаса. Тек бүгін, 3 орын қалды!',url:'https://t.me/demo_qaz_invest'},
+  {platform:'tiktok',author:'@demo.stream_win',text:'Мой выигрыш за вечер — 450 000! Играй в казино, крути слоты. Промокод START, бонус на первый депозит 200%. Переходи по ссылке https://play-demo.example/?ref=demo42',url:'https://www.tiktok.com/@demo.stream_win'},
+  {platform:'whatsapp',author:'Синтетическая группа «Табыс»',text:'Вложи 10000 тг и получи 20000 тг завтра. Гарантированный доход без риска. Пригласи двух друзей и получи бонус. Переводи на личную карту Kaspi, осталось 3 места.'},
+  {platform:'instagram',author:'@demo.cafe_shym',text:'Дарим кофе двум подписчикам! Участие бесплатно, покупать ничего не нужно. Отметьте друга в комментариях. Победителя выберем случайно в пятницу.',url:'https://www.instagram.com/demo.cafe_shym/'},
+  {platform:'telegram',author:'@demo_cybersafety',text:'Осторожно, мошенники обещают гарантированный доход и просят перевести деньги на карту. Никогда не сообщайте код из SMS и не отправляйте деньги незнакомым людям.',url:'https://t.me/demo_cybersafety'},
+  {platform:'tiktok',author:'@demo.bonus_live',text:'Казино в прямом эфире! Пополни депозит, введи промокод WIN и получи бонус. Ссылка в профиле https://play-demo.example/?ref=demo42',url:'https://www.tiktok.com/@demo.bonus_live'},
+  {platform:'whatsapp',author:'Синтетическое сообщение «Поддержка»',text:'Ваш аккаунт Kaspi заблокирован. Срочно отправьте код из SMS и данные карты для подтверждения личности. Перейдите https://kaspi-security.example/verify'},
+  {platform:'instagram',author:'@demo.giveaway_kz',text:'Ақылы ұтыс! Билет бағасы 3000 теңге. Kaspi арқылы төлем жаса. Жеңімпазды рандомайзер таңдайды. Бүгін соңғы күн!',url:'https://www.instagram.com/demo.giveaway_kz/'},
+  {platform:'telegram',author:'@demo_jobs',text:'Ищем дизайнера в команду. Оплата по договору, портфолио отправляйте на почту. Вступительных взносов нет.',url:'https://t.me/demo_jobs'},
+  {platform:'instagram',author:'@demo.money_club',text:'Закрытый инвестиционный клуб. Гарантированная прибыль 40% в день, без риска. Вступительный взнос 15000 тг. Приглашай друзей и получай реферальный бонус.',url:'https://www.instagram.com/demo.money_club/'},
+  {platform:'telegram',author:'@demo_bookclub',text:'Кітап клубына қош келдіңіз! Сенбі күні кітапханада тегін кездесу өткіземіз. Өз сүйікті кітабыңызды алып келіңіз.',url:'https://t.me/demo_bookclub'},
+];

@@ -1,0 +1,1496 @@
+{
+  "name": "SafeNet KZ evaluation",
+  "generatedAt": "2026-10-25T13:28:05.559Z",
+  "threshold": 30,
+  "engineSha256": "9c972364c6ce4577d7b1c09f58d6608eca6e762c5955f0eb7e50729a11318127",
+  "disclaimer": "Синтетические данные. Метрики описывают поведение правил на этих наборах и не равны точности на реальном потоке соцсетей.",
+  "dev": {
+    "name": "SafeNet KZ synthetic development set v2",
+    "provenance": {
+      "type": "synthetic",
+      "description": "Development set: v1 examples plus v2 additions written together with rules v5 (hackathon tracks 1–3, masking, news context). Used for tuning only; held-out evaluation uses data/test-set.json.",
+      "split": "development-independent examples; not an external or statistically independent benchmark",
+      "labelPolicy": "Risk means a human should review promotion of paid lottery, gambling, recruitment-linked investment, or requests for credentials. It is not a legal finding of fraud.",
+      "languages": [
+        "kk",
+        "ru",
+        "mixed",
+        "transliterated",
+        "en"
+      ],
+      "limitations": "Same author as rule engine; synthetic phrasing and class balance may inflate measured performance. Never present results as real-world accuracy. Cases are retained even when misclassified."
+    },
+    "sha256": "5e98eacbf12472fc45539c0ab68fe7324e812345a6e93500ad567bfd8121cc68",
+    "total": 115,
+    "confusionMatrix": {
+      "tp": 70,
+      "fp": 0,
+      "tn": 45,
+      "fn": 0
+    },
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "falsePositiveRate": 0,
+    "accuracy": 1,
+    "categoryAccuracy": 1,
+    "categoryConfusionMatrix": {
+      "none": {
+        "none": 45,
+        "lottery": 0,
+        "casino": 0,
+        "pyramid": 0,
+        "phishing": 0
+      },
+      "lottery": {
+        "none": 0,
+        "lottery": 20,
+        "casino": 0,
+        "pyramid": 0,
+        "phishing": 0
+      },
+      "casino": {
+        "none": 0,
+        "lottery": 0,
+        "casino": 20,
+        "pyramid": 0,
+        "phishing": 0
+      },
+      "pyramid": {
+        "none": 0,
+        "lottery": 0,
+        "casino": 0,
+        "pyramid": 20,
+        "phishing": 0
+      },
+      "phishing": {
+        "none": 0,
+        "lottery": 0,
+        "casino": 0,
+        "pyramid": 0,
+        "phishing": 10
+      }
+    },
+    "perCategory": {
+      "none": {
+        "support": 45,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "lottery": {
+        "support": 20,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "casino": {
+        "support": 20,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "pyramid": {
+        "support": 20,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "phishing": {
+        "support": 10,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      }
+    },
+    "levels": {
+      "low": {
+        "total": 45,
+        "risky": 0,
+        "share": 0
+      },
+      "medium": {
+        "total": 7,
+        "risky": 7,
+        "share": 1
+      },
+      "high": {
+        "total": 63,
+        "risky": 63,
+        "share": 1
+      }
+    },
+    "byLanguage": {},
+    "byModality": {},
+    "byDifficulty": {},
+    "hardNegatives": {},
+    "thresholdCurve": [
+      {
+        "threshold": 10,
+        "precision": 0.933333,
+        "recall": 1,
+        "falsePositiveRate": 0.111111,
+        "f1": 0.965517
+      },
+      {
+        "threshold": 20,
+        "precision": 1,
+        "recall": 1,
+        "falsePositiveRate": 0,
+        "f1": 1
+      },
+      {
+        "threshold": 25,
+        "precision": 1,
+        "recall": 1,
+        "falsePositiveRate": 0,
+        "f1": 1
+      },
+      {
+        "threshold": 30,
+        "precision": 1,
+        "recall": 1,
+        "falsePositiveRate": 0,
+        "f1": 1
+      },
+      {
+        "threshold": 40,
+        "precision": 1,
+        "recall": 0.985714,
+        "falsePositiveRate": 0,
+        "f1": 0.992806
+      },
+      {
+        "threshold": 50,
+        "precision": 1,
+        "recall": 0.942857,
+        "falsePositiveRate": 0,
+        "f1": 0.970588
+      },
+      {
+        "threshold": 60,
+        "precision": 1,
+        "recall": 0.9,
+        "falsePositiveRate": 0,
+        "f1": 0.947368
+      },
+      {
+        "threshold": 70,
+        "precision": 1,
+        "recall": 0.714286,
+        "falsePositiveRate": 0,
+        "f1": 0.833333
+      }
+    ],
+    "bands": {
+      "rules": {
+        "flagged": 70,
+        "precision": 1,
+        "holdoutFlagged": 33,
+        "holdoutPrecision": 1
+      },
+      "model": {
+        "flagged": 0,
+        "precision": null,
+        "holdoutFlagged": 0,
+        "holdoutPrecision": null
+      }
+    },
+    "splits": {
+      "validation": {
+        "total": 56,
+        "confusionMatrix": {
+          "tp": 37,
+          "fp": 0,
+          "tn": 19,
+          "fn": 0
+        },
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "falsePositiveRate": 0,
+        "accuracy": 1,
+        "categoryAccuracy": 1
+      },
+      "holdout": {
+        "total": 59,
+        "confusionMatrix": {
+          "tp": 33,
+          "fp": 0,
+          "tn": 26,
+          "fn": 0
+        },
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "falsePositiveRate": 0,
+        "accuracy": 1,
+        "categoryAccuracy": 1
+      }
+    },
+    "holdoutBreakdown": {
+      "perCategory": {
+        "none": {
+          "support": 26,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1
+        },
+        "lottery": {
+          "support": 9,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1
+        },
+        "casino": {
+          "support": 9,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1
+        },
+        "pyramid": {
+          "support": 9,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1
+        },
+        "phishing": {
+          "support": 6,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1
+        }
+      },
+      "byLanguage": {},
+      "byModality": {},
+      "hardNegatives": {},
+      "thresholdCurve": [
+        {
+          "threshold": 10,
+          "precision": 0.916667,
+          "recall": 1,
+          "falsePositiveRate": 0.115385,
+          "f1": 0.956522
+        },
+        {
+          "threshold": 20,
+          "precision": 1,
+          "recall": 1,
+          "falsePositiveRate": 0,
+          "f1": 1
+        },
+        {
+          "threshold": 25,
+          "precision": 1,
+          "recall": 1,
+          "falsePositiveRate": 0,
+          "f1": 1
+        },
+        {
+          "threshold": 30,
+          "precision": 1,
+          "recall": 1,
+          "falsePositiveRate": 0,
+          "f1": 1
+        },
+        {
+          "threshold": 40,
+          "precision": 1,
+          "recall": 0.969697,
+          "falsePositiveRate": 0,
+          "f1": 0.984615
+        },
+        {
+          "threshold": 50,
+          "precision": 1,
+          "recall": 0.909091,
+          "falsePositiveRate": 0,
+          "f1": 0.952381
+        },
+        {
+          "threshold": 60,
+          "precision": 1,
+          "recall": 0.878788,
+          "falsePositiveRate": 0,
+          "f1": 0.935484
+        },
+        {
+          "threshold": 70,
+          "precision": 1,
+          "recall": 0.636364,
+          "falsePositiveRate": 0,
+          "f1": 0.777778
+        }
+      ]
+    },
+    "errors": []
+  },
+  "test": {
+    "name": "SafeNet KZ blind held-out test set v1",
+    "provenance": {
+      "type": "synthetic",
+      "author": "independent agent without access to detector rules",
+      "createdAt": "2026-10-25",
+      "labelPolicy": "expectedRisk=true means a human analyst SHOULD review the item because it promotes or organizes one of the three schemes (offer, invitation, recruitment, native promotion); category = track (lottery: paid participation in a draw with random winner selection and organizer income; casino: direct or hidden online-casino promotion via referral/tracking links, promo codes, mirrors, shorteners, proxy channels, native 'my win' content, streams, emoji/leetspeak masking; pyramid: investment demands with unrealistic/guaranteed returns, urgency, referral rewards, payout 'proof', curator structure). expectedRisk=false with category 'none' covers everything else: free contests (subscribe/like/repost, no payment); legal ads (bank deposits ~14-17%/year, store discount promo codes, licensed state lottery news); news, police/agency reports and awareness posts that describe or quote schemes in order to warn; charity fundraising to a card for a named cause without promised returns; ordinary video-game streams without gambling links; job ads; financial-literacy education; draws among buyers of a normal product at no extra charge. Paying specifically for a ticket/number/slot/entry to a draw is lottery risk even if the prize is small, including when framed as charity or as a worthless 'product'. Genuinely ambiguous items were excluded.",
+      "limitations": "Fully synthetic texts written by a single LLM author; labels were assigned by that same author with no second annotator and no inter-annotator agreement measured. The author did not see the detector, but shares general knowledge of scheme vocabulary with whoever wrote the rules, so lexical overlap is plausible and real-world performance may be lower. Class balance (165 positive / 165 negative) is artificial; real feeds have far lower prevalence, so precision on live data will be lower than on this set. Kazakh, code-mixed and transliterated texts are not native-speaker verified and may contain unnatural phrasing; real slang evolves quickly. Screenshots, images and streams are represented only as idealized OCR/transcript text (no OCR noise model, no audio errors). Hard negatives were deliberately constructed to share surface words with scams, so the false-positive rate here is a stress test, not an estimate of production FPR. All brands, people, phone numbers, cards and domains are fictional placeholders (.example domains, +7 700 000 XX XX numbers, masked cards), which may make some cues easier or harder than in real data. Small per-cell counts (e.g. per language x category) give wide confidence intervals."
+    },
+    "sha256": "4c8c67cc69a17d0959f50107e9c2c2a06013c9e20f5f4a1a6dce0d20342ffb35",
+    "total": 330,
+    "confusionMatrix": {
+      "tp": 144,
+      "fp": 10,
+      "tn": 155,
+      "fn": 21
+    },
+    "precision": 0.935065,
+    "recall": 0.872727,
+    "f1": 0.902821,
+    "falsePositiveRate": 0.060606,
+    "accuracy": 0.906061,
+    "categoryAccuracy": 0.90303,
+    "categoryConfusionMatrix": {
+      "none": {
+        "none": 155,
+        "lottery": 4,
+        "casino": 3,
+        "pyramid": 3,
+        "phishing": 0
+      },
+      "lottery": {
+        "none": 6,
+        "lottery": 49,
+        "casino": 0,
+        "pyramid": 0,
+        "phishing": 0
+      },
+      "casino": {
+        "none": 4,
+        "lottery": 0,
+        "casino": 51,
+        "pyramid": 0,
+        "phishing": 0
+      },
+      "pyramid": {
+        "none": 11,
+        "lottery": 1,
+        "casino": 0,
+        "pyramid": 43,
+        "phishing": 0
+      },
+      "phishing": {
+        "none": 0,
+        "lottery": 0,
+        "casino": 0,
+        "pyramid": 0,
+        "phishing": 0
+      }
+    },
+    "perCategory": {
+      "none": {
+        "support": 165,
+        "precision": 0.880682,
+        "recall": 0.939394,
+        "f1": 0.909091
+      },
+      "lottery": {
+        "support": 55,
+        "precision": 0.907407,
+        "recall": 0.890909,
+        "f1": 0.899083
+      },
+      "casino": {
+        "support": 55,
+        "precision": 0.944444,
+        "recall": 0.927273,
+        "f1": 0.93578
+      },
+      "pyramid": {
+        "support": 55,
+        "precision": 0.934783,
+        "recall": 0.781818,
+        "f1": 0.851485
+      }
+    },
+    "levels": {
+      "low": {
+        "total": 176,
+        "risky": 21,
+        "share": 0.119318
+      },
+      "medium": {
+        "total": 68,
+        "risky": 60,
+        "share": 0.882353
+      },
+      "high": {
+        "total": 86,
+        "risky": 84,
+        "share": 0.976744
+      }
+    },
+    "byLanguage": {
+      "kk": {
+        "total": 80,
+        "confusionMatrix": {
+          "tp": 35,
+          "fp": 3,
+          "tn": 39,
+          "fn": 3
+        },
+        "precision": 0.921053,
+        "recall": 0.921053,
+        "f1": 0.921053,
+        "falsePositiveRate": 0.071429,
+        "accuracy": 0.925,
+        "categoryAccuracy": 0.925
+      },
+      "mixed": {
+        "total": 50,
+        "confusionMatrix": {
+          "tp": 31,
+          "fp": 3,
+          "tn": 13,
+          "fn": 3
+        },
+        "precision": 0.911765,
+        "recall": 0.911765,
+        "f1": 0.911765,
+        "falsePositiveRate": 0.1875,
+        "accuracy": 0.88,
+        "categoryAccuracy": 0.86
+      },
+      "ru": {
+        "total": 161,
+        "confusionMatrix": {
+          "tp": 58,
+          "fp": 2,
+          "tn": 92,
+          "fn": 9
+        },
+        "precision": 0.966667,
+        "recall": 0.865672,
+        "f1": 0.913386,
+        "falsePositiveRate": 0.021277,
+        "accuracy": 0.931677,
+        "categoryAccuracy": 0.931677
+      },
+      "translit": {
+        "total": 39,
+        "confusionMatrix": {
+          "tp": 20,
+          "fp": 2,
+          "tn": 11,
+          "fn": 6
+        },
+        "precision": 0.909091,
+        "recall": 0.769231,
+        "f1": 0.833333,
+        "falsePositiveRate": 0.153846,
+        "accuracy": 0.794872,
+        "categoryAccuracy": 0.794872
+      }
+    },
+    "byModality": {
+      "bio": {
+        "total": 7,
+        "confusionMatrix": {
+          "tp": 6,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1
+        },
+        "precision": 1,
+        "recall": 0.857143,
+        "f1": 0.923077,
+        "falsePositiveRate": null,
+        "accuracy": 0.857143,
+        "categoryAccuracy": 0.857143
+      },
+      "chat_message": {
+        "total": 24,
+        "confusionMatrix": {
+          "tp": 21,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3
+        },
+        "precision": 1,
+        "recall": 0.875,
+        "f1": 0.933333,
+        "falsePositiveRate": null,
+        "accuracy": 0.875,
+        "categoryAccuracy": 0.875
+      },
+      "comment": {
+        "total": 27,
+        "confusionMatrix": {
+          "tp": 16,
+          "fp": 0,
+          "tn": 9,
+          "fn": 2
+        },
+        "precision": 1,
+        "recall": 0.888889,
+        "f1": 0.941176,
+        "falsePositiveRate": 0,
+        "accuracy": 0.925926,
+        "categoryAccuracy": 0.925926
+      },
+      "post": {
+        "total": 222,
+        "confusionMatrix": {
+          "tp": 74,
+          "fp": 7,
+          "tn": 129,
+          "fn": 12
+        },
+        "precision": 0.91358,
+        "recall": 0.860465,
+        "f1": 0.886228,
+        "falsePositiveRate": 0.051471,
+        "accuracy": 0.914414,
+        "categoryAccuracy": 0.90991
+      },
+      "screenshot_ocr": {
+        "total": 12,
+        "confusionMatrix": {
+          "tp": 12,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0
+        },
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "falsePositiveRate": null,
+        "accuracy": 1,
+        "categoryAccuracy": 1
+      },
+      "story": {
+        "total": 12,
+        "confusionMatrix": {
+          "tp": 8,
+          "fp": 1,
+          "tn": 3,
+          "fn": 0
+        },
+        "precision": 0.888889,
+        "recall": 1,
+        "f1": 0.941176,
+        "falsePositiveRate": 0.25,
+        "accuracy": 0.916667,
+        "categoryAccuracy": 0.916667
+      },
+      "stream_transcript": {
+        "total": 26,
+        "confusionMatrix": {
+          "tp": 7,
+          "fp": 2,
+          "tn": 14,
+          "fn": 3
+        },
+        "precision": 0.777778,
+        "recall": 0.7,
+        "f1": 0.736842,
+        "falsePositiveRate": 0.125,
+        "accuracy": 0.807692,
+        "categoryAccuracy": 0.807692
+      }
+    },
+    "byDifficulty": {
+      "easy": {
+        "total": 100,
+        "confusionMatrix": {
+          "tp": 47,
+          "fp": 1,
+          "tn": 50,
+          "fn": 2
+        },
+        "precision": 0.979167,
+        "recall": 0.959184,
+        "f1": 0.969072,
+        "falsePositiveRate": 0.019608,
+        "accuracy": 0.97,
+        "categoryAccuracy": 0.96
+      },
+      "hard": {
+        "total": 104,
+        "confusionMatrix": {
+          "tp": 32,
+          "fp": 8,
+          "tn": 54,
+          "fn": 10
+        },
+        "precision": 0.8,
+        "recall": 0.761905,
+        "f1": 0.780488,
+        "falsePositiveRate": 0.129032,
+        "accuracy": 0.826923,
+        "categoryAccuracy": 0.826923
+      },
+      "medium": {
+        "total": 126,
+        "confusionMatrix": {
+          "tp": 65,
+          "fp": 1,
+          "tn": 51,
+          "fn": 9
+        },
+        "precision": 0.984848,
+        "recall": 0.878378,
+        "f1": 0.928571,
+        "falsePositiveRate": 0.019231,
+        "accuracy": 0.920635,
+        "categoryAccuracy": 0.920635
+      }
+    },
+    "hardNegatives": {
+      "charity": {
+        "total": 15,
+        "falsePositives": 0,
+        "falsePositiveRate": 0
+      },
+      "education": {
+        "total": 10,
+        "falsePositives": 0,
+        "falsePositiveRate": 0
+      },
+      "free_giveaway": {
+        "total": 35,
+        "falsePositives": 3,
+        "falsePositiveRate": 0.085714
+      },
+      "gaming_stream": {
+        "total": 15,
+        "falsePositives": 0,
+        "falsePositiveRate": 0
+      },
+      "job": {
+        "total": 5,
+        "falsePositives": 0,
+        "falsePositiveRate": 0
+      },
+      "legal_ad": {
+        "total": 25,
+        "falsePositives": 2,
+        "falsePositiveRate": 0.08
+      },
+      "news_warning": {
+        "total": 35,
+        "falsePositives": 4,
+        "falsePositiveRate": 0.114286
+      },
+      "ordinary": {
+        "total": 15,
+        "falsePositives": 0,
+        "falsePositiveRate": 0
+      },
+      "product_draw": {
+        "total": 10,
+        "falsePositives": 1,
+        "falsePositiveRate": 0.1
+      }
+    },
+    "thresholdCurve": [
+      {
+        "threshold": 10,
+        "precision": 0.868263,
+        "recall": 0.878788,
+        "falsePositiveRate": 0.133333,
+        "f1": 0.873494
+      },
+      {
+        "threshold": 20,
+        "precision": 0.935065,
+        "recall": 0.872727,
+        "falsePositiveRate": 0.060606,
+        "f1": 0.902821
+      },
+      {
+        "threshold": 25,
+        "precision": 0.935065,
+        "recall": 0.872727,
+        "falsePositiveRate": 0.060606,
+        "f1": 0.902821
+      },
+      {
+        "threshold": 30,
+        "precision": 0.935065,
+        "recall": 0.872727,
+        "falsePositiveRate": 0.060606,
+        "f1": 0.902821
+      },
+      {
+        "threshold": 40,
+        "precision": 0.968254,
+        "recall": 0.739394,
+        "falsePositiveRate": 0.024242,
+        "f1": 0.838488
+      },
+      {
+        "threshold": 50,
+        "precision": 0.980392,
+        "recall": 0.606061,
+        "falsePositiveRate": 0.012121,
+        "f1": 0.749064
+      },
+      {
+        "threshold": 60,
+        "precision": 0.976744,
+        "recall": 0.509091,
+        "falsePositiveRate": 0.012121,
+        "f1": 0.669323
+      },
+      {
+        "threshold": 70,
+        "precision": 0.982143,
+        "recall": 0.333333,
+        "falsePositiveRate": 0.006061,
+        "f1": 0.497738
+      }
+    ],
+    "bands": {
+      "rules": {
+        "flagged": 123,
+        "precision": 0.96748,
+        "holdoutFlagged": 42,
+        "holdoutPrecision": 0.904762
+      },
+      "model": {
+        "flagged": 31,
+        "precision": 0.806452,
+        "holdoutFlagged": 27,
+        "holdoutPrecision": 0.777778
+      }
+    },
+    "splits": {
+      "validation": {
+        "total": 170,
+        "confusionMatrix": {
+          "tp": 85,
+          "fp": 0,
+          "tn": 84,
+          "fn": 1
+        },
+        "precision": 1,
+        "recall": 0.988372,
+        "f1": 0.994152,
+        "falsePositiveRate": 0,
+        "accuracy": 0.994118,
+        "categoryAccuracy": 0.994118
+      },
+      "holdout": {
+        "total": 160,
+        "confusionMatrix": {
+          "tp": 59,
+          "fp": 10,
+          "tn": 71,
+          "fn": 20
+        },
+        "precision": 0.855072,
+        "recall": 0.746835,
+        "f1": 0.797297,
+        "falsePositiveRate": 0.123457,
+        "accuracy": 0.8125,
+        "categoryAccuracy": 0.80625
+      }
+    },
+    "holdoutBreakdown": {
+      "perCategory": {
+        "none": {
+          "support": 81,
+          "precision": 0.78022,
+          "recall": 0.876543,
+          "f1": 0.825581
+        },
+        "lottery": {
+          "support": 26,
+          "precision": 0.807692,
+          "recall": 0.807692,
+          "f1": 0.807692
+        },
+        "casino": {
+          "support": 27,
+          "precision": 0.884615,
+          "recall": 0.851852,
+          "f1": 0.867925
+        },
+        "pyramid": {
+          "support": 26,
+          "precision": 0.823529,
+          "recall": 0.538462,
+          "f1": 0.651163
+        }
+      },
+      "byLanguage": {
+        "kk": {
+          "total": 34,
+          "confusionMatrix": {
+            "tp": 9,
+            "fp": 3,
+            "tn": 19,
+            "fn": 3
+          },
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75,
+          "falsePositiveRate": 0.136364,
+          "accuracy": 0.823529,
+          "categoryAccuracy": 0.823529
+        },
+        "mixed": {
+          "total": 25,
+          "confusionMatrix": {
+            "tp": 13,
+            "fp": 3,
+            "tn": 6,
+            "fn": 3
+          },
+          "precision": 0.8125,
+          "recall": 0.8125,
+          "f1": 0.8125,
+          "falsePositiveRate": 0.333333,
+          "accuracy": 0.76,
+          "categoryAccuracy": 0.72
+        },
+        "ru": {
+          "total": 79,
+          "confusionMatrix": {
+            "tp": 30,
+            "fp": 2,
+            "tn": 39,
+            "fn": 8
+          },
+          "precision": 0.9375,
+          "recall": 0.789474,
+          "f1": 0.857143,
+          "falsePositiveRate": 0.04878,
+          "accuracy": 0.873418,
+          "categoryAccuracy": 0.873418
+        },
+        "translit": {
+          "total": 22,
+          "confusionMatrix": {
+            "tp": 7,
+            "fp": 2,
+            "tn": 7,
+            "fn": 6
+          },
+          "precision": 0.777778,
+          "recall": 0.538462,
+          "f1": 0.636364,
+          "falsePositiveRate": 0.222222,
+          "accuracy": 0.636364,
+          "categoryAccuracy": 0.636364
+        }
+      },
+      "byModality": {
+        "bio": {
+          "total": 5,
+          "confusionMatrix": {
+            "tp": 4,
+            "fp": 0,
+            "tn": 0,
+            "fn": 1
+          },
+          "precision": 1,
+          "recall": 0.8,
+          "f1": 0.888889,
+          "falsePositiveRate": null,
+          "accuracy": 0.8,
+          "categoryAccuracy": 0.8
+        },
+        "chat_message": {
+          "total": 12,
+          "confusionMatrix": {
+            "tp": 9,
+            "fp": 0,
+            "tn": 0,
+            "fn": 3
+          },
+          "precision": 1,
+          "recall": 0.75,
+          "f1": 0.857143,
+          "falsePositiveRate": null,
+          "accuracy": 0.75,
+          "categoryAccuracy": 0.75
+        },
+        "comment": {
+          "total": 13,
+          "confusionMatrix": {
+            "tp": 7,
+            "fp": 0,
+            "tn": 4,
+            "fn": 2
+          },
+          "precision": 1,
+          "recall": 0.777778,
+          "f1": 0.875,
+          "falsePositiveRate": 0,
+          "accuracy": 0.846154,
+          "categoryAccuracy": 0.846154
+        },
+        "post": {
+          "total": 103,
+          "confusionMatrix": {
+            "tp": 30,
+            "fp": 7,
+            "tn": 55,
+            "fn": 11
+          },
+          "precision": 0.810811,
+          "recall": 0.731707,
+          "f1": 0.769231,
+          "falsePositiveRate": 0.112903,
+          "accuracy": 0.825243,
+          "categoryAccuracy": 0.815534
+        },
+        "screenshot_ocr": {
+          "total": 5,
+          "confusionMatrix": {
+            "tp": 5,
+            "fp": 0,
+            "tn": 0,
+            "fn": 0
+          },
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "falsePositiveRate": null,
+          "accuracy": 1,
+          "categoryAccuracy": 1
+        },
+        "story": {
+          "total": 4,
+          "confusionMatrix": {
+            "tp": 1,
+            "fp": 1,
+            "tn": 2,
+            "fn": 0
+          },
+          "precision": 0.5,
+          "recall": 1,
+          "f1": 0.666667,
+          "falsePositiveRate": 0.333333,
+          "accuracy": 0.75,
+          "categoryAccuracy": 0.75
+        },
+        "stream_transcript": {
+          "total": 18,
+          "confusionMatrix": {
+            "tp": 3,
+            "fp": 2,
+            "tn": 10,
+            "fn": 3
+          },
+          "precision": 0.6,
+          "recall": 0.5,
+          "f1": 0.545455,
+          "falsePositiveRate": 0.166667,
+          "accuracy": 0.722222,
+          "categoryAccuracy": 0.722222
+        }
+      },
+      "hardNegatives": {
+        "charity": {
+          "total": 8,
+          "falsePositives": 0,
+          "falsePositiveRate": 0
+        },
+        "education": {
+          "total": 5,
+          "falsePositives": 0,
+          "falsePositiveRate": 0
+        },
+        "free_giveaway": {
+          "total": 24,
+          "falsePositives": 3,
+          "falsePositiveRate": 0.125
+        },
+        "gaming_stream": {
+          "total": 8,
+          "falsePositives": 0,
+          "falsePositiveRate": 0
+        },
+        "job": {
+          "total": 1,
+          "falsePositives": 0,
+          "falsePositiveRate": 0
+        },
+        "legal_ad": {
+          "total": 10,
+          "falsePositives": 2,
+          "falsePositiveRate": 0.2
+        },
+        "news_warning": {
+          "total": 13,
+          "falsePositives": 4,
+          "falsePositiveRate": 0.307692
+        },
+        "ordinary": {
+          "total": 7,
+          "falsePositives": 0,
+          "falsePositiveRate": 0
+        },
+        "product_draw": {
+          "total": 5,
+          "falsePositives": 1,
+          "falsePositiveRate": 0.2
+        }
+      },
+      "thresholdCurve": [
+        {
+          "threshold": 10,
+          "precision": 0.810811,
+          "recall": 0.759494,
+          "falsePositiveRate": 0.17284,
+          "f1": 0.784314
+        },
+        {
+          "threshold": 20,
+          "precision": 0.855072,
+          "recall": 0.746835,
+          "falsePositiveRate": 0.123457,
+          "f1": 0.797297
+        },
+        {
+          "threshold": 25,
+          "precision": 0.855072,
+          "recall": 0.746835,
+          "falsePositiveRate": 0.123457,
+          "f1": 0.797297
+        },
+        {
+          "threshold": 30,
+          "precision": 0.855072,
+          "recall": 0.746835,
+          "falsePositiveRate": 0.123457,
+          "f1": 0.797297
+        },
+        {
+          "threshold": 40,
+          "precision": 0.913043,
+          "recall": 0.531646,
+          "falsePositiveRate": 0.049383,
+          "f1": 0.672
+        },
+        {
+          "threshold": 50,
+          "precision": 0.944444,
+          "recall": 0.43038,
+          "falsePositiveRate": 0.024691,
+          "f1": 0.591304
+        },
+        {
+          "threshold": 60,
+          "precision": 0.931034,
+          "recall": 0.341772,
+          "falsePositiveRate": 0.024691,
+          "f1": 0.5
+        },
+        {
+          "threshold": 70,
+          "precision": 0.947368,
+          "recall": 0.227848,
+          "falsePositiveRate": 0.012346,
+          "f1": 0.367347
+        }
+      ]
+    },
+    "validationErrors": [
+      {
+        "id": "TL-011",
+        "expectedCategory": "lottery",
+        "predictedCategory": "none",
+        "expectedRisk": true,
+        "predictedRisk": false,
+        "score": 9,
+        "level": "low",
+        "band": "rules",
+        "language": "ru",
+        "modality": "post",
+        "hardNegative": null,
+        "difficulty": "hard",
+        "split": "validation"
+      }
+    ]
+  },
+  "rulesOnly": {
+    "dev": {
+      "total": 115,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "falsePositiveRate": 0,
+      "categoryAccuracy": 1,
+      "confusionMatrix": {
+        "tp": 70,
+        "fp": 0,
+        "tn": 45,
+        "fn": 0
+      },
+      "splits": {
+        "validation": {
+          "total": 56,
+          "confusionMatrix": {
+            "tp": 37,
+            "fp": 0,
+            "tn": 19,
+            "fn": 0
+          },
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "falsePositiveRate": 0,
+          "accuracy": 1,
+          "categoryAccuracy": 1
+        },
+        "holdout": {
+          "total": 59,
+          "confusionMatrix": {
+            "tp": 33,
+            "fp": 0,
+            "tn": 26,
+            "fn": 0
+          },
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "falsePositiveRate": 0,
+          "accuracy": 1,
+          "categoryAccuracy": 1
+        }
+      }
+    },
+    "test": {
+      "total": 330,
+      "precision": 0.96748,
+      "recall": 0.721212,
+      "f1": 0.826389,
+      "falsePositiveRate": 0.024242,
+      "categoryAccuracy": 0.845455,
+      "confusionMatrix": {
+        "tp": 119,
+        "fp": 4,
+        "tn": 161,
+        "fn": 46
+      },
+      "splits": {
+        "validation": {
+          "total": 170,
+          "confusionMatrix": {
+            "tp": 81,
+            "fp": 0,
+            "tn": 84,
+            "fn": 5
+          },
+          "precision": 1,
+          "recall": 0.94186,
+          "f1": 0.97006,
+          "falsePositiveRate": 0,
+          "accuracy": 0.970588,
+          "categoryAccuracy": 0.970588
+        },
+        "holdout": {
+          "total": 160,
+          "confusionMatrix": {
+            "tp": 38,
+            "fp": 4,
+            "tn": 77,
+            "fn": 41
+          },
+          "precision": 0.904762,
+          "recall": 0.481013,
+          "f1": 0.628099,
+          "falsePositiveRate": 0.049383,
+          "accuracy": 0.71875,
+          "categoryAccuracy": 0.7125
+        }
+      }
+    }
+  },
+  "blindFirstRun": {
+    "total": 330,
+    "precision": 0.8696,
+    "recall": 0.3636,
+    "f1": 0.5128,
+    "falsePositiveRate": 0.0545
+  },
+  "model": {
+    "hybridThreshold": 0.5,
+    "meta": {
+      "trainedAt": "2026-10-24T21:42:50.026Z",
+      "examples": 445,
+      "perClass": {
+        "none": 207,
+        "lottery": 74,
+        "casino": 91,
+        "pyramid": 73
+      },
+      "sources": [
+        "data/evaluation.json (dev, без фишинга)",
+        "data/test-set.json — только половина validation",
+        "data/stream/corpus.json (демо-поток)"
+      ],
+      "excluded": "Половина holdout слепой выборки в обучение не входит и используется только для итоговой оценки.",
+      "crossValidation": {
+        "folds": 5,
+        "rulesOnly": {
+          "tp": 221,
+          "fp": 3,
+          "tn": 204,
+          "fn": 17,
+          "precision": 0.9866071428571429,
+          "recall": 0.9285714285714286,
+          "f1": 0.9567099567099567
+        },
+        "modelOutOfFoldCategoryAccuracy": 0.8472,
+        "curve": [
+          {
+            "tau": 0.5,
+            "hybrid": {
+              "tp": 226,
+              "fp": 11,
+              "tn": 196,
+              "fn": 12,
+              "precision": 0.9535864978902954,
+              "recall": 0.9495798319327731,
+              "f1": 0.9515789473684211
+            },
+            "model": {
+              "tp": 176,
+              "fp": 9,
+              "tn": 198,
+              "fn": 62,
+              "precision": 0.9513513513513514,
+              "recall": 0.7394957983193278,
+              "f1": 0.8321513002364066
+            }
+          },
+          {
+            "tau": 0.55,
+            "hybrid": {
+              "tp": 223,
+              "fp": 9,
+              "tn": 198,
+              "fn": 15,
+              "precision": 0.9612068965517241,
+              "recall": 0.9369747899159664,
+              "f1": 0.948936170212766
+            },
+            "model": {
+              "tp": 163,
+              "fp": 7,
+              "tn": 200,
+              "fn": 75,
+              "precision": 0.9588235294117647,
+              "recall": 0.6848739495798319,
+              "f1": 0.7990196078431374
+            }
+          },
+          {
+            "tau": 0.6,
+            "hybrid": {
+              "tp": 223,
+              "fp": 9,
+              "tn": 198,
+              "fn": 15,
+              "precision": 0.9612068965517241,
+              "recall": 0.9369747899159664,
+              "f1": 0.948936170212766
+            },
+            "model": {
+              "tp": 154,
+              "fp": 7,
+              "tn": 200,
+              "fn": 84,
+              "precision": 0.9565217391304348,
+              "recall": 0.6470588235294118,
+              "f1": 0.7719298245614036
+            }
+          },
+          {
+            "tau": 0.65,
+            "hybrid": {
+              "tp": 223,
+              "fp": 8,
+              "tn": 199,
+              "fn": 15,
+              "precision": 0.9653679653679653,
+              "recall": 0.9369747899159664,
+              "f1": 0.950959488272921
+            },
+            "model": {
+              "tp": 143,
+              "fp": 5,
+              "tn": 202,
+              "fn": 95,
+              "precision": 0.9662162162162162,
+              "recall": 0.6008403361344538,
+              "f1": 0.7409326424870465
+            }
+          },
+          {
+            "tau": 0.7,
+            "hybrid": {
+              "tp": 222,
+              "fp": 8,
+              "tn": 199,
+              "fn": 16,
+              "precision": 0.9652173913043478,
+              "recall": 0.9327731092436975,
+              "f1": 0.9487179487179487
+            },
+            "model": {
+              "tp": 125,
+              "fp": 5,
+              "tn": 202,
+              "fn": 113,
+              "precision": 0.9615384615384616,
+              "recall": 0.5252100840336135,
+              "f1": 0.6793478260869564
+            }
+          },
+          {
+            "tau": 0.75,
+            "hybrid": {
+              "tp": 222,
+              "fp": 8,
+              "tn": 199,
+              "fn": 16,
+              "precision": 0.9652173913043478,
+              "recall": 0.9327731092436975,
+              "f1": 0.9487179487179487
+            },
+            "model": {
+              "tp": 110,
+              "fp": 5,
+              "tn": 202,
+              "fn": 128,
+              "precision": 0.9565217391304348,
+              "recall": 0.46218487394957986,
+              "f1": 0.6232294617563741
+            }
+          },
+          {
+            "tau": 0.8,
+            "hybrid": {
+              "tp": 222,
+              "fp": 7,
+              "tn": 200,
+              "fn": 16,
+              "precision": 0.9694323144104804,
+              "recall": 0.9327731092436975,
+              "f1": 0.9507494646680943
+            },
+            "model": {
+              "tp": 95,
+              "fp": 4,
+              "tn": 203,
+              "fn": 143,
+              "precision": 0.9595959595959596,
+              "recall": 0.39915966386554624,
+              "f1": 0.5637982195845697
+            }
+          },
+          {
+            "tau": 0.85,
+            "hybrid": {
+              "tp": 222,
+              "fp": 5,
+              "tn": 202,
+              "fn": 16,
+              "precision": 0.9779735682819384,
+              "recall": 0.9327731092436975,
+              "f1": 0.9548387096774194
+            },
+            "model": {
+              "tp": 86,
+              "fp": 2,
+              "tn": 205,
+              "fn": 152,
+              "precision": 0.9772727272727273,
+              "recall": 0.36134453781512604,
+              "f1": 0.5276073619631901
+            }
+          },
+          {
+            "tau": 0.9,
+            "hybrid": {
+              "tp": 221,
+              "fp": 3,
+              "tn": 204,
+              "fn": 17,
+              "precision": 0.9866071428571429,
+              "recall": 0.9285714285714286,
+              "f1": 0.9567099567099567
+            },
+            "model": {
+              "tp": 65,
+              "fp": 0,
+              "tn": 207,
+              "fn": 173,
+              "precision": 1,
+              "recall": 0.27310924369747897,
+              "f1": 0.429042904290429
+            }
+          }
+        ],
+        "chosenThreshold": 0.5
+      }
+    }
+  },
+  "benchmark": {
+    "items": 5280,
+    "seconds": 3.39,
+    "itemsPerSecond": 1557,
+    "msPerItem": 0.642,
+    "note": "Один поток Node.js на локальном компьютере: правила + n-граммная модель (без OCR/ASR/ИИ)."
+  },
+  "total": 330,
+  "accuracy": 0.906061,
+  "precision": 0.935065,
+  "recall": 0.872727,
+  "f1": 0.902821,
+  "falsePositiveRate": 0.060606,
+  "confusionMatrix": {
+    "tp": 144,
+    "fp": 10,
+    "tn": 155,
+    "fn": 21
+  },
+  "categoryAccuracy": 0.90303,
+  "perCategory": {
+    "none": {
+      "support": 165,
+      "precision": 0.880682,
+      "recall": 0.939394,
+      "f1": 0.909091
+    },
+    "lottery": {
+      "support": 55,
+      "precision": 0.907407,
+      "recall": 0.890909,
+      "f1": 0.899083
+    },
+    "casino": {
+      "support": 55,
+      "precision": 0.944444,
+      "recall": 0.927273,
+      "f1": 0.93578
+    },
+    "pyramid": {
+      "support": 55,
+      "precision": 0.934783,
+      "recall": 0.781818,
+      "f1": 0.851485
+    }
+  },
+  "provenance": {
+    "type": "synthetic",
+    "author": "independent agent without access to detector rules",
+    "createdAt": "2026-10-25",
+    "labelPolicy": "expectedRisk=true means a human analyst SHOULD review the item because it promotes or organizes one of the three schemes (offer, invitation, recruitment, native promotion); category = track (lottery: paid participation in a draw with random winner selection and organizer income; casino: direct or hidden online-casino promotion via referral/tracking links, promo codes, mirrors, shorteners, proxy channels, native 'my win' content, streams, emoji/leetspeak masking; pyramid: investment demands with unrealistic/guaranteed returns, urgency, referral rewards, payout 'proof', curator structure). expectedRisk=false with category 'none' covers everything else: free contests (subscribe/like/repost, no payment); legal ads (bank deposits ~14-17%/year, store discount promo codes, licensed state lottery news); news, police/agency reports and awareness posts that describe or quote schemes in order to warn; charity fundraising to a card for a named cause without promised returns; ordinary video-game streams without gambling links; job ads; financial-literacy education; draws among buyers of a normal product at no extra charge. Paying specifically for a ticket/number/slot/entry to a draw is lottery risk even if the prize is small, including when framed as charity or as a worthless 'product'. Genuinely ambiguous items were excluded.",
+    "limitations": "Fully synthetic texts written by a single LLM author; labels were assigned by that same author with no second annotator and no inter-annotator agreement measured. The author did not see the detector, but shares general knowledge of scheme vocabulary with whoever wrote the rules, so lexical overlap is plausible and real-world performance may be lower. Class balance (165 positive / 165 negative) is artificial; real feeds have far lower prevalence, so precision on live data will be lower than on this set. Kazakh, code-mixed and transliterated texts are not native-speaker verified and may contain unnatural phrasing; real slang evolves quickly. Screenshots, images and streams are represented only as idealized OCR/transcript text (no OCR noise model, no audio errors). Hard negatives were deliberately constructed to share surface words with scams, so the false-positive rate here is a stress test, not an estimate of production FPR. All brands, people, phone numbers, cards and domains are fictional placeholders (.example domains, +7 700 000 XX XX numbers, masked cards), which may make some cues easier or harder than in real data. Small per-cell counts (e.g. per language x category) give wide confidence intervals."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "SafeNet KZ — тексеріп ал",
+  "version": "4.0.0",
+  "minimum_chrome_version": "116",
+  "description": "Instagram/TikTok мәтіні, Instagram видео/QR/дыбысы. Дайын жергілікті ИИ моделімен кадр мен сөйлеуді талдайды. RU/KK.",
+  "permissions": ["activeTab", "scripting", "storage", "tabCapture", "offscreen"],
+  "host_permissions": ["http://127.0.0.1:4310/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": ["https://www.instagram.com/*", "https://instagram.com/*", "https://www.tiktok.com/*", "https://tiktok.com/*"],
+    "exclude_matches": ["https://www.instagram.com/direct/*", "https://instagram.com/direct/*", "https://www.tiktok.com/messages*", "https://tiktok.com/messages*"],
+    "js": ["content.js"],
+    "run_at": "document_idle"
+  }],
+  "action": {
+    "default_title": "SafeNet KZ — мәтінді тексеру",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

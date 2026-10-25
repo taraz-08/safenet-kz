@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="kk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SafeNet KZ</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="popup.js" defer></script>
+    <script src="media-popup.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="brand-mark" aria-hidden="true">S</div>
+      <div><strong>SafeNet<span>KZ</span></strong><p id="brand-tagline">Сенім тексеруден басталады.</p></div>
+      <span class="local">LOCAL</span>
+      <span id="extension-version" class="version">v4.0.0</span>
+    </header>
+    <main>
+      <section class="auto-settings">
+        <label class="auto-toggle"><span id="auto-label">Автопроверка</span><input id="auto-enabled" type="checkbox" checked role="switch" /></label>
+        <div class="language-row"><span id="language-label">Язык объяснений</span><select id="locale" aria-label="Язык / Тіл"><option value="ru">Русский</option><option value="kk">Қазақша</option></select></div>
+      </section>
+      <section class="media-settings" aria-labelledby="media-heading">
+        <h2 id="media-heading">Видео + дыбыс</h2>
+        <p class="notice" id="media-description">Қосқаннан кейін осы Instagram бетінің видео кадры мен дыбысы жергілікті талданады. Тоқтатқанға дейін, ең көбі 15 минут. Жазба сақталмайды.</p>
+        <p id="media-status" role="status" aria-live="polite">Өшірулі</p>
+        <div class="media-actions">
+          <button id="media-start" class="primary" type="button">ИИ мен автоайналдыруды қосу</button>
+          <button id="media-stop" class="secondary" type="button" disabled>Тоқтату</button>
+        </div>
+      </section>
+      <p id="connection" role="status">Проверяем локальный анализатор…</p>
+      <button id="open-dashboard" type="button" class="secondary">Открыть SafeNet ↗</button>
+      <button id="open-monitor" type="button" class="text-button monitor-shortcut">Мониторинг и сохранение кейсов ↗</button>
+      <details class="popup-about">
+        <summary class="eyebrow" id="auto-eyebrow">АВТОМАТИЧЕСКАЯ ЗАЩИТА</summary>
+        <h1 id="auto-heading">Листайте ленту. Замечайте риск.</h1>
+        <p class="intro" id="auto-intro">SafeNet отмечает признаки риска прямо под видимыми публикациями Instagram и TikTok.</p>
+        <p class="notice" id="auto-privacy">Только загруженные подписи публикаций → локальный анализатор. Если включён мониторинг в SafeNet, подходящие публикации сохраняются локально. Личные сообщения исключены. Нужен запущенный SafeNet.</p>
+      </details>
+      <details id="manual"><summary id="manual-label">Проверить текст вручную</summary>
+      <fieldset>
+        <legend id="capture-legend">Қандай мәтін алынады?</legend>
+        <label class="mode"><input type="radio" name="mode" value="selection" checked /><span><span id="selection-label">Белгіленген мәтін</span><small id="selection-hint">Ұсынылады · тек өзіңіз таңдаған үзінді</small></span></label>
+        <label class="mode"><input type="radio" name="mode" value="visible" /><span><span id="visible-label">Экрандағы мәтін</span><small id="visible-hint">Тек қазір көрініп тұрған бет бөлігі</small></span></label>
+      </fieldset>
+      <button type="button" id="capture" class="secondary">Беттен мәтінді алу <span aria-hidden="true">↓</span></button>
+      <div class="preview-label"><label for="text" id="text-label">Тексерілетін мәтін</label><span id="count">0 / 12000</span></div>
+      <textarea id="text" maxlength="12000" rows="6" placeholder="Мәтінді беттен алыңыз немесе осында қолмен енгізіңіз…" spellcheck="false"></textarea>
+      <div class="source-row"><span id="platform">Қолмен енгізу</span><button type="button" id="clear" class="text-button">Тазалау</button></div>
+      <p class="notice" id="manual-notice">Мәтін тек «алу» батырмасын басқанда оқылады. Жібермес бұрын жеке деректерді өшіріңіз. Видео, сурет және жасырын хаттар талданбайды.</p>
+      <button type="button" id="analyze" class="primary" disabled>SafeNet-те тексеру <span aria-hidden="true">↗</span></button>
+      <p id="status" role="status" aria-live="polite">Жергілікті сайт іске қосулы болуы керек: 127.0.0.1:4310</p>
+      </details>
+    </main>
+    <footer><span class="dot"></span><span id="footer-label">Локально · без облачных ключей</span></footer>
+  </body>
+</html>

@@ -1,0 +1,3157 @@
+{
+  "name": "SafeNet KZ synthetic stream v1",
+  "provenance": {
+    "type": "synthetic",
+    "createdAt": "2026-10-25",
+    "note": "Fictional accounts and texts for pipeline demonstration; not collected data."
+  },
+  "accounts": [
+    {
+      "id": "acc-az-streamer1",
+      "handle": "@nurik_spins_kz",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Нурик Спинс",
+      "followers": 48200,
+      "bio": "стримы каждый вечер 🎰 | 18+ | ссылка в профиле 👇 bit.ly/az7bonus",
+      "network": "azart777"
+    },
+    {
+      "id": "acc-az-streamer2",
+      "handle": "@aidana_luckylive",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Aidana Lucky ✨",
+      "followers": 23100,
+      "bio": "LIVE в 22:00 💸 всё в тг 👉 @bonusy_dnya",
+      "network": "azart777"
+    },
+    {
+      "id": "acc-az-blogger1",
+      "handle": "@dana_lifestyle_kz",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Дана | lifestyle Алматы",
+      "followers": 87400,
+      "bio": "мама 👶 путешествия ✈️ бьюти ✨ | сотрудничество — direct",
+      "network": "azart777"
+    },
+    {
+      "id": "acc-az-blogger2",
+      "handle": "@erzhan_cars_life",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Ержан | тачки и жизнь",
+      "followers": 35600,
+      "bio": "авто 🚗 мотивация 💪 | рабочая ссылка — в актуальном",
+      "network": "azart777"
+    },
+    {
+      "id": "acc-az-youtube",
+      "handle": "@BekaWinsTV",
+      "platform": "youtube",
+      "kind": "channel",
+      "displayName": "Beka Wins TV",
+      "followers": 112000,
+      "bio": "Заносы, обзоры слотов, стримы. 18+. Промокод в описании под каждым видео",
+      "network": "azart777"
+    },
+    {
+      "id": "acc-az-proxy",
+      "handle": "@bonusy_dnya",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "Бонусы дня 🎁",
+      "followers": 15800,
+      "bio": "Актуальные бонусы и рабочие ссылки каждый день. Всё в закрепе 📌",
+      "network": "azart777"
+    },
+    {
+      "id": "acc-az-spambot",
+      "handle": "@free_bonus_kz77",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Бонус каждый день 🎁",
+      "followers": 312,
+      "bio": "пиши в лс 💬 🎰💰",
+      "network": "azart777"
+    },
+    {
+      "id": "acc-sg-channel",
+      "handle": "@sp1ngold_vip",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "SP1N G0LD VIP 🟡",
+      "followers": 9400,
+      "bio": "🎰 бонусы | рабочие зеркала | вывод на каспи",
+      "network": "spingold"
+    },
+    {
+      "id": "acc-sg-tiktok",
+      "handle": "@lucky_marat_kz",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Марат Удача 🍀",
+      "followers": 18700,
+      "bio": "крутим каждый день 🎲 ссылка в тг",
+      "network": "spingold"
+    },
+    {
+      "id": "acc-sg-insta",
+      "handle": "@gulya_money_mood",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Гуля | деньги и настроение 💅",
+      "followers": 26300,
+      "bio": "доход с телефона 📱 декрет — не приговор | подробности в директ",
+      "network": "spingold"
+    },
+    {
+      "id": "acc-lot-iphone",
+      "handle": "@rozygrysh_almaty_top",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "РОЗЫГРЫШИ АЛМАТЫ 🎁",
+      "followers": 41200,
+      "bio": "Честные розыгрыши 💯 Итоги в прямом эфире 🎡 Слоты — в директ",
+      "network": "lottery"
+    },
+    {
+      "id": "acc-lot-wheel",
+      "handle": "@koleso_udachi_kz",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Колесо Удачи KZ 🎡",
+      "followers": 29800,
+      "bio": "Крутим колесо каждый вечер в LIVE 🔴 Слоты — Kaspi +7 700 000 12 34",
+      "network": "lottery"
+    },
+    {
+      "id": "acc-lot-auto",
+      "handle": "@avto_i_dengi_konkurs",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Авто и деньги | Конкурсы 🚗💵",
+      "followers": 56900,
+      "bio": "Разыгрываем авто и деньги с 2023 года • 7 автомобилей уже у победителей • Отзывы в актуальном",
+      "network": "lottery"
+    },
+    {
+      "id": "acc-lot-shill",
+      "handle": "@aruzhan_lucky_2026",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Аружан 🍀",
+      "followers": 640,
+      "bio": "просто живу 🌸 Алматы",
+      "network": "lottery"
+    },
+    {
+      "id": "acc-pyr-organizer",
+      "handle": "@aigerim_tabys_club",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Айгерим | Табыс клубы 💰",
+      "followers": 22800,
+      "bio": "Пассивный доход из дома 🏡 Выплаты каждый день 💸 Вход в клуб 👇 chat.whatsapp.com/TabysKZ01",
+      "network": "pyramid"
+    },
+    {
+      "id": "acc-pyr-recruiter1",
+      "handle": "@passive_income_kz",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Пассивный доход KZ 📈",
+      "followers": 31500,
+      "bio": "x2 за 3 дня? Легко 😎 Чат 👉 t.me/+Kapital20inv",
+      "network": "pyramid"
+    },
+    {
+      "id": "acc-pyr-recruiter2",
+      "handle": "@mama_v_dekrete_dohod",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Мама в декрете | доход 👶💸",
+      "followers": 14200,
+      "bio": "Как я зарабатываю 300к сидя дома • пишите «+» в директ",
+      "network": "pyramid"
+    },
+    {
+      "id": "acc-pyr-recruiter3",
+      "handle": "@tabys_bro_kz",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Табыс Bro 💪",
+      "followers": 9800,
+      "bio": "Ақшаны бірге көбейтеміз 💸 Кіру — WhatsApp 👇 chat.whatsapp.com/TabysKZ01",
+      "network": "pyramid"
+    },
+    {
+      "id": "acc-pyr-channel",
+      "handle": "@kapital20_news",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "Капитал 2.0 | Новости клуба",
+      "followers": 6700,
+      "bio": "Официальный канал клуба Капитал 2.0. Выплаты ежедневно. Чат инвесторов 👉 t.me/+Kapital20inv",
+      "network": "pyramid"
+    },
+    {
+      "id": "acc-pyr-grp-tabys",
+      "handle": "@tabys_club_wa",
+      "platform": "whatsapp",
+      "kind": "group",
+      "displayName": "Табыс клубы 💰",
+      "followers": 214,
+      "bio": "Инвестициялық клуб. Салым 5000 ₸-ден",
+      "network": "pyramid"
+    },
+    {
+      "id": "acc-pyr-grp-kapital",
+      "handle": "@kapital20_investors",
+      "platform": "telegram",
+      "kind": "group",
+      "displayName": "Капитал 2.0 | Инвесторы",
+      "followers": 1380,
+      "bio": "Чат участников клуба. Правила в закрепе.",
+      "network": "pyramid"
+    },
+    {
+      "id": "acc-bn-cafe",
+      "handle": "@coffee_dala_almaty",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Coffee Dala ☕",
+      "followers": 12400,
+      "bio": "Specialty coffee • Алматы, Панфилова 98 • 8:00–22:00",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-baursak",
+      "handle": "@baursak_house_ast",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Бауырсақ House 🥯",
+      "followers": 8900,
+      "bio": "Ұлттық тағамдар • Астана • жеткізу бар",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-kiim",
+      "handle": "@kiim_shop_kz",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "KIIM shop | одежда",
+      "followers": 33800,
+      "bio": "Женская одежда 🤍 доставка по KZ • kiim-shop.example",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-gadget",
+      "handle": "@gadget_point_kz",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Gadget Point 📱",
+      "followers": 21000,
+      "bio": "Магазин гаджетов • Алматы, Абая 45 • рассрочка",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-bank",
+      "handle": "@altyndala_bank",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Altyn Dala Bank",
+      "followers": 145000,
+      "bio": "Официальный аккаунт банка • altyndala.example",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-news",
+      "handle": "@kz_news_today",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "KZ Новости сегодня",
+      "followers": 210000,
+      "bio": "Главные новости Казахстана 24/7",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-cyberpol",
+      "handle": "@kiberpatrul_kz",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "Киберпатруль KZ",
+      "followers": 48000,
+      "bio": "Профилактика интернет-мошенничества. Принимаем жалобы на подозрительные аккаунты",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-fingram",
+      "handle": "@fingramota_dlya_vseh",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Финграмотность для всех",
+      "followers": 27000,
+      "bio": "Просветительский проект о личных финансах и защите от мошенников",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-charity",
+      "handle": "@meyirim_fond_kz",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Фонд «Мейірім» ❤️",
+      "followers": 18300,
+      "bio": "Помощь детям с тяжёлыми заболеваниями • отчёты в актуальном",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-dota",
+      "handle": "@arman_dota2",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Arman Dota",
+      "followers": 41000,
+      "bio": "Dota 2 • 7k MMR • стримы по будням 20:00 • без рекламы ставок",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-minecraft",
+      "handle": "@AruMineKZ",
+      "platform": "youtube",
+      "kind": "channel",
+      "displayName": "Aru Minecraft",
+      "followers": 67000,
+      "bio": "Выживание, постройки и мини-игры в Майнкрафте ⛏ 7+",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-cs",
+      "handle": "@daulet_cs2",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Daulet CS2",
+      "followers": 15600,
+      "bio": "CS2 • faceit 10 lvl • хайлайты",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-asel",
+      "handle": "@asel_fingram",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Асель | личные финансы 💰",
+      "followers": 52000,
+      "bio": "Учу вести бюджет и копить без стресса • не продаю курсы «x10»",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-loto",
+      "handle": "@loto_info_kz",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "Лото-инфо KZ",
+      "followers": 7300,
+      "bio": "Результаты тиражей государственных лотерей",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-jobs",
+      "handle": "@jumys_almaty",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "Жұмыс Алматы | вакансии",
+      "followers": 39000,
+      "bio": "Проверенные вакансии Алматы • размещение — @jumys_admin",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-run",
+      "handle": "@astana_runclub",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Astana Run Club 🏃",
+      "followers": 6100,
+      "bio": "Бесплатные забеги каждое воскресенье • чат в шапке",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-tort",
+      "handle": "@tort_by_dinara",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Торты Динары 🎂",
+      "followers": 11200,
+      "bio": "Домашние торты на заказ • Шымкент",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-mama",
+      "handle": "@aruzhan_mama_blog",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Аружан | мама двоих",
+      "followers": 64000,
+      "bio": "Материнство, быт и честные отзывы 🌷 • реклама — direct",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-autoschool",
+      "handle": "@avtoshkola_zhol",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Автошкола «Жол» 🚗",
+      "followers": 5400,
+      "bio": "Категории A, B, C • Караганда",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-cinema",
+      "handle": "@kino_almaty",
+      "platform": "telegram",
+      "kind": "channel",
+      "displayName": "Кино Алматы 🎬",
+      "followers": 23000,
+      "bio": "Афиша, премьеры и розыгрыши билетов",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-scamwatch",
+      "handle": "@scam_detector_kz",
+      "platform": "tiktok",
+      "kind": "account",
+      "displayName": "Антискам KZ 🕵️",
+      "followers": 88000,
+      "bio": "Разоблачаю мошеннические схемы • присылайте скрины",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-boardgames",
+      "handle": "@nastolki_astana",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Настолки Астана 🎲",
+      "followers": 3900,
+      "bio": "Антикафе настольных игр • турниры каждую субботу",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-travel",
+      "handle": "@kz_travel_tours",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Туры по Казахстану 🏞",
+      "followers": 15200,
+      "bio": "Авторские туры выходного дня • лицензия туроператора",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-qarjy",
+      "handle": "@qarjy_sauat",
+      "platform": "instagram",
+      "kind": "account",
+      "displayName": "Қаржылық сауаттылық 📊",
+      "followers": 9600,
+      "bio": "Қаржы туралы қарапайым тілмен",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-grp-parents",
+      "handle": "@5b_ata_analar",
+      "platform": "whatsapp",
+      "kind": "group",
+      "displayName": "5 «Б» ата-аналар 👨‍👩‍👧",
+      "followers": 31,
+      "bio": "Чат родителей 5 «Б» класса",
+      "network": "benign"
+    },
+    {
+      "id": "acc-bn-grp-run",
+      "handle": "@astana_runclub_chat",
+      "platform": "telegram",
+      "kind": "group",
+      "displayName": "Astana Run Club | чат 🏃",
+      "followers": 420,
+      "bio": "Общение участников клуба",
+      "network": "benign"
+    }
+  ],
+  "items": [
+    {
+      "id": "st-0001",
+      "accountId": "acc-bn-cafe",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9950,
+      "text": "Новое осеннее меню 🍂 Тыквенный латте, пирог с облепихой и какао с маршмеллоу. Ждём вас на Панфилова 98 ☕ Оплата Kaspi QR ✅",
+      "imageNote": "стол с латте и пирогом",
+      "url": "https://www.instagram.com/p/JVr_tGyVozT/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0002",
+      "accountId": "acc-az-proxy",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 9900,
+      "text": "🎁 Бонус дня: +150% к первому депозиту по промокоду AZ777\n🔄 Рабочее зеркало на сегодня: az777-mirror.example\nОсновной сайт azart777.example у многих не открывается — заходите через зеркало 👆\n📌 Все ссылки в закрепе",
+      "url": "https://t.me/bonusy_dnya/1097",
+      "groundTruth": "casino",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0003",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9800,
+      "text": "🎁 РОЗЫГРЫШ №14 — iPhone 17 Pro 256GB!\nВсего 200 слотов по 2 000 ₸ 📲\nОплата на Kaspi +7 700 000 12 34 (Асель Т.), чек в директ — вам присваивается номер.\nИтоги в прямом эфире через рандомайзер, как только наберём все слоты 🔥\nУспей занять свой счастливый номер 🍀",
+      "imageNote": "фото коробки смартфона на розовом фоне",
+      "url": "https://www.instagram.com/p/ZRZYnZzNY_d/",
+      "groundTruth": "lottery",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0004",
+      "accountId": "acc-bn-news",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 9800,
+      "text": "💱 Курс валют на 19 октября: доллар — 512,4 ₸, евро — 551,8 ₸, рубль — 6,3 ₸.",
+      "url": "https://t.me/kz_news_today/991",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0005",
+      "accountId": "acc-lot-auto",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9700,
+      "text": "🚗 РОЗЫГРЫШ АВТОМОБИЛЯ Toyota Camry 2024!\n🎟 3 000 слотов × 5 000 ₸\n💳 Оплата: Kaspi +7 700 000 12 34 или карта 4400 **** **** 5521 (можно Halyk по номеру)\n📸 Чек — в директ, получаете номер слота\n🎡 Эфир на колесе у @koleso_udachi_kz сразу после набора\nЭто уже 8-й автомобиль от нас! 🔥",
+      "imageNote": "белый седан с красным бантом на капоте",
+      "url": "https://www.instagram.com/p/j3extF3U7ZG/",
+      "groundTruth": "lottery",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0006",
+      "accountId": "acc-bn-bank",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9700,
+      "text": "Депозит «Жинақ» 💼 до 14,8% годовых (ГЭСВ до 15,9%)\n• минимальная сумма — 10 000 ₸\n• пополнение и частичное изъятие\n• депозиты застрахованы в системе гарантирования\nПодробнее и условия: altyndala.example/deposit",
+      "url": "https://www.instagram.com/p/miPMqvOEnIy/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0007",
+      "accountId": "acc-pyr-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 9600,
+      "text": "📢 Поток №14 открыт!\n💼 Тариф «Старт»: 3% в день, 30 дней (вход от 10 000 ₸)\n💼 Тариф «Профи»: 5% в день (вход от 50 000 ₸)\n💳 Пополнение: Kaspi +7 700 000 55 01 или карта 4400 **** **** 9012\n👥 Чат инвесторов 👉 t.me/+Kapital20inv",
+      "url": "https://t.me/kapital20_news/626",
+      "groundTruth": "pyramid",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0008",
+      "accountId": "acc-bn-baursak",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9600,
+      "text": "Жаңа филиал ашылды! 📍 Сарыарқа 12. Ашылу күні — барлық бауырсақ сеттеріне 20% жеңілдік 🥯 Келіңіздер!",
+      "url": "https://www.instagram.com/p/cmbJoT-PKvw/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0009",
+      "accountId": "acc-az-youtube",
+      "platform": "youtube",
+      "type": "post",
+      "minutesAgo": 9500,
+      "text": "Какие слоты дают чаще? Мой честный топ-7 за октябрь 🎰\n\n👇 Все ссылки и промокод тут 👇\n▶ Регистрация: azart777.example/?ref=beka_tv&utm_source=youtube&utm_medium=description&utm_campaign=top7_oct\n▶ Промокод: AZ777 (+100% и 70 FS)\n▶ Если сайт не грузит — bit.ly/az7bonus\n18+ | Играйте ответственно",
+      "transcript": "Всем привет, с вами Бека! Сегодня разбираем, какие слоты реально дают... я за месяц прокрутил больше трёх миллионов, так что статистика есть, не с потолка... На седьмом месте у нас «Степной волк», отдача так себе, но бонуска жирная... Ну и как всегда, все ссылки в описании, промокод аз-семь-семь-семь, с ним сотка на первый деп. Погнали.",
+      "url": "https://www.youtube.com/watch?v=5rjrrCN5gBR",
+      "groundTruth": "casino",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0010",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 9400,
+      "text": "Набор на колесо открыт 🎡\nСегодня крутим на 100 000 ₸!\nОсталось 23 места, 1 место = 1 000 ₸\nKaspi +7 700 000 12 34, чек — в директ. Кто первый? 😉",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/photo/5289601917377922383",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0011",
+      "accountId": "acc-bn-jobs",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 9400,
+      "text": "📌 Вакансия: оператор call-центра\nГрафик 5/2, доход от 250 000 ₸ + премии\nОфициальное трудоустройство, соцпакет\nРезюме: hr@callcenter-almaty.example",
+      "url": "https://t.me/jumys_almaty/1463",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0012",
+      "accountId": "acc-sg-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 9300,
+      "text": "🟡 SP1N G0LD — новый сезон бонусов!\n🎁 Промокод SPIN50 = +50 фриспинов за регистрацию\n👉 spingold.example/?ref=vipchan\nВывод на Kaspi от 5 минут 💸",
+      "url": "https://t.me/sp1ngold_vip/927",
+      "groundTruth": "casino",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0013",
+      "accountId": "acc-bn-charity",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9300,
+      "text": "🙏 Сбор на операцию для Алихана, 6 лет (врождённый порок сердца). Нужно 4 200 000 ₸, собрано 2 870 000 ₸.\nРеквизиты фонда: Kaspi Gold 4400 **** **** 7781 (ОФ «Мейірім»).\nВсе документы, счёт клиники и отчёты — в актуальном. Каждая тысяча важна ❤️",
+      "imageNote": "фото мальчика с плюшевым мишкой в больничной палате",
+      "url": "https://www.instagram.com/p/906XJjhoBCC/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0014",
+      "accountId": "acc-pyr-organizer",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9200,
+      "text": "💰 Вложи 5 000 ₸ — получи 10 000 ₸ через 3 дня!\nЭто не шутка, это Табыс клубы 🙌\n💳 Перевод на Kaspi +7 700 000 55 01, чек — мне в директ\n👉 Вход в чат: chat.whatsapp.com/TabysKZ01\n⏳ Осталось 3 места на сегодня!",
+      "imageNote": "фото веера купюр в руке",
+      "url": "https://www.instagram.com/p/dEGmV9vzQ1Y/",
+      "groundTruth": "pyramid",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0015",
+      "accountId": "acc-lot-shill",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 9100,
+      "text": "мой счастливый слот 🍀",
+      "ocrText": "Kaspi\nПеревод выполнен\n2 000 ₸\nПолучатель: Асель Т.\n+7 700 000 12 34\nКомментарий: слот 117",
+      "imageNote": "скриншот банковского приложения с суммой перевода",
+      "url": "https://www.instagram.com/stories/aruzhan_lucky_2026/6463792355057239499/",
+      "groundTruth": "lottery",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0016",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 9000,
+      "text": "⏳",
+      "ocrText": "ОПЛАТА СЛОТА 💳\nKaspi: +7 700 000 12 34\nКарта: 4400 **** **** 5521\n1 слот = 2 000 ₸\nОСТАЛОСЬ 37 СЛОТОВ!",
+      "imageNote": "сторис с реквизитами на фоне фото смартфона",
+      "url": "https://www.instagram.com/stories/rozygrysh_almaty_top/8963407734197986732/",
+      "groundTruth": "lottery",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0017",
+      "accountId": "acc-bn-gadget",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 9000,
+      "text": "🎧 РОЗЫГРЫШ беспроводных наушников среди подписчиков!\nБЕСПЛАТНО: подпишись, лайкни и напиши в комментах любой эмодзи 😎\nИтоги в субботу в прямом эфире 🔴",
+      "url": "https://www.tiktok.com/@gadget_point_kz/photo/8208845374442010727",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0018",
+      "accountId": "acc-bn-run",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 9000,
+      "text": "Воскресный забег 10 км 🏃‍♀️ Старт 9:00 у Байтерека. Участие бесплатное! Среди всех финишировавших разыграем кроссовки от партнёра 👟 (рандомайзер в эфире)",
+      "url": "https://www.instagram.com/p/EB0aPOWBWsY/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0019",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 8900,
+      "text": "🔴 LIVE розыгрыш 100 000 ₸",
+      "transcript": "Всем привет, это Колесо Удачи! Сегодня крутим на сто тысяч тенге. Все, кто оплатил слот, — ваши ники уже на колесе, смотрите... Кто не успел — ещё пять минут! Kaspi плюс семь, семьсот, ноль-ноль-ноль, двенадцать, тридцать четыре, тысяча за место, чек мне в директ, я вас добавляю... Так, всё, набор закрыт. Три, два, один — крутим!... крутится, крутится... Слот сорок два! Поздравляем! Следующий розыгрыш завтра, не пропускайте...",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/live?room_id=1229773638455045767",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0020",
+      "accountId": "acc-bn-cyberpol",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 8900,
+      "text": "⚠️ Участились случаи мошенничества с «розыгрышами iPhone за 1000 тг». Схема: вас просят оплатить «слот» на Kaspi, после чего «рандомайзер» в эфире выбирает «победителя» — как правило, подставной аккаунт. Настоящие розыгрыши не требуют оплаты. Не переводите деньги незнакомцам!",
+      "url": "https://t.me/kiberpatrul_kz/937",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0021",
+      "accountId": "acc-sg-insta",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8800,
+      "text": "Девочки, как я зарабатываю с телефона, сидя в декрете 💅📱 Это не работа, это игра 😉 За неделю +120к. Подробности в директ, промик SPIN50 🟡",
+      "imageNote": "селфи с телефоном и стаканом кофе",
+      "url": "https://www.instagram.com/p/WyYAKBhLVHj/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0022",
+      "accountId": "acc-bn-cafe",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8800,
+      "text": "🎁 РОЗЫГРЫШ! Дарим сертификат на 15 000 ₸ в Coffee Dala ☕\nУсловия:\n1) подписка на @coffee_dala_almaty\n2) лайк этому посту\n3) отметь 2 друзей в комментариях\nУчастие БЕСПЛАТНОЕ 💛 Итоги в пятницу в 19:00 через рандомайзер в сторис",
+      "url": "https://www.instagram.com/p/CPRshtwf99d/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0023",
+      "accountId": "acc-az-streamer1",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 8700,
+      "text": "вечерний стрим 🔥 залетайте",
+      "transcript": "Так, пацаны, всем салам, всем привет кто залетел! Сегодня бюджет сто пятьдесят, посмотрим чё как... ставлю двести тенге, крутим... пусто... ещё... ООО! Бонуска! Бонуска, пацаны! Смотрим... икс сто сорок! Сто сорок иксов, вы видели?! Двадцать восемь тысяч с двухсот! Короче, кто спрашивает где я играю — ссылка в профиле, бит точка ли слэш аз семь бонус, промокод аз семь семь семь, там сотка на первый деп и фриспины. Не, это не реклама, я просто делюсь, сам там сижу. Всё, погнали дальше...",
+      "url": "https://www.tiktok.com/@nurik_spins_kz/live?room_id=3474855619661386353",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0024",
+      "accountId": "acc-bn-qarjy",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8700,
+      "text": "Депозит пен инвестицияның айырмашылығы неде? 📊 Қысқаша түсіндірдік",
+      "url": "https://www.instagram.com/p/nrOhlbc0fVr/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0025",
+      "accountId": "acc-pyr-recruiter1",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 8600,
+      "text": "x2 за 3 дня 📈🔥 Капитал 2.0 — клуб для тех, кто хочет больше. Вход от 10 000 ₸ 👉 t.me/+Kapital20inv\n#пассивныйдоход #инвестиции #деньги",
+      "url": "https://www.tiktok.com/@passive_income_kz/video/2366210826892629553",
+      "groundTruth": "pyramid",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0026",
+      "accountId": "acc-bn-tort",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 8600,
+      "text": "Торт «Медовик» на заказ 🍯 1 кг — 9 000 ₸. Предоплата 50% на Kaspi, остаток при получении. Заказы за 2 дня 📩",
+      "url": "https://www.tiktok.com/@tort_by_dinara/photo/8124059932775839870",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0027",
+      "accountId": "acc-bn-kiim",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8500,
+      "text": "Осенняя коллекция уже на сайте 🧥🍂\n👉 kiim-shop.example/?utm_source=instagram&utm_campaign=autumn26\nПромокод KIIM15 — скидка 15% на первый заказ до 31 октября. Оплата Kaspi или картой, доставка по Казахстану 🚚",
+      "url": "https://www.instagram.com/p/fskThV1BWKL/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0028",
+      "accountId": "acc-az-blogger1",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8400,
+      "text": "Утро начинается с кофе и маленьких радостей ☕✨\nКстати, вчера немного «подняла» на отпуск 🙈🌴 Многие спрашивают в директ где — оставлю промокод AZ777, с ним бонус на первый депозит. Ссылка в сторис 💋\n#алматы #утро #мамаблогер #удача",
+      "imageNote": "фото чашки кофе на подоконнике",
+      "url": "https://www.instagram.com/p/dKPeF5udvXq/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0029",
+      "accountId": "acc-az-blogger1",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 8350,
+      "text": "😍🔥",
+      "ocrText": "СВАЙП ВВЕРХ 👆\nazart777.example/?ref=dana_ig&utm_source=instagram&utm_campaign=story_oct\n+100% К ДЕПОЗИТУ\nПРОМОКОД AZ777",
+      "imageNote": "сторис со стикером-ссылкой и логотипом игрового сайта",
+      "url": "https://www.instagram.com/stories/dana_lifestyle_kz/2305811121625179261/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0030",
+      "accountId": "acc-bn-asel",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8300,
+      "text": "Почему «доход 30% в месяц» — это красный флаг 🚩\nСредняя доходность депозита в тенге — 14–16% годовых. Всё, что обещает в разы больше и «гарантированно», — почти наверняка пирамида. Не вкладывайте то, что не готовы потерять.",
+      "url": "https://www.instagram.com/p/0dJIzjmzqYY/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0031",
+      "accountId": "acc-lot-auto",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8200,
+      "text": "💵 Параллельно разыгрываем 100 000 ₸!\nСлот всего 1 000 ₸, победителей будет трое: 100к / 50к / 20к 🏆\nОплата по тем же реквизитам (Kaspi +7 700 000 12 34), чек в директ.\nПока набираем слоты на Camry — успей поучаствовать 😉",
+      "url": "https://www.instagram.com/p/CHvkflpNasp/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0032",
+      "accountId": "acc-bn-news",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 8200,
+      "text": "🚨 В Алматы полиция закрыла подпольное казино в жилом комплексе: изъято 40 игровых автоматов и около 12 млн ₸ наличными. Задержаны трое организаторов, им грозит до 5 лет лишения свободы.",
+      "imageNote": "игровые автоматы в тёмном помещении",
+      "url": "https://t.me/kz_news_today/994",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0033",
+      "accountId": "acc-pyr-recruiter2",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 8100,
+      "text": "Девочки-мамочки 👶💕 Я в декрете и зарабатываю 300 000 ₸ в месяц, не выходя из дома. Старт всего 5 000 ₸ — через 3 дня получаете 10 000 ₸ 💸 Kaspi +7 700 000 55 01. Наш чат 👉 chat.whatsapp.com/TabysKZ01",
+      "url": "https://www.instagram.com/p/oWN1YL_Jxqe/",
+      "groundTruth": "pyramid",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0034",
+      "accountId": "acc-bn-dota",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 8100,
+      "text": "🔴 рейтинг 7к ммр, катаем",
+      "transcript": "Всем ку, катаем рейтинг... Чат, сколько можно в лс писать про рекламу? Нет, ставок никаких, казино не рекламирую и не буду. Всё, берём инвокера... лайн тяжёлый, но вывезем... о, ганк с руны, красиво...",
+      "url": "https://www.tiktok.com/@arman_dota2/live?room_id=7931457298972969172",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0035",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 8000,
+      "text": "Как проходят наши эфиры 🎡 Каждый может стать следующим!",
+      "transcript": "...так, вот колесо, все номера на месте, сейчас крутим... слот номер восемьдесят четыре — поздравляем! Не расстраивайтесь, кто не выиграл: следующий розыгрыш уже завтра, слоты по две тысячи, каспи тот же, двенадцать тридцать четыре в конце...",
+      "url": "https://www.instagram.com/reel/T_oasK05pBS/",
+      "groundTruth": "lottery",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0036",
+      "accountId": "acc-bn-scamwatch",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 8000,
+      "text": "разоблачение: розыгрыши за деньги 🕵️",
+      "transcript": "Смотрите, как работает схема «розыгрыш айфона». Продают двести слотов по две тысячи — это четыреста тысяч тенге. Айфон стоит меньше. Разница — в карман организатору. А «победителем» часто оказывается свой же аккаунт с тремя подписчиками. И так каждую неделю, розыгрыш за розыгрышем...",
+      "url": "https://www.tiktok.com/@scam_detector_kz/video/8028697490348423037",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0037",
+      "accountId": "acc-sg-tiktok",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 7900,
+      "text": "крутим барабан 🎲",
+      "transcript": "Ну что, народ, крутим... ставка тысяча... так, вот тут икс двадцать, нормально... кто хочет так же — пишите в лс слово «хочу», скину ссылку, там промокод спин пятьдесят, пятьдесят фриспинов сразу... да, вывод на каспи, сам выводил, всё приходит...",
+      "url": "https://www.tiktok.com/@lucky_marat_kz/live?room_id=1413683191969722605",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0038",
+      "accountId": "acc-bn-minecraft",
+      "platform": "youtube",
+      "type": "stream",
+      "minutesAgo": 7900,
+      "text": "🎰 строим казино из редстоуна!",
+      "transcript": "Привет, это Ару! Сегодня строим казино в Майнкрафте — да-да, с игровыми автоматами из редстоуна! Ставки только на изумруды, реальных денег тут нет, это просто механика с рандомом на раздатчиках... Смотрите, кидаю изумруд — и, о, выпало три алмаза! Кстати, ребят, если кто-то в чате пишет про «реальные казино» — это спам, баню.",
+      "url": "https://www.youtube.com/watch?v=m-TM4Z4-NEx",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0039",
+      "accountId": "acc-az-streamer1",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 7800,
+      "text": "Как я поднял 340к за вечер 😳💸 рассказываю в видео\nПромо AZ777 🎰 ссылка 👉 bit.ly/az7bonus\n#заносы #удача #казахстан",
+      "url": "https://www.tiktok.com/@nurik_spins_kz/video/8326349584959889617",
+      "groundTruth": "casino",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0040",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 7700,
+      "text": "Итоги вчерашнего эфира 🎡 Победитель 100 000 ₸ — слот №42 🏆\nДеньги уже отправили, отзыв в актуальном ❤️\nСледующий розыгрыш — в пятницу, слот 1 000 ₸, Kaspi прежний 💳",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/photo/9232446632877453643",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0041",
+      "accountId": "acc-pyr-recruiter3",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 7700,
+      "text": "Бауырлар, 3 күнде ақшаңды екі есе көбейт 💪💸\n5 000 ₸ → 10 000 ₸\nKaspi: +7 700 000 55 01\nWhatsApp чат: chat.whatsapp.com/TabysKZ01",
+      "url": "https://www.tiktok.com/@tabys_bro_kz/video/3119561853169539726",
+      "groundTruth": "pyramid",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0042",
+      "accountId": "acc-bn-fingram",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7700,
+      "text": "5 признаков финансовой пирамиды 🚩\n1) гарантированный высокий доход\n2) «x2 за 3 дня», «3% в день»\n3) бонусы за приглашённых друзей\n4) срочность: «осталось 3 места»\n5) перевод на личную карту, а не на счёт компании\nСохраните и отправьте родителям 🙏",
+      "url": "https://www.instagram.com/p/ZSrGJsrdgBl/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0043",
+      "accountId": "acc-az-spambot",
+      "platform": "instagram",
+      "type": "comment",
+      "minutesAgo": 7600,
+      "text": "🔥 Хочешь поднять как @nurik_spins_kz? Пиши в лс за ссылкой 💰🎰",
+      "parentAccountId": "acc-bn-kiim",
+      "url": "https://www.instagram.com/p/QuiLZtDK_om/c/89184882134499703/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0044",
+      "accountId": "acc-bn-autoschool",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7600,
+      "text": "Осенний набор! 🚗 Обучение категории B — 120 000 ₸. По промокоду ZHOL10 скидка 10%. Рассрочка Kaspi, занятия вечером и в выходные.",
+      "url": "https://www.instagram.com/p/PyFQDln1YHW/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0045",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 7500,
+      "text": "крутим вечером 🎡",
+      "transcript": "Добрый вечер всем! Сегодня второй эфир по айфону... пока не крутим, ещё семнадцать слотов свободно, по две тысячи. Пока не наберём — не крутим, вы же знаете правила. Переводите на каспи, номер в шапке, кто перевёл — пишите ник в чат... о, Аружан ещё два слота взяла, спасибо, солнце...",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/live?room_id=9672304501543152914",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0046",
+      "accountId": "acc-bn-dota",
+      "platform": "tiktok",
+      "type": "comment",
+      "minutesAgo": 7500,
+      "text": "опять боты в комментах с «бонусами» 🤦‍♂️ банлю всех. у меня никакого казино нет и не будет, только дота",
+      "parentAccountId": "acc-bn-dota",
+      "url": "https://www.tiktok.com/@arman_dota2/video/7830911652331721899?comment_id=8988603340336861503",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0047",
+      "accountId": "acc-bn-baursak",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7400,
+      "text": "🎉 Ұтыс ойыны! Қатысу ТЕГІН!\nШарттары:\n✅ парақшаға жазылу\n✅ лайк басу\n✅ 3 досыңды белгілеу\n🎁 Жүлде — 10 адамға арналған бауырсақ сеті 😋\nҚорытынды жексенбіде, рандомайзер арқылы",
+      "url": "https://www.instagram.com/p/zoyF3xhn8R_/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0048",
+      "accountId": "acc-lot-auto",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 7300,
+      "text": "📌",
+      "ocrText": "ОПЛАТА СЛОТА\nCamry • 5 000 ₸\nKASPI +7 700 000 12 34\nПолучатель: Асель Т.\nОбязательно скрин чека в директ!",
+      "imageNote": "сторис с реквизитами и фото автомобиля",
+      "url": "https://www.instagram.com/stories/avto_i_dengi_konkurs/8297734366137002004/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0049",
+      "accountId": "acc-bn-news",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 7300,
+      "text": "Нацбанк сохранил базовую ставку на уровне 16,5%. Следующее решение — в декабре.",
+      "url": "https://t.me/kz_news_today/997",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0050",
+      "accountId": "acc-az-blogger2",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7200,
+      "text": "Новая ласточка 🚗🔥 Кто думает, что я на неё пахал на заводе — нет 😎 Кто знает, где поднимать — тот и катается. Промо AZ777, рабочая ссылка в шапке профиля 🔗\n#мотивация #тачки #успех",
+      "imageNote": "мужчина у чёрного седана на парковке",
+      "url": "https://www.instagram.com/p/BQDkGvwI6NW/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0051",
+      "accountId": "acc-bn-mama",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7200,
+      "text": "🎁 ГИВ! Вместе с @kiim_shop_kz дарим 3 сертификата по 20 000 ₸!\nЧто нужно:\n✔ подписка на меня и @kiim_shop_kz\n✔ лайк\n✔ комментарий\nНикаких оплат и «взносов»! Будьте осторожны с фейками 🙏 Итоги 1 ноября",
+      "url": "https://www.instagram.com/p/eQ87kOm7ekI/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0052",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7100,
+      "text": "Итоги розыгрыша №14 🏆\nПобедитель — слот №117, @aruzhan_lucky_2026! 🎉 Рандомайзер в прямом эфире, всё честно 💯\nУже стартует розыгрыш №15 — 100 000 ₸ наличными 💵 Слот 1 000 ₸, реквизиты прежние.",
+      "url": "https://www.instagram.com/p/In7VXiIlz3D/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0053",
+      "accountId": "acc-az-youtube",
+      "platform": "youtube",
+      "type": "reel",
+      "minutesAgo": 7000,
+      "text": "x1000 за 3 секунды 😱 полное видео на канале, промокод AZ777 в описании #shorts",
+      "url": "https://www.youtube.com/shorts/LrOviUhRGl1",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0054",
+      "accountId": "acc-sg-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 7000,
+      "text": "🔄 Основа под блоком, не паникуем!\nРабочее зерк@ло: sp1ngold-mirror.example\nПромик тот же — SP1N50 😉 (SPIN50)",
+      "url": "https://t.me/sp1ngold_vip/930",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0055",
+      "accountId": "acc-pyr-organizer",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7000,
+      "text": "Қыздар, 5000 ₸ салып, 3 күнде 10 000 ₸ алдым 🥹 Сенбейсіздер ме? Өздеріңіз көріңіз 👇\nЧатқа кіріңіз: chat.whatsapp.com/TabysKZ01\nKaspi: +7 700 000 55 01 💳",
+      "url": "https://www.instagram.com/p/D0Mma7BpFy2/",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0056",
+      "accountId": "acc-bn-boardgames",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 7000,
+      "text": "Турнир по «Монополии» в субботу 🎲 Вход свободный, призы — настолки от нашего клуба. Записывайтесь в комментариях!",
+      "url": "https://www.instagram.com/p/bC260OAu7vG/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0057",
+      "accountId": "acc-az-streamer2",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 6900,
+      "text": "LIVE 22:00 🎲💰",
+      "transcript": "Привет-привет, мои хорошие! Сегодня крутим вместе... так, ставочку поставила пятьсот... ой, ой, ой, три скаттера! Девочки, фриспины! ... Кто зарегается по моей ссылке — а-семь-вин точка экзампл, слэш, вопросик, реф равно айдана — скиньте ник в чат, я каждому фриспинов раздам. Промик тот же, AZ777. Только восемнадцать плюс, да, это важно...",
+      "url": "https://www.tiktok.com/@aidana_luckylive/live?room_id=4502596407093375035",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0058",
+      "accountId": "acc-bn-asel",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 6900,
+      "text": "Мой бюджет на октябрь по правилу 50/30/20 💰 Как я распределяю доход и почему подушка безопасности — это первое, с чего стоит начать 👇",
+      "url": "https://www.instagram.com/p/KVhMUsYOwzn/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0059",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 6800,
+      "text": "успевайте 🔥",
+      "ocrText": "РОЗЫГРЫШ №15\n100 000 ₸\nслот — 1 000 ₸\nперевод на Kaspi +7 700 000 12 34\nскрин чека в директ 📩",
+      "imageNote": "сторис с фото пачки купюр",
+      "url": "https://www.instagram.com/stories/rozygrysh_almaty_top/5778921241680161167/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0060",
+      "accountId": "acc-bn-cyberpol",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 6800,
+      "text": "Если в комментариях вам пишут «пиши в лс за ссылкой», предлагают «рабочее зеркало» или промокод на бонус к депозиту — это незаконная реклама азартных игр. Сообщайте о таких аккаунтах через форму обратной связи.",
+      "url": "https://t.me/kiberpatrul_kz/940",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0061",
+      "accountId": "acc-lot-shill",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 6700,
+      "text": "Девочки, я до сих пор в шоке 😭📱 выиграла айфон в розыгрыше у @rozygrysh_almaty_top! Купила всего 2 слота по 2000 ₸. Всё честно, рекомендую 🙏 Участвуйте, следующий уже идёт 👇",
+      "imageNote": "селфи с коробкой смартфона",
+      "url": "https://www.instagram.com/p/O9uR8Oji7b2/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0062",
+      "accountId": "acc-bn-minecraft",
+      "platform": "youtube",
+      "type": "post",
+      "minutesAgo": 6700,
+      "text": "Выживание #34: строю ферму железа ⛏ Новая серия уже на канале!",
+      "url": "https://www.youtube.com/watch?v=VhLqLoxGRou",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0063",
+      "accountId": "acc-pyr-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 6600,
+      "text": "🎁 Реферальная программа Капитал 2.0:\n1 линия — 10%\n2 линия — 5%\n3 линия — 2%\nПриглашайте друзей — растём вместе! 🤝 Ссылка на чат для новичков: t.me/+Kapital20inv",
+      "url": "https://t.me/kapital20_news/627",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0064",
+      "accountId": "acc-bn-cinema",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 6600,
+      "text": "🎬 Премьера недели: триллер «Последняя ставка» — история крупье, который раскрывает махинации подпольного казино. В кинотеатрах с 30 октября. 18+",
+      "url": "https://t.me/kino_almaty/533",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0065",
+      "accountId": "acc-az-youtube",
+      "platform": "youtube",
+      "type": "stream",
+      "minutesAgo": 6500,
+      "text": "🔴 ЗАНОСЫ НЕДЕЛИ | бюджет 500к | промо в описании",
+      "transcript": "Всем здарова, на связи Бека, это Beka Wins TV, сегодня у нас бюджет полмиллиона, поехали... крутим «Золото степи», ставка пять тысяч... пусто, пусто... о, бонус! Бонус! Ну давай, давай... ЗАНОС! Икс триста двадцать, миллион шестьсот! Чат, вы видели? Так, кто хочет так же — ссылка в описании, рабочее зеркало аз-семь-семь-семь минус миррор точка экзампл, моя рефка бека-тв, промокод AZ777. Не забываем лайк...",
+      "url": "https://www.youtube.com/watch?v=4dRKBixU5qk",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0066",
+      "accountId": "acc-sg-tiktok",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 6400,
+      "text": "500 ₸ → 87 000 ₸ 😱 не верите? смотрите до конца 💰🎰 промо SPIN50, ссылка в тг @sp1ngold_vip",
+      "url": "https://www.tiktok.com/@lucky_marat_kz/video/7916811236500220860",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0067",
+      "accountId": "acc-bn-travel",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 6400,
+      "text": "Тур на Кольсай и Каинды 🏞 2 дня, 45 000 ₸. Раннее бронирование −10%. Предоплата 10 000 ₸ через Kaspi, остаток в день выезда.",
+      "url": "https://www.instagram.com/p/OSpuKlQ-DgV/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0068",
+      "accountId": "acc-bn-gadget",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 6300,
+      "text": "Новый смартфон в рассрочку Kaspi 0-0-12 📱 Без переплат, оформление за 5 минут. Ждём в магазине на Абая 45",
+      "url": "https://www.tiktok.com/@gadget_point_kz/photo/7890609605400309655",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0069",
+      "accountId": "acc-pyr-recruiter1",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 6200,
+      "text": "мой пассивный доход 🤑",
+      "transcript": "Сейчас покажу, как я получаю три процента в день, вообще ничего не делая... Закинул двадцать тысяч — и каждый день капает шестьсот тенге, смотрите личный кабинет... Ссылка на чат в профиле, пополнение — каспи, плюс семь семьсот, ноль ноль ноль, пятьдесят пять, ноль один... Мест мало, поток закрывается в пятницу.",
+      "url": "https://www.tiktok.com/@passive_income_kz/video/6488600504051809862",
+      "groundTruth": "pyramid",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0070",
+      "accountId": "acc-bn-tort",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 6200,
+      "text": "🎂 Розыгрыш торта на день рождения! Бесплатно: подписка + сохрани это видео + отметь друга. Итоги через неделю 🎉",
+      "url": "https://www.tiktok.com/@tort_by_dinara/photo/8754207890660692617",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0071",
+      "accountId": "acc-az-proxy",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 6100,
+      "text": "🏆 Заносы недели от наших ребят:\n• @nurik_spins_kz — 412 000 ₸\n• @BekaWinsTV — 1,6 млн ₸\n• @aidana_luckylive — 96 000 ₸\nКто следующий? 😉 Забирай бонус: bit.ly/az7bonus (промо AZ777)",
+      "url": "https://t.me/bonusy_dnya/1100",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0072",
+      "accountId": "acc-bn-bank",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 6100,
+      "text": "Как рассчитывается доход по депозиту? Объясняем на примере 100 000 ₸ 📊",
+      "transcript": "Допустим, вы положили сто тысяч тенге под четырнадцать процентов годовых. Через год получите примерно четырнадцать тысяч дохода, с капитализацией чуть больше... Важно: не путайте проценты годовые и проценты в день. Если кто-то обещает процент в день — это не банк, бегите.",
+      "url": "https://www.instagram.com/reel/IjiyQt3PsLc/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0073",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 6000,
+      "text": "🎉 ҰТЫС! 100 000 ₸ ақша! 💵\nБір слот — 1 000 ₸\nKaspi: +7 700 000 12 34\nЧекті директке жіберіңіз — нөміріңізді аласыз 📩\nҚорытынды — тікелей эфирде, кездейсоқ таңдау 🎡",
+      "url": "https://www.instagram.com/p/bMbIPvVe4Ar/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0074",
+      "accountId": "acc-bn-cafe",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 6000,
+      "text": "Как мы варим фильтр ☕",
+      "transcript": "Привет! Сегодня покажу, как мы готовим фильтр-кофе: восемнадцать грамм кофе, триста мл воды, девяносто два градуса... И напоминаю — розыгрыш сертификата ещё идёт до пятницы, участие бесплатное, просто подпишитесь и отметьте друзей...",
+      "url": "https://www.instagram.com/reel/8-lnbSKWvxe/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0075",
+      "accountId": "acc-az-streamer1",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 5900,
+      "text": "ну что, верите теперь? 😏",
+      "ocrText": "Заявка на вывод №48211\nСтатус: Выплачено ✅\nСумма: 412 000 ₸\nСпособ: Kaspi Gold •• 4400 **** **** 0917\nAZART777",
+      "imageNote": "скриншот личного кабинета с одобренной выплатой",
+      "url": "https://www.tiktok.com/@nurik_spins_kz/photo/9050914353128298458",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0076",
+      "accountId": "acc-bn-scamwatch",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 5900,
+      "text": "Как блогеры прячут рекламу казино 🎰: «мой выигрыш», «как я поднял», ссылки через сокращатели и «рабочие зеркала», к@зин0 вместо казино. Если видите такое — это реклама, а не «личный опыт». Не ведитесь 🚫",
+      "url": "https://www.tiktok.com/@scam_detector_kz/photo/3640891413797841524",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0077",
+      "accountId": "acc-sg-insta",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 5800,
+      "text": "🙈",
+      "ocrText": "SP1N GOLD 🟡\nбонус 50 FS\nspingold.example/?aff=gulya&utm_source=ig\nл и н к в п р о ф и л е",
+      "imageNote": "сторис с жёлтым логотипом и монетами",
+      "url": "https://www.instagram.com/stories/gulya_money_mood/6149928889156233957/",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0078",
+      "accountId": "acc-bn-loto",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 5800,
+      "text": "🎱 Результаты тиража №1287 государственной лотереи «Жұлдыз Лото»: 4, 11, 19, 23, 35, 42. Джекпот 120 млн ₸ не разыгран и переходит на следующий тираж. Билеты — только в официальных пунктах продаж.",
+      "url": "https://t.me/loto_info_kz/1593",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0079",
+      "accountId": "acc-pyr-recruiter2",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 5700,
+      "text": "очередные приятности 🥰 спасибо девочкам 💛",
+      "ocrText": "Kaspi\nВходящий перевод +10 000 ₸\nот Айгерим С.\nВходящий перевод +20 000 ₸\nот Ерлан Б.",
+      "imageNote": "скриншот истории переводов",
+      "url": "https://www.instagram.com/p/piPqhyeX1fg/",
+      "groundTruth": "pyramid",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0080",
+      "accountId": "acc-az-blogger2",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 5600,
+      "text": "рабочая ссылка 👇",
+      "ocrText": "РАБОЧЕЕ ЗЕРКАЛО 🔗\naz777-mirror.example/?ref=erzhan_cars&subid=ig_story_2210\nне открывается? пиши в лс ✉️\nПРОМО AZ777",
+      "imageNote": "сторис с белым текстом на чёрном фоне",
+      "url": "https://www.instagram.com/stories/erzhan_cars_life/4201712698128059733/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0081",
+      "accountId": "acc-bn-cs",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 5600,
+      "text": "фейсит 10 лвл, катаем 🔫",
+      "transcript": "Всем привет, сегодня фейсит... Нет, кейсы не открываю, и сайты с рулеткой не рекламирую — это всё развод для школьников, сколько можно... Так, мираж, берём А, флешку кинь...",
+      "url": "https://www.tiktok.com/@daulet_cs2/live?room_id=2039098641467654991",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0082",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "comment",
+      "minutesAgo": 5500,
+      "text": "Да, слоты ещё есть 👌 оплата на тот же номер, 12 34 в конце. Чек в директ",
+      "parentAccountId": "acc-lot-iphone",
+      "url": "https://www.instagram.com/p/dEXVhCEvV3R/c/73830685920767388/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0083",
+      "accountId": "acc-bn-dota",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 5500,
+      "text": "топ-5 ошибок новичков на миде 🎮 №3 делают все",
+      "url": "https://www.tiktok.com/@arman_dota2/video/8824827521852629373",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0084",
+      "accountId": "acc-pyr-organizer",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 5400,
+      "text": "✨",
+      "ocrText": "ВЫПЛАТЫ СЕГОДНЯ ✅\n10 000 ₸ • 20 000 ₸ • 50 000 ₸\nВХОД ОТ 5 000 ₸\nKASPI +7 700 000 55 01\nОСТАЛОСЬ 3 МЕСТА 🔥",
+      "imageNote": "сторис с текстом на фоне купюр",
+      "url": "https://www.instagram.com/stories/aigerim_tabys_club/5481489998175821935/",
+      "groundTruth": "pyramid",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0085",
+      "accountId": "acc-bn-jobs",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 5400,
+      "text": "Требуется курьер на своём авто 🚗 Доход 15 000–25 000 ₸ в день, оплата ежедневно на Kaspi. Работа с 9 до 18, район Бостандык. Звонить: +7 700 000 62 18",
+      "url": "https://t.me/jumys_almaty/1464",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0086",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 5300,
+      "text": "Rozygrysh 100k tenge 🎡 slot 1000 tg, kaspi tot zhe, chek v direct 📩 krutim v pyatnicu",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/photo/3505160765058772169",
+      "groundTruth": "lottery",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0087",
+      "accountId": "acc-bn-news",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 5300,
+      "text": "Блогера из Шымкента оштрафовали за рекламу онлайн-казино в сторис. По данным следствия, он размещал ссылки с промокодами и «рабочими зеркалами» сайта, а также публиковал «скрины выигрышей».",
+      "url": "https://t.me/kz_news_today/999",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0088",
+      "accountId": "acc-sg-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 5200,
+      "text": "к@зин0 без вериф. 🎲💰 вывод на кaспи за 10 мин ⚡ с п и н г о л д · пр0м0 S P I N 5 0 · линк в описании канала",
+      "url": "https://t.me/sp1ngold_vip/932",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0089",
+      "accountId": "acc-bn-kiim",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 5200,
+      "text": "Образ дня 🤍 пальто оверсайз + джинсы mom fit. Размеры S–XL",
+      "url": "https://www.instagram.com/reel/EBVbfzRst0P/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0090",
+      "accountId": "acc-pyr-recruiter3",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 5100,
+      "text": "LIVE сұрақ-жауап 🎙",
+      "transcript": "Ал жігіттер, сұрақ қойыңдар... иә, бұл заңды, бәрі нормально... вложение бес мың, үш күннен кейін он мың аласың... досыңды шақырсаң — тағы он пайыз бонус... Kaspi нөмір профильде, WhatsApp чатқа кіріңдер, сілтеме шапкада...",
+      "url": "https://www.tiktok.com/@tabys_bro_kz/live?room_id=3275547177117388364",
+      "groundTruth": "pyramid",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0091",
+      "accountId": "acc-bn-fingram",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 5100,
+      "text": "Лотерея vs «розыгрыш за слот» — в чём разница?",
+      "transcript": "Сегодня разберём, чем лотерея отличается от мошеннического розыгрыша. Государственная лотерея имеет лицензию, тиражи проводятся публично, под контролем комиссии... А если вам предлагают купить «слот» за две тысячи и перевести на чей-то личный каспи, а потом крутят колесо в эфире — это не лотерея, это незаконный сбор денег.",
+      "url": "https://www.instagram.com/reel/xNKLdEkpa00/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0092",
+      "accountId": "acc-az-proxy",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 5000,
+      "text": "⚠️ Зеркало сменилось!\nСтарое az777-mirror.example больше не работает ❌\nНовое: a7win.example ✅\nПромо прежний — AZ777. Всё как всегда в закрепе 📌",
+      "url": "https://t.me/bonusy_dnya/1102",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0093",
+      "accountId": "acc-bn-qarjy",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 5000,
+      "text": "Қаржы пирамидасының 3 белгісі 🚩\n1) «3 күнде x2», «күніне 3%»\n2) «досыңды шақыр — 10% бонус»\n3) жеке картаға немесе Kaspi нөміріне аудару\nАбай болыңыз!",
+      "url": "https://www.instagram.com/p/K_A2mBhK8ag/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0094",
+      "accountId": "acc-az-youtube",
+      "platform": "youtube",
+      "type": "comment",
+      "minutesAgo": 4900,
+      "text": "📌 Зеркало обновил, старое легло ⬇️ a7win.example/?ref=beka_tv промо AZ777",
+      "parentAccountId": "acc-az-youtube",
+      "url": "https://www.youtube.com/watch?v=1yUsYRJ3bv-&lc=Ugxdd7DpmeR5gtPBovHwbLn",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0095",
+      "accountId": "acc-bn-cyberpol",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 4900,
+      "text": "Пример мошеннического сообщения 👇 Не ведитесь!",
+      "ocrText": "🔥 Вложи 5000 ₸ — получи 10 000 ₸ через 3 дня!\nПереводи на Kaspi, номер в профиле\n⏳ осталось 3 места",
+      "imageNote": "скриншот сообщения в мессенджере с пометкой «МОШЕННИКИ»",
+      "url": "https://t.me/kiberpatrul_kz/943",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0096",
+      "accountId": "acc-lot-auto",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 4800,
+      "text": "⏳ Осталось 412 слотов на Camry!\nПосле набора — сразу эфир на колесе 🎡\nСлот 5 000 ₸ → шанс уехать на новой машине 🚗🔥",
+      "url": "https://www.instagram.com/p/Xs8qMLnY2vz/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0097",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "comment",
+      "minutesAgo": 4700,
+      "text": "оплатили — пишите ник сюда, внесу на колесо 🎡 каспи в шапке",
+      "parentAccountId": "acc-lot-wheel",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/video/4046380016264950592?comment_id=1798045448117879061",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0098",
+      "accountId": "acc-pyr-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 4700,
+      "text": "Капитал 2.0 — это не пирамида! ❌ Мы работаем с арбитражем криптовалют 🔐 Доходность 90% в месяц стабильна уже 6 месяцев. Сомневаетесь — посмотрите отзывы в чате инвесторов 👉 t.me/+Kapital20inv",
+      "url": "https://t.me/kapital20_news/628",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0099",
+      "accountId": "acc-sg-tiktok",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 4600,
+      "text": "Kto hochet podnyat' — ka3ino SpinGold 🎰 promo SPIN50, ssylka v tg, vyvod na kaspi 💸",
+      "url": "https://www.tiktok.com/@lucky_marat_kz/video/1584891324329266316",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0100",
+      "accountId": "acc-bn-boardgames",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 4600,
+      "text": "Вечер мафии 🕵️ каждую пятницу в 19:00. Чай и печеньки бесплатно ☕",
+      "url": "https://www.instagram.com/p/Huj5oTuDSZU/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0101",
+      "accountId": "acc-bn-run",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 4500,
+      "text": "Как подготовиться к первому полумарафону: 3 совета от тренера 🏃",
+      "url": "https://www.instagram.com/reel/CQsTK4mQSMh/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0102",
+      "accountId": "acc-az-streamer1",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 4400,
+      "text": "сәлем бауырлар 🤙 стрим",
+      "transcript": "Бауырлар, сәлем! Бүгін тағы ойнаймыз, бюджет жүз мың... жақсы, ставка үш жүз... әй, бос... тағы... Слушайте, кто спрашивал — зеркало ауысты, ескі сілтеме ашылмайды, жаңасы — эй-семь-вин точка экзампл, рефка менікі, nurik77 деп жазыңдар. Промокод сол баяғы, аз жеті жеті жеті. Кеттік...",
+      "url": "https://www.tiktok.com/@nurik_spins_kz/live?room_id=4901814692353394285",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0103",
+      "accountId": "acc-bn-charity",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 4400,
+      "text": "Спасибо 🤍",
+      "ocrText": "ОТЧЁТ\nСобрано: 3 410 000 ₸ из 4 200 000 ₸\nСпасибо каждому!\nВыписка по счёту — в актуальном",
+      "imageNote": "сторис с прогресс-баром сбора",
+      "url": "https://www.instagram.com/stories/meyirim_fond_kz/1160632854825744476/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0104",
+      "accountId": "acc-az-streamer2",
+      "platform": "tiktok",
+      "type": "comment",
+      "minutesAgo": 4300,
+      "text": "зеркало сменилось, новая ссылка в тг @bonusy_dnya 👈 промик AZ777 работает",
+      "parentAccountId": "acc-az-streamer2",
+      "url": "https://www.tiktok.com/@aidana_luckylive/video/2801921783178360283?comment_id=5031015814739351142",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0105",
+      "accountId": "acc-pyr-recruiter1",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 4300,
+      "text": "Kapital 2.0 — 3% v den' 📈 vyvod na kaspi kazhdyi den' 💸 vkhod ot 10k, ssylka v profile 👉 t.me/+Kapital20inv",
+      "url": "https://www.tiktok.com/@passive_income_kz/photo/7520790838657398583",
+      "groundTruth": "pyramid",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0106",
+      "accountId": "acc-lot-shill",
+      "platform": "instagram",
+      "type": "comment",
+      "minutesAgo": 4200,
+      "text": "Участвую уже третий раз, в этот раз повезло!! 🥹 Каспи на 12 34 это ихний номер, не перепутайте 😅",
+      "parentAccountId": "acc-lot-iphone",
+      "url": "https://www.instagram.com/p/uZeL_UpijLZ/c/69901059535831347/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0107",
+      "accountId": "acc-az-streamer2",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 4100,
+      "text": "мой первый занос 🥹💸 #рекомендации #удача #fyp",
+      "ocrText": "a7win.example/?ref=aidana&utm_source=tiktok&utm_medium=bio\nПРОМОКОД AZ777\n+100% 🎁",
+      "imageNote": "кадр видео с текстом поверх экрана телефона",
+      "url": "https://www.tiktok.com/@aidana_luckylive/photo/6438915668336299417",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0108",
+      "accountId": "acc-bn-asel",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 4000,
+      "text": "разбираю сообщения из директа 👀",
+      "transcript": "Девочки, мне в директ прислали: «вложи пять тысяч, получи десять через три дня». Давайте посчитаем: это сто процентов за три дня, то есть больше двенадцати тысяч процентов годовых. Такого не бывает. Откуда берутся деньги? Из взносов новых участников. Это пирамида.",
+      "url": "https://www.instagram.com/reel/e14yqr7S-JZ/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0109",
+      "accountId": "acc-sg-insta",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 3900,
+      "text": "Қыздар, үйде отырып табыс 💰 Бұл жай ғана ойын 🎰 Промокод SPIN50, сілтеме директте 📩",
+      "url": "https://www.instagram.com/reel/rIMl1K_1zV_/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0110",
+      "accountId": "acc-pyr-recruiter2",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 3900,
+      "text": "Пишут в директ: «а это не пирамида?» 🙄 Нет, девочки, это инвестиционный клуб 💁‍♀️ Деньги работают — вы получаете % каждый день. А за каждую подругу +10% 💝 Чат 👉 chat.whatsapp.com/TabysKZ01 или t.me/+Kapital20inv",
+      "url": "https://www.instagram.com/p/K-R1lr-o1g7/",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0111",
+      "accountId": "acc-bn-cinema",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 3900,
+      "text": "🎟 Розыгрыш 2 билетов на премьеру «Последней ставки»! Бесплатно: репост + комментарий. Итоги в четверг.",
+      "url": "https://t.me/kino_almaty/535",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0112",
+      "accountId": "acc-lot-auto",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 3800,
+      "text": "Отзывы победителей ❤️ спасибо, что доверяете!",
+      "ocrText": "Спасибо огромное!!! машину получила 😭😭\n@avto_i_dengi_konkurs вы лучшие\nдумала развод а нет 🙏",
+      "imageNote": "скриншот переписки в мессенджере",
+      "url": "https://www.instagram.com/p/UcI1vIIO-Q2/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0113",
+      "accountId": "acc-az-blogger1",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 3700,
+      "text": "Мой муж не верил, пока я не показала это 😂💰",
+      "ocrText": "Вывод одобрен ✅\n185 000 ₸\naz777-mirror.example",
+      "imageNote": "скриншот уведомления о выводе средств",
+      "url": "https://www.instagram.com/reel/tT7QP8ffRNN/",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0114",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 3600,
+      "text": "айфон ойнатамыз 📱🎡",
+      "transcript": "Сәлеметсіздер ме, достар! Бүгін айфон ойнатамыз... слот екі мың теңге, тағы он слот қалды... Каспиге аударыңыз, нөмір профильде, он екі отыз төрт... чекті директке жіберіңіз... Иә, тікелей эфирде дөңгелекті айналдырамыз, бәрі әділ...",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/live?room_id=4744912231993042571",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0115",
+      "accountId": "acc-bn-gadget",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 3600,
+      "text": "Kaspi Red: −20% на все чехлы и стёкла до воскресенья 🔥 Успевайте!",
+      "url": "https://www.tiktok.com/@gadget_point_kz/video/1824491350640961424",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0116",
+      "accountId": "acc-az-spambot",
+      "platform": "instagram",
+      "type": "comment",
+      "minutesAgo": 3500,
+      "text": "кто не выиграл в розыгрыше — не грустите 🎁 у меня бонус каждому, без условий 👉 bit.ly/az7bonus",
+      "parentAccountId": "acc-bn-cafe",
+      "url": "https://www.instagram.com/p/yWsks824Qve/c/21817294379848297/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0117",
+      "accountId": "acc-bn-news",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 3500,
+      "text": "Финрегулятор предупреждает: в WhatsApp и Telegram снова распространяются сообщения «вложи 5000 — получи 10 000 через 3 дня». Это признаки финансовой пирамиды — организаторы платят первым участникам за счёт новых.",
+      "url": "https://t.me/kz_news_today/1001",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0118",
+      "accountId": "acc-pyr-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 3400,
+      "text": "✅ Выплаты за 23.10 произведены в полном объёме! Спасибо, что вы с нами 🤝",
+      "ocrText": "РЕЕСТР ВЫПЛАТ 23.10\nИнвесторов: 214\nСумма: 4 870 000 ₸\nСтатус: выполнено",
+      "imageNote": "таблица с итоговыми суммами",
+      "url": "https://t.me/kapital20_news/630",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0119",
+      "accountId": "acc-bn-mama",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 3400,
+      "text": "⚠️⚠️⚠️",
+      "ocrText": "ВНИМАНИЕ ⚠️\nМне пишут, что фейковый аккаунт @aruzhan_mama_bl0g просит оплату «за участие в гиве».\nЭто НЕ я! Я никогда не прошу денег 🙅‍♀️",
+      "imageNote": "сторис с предупреждением на красном фоне",
+      "url": "https://www.instagram.com/stories/aruzhan_mama_blog/5064202568782937991/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0120",
+      "accountId": "acc-sg-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 3300,
+      "text": "отзыв подписчика 🙏",
+      "ocrText": "Выплата успешно отправлена\n230 000 ₸\nSpinGold • Kaspi Gold\n24.10.2026 01:14",
+      "imageNote": "скриншот уведомления о выплате",
+      "url": "https://t.me/sp1ngold_vip/934",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0121",
+      "accountId": "acc-bn-minecraft",
+      "platform": "youtube",
+      "type": "post",
+      "minutesAgo": 3300,
+      "text": "🎁 На моём сервере розыгрыш алмазной брони среди игроков! Бесплатно — просто зайди на сервер в субботу и напиши /участвую в чат 💎",
+      "url": "https://www.youtube.com/watch?v=KGPEk5RFluu",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0122",
+      "accountId": "acc-bn-kiim",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 3100,
+      "text": "🛍",
+      "ocrText": "−15% ПО ПРОМОКОДУ KIIM15\nТОЛЬКО ДО 31.10\nkiim-shop.example",
+      "imageNote": "сторис с фото одежды и текстом скидки",
+      "url": "https://www.instagram.com/stories/kiim_shop_kz/1268049844023162965/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0123",
+      "accountId": "acc-az-proxy",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 3000,
+      "text": "🎰 50 фриспинов без депозита за регистрацию!\n👉 clck.ru/3Fz7Qa (ведёт на актуальный домен A7)\nПромокод: AZ777\nУспейте до воскресенья ⏳",
+      "url": "https://t.me/bonusy_dnya/1104",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0124",
+      "accountId": "acc-bn-scamwatch",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 3000,
+      "text": "сохрани, чтобы не попасться 📌",
+      "ocrText": "ПИРАМИДА =\n• x2 за 3 дня\n• осталось 3 места\n• приведи друга +10%\n• выплаты «по очереди»",
+      "imageNote": "карточка с чек-листом на жёлтом фоне",
+      "url": "https://www.tiktok.com/@scam_detector_kz/photo/5068209734901088087",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0125",
+      "accountId": "acc-bn-cyberpol",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 2950,
+      "text": "Құрметті азаматтар! «Күніне 5% табыс», «3 күнде x2» деген уәделерге сенбеңіздер. Бұл — қаржы пирамидасының белгісі. Ақшаңызды бейтаныс адамдардың картасына аудармаңыз!",
+      "url": "https://t.me/kiberpatrul_kz/944",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0126",
+      "accountId": "acc-pyr-recruiter1",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 2900,
+      "text": "Сегодня последний день набора в поток №14 ⏳ Осталось 5 мест! Пополнение: Kaspi +7 700 000 55 01 📲 Кто не успел — следующий поток через месяц 😉",
+      "url": "https://www.tiktok.com/@passive_income_kz/photo/8105005476650647285",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0127",
+      "accountId": "acc-bn-cafe",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 2900,
+      "text": "🎉",
+      "ocrText": "ИТОГИ РОЗЫГРЫША 🎉\nПобедитель: @madi***_kz\nРандомайзер: участник №214 из 1 380\nСпасибо всем! Следующий розыгрыш — в ноябре 💛",
+      "imageNote": "скриншот экрана рандомайзера с номером победителя",
+      "url": "https://www.instagram.com/stories/coffee_dala_almaty/7583901906269420224/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0128",
+      "accountId": "acc-bn-cs",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 2700,
+      "text": "клатч 1в4 на мираже 🔥",
+      "url": "https://www.tiktok.com/@daulet_cs2/video/8354063354487573307",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0129",
+      "accountId": "acc-az-blogger2",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 2600,
+      "text": "мотивация на неделю 💪",
+      "transcript": "Короче, слушай сюда. Все говорят — работай, работай... а я покажу, как с пяти тысяч сделать сотку. Заходишь на сайт, ну ты знаешь какой, а-зет три семёрки, вводишь мой промик, там бонус, и всё — дальше дело удачи. Я так машину взял, отвечаю. Ссылка в шапке, если что пиши в директ...",
+      "url": "https://www.instagram.com/reel/KXtbMTTbJdI/",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0130",
+      "accountId": "acc-bn-loto",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 2600,
+      "text": "Победитель из Караганды получил 8,5 млн ₸ 🎉 Выигрышный билет государственной лотереи был куплен в официальном киоске. Налог с выигрыша удержан, выплата произведена на банковский счёт.",
+      "url": "https://t.me/loto_info_kz/1594",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0131",
+      "accountId": "acc-pyr-organizer",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 2500,
+      "text": "отчёт за неделю 💸",
+      "transcript": "Дорогие мои, кто ещё сомневается — смотрите, это мои выплаты за неделю: десять, двадцать, ещё двадцать... Пригласите подругу — получите плюс десять процентов от её вклада. Чат в шапке профиля, Kaspi плюс семь семьсот ноль ноль ноль пятьдесят пять ноль один. Успевайте, мест мало!",
+      "url": "https://www.instagram.com/reel/mVyfaYjU9Ls/",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0132",
+      "accountId": "acc-bn-fingram",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 2500,
+      "text": "Квиз 🧠 Что выгоднее: депозит 14% годовых или «инвестклуб» 3% в день? Подсказка: 3% в день — это больше 1000% годовых. Правильный ответ и объяснение — в карусели 👉",
+      "url": "https://www.instagram.com/p/vbAXwBYwKOs/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0133",
+      "accountId": "acc-bn-news",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 2450,
+      "text": "Сохраните себе 👇 Как распознать финансовую пирамиду",
+      "ocrText": "ПРИЗНАКИ ПИРАМИДЫ\n• доход «% в день»\n• «осталось 3 места»\n• бонус за приглашённых\n• перевод на личную карту\n• выплаты «по очереди»",
+      "imageNote": "инфографика со списком признаков",
+      "url": "https://t.me/kz_news_today/1004",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0134",
+      "accountId": "acc-sg-tiktok",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 2400,
+      "text": "сегодня без стрима 😴 но в тг раздача фриспинов 👉 t.me/+Sp1nG0ldFS промо SPIN50",
+      "url": "https://www.tiktok.com/@lucky_marat_kz/photo/5666193418018177258",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0135",
+      "accountId": "acc-bn-autoschool",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 2400,
+      "text": "Поздравляем наших выпускников, сдавших экзамен с первого раза! 🎉🚗",
+      "url": "https://www.instagram.com/p/E55qVHzKomq/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0136",
+      "accountId": "acc-az-streamer2",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 2300,
+      "text": "девочки, кто спрашивал где я играю — всё в тг, ссылка в шапке 😘 там и бонусы, и зеркала 🎰 только 18+ 🔞",
+      "url": "https://www.tiktok.com/@aidana_luckylive/photo/2761581528683280025",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0137",
+      "accountId": "acc-bn-bank",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 2300,
+      "text": "⚠️ Осторожно, мошенники! Сотрудники Altyn Dala Bank никогда не просят коды из SMS и не предлагают «доход 2% в день» или «x2 за 3 дня». Если вам обещают удвоить деньги — это финансовая пирамида. Сообщайте на горячую линию 💙",
+      "url": "https://www.instagram.com/p/Vsb-6MjRFB6/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0138",
+      "accountId": "acc-bn-dota",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 2200,
+      "text": "Апнул 7000 ммр 🥳 спасибо всем, кто смотрел стримы и поддерживал!",
+      "url": "https://www.tiktok.com/@arman_dota2/photo/7444755130444502024",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0139",
+      "accountId": "acc-pyr-recruiter2",
+      "platform": "instagram",
+      "type": "story",
+      "minutesAgo": 2100,
+      "text": "🙌",
+      "ocrText": "ВЛОЖИЛА 5 000 → ПОЛУЧИЛА 10 000 ✨\nхочешь так же?\nпиши «+» в директ 📩",
+      "imageNote": "сторис с розовым фоном и текстом",
+      "url": "https://www.instagram.com/stories/mama_v_dekrete_dohod/3171185150316201379/",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0140",
+      "accountId": "acc-lot-wheel",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 2000,
+      "text": "🚗 АВТО за 5000 ₸?! совместный LIVE с @avto_i_dengi_konkurs",
+      "transcript": "Добрый вечер всем! Главный розыгрыш месяца — Тойота Камри от наших друзей «Авто и деньги»... слот пять тысяч, всего три тысячи слотов, всё продано, спасибо! Кто спрашивал реквизиты на следующий — карта четыре четыре ноль ноль, последние цифры пятьдесят пять двадцать один, или каспи по номеру в шапке... Ну что, крутим! Три... два... один...",
+      "url": "https://www.tiktok.com/@koleso_udachi_kz/live?room_id=1641084271188722180",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0141",
+      "accountId": "acc-bn-fingram",
+      "platform": "instagram",
+      "type": "comment",
+      "minutesAgo": 2000,
+      "text": "Уважаемые подписчики! Обещания «x2 за 3 дня» — признак финансовой пирамиды. Не переводите деньги на личные карты и номера Kaspi.",
+      "parentAccountId": "acc-pyr-organizer",
+      "url": "https://www.instagram.com/p/gAXRodyeR3U/c/52889199171928367/",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0142",
+      "accountId": "acc-bn-jobs",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 2000,
+      "text": "Жұмыс: бухгалтер, тәжірибе 2 жылдан. Жалақы 350 000 ₸, кеңсе Алатау ауданында.",
+      "url": "https://t.me/jumys_almaty/1465",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0143",
+      "accountId": "acc-az-blogger1",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 1900,
+      "text": "Отвечаю на вопросы из директа 💌\n— Это легально? Ну... 😅\n— Ты реально выводишь? Да, на Kaspi, за 10 минут\n— Где взять бонус? bit.ly/az7bonus, промокод AZ777\nОстальное — в сторис 🤍",
+      "url": "https://www.instagram.com/p/DXKlWKTgWkr/",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0144",
+      "accountId": "acc-pyr-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 1800,
+      "text": "Құрметті инвесторлар! 📢 Бүгін 20:00-де Zoom-та кездесу. Жаңа тариф — күніне 4% 📈 Досыңызды ертіп келіңіз — бонус 10%!",
+      "url": "https://t.me/kapital20_news/632",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0145",
+      "accountId": "acc-bn-baursak",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 1800,
+      "text": "Ұтыс қорытындысы 🎉 Жеңімпаз — @dina_k***! Хабарласыңыз, сыйлығыңызды алып кетіңіз 🙌 Қатысқандардың бәріне рақмет 💛",
+      "url": "https://www.instagram.com/p/tsLU1X0m8LC/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0146",
+      "accountId": "acc-sg-tiktok",
+      "platform": "tiktok",
+      "type": "comment",
+      "minutesAgo": 1700,
+      "text": "в лс скинул 👌 кто ещё хочет — линк в тг @sp1ngold_vip",
+      "parentAccountId": "acc-sg-tiktok",
+      "url": "https://www.tiktok.com/@lucky_marat_kz/video/4642222042743350905?comment_id=9111333135648785186",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0147",
+      "accountId": "acc-bn-travel",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 1700,
+      "text": "Чарын в октябре 🍂 фото наших туристов",
+      "imageNote": "каньон с осенними деревьями",
+      "url": "https://www.instagram.com/p/wY_uuZsUycp/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0148",
+      "accountId": "acc-pyr-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 1600,
+      "text": "Отзыв инвестора ❤️ Спасибо за доверие!",
+      "ocrText": "Kaspi Gold\n+30 000 ₸\nОтправитель: Алина М.\n24.10.2026 18:02",
+      "imageNote": "скриншот входящего перевода",
+      "url": "https://t.me/kapital20_news/633",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0149",
+      "accountId": "acc-bn-tort",
+      "platform": "tiktok",
+      "type": "reel",
+      "minutesAgo": 1600,
+      "text": "Процесс сборки трёхъярусного торта 🍰 залипательно",
+      "url": "https://www.tiktok.com/@tort_by_dinara/video/8907150114585617366",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0150",
+      "accountId": "acc-az-youtube",
+      "platform": "youtube",
+      "type": "stream",
+      "minutesAgo": 1500,
+      "text": "Как я проиграл 2 миллиона и отыгрался | LIVE",
+      "transcript": "Ну что, ребята, обещал рассказать... да, было, я слил два ляма за неделю, но потом за один вечер всё вернул... главное — не сдаваться и брать бонусы. Кто ещё не с нами — промокод AZ777, рабочее зеркало сейчас а-семь-вин точка экзампл, ссылка закреплена в чате... так, крутим дальше, ставка десять тысяч...",
+      "url": "https://www.youtube.com/watch?v=sDsBjmBacvX",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0151",
+      "accountId": "acc-bn-gadget",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 1500,
+      "text": "🔴 итоги розыгрыша наушников",
+      "transcript": "Всем привет, это Gadget Point! Сейчас определим победителя розыгрыша наушников. Открываю рандомайзер, всего участников тысяча двести... крутим... номер семьсот три! Поздравляем, пишите нам в директ. И ещё раз: участие было бесплатным, никаких оплат мы не просим. Если кто-то пишет от нашего имени и просит перевести деньги на каспи «за доставку приза» — это мошенники, сразу блокируйте.",
+      "url": "https://www.tiktok.com/@gadget_point_kz/live?room_id=8893407497163076446",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0152",
+      "accountId": "acc-lot-iphone",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 1400,
+      "text": "🍏 Кто хочет новую «яблочку» всего за 2к? 😉 №16 стартовал! Подробности в директ, номерок тот же 📲",
+      "url": "https://www.instagram.com/p/Gy6-pwLu6-R/",
+      "groundTruth": "lottery",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0153",
+      "accountId": "acc-bn-news",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 1400,
+      "text": "В Астане прошёл благотворительный забег: более 2 000 участников собрали 3,2 млн ₸ на реабилитацию детей.",
+      "url": "https://t.me/kz_news_today/1007",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0154",
+      "accountId": "acc-pyr-recruiter3",
+      "platform": "tiktok",
+      "type": "post",
+      "minutesAgo": 1300,
+      "text": "осталось 3 места на сегодня 🔥 кто успеет — тот с деньгами 💸 5000 → 10 000, ссылка в шапке 👆",
+      "url": "https://www.tiktok.com/@tabys_bro_kz/photo/9247001193319400974",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0155",
+      "accountId": "acc-bn-scamwatch",
+      "platform": "tiktok",
+      "type": "stream",
+      "minutesAgo": 1300,
+      "text": "LIVE: разбираем ваши скамы",
+      "transcript": "Вот пишет зритель: «мне предлагают вложить пять тысяч и через три дня получить десять, говорят, это клуб». Ребят, это классическая пирамида. Первым платят из денег новых, потом «нагрузка», «выплаты по очереди», и всё — чат удаляют...",
+      "url": "https://www.tiktok.com/@scam_detector_kz/live?room_id=8010946984787840264",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0156",
+      "accountId": "acc-sg-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 1200,
+      "text": "🤝 Наши партнёры: @lucky_marat_kz и @gulya_money_mood — у них свои бонусы по коду SPIN50. Зеркало на сегодня: sp1ngold-mirror.example",
+      "url": "https://t.me/sp1ngold_vip/936",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0157",
+      "accountId": "acc-bn-asel",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 1200,
+      "text": "Как я накопила на первый взнос по ипотеке за 2 года 🏠 Без «быстрых заработков» — только бюджет, депозит и терпение.",
+      "url": "https://www.instagram.com/p/XxKtFujuKAT/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0158",
+      "accountId": "acc-az-proxy",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 1100,
+      "text": "Кто спрашивал про «то самое» — к а з и н о 🎰 — ссылки только в закрепе, в комментах не пишем, банят 🙊 Пр0м0 тот же: А Z 7 7 7",
+      "url": "https://t.me/bonusy_dnya/1106",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0159",
+      "accountId": "acc-pyr-organizer",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 900,
+      "text": "🚀 Пакет VIP: 50 000 ₸ → 150 000 ₸ за 7 дней!\nТолько для своих, мест ограничено — 10 человек.\nЗапись через кураторов в чате 👉 chat.whatsapp.com/TabysKZ01",
+      "url": "https://www.instagram.com/p/TDiXBS7GUSy/",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0160",
+      "accountId": "acc-bn-mama",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 900,
+      "text": "Наш день в аквапарке 💦 дети в восторге, мама без сил 😅",
+      "url": "https://www.instagram.com/p/MAkJZybNTPT/",
+      "groundTruth": "none",
+      "difficulty": "easy"
+    },
+    {
+      "id": "st-0161",
+      "accountId": "acc-az-streamer1",
+      "platform": "tiktok",
+      "type": "comment",
+      "minutesAgo": 800,
+      "text": "брат ссылка в профиле, или вот azart777.example/?ref=nurik77 промик AZ777 не забудь 🤝",
+      "parentAccountId": "acc-az-streamer1",
+      "url": "https://www.tiktok.com/@nurik_spins_kz/video/2355844979719006333?comment_id=3308387626413717032",
+      "groundTruth": "casino",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0162",
+      "accountId": "acc-pyr-recruiter1",
+      "platform": "tiktok",
+      "type": "comment",
+      "minutesAgo": 700,
+      "text": "@aliya_k92 пиши в лс, всё объясню 🙂 это не пирамида, вывод каждый день на kaspi",
+      "parentAccountId": "acc-pyr-recruiter1",
+      "url": "https://www.tiktok.com/@passive_income_kz/video/5457318652109493601?comment_id=2407665526231382494",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0163",
+      "accountId": "acc-bn-charity",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 700,
+      "text": "Алихан успешно прооперирован! 🎉❤️ Спасибо всем, кто помог. Сбор закрыт. Остаток средств (112 000 ₸) по решению попечительского совета направлен на лечение Сабины — документы в сторис.",
+      "url": "https://www.instagram.com/p/f2yUXu_bDnU/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0164",
+      "accountId": "acc-bn-scamwatch",
+      "platform": "tiktok",
+      "type": "comment",
+      "minutesAgo": 650,
+      "text": "ребята, это пирамида. «x2 за 3 дня» не бывает 🚫 не переводите деньги",
+      "parentAccountId": "acc-pyr-recruiter1",
+      "url": "https://www.tiktok.com/@passive_income_kz/video/1434990307864610243?comment_id=6691902302566137032",
+      "groundTruth": "none",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0165",
+      "accountId": "acc-lot-auto",
+      "platform": "instagram",
+      "type": "reel",
+      "minutesAgo": 600,
+      "text": "9-й автомобиль уже скоро 😉",
+      "transcript": "Друзья, всем привет! Восьмую машину вчера разыграли, победитель из Тараза, поздравляем! Розыгрыш машины номер девять стартует в понедельник, слоты по пять тысяч, реквизиты как обычно в шапке, Kaspi или карта... Набираем быстро — сразу крутим.",
+      "url": "https://www.instagram.com/reel/pgemKKfZGYN/",
+      "groundTruth": "lottery",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0166",
+      "accountId": "acc-az-spambot",
+      "platform": "instagram",
+      "type": "comment",
+      "minutesAgo": 500,
+      "text": "ka3ino с вывoдом на каспи за 5 минут 💸🎲 пр0мо AZ777 — в профиле 👆",
+      "parentAccountId": "acc-bn-mama",
+      "url": "https://www.instagram.com/p/s5pT4tSuINi/c/73225331440054122/",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0167",
+      "accountId": "acc-bn-run",
+      "platform": "instagram",
+      "type": "post",
+      "minutesAgo": 450,
+      "text": "Итоги розыгрыша кроссовок 👟 Рандомайзер выбрал номер 57 — Айжан! Поздравляем 🎉 Спасибо всем 84 финишёрам!",
+      "url": "https://www.instagram.com/p/wwucdDF20os/",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0168",
+      "accountId": "acc-bn-cyberpol",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 400,
+      "text": "📊 Итоги недели: заблокировано 37 аккаунтов, рекламирующих онлайн-казино, и 12 чатов с признаками финансовых пирамид. Спасибо всем, кто присылал жалобы!",
+      "url": "https://t.me/kiberpatrul_kz/945",
+      "groundTruth": "none",
+      "difficulty": "medium"
+    },
+    {
+      "id": "st-0169",
+      "accountId": "acc-az-proxy",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 300,
+      "text": "Сегодняшний 🔥",
+      "ocrText": "AZART777\nЗЕРКАЛО №3\nazart777.example → a7win.example\nПРОМО: AZ777 • БОНУС 150%",
+      "imageNote": "баннер с золотыми буквами и игровыми фишками",
+      "url": "https://t.me/bonusy_dnya/1107",
+      "groundTruth": "casino",
+      "difficulty": "hard"
+    },
+    {
+      "id": "st-0170",
+      "accountId": "acc-pyr-channel",
+      "platform": "telegram",
+      "type": "channel_post",
+      "minutesAgo": 200,
+      "text": "⚠️ В связи с высокой нагрузкой на платёжный шлюз выплаты задерживаются до 72 часов. Не паникуем, всё под контролем 🙏 Новые пополнения принимаются в штатном режиме, а для ускорения вывода — пополните депозит на 50%.",
+      "url": "https://t.me/kapital20_news/636",
+      "groundTruth": "pyramid",
+      "difficulty": "medium"
+    }
+  ],
+  "groups": [
+    {
+      "id": "grp-tabys",
+      "title": "Табыс клубы 💰",
+      "platform": "whatsapp",
+      "network": "pyramid",
+      "inviteLink": "https://chat.whatsapp.com/TabysKZ01",
+      "groundTruth": "pyramid",
+      "messages": [
+        {
+          "author": "Tabys Bot",
+          "authorId": "u5",
+          "roleTruth": "bot",
+          "minutesAgo": 7300,
+          "text": "🤖 Табыс клубы чатына қош келдіңіз! Ережелер: 1) Салым тек куратор арқылы 2) Чекті жеке жіберіңіз 3) Чатта жарнама жоқ. Добро пожаловать!"
+        },
+        {
+          "author": "Айгерим Сапарова",
+          "authorId": "u1",
+          "roleTruth": "organizer",
+          "minutesAgo": 7250,
+          "text": "Всем привет, дорогие! 💛 Я Айгерим, основатель клуба. Схема простая: вкладываете от 5 000 ₸, через 72 часа получаете x2 💸 Деньги работают в нашем крипто-боте. Вопросы — кураторам."
+        },
+        {
+          "author": "Ерлан",
+          "authorId": "u2",
+          "roleTruth": "curator",
+          "minutesAgo": 7100,
+          "text": "🔥 Достар, бүгін тағы 5 орын бар! Салым 5 000 ₸ → 3 күннен кейін 10 000 ₸ 💰 Kaspi: +7 700 000 55 01 (Айгерим С.) Чекті маған жеке жіберіңіз ✅"
+        },
+        {
+          "author": "Гүлнар",
+          "authorId": "u6",
+          "roleTruth": "member",
+          "minutesAgo": 7000,
+          "text": "Сәлем! Мен @mama_v_dekrete_dohod арқылы келдім 🙂 5000 салуға болады ма бүгін?"
+        },
+        {
+          "author": "Жанар",
+          "authorId": "u3",
+          "roleTruth": "curator",
+          "minutesAgo": 6950,
+          "text": "Иә, болады 👍 Kaspi +7 700 000 55 01, чекті маған жеке жіберіңіз"
+        },
+        {
+          "author": "Асхат",
+          "authorId": "u7",
+          "roleTruth": "member",
+          "minutesAgo": 6600,
+          "text": "а гарантия какая? это не пирамида случаем? 🤔"
+        },
+        {
+          "author": "Ерлан",
+          "authorId": "u2",
+          "roleTruth": "curator",
+          "minutesAgo": 6550,
+          "text": "Брат, жоқ, бұл пирамида емес 😊 Бұл инвестициялық клуб, бот арбитражбен жұмыс істейді. Уже 400+ человек получили выплаты, смотри отзывы ниже 👇"
+        },
+        {
+          "author": "Жанар",
+          "authorId": "u3",
+          "roleTruth": "curator",
+          "minutesAgo": 6200,
+          "text": "🔥Достар, бүгін тағы 4 орын қалды! Салым 5000₸ → 3 күннен соң 10 000₸ 💰💰 Kaspi: +7 700 000 55 01 (Айгерим С.) Чекті маған жеке жіберіңіз ✅"
+        },
+        {
+          "author": "Сауле",
+          "authorId": "u8",
+          "roleTruth": "member",
+          "minutesAgo": 5800,
+          "text": "Рахмет Айгерим апай!!! 10 000 келді 😭🙏",
+          "ocrText": "Kaspi\nПеревод получен\n+10 000 ₸\nОтправитель: Айгерим С.\n22.10.2026 14:32"
+        },
+        {
+          "author": "Мадина",
+          "authorId": "u4",
+          "roleTruth": "curator",
+          "minutesAgo": 5500,
+          "text": "🔥 Друзья, сегодня ещё 5 мест! Вклад 5 000 ₸ → через 3 дня 10 000 ₸ 💰 Kaspi: +7 700 000 55 01 (Айгерим С.) Чек — мне в личку ✅"
+        },
+        {
+          "author": "Айгерим Сапарова",
+          "authorId": "u1",
+          "roleTruth": "organizer",
+          "minutesAgo": 5300,
+          "text": "Внимание! 📢 Реферальная программа: за каждого приглашённого друга +10% от его вклада вам на Kaspi 💝 Чем больше команда — тем больше доход!"
+        },
+        {
+          "author": "Нурлан",
+          "authorId": "u9",
+          "roleTruth": "member",
+          "minutesAgo": 5000,
+          "text": "Мен 10 000 салдым, 20 000 келді 🔥🔥 нақты жұмыс істейді",
+          "ocrText": "Kaspi Gold\nПополнение\n+20 000 ₸\nот Ерлан Б."
+        },
+        {
+          "author": "Динара",
+          "authorId": "u10",
+          "roleTruth": "member",
+          "minutesAgo": 4700,
+          "text": "кыздар, я сестру привела, ей тоже бонус?)"
+        },
+        {
+          "author": "Мадина",
+          "authorId": "u4",
+          "roleTruth": "curator",
+          "minutesAgo": 4650,
+          "text": "Да, Динара, вам +10% от её вклада придёт в течение суток 💐"
+        },
+        {
+          "author": "Ерлан",
+          "authorId": "u2",
+          "roleTruth": "curator",
+          "minutesAgo": 4300,
+          "text": "🔥 Достар, бүгін тағы 3 орын бар! ⏳ Салым 5 000 ₸ → 3 күннен кейін 10 000 ₸ 💰 Kaspi: +7 700 000 55 01 (Айгерим С.) Чекті жеке жіберіңіз ✅ 21:00-ге дейін!"
+        },
+        {
+          "author": "Айгерим Сапарова",
+          "authorId": "u1",
+          "roleTruth": "organizer",
+          "minutesAgo": 4000,
+          "text": "❗️Жаңалық! VIP пакет: 50 000 ₸ → 7 күнде 150 000 ₸ 🚀 Орын саны шектеулі, тек 10 адам. Жазылу — кураторларға"
+        },
+        {
+          "author": "Бекзат",
+          "authorId": "u11",
+          "roleTruth": "member",
+          "minutesAgo": 3700,
+          "text": "VIP-ке қалай кіремін? Картаға аударсам бола ма?"
+        },
+        {
+          "author": "Жанар",
+          "authorId": "u3",
+          "roleTruth": "curator",
+          "minutesAgo": 3650,
+          "text": "Болады 👍 менің картам 4400 **** **** 3307, немесе Kaspi +7 700 000 55 01. Чекті жібер"
+        },
+        {
+          "author": "Әлия",
+          "authorId": "u12",
+          "roleTruth": "member",
+          "minutesAgo": 3300,
+          "text": "Отзыв ✨ 3-ші рет салып жатырмын, бәрі келеді. Айгерим апайға рахмет 💛",
+          "ocrText": "Kaspi · История\n+10 000 ₸ Айгерим С.\n+10 000 ₸ Айгерим С.\n+20 000 ₸ Жанар К."
+        },
+        {
+          "author": "Мадина",
+          "authorId": "u4",
+          "roleTruth": "curator",
+          "minutesAgo": 2900,
+          "text": "💰🔥 Достар! Бүгін соңғы 2 орын! Салым 5000 ₸ → 3 күн → 10 000 ₸. Kaspi: +7 700 000 55 01 (Айгерим С.). Чекті маған жеке ✅"
+        },
+        {
+          "author": "Асхат",
+          "authorId": "u7",
+          "roleTruth": "member",
+          "minutesAgo": 2500,
+          "text": "Ребят я вложил 5000 три дня назад, выплаты нет до сих пор. Куда писать?"
+        },
+        {
+          "author": "Ерлан",
+          "authorId": "u2",
+          "roleTruth": "curator",
+          "minutesAgo": 2450,
+          "text": "Асхат, күте тұрыңыз 🙏 Сейчас большая нагрузка, выплаты идут по очереди. Можете ускорить, если пригласите 2 друзей 😉"
+        },
+        {
+          "author": "Тимур",
+          "authorId": "u13",
+          "roleTruth": "member",
+          "minutesAgo": 2100,
+          "text": "у меня тоже 4 дня ничего не пришло. Айгерим ответьте пожалуйста"
+        },
+        {
+          "author": "Айгерим Сапарова",
+          "authorId": "u1",
+          "roleTruth": "organizer",
+          "minutesAgo": 2000,
+          "text": "Дорогие, без паники ❤️ Бот на обновлении, выплаты будут до конца недели всем. Кто вложит сегодня — получит x2.5 вместо x2 как компенсацию 🎁"
+        },
+        {
+          "author": "Tabys Bot",
+          "authorId": "u5",
+          "roleTruth": "bot",
+          "minutesAgo": 1950,
+          "text": "🤖 Еске салу: шағым мен күмән чатта жазылмайды. Сұрақтар — кураторға жеке."
+        },
+        {
+          "author": "Гүлнар",
+          "authorId": "u6",
+          "roleTruth": "member",
+          "minutesAgo": 1500,
+          "text": "Мен тағы 10 000 салдым, сенемін 🤲"
+        },
+        {
+          "author": "Жанар",
+          "authorId": "u3",
+          "roleTruth": "curator",
+          "minutesAgo": 1100,
+          "text": "🔥 Достар, бүгін тағы 5 орын! Салым 5 000 ₸ → 3 күннен кейін 10 000 ₸ 💰 + шақырған досың үшін 10% бонус 💝 Kaspi: +7 700 000 55 01. Чек — жеке ✅"
+        },
+        {
+          "author": "Сауле",
+          "authorId": "u8",
+          "roleTruth": "member",
+          "minutesAgo": 800,
+          "text": "@aigerim_tabys_club инстасын қараңыздар, онда барлық отзывтар бар 👍"
+        },
+        {
+          "author": "Динара",
+          "authorId": "u10",
+          "roleTruth": "member",
+          "minutesAgo": 400,
+          "text": "менің де выплатам кешігіп жатыр 😔"
+        },
+        {
+          "author": "Мадина",
+          "authorId": "u4",
+          "roleTruth": "curator",
+          "minutesAgo": 150,
+          "text": "Динара, сіздің кезегіңіз ертең 🙏 Ал бүгін салғандарға — x2.5! Kaspi +7 700 000 55 01"
+        }
+      ]
+    },
+    {
+      "id": "grp-kapital",
+      "title": "Капитал 2.0 | Инвесторы",
+      "platform": "telegram",
+      "network": "pyramid",
+      "inviteLink": "https://t.me/+Kapital20inv",
+      "groundTruth": "pyramid",
+      "messages": [
+        {
+          "author": "Kapital Bot",
+          "authorId": "k5",
+          "roleTruth": "bot",
+          "minutesAgo": 6100,
+          "text": "Добро пожаловать в чат Капитал 2.0! 📌 Правила в закрепе. Пополнение только через кураторов. Не пишите о выводах в общий чат."
+        },
+        {
+          "author": "Артём Ким",
+          "authorId": "k1",
+          "roleTruth": "organizer",
+          "minutesAgo": 6050,
+          "text": "Коллеги, приветствую. Капитал 2.0 — закрытый клуб арбитража криптовалют. Наши тарифы: Старт 3%/день, Профи 5%/день, VIP 7%/день. Тело депозита возвращается в конце срока. Работаем 6 месяцев без задержек 🤝"
+        },
+        {
+          "author": "Алина",
+          "authorId": "k2",
+          "roleTruth": "curator",
+          "minutesAgo": 5900,
+          "text": "💼 Друзья, открыт набор в поток №14! Тариф «Старт» — 3% в день 30 дней, вход от 10 000 ₸. Пополнение: Kaspi +7 700 000 55 01. Осталось 7 мест ⏳ Пишите в лс 📩"
+        },
+        {
+          "author": "Олжас",
+          "authorId": "k6",
+          "roleTruth": "member",
+          "minutesAgo": 5700,
+          "text": "Пришёл по ссылке от @passive_income_kz. Минималка точно 10к?"
+        },
+        {
+          "author": "Алина",
+          "authorId": "k2",
+          "roleTruth": "curator",
+          "minutesAgo": 5650,
+          "text": "Да, Олжас, от 10 000 ₸. Кидаю реквизиты в лс 👌"
+        },
+        {
+          "author": "Самат",
+          "authorId": "k3",
+          "roleTruth": "curator",
+          "minutesAgo": 5400,
+          "text": "💼 Друзья, набор в поток №14 открыт! «Старт» — 3% ежедневно 30 дней, вход от 10 000 ₸. Пополнение: Kaspi +7 700 000 55 01 📲 Осталось 6 мест ⏳ Пишите в лс"
+        },
+        {
+          "author": "Наталья",
+          "authorId": "k7",
+          "roleTruth": "member",
+          "minutesAgo": 5100,
+          "text": "Получила первые начисления, 300 ₸ в день капает 😊",
+          "ocrText": "Kapital 2.0 · Личный кабинет\nБаланс: 10 900 ₸\nНачислено сегодня: +300 ₸\nТариф: Старт"
+        },
+        {
+          "author": "Ruslan_kz",
+          "authorId": "k8",
+          "roleTruth": "member",
+          "minutesAgo": 4800,
+          "text": "Vyvel 15 000 na kaspi, vse ok 👍",
+          "ocrText": "Kaspi\nВходящий перевод\n+15 000 ₸\nОтправитель: Самат Е."
+        },
+        {
+          "author": "Артём Ким",
+          "authorId": "k1",
+          "roleTruth": "organizer",
+          "minutesAgo": 4600,
+          "text": "📢 Реферальная программа 3 уровня: 10% / 5% / 2% от пополнений ваших партнёров. Лидеры месяца получат iPhone 🎁"
+        },
+        {
+          "author": "Лиза",
+          "authorId": "k4",
+          "roleTruth": "curator",
+          "minutesAgo": 4400,
+          "text": "💼Друзья! Открыт набор в поток №14 🔥 Тариф Старт: 3% в день × 30 дней, вход от 10 000 ₸. Kaspi +7 700 000 55 01 · или карта 4400 **** **** 9012. Осталось 5 мест ⏳ Пишите в лс 📩"
+        },
+        {
+          "author": "Камила",
+          "authorId": "k9",
+          "roleTruth": "member",
+          "minutesAgo": 4100,
+          "text": "А откуда такой доход? 3% в день это же 90% в месяц 😳"
+        },
+        {
+          "author": "Самат",
+          "authorId": "k3",
+          "roleTruth": "curator",
+          "minutesAgo": 4050,
+          "text": "Камила, арбитраж между биржами + торговый бот. Банки дают 15% в год, потому что им выгодно держать вас в бедности 😉"
+        },
+        {
+          "author": "Данияр",
+          "authorId": "k10",
+          "roleTruth": "member",
+          "minutesAgo": 3800,
+          "text": "закинул 50к на Профи, посмотрим 🙏"
+        },
+        {
+          "author": "Алина",
+          "authorId": "k2",
+          "roleTruth": "curator",
+          "minutesAgo": 3500,
+          "text": "💼 Друзья, открыт набор в поток №14! Тариф «Старт» — 3% в день 30 дней 💸 вход от 10 000 ₸. Пополнение: Kaspi +7 700 000 55 01. Осталось 4 места ⏳ Успейте до 23:59! Пишите в лс 📩"
+        },
+        {
+          "author": "Светлана",
+          "authorId": "k11",
+          "roleTruth": "member",
+          "minutesAgo": 3200,
+          "text": "Спасибо Артёму и Алине! Вывела 45 000 ₸ 🥳",
+          "ocrText": "Kaspi Gold\n+45 000 ₸\nОтправитель: Алина М.\n23.10.2026"
+        },
+        {
+          "author": "Артём Ким",
+          "authorId": "k1",
+          "roleTruth": "organizer",
+          "minutesAgo": 2900,
+          "text": "🚀 Новый тариф VIP: 7% в день, вход от 200 000 ₸. Только 5 мест для участников с рефералами."
+        },
+        {
+          "author": "Ерасыл",
+          "authorId": "k12",
+          "roleTruth": "member",
+          "minutesAgo": 2600,
+          "text": "Достар, қазақша сұрайын: шығару қанша уақыт алады?"
+        },
+        {
+          "author": "Самат",
+          "authorId": "k3",
+          "roleTruth": "curator",
+          "minutesAgo": 2550,
+          "text": "Ерасыл, әдетте 24 сағат ішінде 👍 Қазір кезек көп, 72 сағатқа дейін."
+        },
+        {
+          "author": "Айдос",
+          "authorId": "k13",
+          "roleTruth": "member",
+          "minutesAgo": 2200,
+          "text": "Подал вывод 3 дня назад, до сих пор в обработке. Это нормально?"
+        },
+        {
+          "author": "Kapital Bot",
+          "authorId": "k5",
+          "roleTruth": "bot",
+          "minutesAgo": 2150,
+          "text": "⚠️ Сообщение удалено: обсуждение выводов в общем чате запрещено. Обратитесь к куратору."
+        },
+        {
+          "author": "Лиза",
+          "authorId": "k4",
+          "roleTruth": "curator",
+          "minutesAgo": 1900,
+          "text": "💼 Друзья, открыт набор в поток №15! Тариф «Старт» — 3% в день, вход от 10 000 ₸. Пополнение Kaspi +7 700 000 55 01. Осталось 7 мест ⏳ Пишите в лс 📩"
+        },
+        {
+          "author": "Олжас",
+          "authorId": "k6",
+          "roleTruth": "member",
+          "minutesAgo": 1600,
+          "text": "у меня тоже вывод висит второй день 😐"
+        },
+        {
+          "author": "Артём Ким",
+          "authorId": "k1",
+          "roleTruth": "organizer",
+          "minutesAgo": 1500,
+          "text": "Коллеги, из-за повышенной нагрузки на платёжный шлюз выводы обрабатываются до 72 часов. Для ускорения — пополните депозит на 50%, система поднимет приоритет вашей заявки 🙏"
+        },
+        {
+          "author": "Данияр",
+          "authorId": "k10",
+          "roleTruth": "member",
+          "minutesAgo": 1200,
+          "text": "в смысле пополнить чтобы вывести?? 🤨"
+        },
+        {
+          "author": "Алина",
+          "authorId": "k2",
+          "roleTruth": "curator",
+          "minutesAgo": 1150,
+          "text": "Данияр, это стандартная процедура верификации 👌 Все получат"
+        },
+        {
+          "author": "Наталья",
+          "authorId": "k7",
+          "roleTruth": "member",
+          "minutesAgo": 900,
+          "text": "Я пригласила 3 подруг, бонус пришёл 💐 всем рекомендую",
+          "ocrText": "Реферальные начисления\n+3 000 ₸\n+1 500 ₸\n+1 500 ₸"
+        },
+        {
+          "author": "Самат",
+          "authorId": "k3",
+          "roleTruth": "curator",
+          "minutesAgo": 600,
+          "text": "💼 Друзья, поток №15 открыт! «Старт» — 3% ежедневно, вход от 10 000 ₸ 💰 Kaspi: +7 700 000 55 01 📲 Осталось 3 места ⏳ Пишите в лс"
+        },
+        {
+          "author": "Ruslan_kz",
+          "authorId": "k8",
+          "roleTruth": "member",
+          "minutesAgo": 400,
+          "text": "kto-nibud' vyvel segodnya? u menya pusto"
+        },
+        {
+          "author": "Камила",
+          "authorId": "k9",
+          "roleTruth": "member",
+          "minutesAgo": 250,
+          "text": "Ребят, мне кажется это пирамида... верните мои 20 000 пожалуйста"
+        },
+        {
+          "author": "Kapital Bot",
+          "authorId": "k5",
+          "roleTruth": "bot",
+          "minutesAgo": 200,
+          "text": "🔇 Пользователь Камила ограничена в отправке сообщений на 24 часа."
+        }
+      ]
+    },
+    {
+      "id": "grp-parents",
+      "title": "5 «Б» ата-аналар 👨‍👩‍👧",
+      "platform": "whatsapp",
+      "network": "benign",
+      "inviteLink": "https://chat.whatsapp.com/Kq7Rv2Bn5AtaAna",
+      "groundTruth": "none",
+      "messages": [
+        {
+          "author": "Гульмира",
+          "authorId": "p1",
+          "roleTruth": "organizer",
+          "minutesAgo": 8600,
+          "text": "Добрый вечер, уважаемые родители! 🌸 У Сауле Маратовны день рождения 2 ноября. Предлагаю скинуться по 3 000 ₸ на подарок (сертификат + цветы). Кто против — напишите 🙏"
+        },
+        {
+          "author": "Алия",
+          "authorId": "p2",
+          "roleTruth": "member",
+          "minutesAgo": 8550,
+          "text": "За 👍"
+        },
+        {
+          "author": "Ерболат",
+          "authorId": "p3",
+          "roleTruth": "member",
+          "minutesAgo": 8500,
+          "text": "Келістік, 3000 жарайды"
+        },
+        {
+          "author": "Оксана",
+          "authorId": "p4",
+          "roleTruth": "member",
+          "minutesAgo": 8400,
+          "text": "Поддерживаю. Куда переводить?"
+        },
+        {
+          "author": "Гульмира",
+          "authorId": "p1",
+          "roleTruth": "organizer",
+          "minutesAgo": 8350,
+          "text": "Kaspi по номеру +7 700 000 44 20 (Гульмира Т.), в комментарии напишите имя ребёнка. Собираем до 30 октября 🙏"
+        },
+        {
+          "author": "Марат",
+          "authorId": "p5",
+          "roleTruth": "member",
+          "minutesAgo": 8000,
+          "text": "Скинул за Арсена ✅",
+          "ocrText": "Kaspi\nПеревод\n3 000 ₸\nПолучатель: Гульмира Т.\nКомментарий: Арсен Б."
+        },
+        {
+          "author": "Жанна",
+          "authorId": "p6",
+          "roleTruth": "member",
+          "minutesAgo": 7700,
+          "text": "Отправила, за Айлин 💐"
+        },
+        {
+          "author": "Дана",
+          "authorId": "p7",
+          "roleTruth": "member",
+          "minutesAgo": 7300,
+          "text": "А можно наличными? У меня каспи нет пока"
+        },
+        {
+          "author": "Гульмира",
+          "authorId": "p1",
+          "roleTruth": "organizer",
+          "minutesAgo": 7250,
+          "text": "Конечно, Дана, передайте в пятницу на собрании 👌"
+        },
+        {
+          "author": "Нурсултан",
+          "authorId": "p8",
+          "roleTruth": "member",
+          "minutesAgo": 6500,
+          "text": "Тағы бір сұрақ: ноябрьде экскурсия бар ма?"
+        },
+        {
+          "author": "Гульмира",
+          "authorId": "p1",
+          "roleTruth": "organizer",
+          "minutesAgo": 6450,
+          "text": "Да! 15 ноября экскурсия в планетарий, 4 500 ₸ с ребёнка (автобус + билет). Сбор отдельно, позже напишу"
+        },
+        {
+          "author": "Оксана",
+          "authorId": "p4",
+          "roleTruth": "member",
+          "minutesAgo": 5900,
+          "text": "Перевела 3000, чек скинула в личку"
+        },
+        {
+          "author": "Айжан",
+          "authorId": "p9",
+          "roleTruth": "member",
+          "minutesAgo": 4800,
+          "text": "Девочки, осторожно, мне в вотсап пишут с незнакомого номера «вложи 5000 получи 10000 через 3 дня» 🙄 не ведитесь"
+        },
+        {
+          "author": "Алия",
+          "authorId": "p2",
+          "roleTruth": "member",
+          "minutesAgo": 4750,
+          "text": "Ага, мне тоже такое приходило, сразу в блок 😅"
+        },
+        {
+          "author": "Гульмира",
+          "authorId": "p1",
+          "roleTruth": "organizer",
+          "minutesAgo": 3000,
+          "text": "Итог: собрали 78 000 ₸ с 26 детей 🙏 Спасибо всем! Отчёт по чекам — в прикреплённом файле. Остаток 3 000 ₸ пойдёт на шарики",
+          "ocrText": "Отчёт\n26 × 3 000 ₸ = 78 000 ₸\nСертификат 60 000 ₸\nЦветы 15 000 ₸\nОстаток 3 000 ₸"
+        },
+        {
+          "author": "Ерболат",
+          "authorId": "p3",
+          "roleTruth": "member",
+          "minutesAgo": 2900,
+          "text": "Рақмет, Гульмира! 👏"
+        },
+        {
+          "author": "Света",
+          "authorId": "p10",
+          "roleTruth": "member",
+          "minutesAgo": 1000,
+          "text": "Подскажите, завтра физра в форме или нет?"
+        }
+      ]
+    },
+    {
+      "id": "grp-runclub",
+      "title": "Astana Run Club | чат 🏃",
+      "platform": "telegram",
+      "network": "benign",
+      "inviteLink": "https://t.me/+RunAstana7Qz",
+      "groundTruth": "none",
+      "messages": [
+        {
+          "author": "Run Club Bot",
+          "authorId": "r8",
+          "roleTruth": "bot",
+          "minutesAgo": 9200,
+          "text": "👋 Добро пожаловать в чат Astana Run Club! Расписание забегов — в закрепе."
+        },
+        {
+          "author": "Тимур",
+          "authorId": "r1",
+          "roleTruth": "organizer",
+          "minutesAgo": 9100,
+          "text": "Друзья, в воскресенье 10 км у Байтерека, старт 9:00. Участие бесплатное ✅ Среди всех финишировавших разыграем кроссовки от нашего партнёра (беговой магазин) 👟"
+        },
+        {
+          "author": "Даурен",
+          "authorId": "r3",
+          "roleTruth": "member",
+          "minutesAgo": 8900,
+          "text": "А что нужно для участия в розыгрыше?"
+        },
+        {
+          "author": "Тимур",
+          "authorId": "r1",
+          "roleTruth": "organizer",
+          "minutesAgo": 8850,
+          "text": "Просто пробежать и отметиться на финише 🙂 Никаких взносов. Номерки раздадим на старте, потом рандомайзер в прямом эфире"
+        },
+        {
+          "author": "Катя",
+          "authorId": "r4",
+          "roleTruth": "member",
+          "minutesAgo": 8000,
+          "text": "Я в деле! Первый раз на 10 км 😅"
+        },
+        {
+          "author": "Нурбек",
+          "authorId": "r5",
+          "roleTruth": "member",
+          "minutesAgo": 7000,
+          "text": "Kaspi-ге төлеу керек пе, әлде тегін бе?"
+        },
+        {
+          "author": "Тимур",
+          "authorId": "r1",
+          "roleTruth": "organizer",
+          "minutesAgo": 6950,
+          "text": "Тегін! Ешқандай төлем жоқ 🙌 Если кто-то пишет от имени клуба и просит деньги — это фейк"
+        },
+        {
+          "author": "Мадияр",
+          "authorId": "r6",
+          "roleTruth": "member",
+          "minutesAgo": 5000,
+          "text": "Кто-то мне в лс скинул «инвестиции, х2 за 3 дня» со ссылкой на чат 🙄 это не наши?"
+        },
+        {
+          "author": "Тимур",
+          "authorId": "r1",
+          "roleTruth": "organizer",
+          "minutesAgo": 4950,
+          "text": "Нет, конечно. Это спам, кидайте в блок и жалобу ✋"
+        },
+        {
+          "author": "Тимур",
+          "authorId": "r1",
+          "roleTruth": "organizer",
+          "minutesAgo": 620,
+          "text": "Всем спасибо за забег! 84 финишёра 🔥 Розыгрыш кроссовок — через 10 минут в эфире канала"
+        },
+        {
+          "author": "Айжан",
+          "authorId": "r2",
+          "roleTruth": "member",
+          "minutesAgo": 600,
+          "text": "Пробежала за 58 минут!! 🥳"
+        },
+        {
+          "author": "Тимур",
+          "authorId": "r1",
+          "roleTruth": "organizer",
+          "minutesAgo": 500,
+          "text": "🎉 Итоги розыгрыша: рандомайзер выбрал номер 57 — Айжан! Поздравляем, кроссовки ждут тебя в магазине-партнёре 👟",
+          "ocrText": "Рандомайзер\nДиапазон: 1–84\nРезультат: 57"
+        },
+        {
+          "author": "Айжан",
+          "authorId": "r2",
+          "roleTruth": "member",
+          "minutesAgo": 480,
+          "text": "Аааа не верю! Спасибо огромное 😭❤️"
+        },
+        {
+          "author": "Lena_run",
+          "authorId": "r7",
+          "roleTruth": "member",
+          "minutesAgo": 300,
+          "text": "Ребят, на следующей неделе будет интервальная тренировка?"
+        },
+        {
+          "author": "Тимур",
+          "authorId": "r1",
+          "roleTruth": "organizer",
+          "minutesAgo": 280,
+          "text": "Да, четверг 19:00 стадион. Тоже бесплатно, приходите"
+        },
+        {
+          "author": "Даурен",
+          "authorId": "r3",
+          "roleTruth": "member",
+          "minutesAgo": 100,
+          "text": "Кто-нибудь продаёт б/у часы для бега? Бюджет 40 000 ₸"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,825 @@
+{
+  "name": "SafeNet KZ synthetic development set v2",
+  "provenance": {
+    "type": "synthetic",
+    "description": "Development set: v1 examples plus v2 additions written together with rules v5 (hackathon tracks 1–3, masking, news context). Used for tuning only; held-out evaluation uses data/test-set.json.",
+    "split": "development-independent examples; not an external or statistically independent benchmark",
+    "labelPolicy": "Risk means a human should review promotion of paid lottery, gambling, recruitment-linked investment, or requests for credentials. It is not a legal finding of fraud.",
+    "languages": [
+      "kk",
+      "ru",
+      "mixed",
+      "transliterated",
+      "en"
+    ],
+    "limitations": "Same author as rule engine; synthetic phrasing and class balance may inflate measured performance. Never present results as real-world accuracy. Cases are retained even when misclassified."
+  },
+  "cases": [
+    {
+      "id": "L01",
+      "text": "Разыгрываем электросамокат: билет стоит 2500 тенге, покупайте до пятницы.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L02",
+      "text": "Телефон ұтысы басталды. Билет сатып ал да, қатыс!",
+      "platform": "tiktok",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L03",
+      "text": "Розыгрыш 500 000! Взнос для участия 3000 тг, реквизиты у администратора.",
+      "platform": "telegram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L04",
+      "text": "Қайырымдылық ұтыс: қатысу жарнасы — 1500 теңге. Жеңімпаз кешке.",
+      "platform": "whatsapp",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L05",
+      "text": "Giveaway: pay to enter, winner receives a new phone. Entry costs $5.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L06",
+      "text": "Rozygrysh! Bilet 500 tg. Segodnya final, pishi v direct.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L07",
+      "text": "Ұтысқа қатысу үшін 750 тг жіберіңіз. Тікелей эфирде таңдаймыз.",
+      "platform": "tiktok",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L08",
+      "text": "Лотерея: цена билета 1000, количество ограничено. Ссылка в профиле.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L09",
+      "text": "Номерочки по косарю, вечером рандомом отдаем айфон одному из оплативших.",
+      "platform": "telegram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L10",
+      "text": "Ұтыс! Қатысу үшін ақша аудар, чек жібер. Бүгін жеңімпаз анықталады.",
+      "platform": "whatsapp",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "C01",
+      "text": "Казино приглашает: регистрируйся, получай 150 фриспинов на старт!",
+      "platform": "tiktok",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C02",
+      "text": "Pin-Up промокод QAZ: бонус к первому пополнению. Ссылка ниже.",
+      "platform": "instagram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C03",
+      "text": "Құмар ойын платформасына тіркеліңіз. Алғашқы депозитке бонус беріледі.",
+      "platform": "telegram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C04",
+      "text": "1XBET: ставь на любимую команду, забери свой бонус!",
+      "platform": "tiktok",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C05",
+      "text": "Крути слоты сегодня, удвоенный депозит новым игрокам.",
+      "platform": "instagram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C06",
+      "text": "Играй в к@зин0, промокод WIN даст дополнительные вращения.",
+      "platform": "instagram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C07",
+      "text": "Casino weekend! Sign up to claim your bonus and free spins.",
+      "platform": "telegram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C08",
+      "text": "Мостбет ашылды. Ойна, депозит енгіз, бонус ал.",
+      "platform": "tiktok",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C09",
+      "text": "Залетай на зеленый стол, крутанем барабаны за реальные монеты, вывод моментальный.",
+      "platform": "telegram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C10",
+      "text": "Играй в ка​зино, активируй промокод GOOD. Ссылка в био.",
+      "platform": "instagram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "P01",
+      "text": "Инвестиции в закрытый клуб: гарантированная прибыль, 8% в день. Приведи двух друзей.",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P02",
+      "text": "Кепілді табыс! 5% күніне. Досыңды шақыр, ақша сал — төлем күн сайын.",
+      "platform": "whatsapp",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P03",
+      "text": "Доход без риска. Пригласи 5 участников и получай выплаты за счет новых вкладов.",
+      "platform": "instagram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P04",
+      "text": "Матрица взаимопомощи: внеси взнос, пригласи друзей, нижние уровни обеспечат доход.",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P05",
+      "text": "Risk-free investment with guaranteed returns. Invite friends and double your money.",
+      "platform": "instagram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P06",
+      "text": "Пассивный доход 12% в неделю, вход 20 тысяч. Пригласи 2 друзей и верни вклад.",
+      "platform": "tiktok",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P07",
+      "text": "Тәуекелсіз инвестиция: кепілдендірілген табыс, 30% аптасына. Тек бүгін.",
+      "platform": "whatsapp",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P08",
+      "text": "Доход гарантирован. Мы не мошенники, все выплаты честные. Пригласи новых участников.",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P09",
+      "text": "Заходи в кружок: отправляешь верхнему 10к, приводишь двоих, их люди переводят тебе 80к.",
+      "platform": "whatsapp",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P10",
+      "text": "Invеstment без риска! Гарантированный доход. Реферальная система с выплатами за приглашения.",
+      "platform": "instagram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "F01",
+      "text": "Kaspi: ваша карта будет заблокирована. Срочно сообщи код из SMS оператору.",
+      "platform": "whatsapp",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F02",
+      "text": "Instagram support: verify your account at https://instagram-security.example/login today.",
+      "platform": "instagram",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F03",
+      "text": "Сәлем! SMS кодын бізге жіберіңіз, аккаунтыңыз бұғатталады.",
+      "platform": "telegram",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F04",
+      "text": "Для получения выплаты напиши свой CVV. Сумма поступит сразу.",
+      "platform": "whatsapp",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F05",
+      "text": "Подтвердите личность на странице https://kaspi-check.example/verify. Служба безопасности.",
+      "platform": "telegram",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F06",
+      "text": "Твой профиль удален. Введи пароль в форму восстановления: https://tiktok-support.example/restore",
+      "platform": "tiktok",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F07",
+      "text": "Account suspended. Send your OTP here so we can unlock it.",
+      "platform": "instagram",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F08",
+      "text": "Қолдау қызметі: құпиясөзіңізді жіберіңіз, біз көмектесеміз.",
+      "platform": "whatsapp",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F09",
+      "text": "Скинь шесть цифр, которые только что пришли на телефон, это для возврата заказа.",
+      "platform": "telegram",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "F10",
+      "text": "Техподдержка Halyk: войди в аккаунт по ссылке https://halyk-verify.example/ и подтверди карту.",
+      "platform": "whatsapp",
+      "expectedCategory": "phishing",
+      "expectedRisk": true
+    },
+    {
+      "id": "N01",
+      "text": "Тегін ұтыс! Қатысу үшін жазбаға пікір қалдырыңыз. Ақша сұрамаймыз.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N02",
+      "text": "Розыгрыш мерча для подписчиков, бесплатно. Никаких взносов.",
+      "platform": "tiktok",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N03",
+      "text": "Free giveaway, no entry fee. Leave a comment about your favorite book.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N04",
+      "text": "Купите билет на спектакль. Стоимость — 3500 тенге.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N05",
+      "text": "Ставка по ипотеке 9% годовых, полные условия в отделении банка.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N06",
+      "text": "Депозит на 12 месяцев. Вознаграждение 14% годовых, доступны досрочные снятия.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N07",
+      "text": "Пригласи друзей на фестиваль — вместе веселее. Участие бесплатное.",
+      "platform": "whatsapp",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N08",
+      "text": "Инвестиции могут привести к убыткам. Прошлая доходность не гарантирует будущий результат.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N09",
+      "text": "Полиция сообщила о закрытии казино. На сайте обещали бонус и фриспины.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N10",
+      "text": "Не переводите деньги организаторам розыгрыша, которые просят купить билет.",
+      "platform": "whatsapp",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N11",
+      "text": "Алаяқтар SMS кодын сұрайды. Оларға кодты айтпаңыз.",
+      "platform": "tiktok",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N12",
+      "text": "Мошенники пишут: пришли пароль и код из смс. Никому не раскрывайте их.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N13",
+      "text": "Kaspi қолданбасын өзіңіз ашыңыз. Құпия деректерді ешкімге бермеңіз.",
+      "url": "https://kaspi.kz/",
+      "platform": "whatsapp",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N14",
+      "text": "Қаржы пирамидасының белгілері: тәуекелсіз табыс, достарды шақыру. Сақ болыңыз!",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N15",
+      "text": "Research on gambling harm: casino bonus offers influence risky behavior.",
+      "platform": "other",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N16",
+      "text": "Жаңа курсты бастадық. Алғашқы сабақ тегін, оқушыларға бонус материал беріледі.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N17",
+      "text": "Досыңды шақыр да, кітап дүкенінен жеңілдік ал. Қатысуға ақша қажет емес.",
+      "platform": "whatsapp",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N18",
+      "text": "Мой аккаунт будет заблокирован? Поддержка долго не отвечает, что делать?",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N19",
+      "text": "Автор рассказал о фильме «Казино». Рецензия без спойлеров.",
+      "platform": "tiktok",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N20",
+      "text": "Лекция по линейной алгебре: матрица, определитель, собственные значения.",
+      "platform": "other",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N21",
+      "text": "https://www.instagram.com/safenet_education/",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N22",
+      "text": "Завтра волонтерская встреча в 10:00. Принесите воду и удобную обувь.",
+      "platform": "whatsapp",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N23",
+      "text": "Тек бүгін: дүкенде барлық аяқкиімге 20% жеңілдік, төлем кассада.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N24",
+      "text": "Продаю ноутбук. 150 000 тенге. Осмотр и оплата при встрече.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N25",
+      "text": "Лотерея в нашем приложении бесплатная: покупать билет не требуется.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "L11",
+      "text": "РОЗЫГРЫШ iPhone 16 🔥 1 номер = 1000 тг, всего 150 номеров. Оплата на Kaspi Gold +7 700 000 12 34, чек в директ. Крутим колесо в прямом эфире в субботу!",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L12",
+      "text": "Осталось 12 свободных номеров! Номерок по 500₸, переводы на каспи. Как только все слоты заняты — запускаем рандомайзер.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L13",
+      "text": "Ұтыс ойыны! Бір нөмір — 2000 теңге. Kaspi-ге аударып, скрин жіберіңіз. Жеңімпазды тікелей эфирде дөңгелек таңдайды.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L14",
+      "text": "Розыгрыш №7 стартовал 🎁 Приз 100 000 тг! Слот 1500 тг, оплата переводом. Победителя определит random.org в эфире.",
+      "platform": "tiktok",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L15",
+      "text": "Utys! Bir nomer 1000 tg, kaspi-ge audaryp chek zhiberinder. Zhenimpaz efirde anyqtalady.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L16",
+      "text": "Всем привет, это эфир розыгрыша. Кто оплатил номер — вы в таблице, сейчас крутим барабан. Кто не успел, последние три номера по две тысячи.",
+      "platform": "tiktok",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L17",
+      "text": "Разыгрываем машину! Участие — покупка номера за 5000 тенге. Собрали уже 400 номеров, после сбора всей суммы определим победителя жеребьёвкой.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L18",
+      "text": "Каждую неделю разыгрываем 50 000 ₸ среди тех, кто перевёл взнос 1000 тг на карту 4400 **** **** 1234. Победитель — по рандомайзеру.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L19",
+      "text": "Ақылы емес деп ойламаңыз 😄 орын саны шектеулі: 1 орын 3000 тг, қалған 15 орын. Каспиге аударым, жеңімпазды кездейсоқ таңдаймыз.",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "L20",
+      "text": "беру 2 номера, оплатила на каспи, скрин в лс",
+      "platform": "instagram",
+      "expectedCategory": "lottery",
+      "expectedRisk": true
+    },
+    {
+      "id": "C11",
+      "text": "Поднял 380к за вечер 💰 сам не верю. Промокод AZ777 даёт +150% к первому депу, ссылка в шапке профиля.",
+      "platform": "tiktok",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C12",
+      "text": "Рабочее зеркало на сегодня: https://az777-mirror.example — старый сайт заблокирован, заходите тут. Бонус по коду AZ777.",
+      "platform": "telegram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C13",
+      "text": "Вывел 250 000 на Kaspi за 5 минут 🤑 Как я поднял — пишите в лс за ссылкой.",
+      "platform": "instagram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C14",
+      "text": "Так, ребята, сейчас покупаю бонуску за двадцать тысяч, крутим. О, занос! Ссылка с промокодом в описании стрима, регайтесь по ней.",
+      "platform": "tiktok",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C15",
+      "text": "🎰🎰🎰 Лучшие слотики тут → bit.ly/az7bonus 💸 бездеп бонус новым игрокам",
+      "platform": "telegram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C16",
+      "text": "k a z i n o с моментальным выводом, депни 2000 и забери фриспины. Все ссылки в закрепе.",
+      "platform": "telegram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C17",
+      "text": "Заносы недели: x500 на слоте, вывод 1 200 000 тг. Регистрация по ссылке https://spingold.example/?ref=blogger12",
+      "platform": "instagram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C18",
+      "text": "Ақша тапқым келді, осы ойында 200 мың ұтып алдым 🔥 промокод SPIN50, сілтеме профильде",
+      "platform": "tiktok",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C19",
+      "text": "Если основной сайт не открывается — вот актуальное зеркало: a7win.example. Депозит от 1000 тг, кэшбэк 10% на проигрыш.",
+      "platform": "telegram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "C20",
+      "text": "Мой выигрыш за неделю 💎 x120 на рулетке. Хочешь так же — промо в био, жми и регистрируйся.",
+      "platform": "instagram",
+      "expectedCategory": "casino",
+      "expectedRisk": true
+    },
+    {
+      "id": "P11",
+      "text": "Вложи 5000 тг — получи 10 000 тг через 3 дня! Переводи на Kaspi организатору, осталось 3 места. Приведи друга и получи 20% с его вклада.",
+      "platform": "whatsapp",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P12",
+      "text": "Салым 10 000 ₸ → 3 күннен кейін 25 000 ₸ аласыз! Kaspi-ге аударыңыз, кураторға скрин жіберіңіз. Орын саны шектеулі.",
+      "platform": "whatsapp",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P13",
+      "text": "Девочки, всем добрый вечер 🌸 Сегодня снова выплаты! Вот мои 30 000 за неделю, кто ещё не в теме — пишите куратору, места заканчиваются.",
+      "platform": "whatsapp",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P14",
+      "text": "Перевод выполнен\n+24 000 ₸\nKaspi Gold\nСпасибо организатору, всё честно, вывела второй раз!",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P15",
+      "text": "Тема рабочая, x2 за 5 дней. Закидываешь от 5к на личную карту куратора, через 5 дней получаешь в два раза больше. Приглашаешь — бонус 1000 тг за каждого.",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P16",
+      "text": "Ақша табудың оңай жолы! 5000 тг салсаң, аптадан кейін 15000 тг аласың. Досыңды шақыр — әр адам үшін 1000 тг бонус. Тек бүгін!",
+      "platform": "whatsapp",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P17",
+      "text": "Vlozhi 10 000 tg, cherez nedelyu poluchish 30 000 tg. Garantiya 100%, perevod na kaspi. Ostalos 5 mest!",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P18",
+      "text": "Уважаемые участники! Напоминаем: доход 7% в день начисляется ежедневно. Пополнение только через Kaspi на номер куратора +7 700 000 55 01. За каждого приглашённого — бонус 10%.",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P19",
+      "text": "Пассивка без напряга: 30% в месяц гарантированно. Входишь с 20к, сразу в команду к наставнику, со 2 уровня идут проценты с приглашённых.",
+      "platform": "telegram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "P20",
+      "text": "Отзыв участницы: вложила 15 000, через неделю вывела 45 000 😍 Кто сомневается — вот скрин выплаты. Пишите в лс, расскажу как зайти.",
+      "platform": "instagram",
+      "expectedCategory": "pyramid",
+      "expectedRisk": true
+    },
+    {
+      "id": "N26",
+      "text": "РОЗЫГРЫШ 🎁 Дарим сертификат на 20 000 тг! Условия: подпишись, поставь лайк и отметь двух друзей. Участие бесплатное. Победителя выберем рандомайзером в пятницу.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N27",
+      "text": "Ұтыс! Шарттары: парақшаға жазылу, лайк басу, досыңды белгілеу. Қатысу тегін. Жеңімпазды дөңгелек арқылы кездейсоқ таңдаймыз.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N28",
+      "text": "Промокод SALE20 даёт скидку 20% на всю обувь до воскресенья. Доставка по Шымкенту бесплатно.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N29",
+      "text": "Halyk Bank: депозит «Эко» 15,5% годовых, ГЭСВ до 16,7%. Вклады гарантированы КФГД в пределах установленных сумм.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N30",
+      "text": "Сбор на операцию для Алии: нужна сумма 2 млн тг. Kaspi Gold 4400 **** **** 5521, получатель — мама. Отчёты публикуем в канале.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N31",
+      "text": "АФМ пресекла деятельность финансовой пирамиды «Капитал». По данным следствия, организаторы обещали доход 30% в месяц и бонусы за приглашение друзей. Возбуждено уголовное дело.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N32",
+      "text": "Департамент полиции предупреждает: мошенники пишут «вложи 5000 — получи 10 000» и просят перевести деньги на Kaspi. Не ведитесь на такие предложения!",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N33",
+      "text": "Стрим по Dota 2 сегодня в 20:00! Крутим колесо фортуны на челленджи, донат-ссылка в описании. Без ставок и казино.",
+      "platform": "youtube",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N34",
+      "text": "Сатты Жулдыз: в тираже №1450 разыграно 50 млн тенге, билеты продаются в официальных точках продаж. Информация оператора лотереи.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N35",
+      "text": "Как распознать финансовую пирамиду: обещания x2 за неделю, «осталось 3 места», бонусы за приглашённых, переводы на личные карты. Будьте бдительны!",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N36",
+      "text": "Купи любой кофе и участвуй в бесплатном розыгрыше термокружки среди покупателей. Отдельно платить за участие не нужно.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N37",
+      "text": "Ищем куратора учебной группы в колледж. Опыт работы со студентами, официальное трудоустройство.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N38",
+      "text": "Родительский чат: собираем по 3000 тг на подарок учителю, переводите на Kaspi Айгерим до пятницы.",
+      "platform": "whatsapp",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N39",
+      "text": "Финансовая грамотность: реальная доходность депозита 14–16% годовых, всё выше 5% в месяц — повод насторожиться.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N40",
+      "text": "В Шымкенте задержаны организаторы незаконного онлайн-казино. Через блогеров они распространяли промокоды и ссылки на зеркала сайта.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N41",
+      "text": "Мой выигрыш на школьной олимпиаде — первое место по математике! Спасибо учителям 🙏",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N42",
+      "text": "Розыгрыш призов на Наурыз в нашем ТРЦ: бесплатные купоны выдаются на кассе, розыгрыш в 18:00 на главной сцене.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N43",
+      "text": "Зеркало в прихожую 60×120 продаю, 15 000 тг, самовывоз.",
+      "platform": "other",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N44",
+      "text": "Вебинар: как работают реферальные программы маркетплейсов и почему кешбэк не равен доходу.",
+      "platform": "telegram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    },
+    {
+      "id": "N45",
+      "text": "Біз бүгін бонус ұпайларын береміз: әр сатып алуға 5% кешбэк Kaspi Red арқылы.",
+      "platform": "instagram",
+      "expectedCategory": "none",
+      "expectedRisk": false
+    }
+  ]
+}
