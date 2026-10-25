@@ -1,0 +1,252 @@
+{
+  "createdAt": "2026-10-24T10:07:33.634Z",
+  "scope": "Synthetic local fixtures; no live Instagram capture",
+  "status": {
+    "ok": true,
+    "frame": {
+      "available": true,
+      "ready": true,
+      "loaded": false,
+      "reason": null,
+      "languages": [
+        "eng",
+        "rus",
+        "kaz"
+      ]
+    },
+    "audio": {
+      "available": true,
+      "ready": true,
+      "loaded": false,
+      "reason": null,
+      "model": "small",
+      "device": "cpu",
+      "languages": [
+        "ru",
+        "kk",
+        "en"
+      ],
+      "qr": {
+        "available": true,
+        "engine": "OpenCV",
+        "scope": "sampled_frame"
+      }
+    },
+    "qr": {
+      "available": true,
+      "engine": "OpenCV",
+      "scope": "sampled_frame"
+    },
+    "busy": false,
+    "queued": 0,
+    "ai": {
+      "provider": "ollama",
+      "mode": "local",
+      "model": "qwen3-vl:2b-instruct",
+      "busy": false,
+      "ok": true,
+      "reachable": true,
+      "installed": true,
+      "available": true,
+      "ready": true,
+      "vision": true,
+      "text": true,
+      "status": "ready",
+      "reason": null
+    }
+  },
+  "results": [
+    {
+      "fixture": "synthetic-slot",
+      "elapsedMs": 7710,
+      "recognizedText": "",
+      "coverage": {
+        "text": true,
+        "textReason": null,
+        "qr": {
+          "checked": true,
+          "reason": null
+        },
+        "visualObjects": true,
+        "aiTranscript": false
+      },
+      "ai": {
+        "provider": "ollama",
+        "mode": "local",
+        "model": "qwen3-vl:2b-instruct",
+        "busy": false,
+        "ok": true,
+        "status": "completed",
+        "category": "gambling",
+        "promotional": false,
+        "context": "uncertain",
+        "summary": "Изображение представляет собой иллюстрацию игрового автомата с символами в виде ягод, вероятно, слот-машины. На изображении нет явного призыва к действию или рекламы, но оно может быть связано с игрой в казино.",
+        "observations": [
+          {
+            "modality": "visual",
+            "kind": "slot_machine",
+            "description": "Иллюстрация игрового автомата с тремя барабанами, на которых отображены ягоды. На правом краю виден рычаг для игры.",
+            "quote": ""
+          }
+        ],
+        "risk": {
+          "score": 30,
+          "level": "medium",
+          "isHeuristic": true
+        },
+        "reviewRecommended": true,
+        "limitations": [
+          "Вывод модели — предварительное наблюдение, а не доказательство мошенничества или нарушения закона.",
+          "Проверяется только переданный кадр или расшифровка. Скрытые части видео и другие публикации не проверены.",
+          "Модель может ошибаться; распознанную рекламу и её контекст нужно проверить."
+        ],
+        "elapsedMs": 6795
+      },
+      "score": 30,
+      "evidence": [
+        {
+          "kind": "vision",
+          "text": "Иллюстрация игрового автомата с тремя барабанами, на которых отображены ягоды. На правом краю виден рычаг для игры.",
+          "startMs": 0,
+          "endMs": 0,
+          "model": "qwen3-vl:2b-instruct",
+          "method": "model_inference"
+        }
+      ]
+    },
+    {
+      "fixture": "synthetic-house",
+      "elapsedMs": 33435,
+      "recognizedText": "| -",
+      "coverage": {
+        "text": true,
+        "textReason": null,
+        "qr": {
+          "checked": true,
+          "reason": null
+        },
+        "visualObjects": false,
+        "aiTranscript": false
+      },
+      "ai": {
+        "provider": "ollama",
+        "mode": "local",
+        "model": "qwen3-vl:2b-instruct",
+        "busy": false,
+        "ok": false,
+        "status": "invalid_response",
+        "reason": "invalid_response",
+        "observations": [],
+        "category": "uncertain",
+        "promotional": false,
+        "context": "uncertain",
+        "summary": "",
+        "risk": null,
+        "reviewRecommended": false,
+        "limitations": [
+          "Модель қорытындысы — бастапқы байқау, алаяқтықтың немесе заң бұзудың дәлелі емес.",
+          "Тек берілген кадр немесе дыбыс мәтіні тексеріледі. Видеоның қалған бөлігі мен өзге жарияланымдар тексерілген жоқ.",
+          "Модель қателесуі мүмкін; жарнама белгісін және оның мәнмәтінін тексеру қажет."
+        ],
+        "elapsedMs": 33138
+      },
+      "score": 0,
+      "evidence": [
+        {
+          "kind": "frame",
+          "text": "| -",
+          "startMs": 0,
+          "endMs": 0
+        }
+      ]
+    },
+    {
+      "fixture": "synthetic-spoken-promotion",
+      "elapsedMs": 22111,
+      "recognizedText": "Реклама-казино. Зарегистрируйся по промокоду, пополни депозит и получи бонус.",
+      "coverage": {
+        "text": true,
+        "textReason": null,
+        "qr": {
+          "checked": false,
+          "reason": "not_a_frame"
+        },
+        "visualObjects": false,
+        "aiTranscript": true
+      },
+      "ai": {
+        "provider": "ollama",
+        "mode": "local",
+        "model": "qwen3-vl:2b-instruct",
+        "busy": false,
+        "ok": true,
+        "status": "completed",
+        "category": "gambling",
+        "promotional": true,
+        "context": "promotion",
+        "summary": "Реклама-казино. Зарегистрируйся по промокоду, пополни депозит и получи бонус.",
+        "observations": [
+          {
+            "modality": "transcript",
+            "kind": "promotion",
+            "description": "Текстовое сообщение рекламы казино с призывом зарегистрироваться по промокоду и получить бонус.",
+            "quote": "Реклама-казино. Зарегистрируйся по промокоду, пополни депозит и получи бонус."
+          }
+        ],
+        "risk": {
+          "score": 60,
+          "level": "high",
+          "isHeuristic": true
+        },
+        "reviewRecommended": true,
+        "limitations": [
+          "Вывод модели — предварительное наблюдение, а не доказательство мошенничества или нарушения закона.",
+          "Проверяется только переданный кадр или расшифровка. Скрытые части видео и другие публикации не проверены.",
+          "Модель может ошибаться; распознанную рекламу и её контекст нужно проверить."
+        ],
+        "elapsedMs": 4687
+      },
+      "score": 92,
+      "evidence": [
+        {
+          "kind": "audio",
+          "text": "Реклама-казино.",
+          "startMs": 0,
+          "endMs": 2030
+        },
+        {
+          "kind": "audio",
+          "text": "Зарегистрируйся по промокоду, пополни депозит и получи бонус.",
+          "startMs": 2030,
+          "endMs": 7030
+        }
+      ]
+    }
+  ],
+  "runtimeModels": {
+    "models": [
+      {
+        "name": "qwen3-vl:2b-instruct",
+        "model": "qwen3-vl:2b-instruct",
+        "size": 2312057649,
+        "digest": "afc393e3572c07db0bc84aa460d928a16c75f3fbb9ca9e0dccc4fbd2dafb573e",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3vl",
+          "families": [
+            "qwen3vl",
+            "clip"
+          ],
+          "parameter_size": "1.7B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-10-24T15:13:37.272849+05:00",
+        "size_vram": 1201898782,
+        "context_length": 4096,
+        "runner": "llamacpp"
+      }
+    ]
+  },
+  "passed": false
+}

@@ -1,0 +1,48 @@
+{
+  "version": "2.1.1",
+  "date": "2026-10-23",
+  "post": {
+    "url": "https://www.instagram.com/p/CO1YPXSH4TF/",
+    "automaticScanCount": 1,
+    "flags": 0,
+    "locale": "kk",
+    "screenshot": "instagram-auto-post.png"
+  },
+  "reels": {
+    "before": {
+      "hidden": false,
+      "status": [
+        "SafeNet KZАвтотексеру қосулыТексерілді: 1 · Белгілер: 0v2.1.1 · Жергілікті талдау · жазба мәтініТоқтатуРУС▶ АвтоайналдыруSafeNet-ті ашу"
+      ],
+      "url": "https://www.instagram.com/reels/DetHBooIYYH/",
+      "visiblePlayers": [
+        {
+          "bottom": 577,
+          "text": "diidikayaa\nСочи\nПодписаться\nTrendsee - нейросеть, где нахожу тренды и идеи для новых роликов\n… ещё",
+          "top": 16
+        }
+      ]
+    },
+    "after": {
+      "hidden": false,
+      "status": [
+        "SafeNet KZАвтотексеру қосулыТексерілді: 1 · Белгілер: 0v2.1.1 · Жергілікті талдау · жазба мәтініӘр 8 секунд сайын · тек белсенді бетТоқтатуРУС■ Айналдыруды тоқтатуSafeNet-ті ашу"
+      ],
+      "url": "https://www.instagram.com/reels/Dez87zauR7b/",
+      "visiblePlayers": [
+        {
+          "bottom": 577,
+          "text": "risalatnurova\nMachatschkala, Dagestan, Russia\nПодписаться\n@risalatnurova\n… ещё",
+          "top": 16
+        }
+      ]
+    },
+    "method": "Clicked SafeNet auto-scroll once, waited without scrolling or navigation, then read current DOM.",
+    "screenshot": "instagram-auto-reels.png"
+  },
+  "limits": [
+    "Loaded visible captions only. Video/audio/image contents not analyzed.",
+    "No suspicious caption occurred in this small live sample; positive risk explanations are covered by local synthetic fixtures and unit tests.",
+    "Active visible Instagram tab required; this does not crawl all Instagram."
+  ]
+}

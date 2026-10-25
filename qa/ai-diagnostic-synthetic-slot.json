@@ -1,0 +1,58 @@
+{
+  "fixture": "synthetic-slot",
+  "synthetic": true,
+  "recognizedText": "",
+  "coverage": {
+    "text": true,
+    "textReason": null,
+    "qr": {
+      "checked": true,
+      "reason": null
+    },
+    "visualObjects": true,
+    "aiTranscript": false
+  },
+  "ai": {
+    "provider": "ollama",
+    "mode": "local",
+    "model": "qwen3-vl:2b-instruct",
+    "busy": false,
+    "ok": true,
+    "status": "completed",
+    "category": "gambling",
+    "promotional": false,
+    "context": "uncertain",
+    "summary": "Изображение слот-машины с изображением ягод, вероятно, символа выигрыша, но без дополнительной информации о рекламе или предупреждении.",
+    "observations": [
+      {
+        "modality": "visual",
+        "kind": "slot_machine",
+        "description": "Слот-машина с тремя барабанами, на которых отображены ягоды, что может указывать на выигрышный результат.",
+        "quote": ""
+      }
+    ],
+    "risk": {
+      "score": 30,
+      "level": "medium",
+      "isHeuristic": true
+    },
+    "reviewRecommended": true,
+    "limitations": [
+      "Вывод модели — предварительное наблюдение, а не доказательство мошенничества или нарушения закона.",
+      "Проверяется только переданный кадр или расшифровка. Скрытые части видео и другие публикации не проверены.",
+      "Модель может ошибаться; распознанную рекламу и её контекст нужно проверить."
+    ],
+    "elapsedMs": 5818
+  },
+  "score": 30,
+  "evidence": [
+    {
+      "kind": "vision",
+      "text": "Слот-машина с тремя барабанами, на которых отображены ягоды, что может указывать на выигрышный результат.",
+      "startMs": 0,
+      "endMs": 0,
+      "model": "qwen3-vl:2b-instruct",
+      "method": "model_inference"
+    }
+  ]
+}

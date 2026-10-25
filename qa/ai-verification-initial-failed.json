@@ -1,0 +1,222 @@
+{
+  "createdAt": "2026-10-24T09:53:46.800Z",
+  "scope": "Synthetic local fixtures; no live Instagram capture",
+  "status": {
+    "ok": true,
+    "frame": {
+      "available": true,
+      "ready": true,
+      "loaded": false,
+      "reason": null,
+      "languages": [
+        "eng",
+        "rus",
+        "kaz"
+      ]
+    },
+    "audio": {
+      "available": true,
+      "ready": true,
+      "loaded": false,
+      "reason": null,
+      "model": "small",
+      "device": "cpu",
+      "languages": [
+        "ru",
+        "kk",
+        "en"
+      ],
+      "qr": {
+        "available": true,
+        "engine": "OpenCV",
+        "scope": "sampled_frame"
+      }
+    },
+    "qr": {
+      "available": true,
+      "engine": "OpenCV",
+      "scope": "sampled_frame"
+    },
+    "busy": false,
+    "queued": 0,
+    "ai": {
+      "provider": "ollama",
+      "mode": "local",
+      "model": "qwen3-vl:2b",
+      "busy": false,
+      "ok": true,
+      "reachable": true,
+      "installed": true,
+      "available": true,
+      "ready": true,
+      "vision": true,
+      "text": true,
+      "status": "ready",
+      "reason": null
+    }
+  },
+  "results": [
+    {
+      "fixture": "synthetic-slot",
+      "elapsedMs": 55021,
+      "recognizedText": "",
+      "coverage": {
+        "text": true,
+        "textReason": null,
+        "qr": {
+          "checked": true,
+          "reason": null
+        },
+        "visualObjects": false,
+        "aiTranscript": false
+      },
+      "ai": {
+        "provider": "ollama",
+        "mode": "local",
+        "model": "qwen3-vl:2b",
+        "busy": true,
+        "ok": false,
+        "status": "invalid_response",
+        "reason": "invalid_response",
+        "observations": [],
+        "category": "uncertain",
+        "promotional": false,
+        "context": "uncertain",
+        "summary": "",
+        "risk": null,
+        "reviewRecommended": false,
+        "limitations": [
+          "Вывод модели — предварительное наблюдение, а не доказательство мошенничества или нарушения закона.",
+          "Проверяется только переданный кадр или расшифровка. Скрытые части видео и другие публикации не проверены.",
+          "Модель может ошибаться; распознанную рекламу и её контекст нужно проверить."
+        ],
+        "elapsedMs": 52921
+      },
+      "score": 0,
+      "evidence": []
+    },
+    {
+      "fixture": "synthetic-house",
+      "elapsedMs": 59946,
+      "recognizedText": "| -",
+      "coverage": {
+        "text": true,
+        "textReason": null,
+        "qr": {
+          "checked": true,
+          "reason": null
+        },
+        "visualObjects": false,
+        "aiTranscript": false
+      },
+      "ai": {
+        "provider": "ollama",
+        "mode": "local",
+        "model": "qwen3-vl:2b",
+        "busy": true,
+        "ok": false,
+        "status": "invalid_response",
+        "reason": "invalid_response",
+        "observations": [],
+        "category": "uncertain",
+        "promotional": false,
+        "context": "uncertain",
+        "summary": "",
+        "risk": null,
+        "reviewRecommended": false,
+        "limitations": [
+          "Модель қорытындысы — бастапқы байқау, алаяқтықтың немесе заң бұзудың дәлелі емес.",
+          "Тек берілген кадр немесе дыбыс мәтіні тексеріледі. Видеоның қалған бөлігі мен өзге жарияланымдар тексерілген жоқ.",
+          "Модель қателесуі мүмкін; жарнама белгісін және оның мәнмәтінін тексеру қажет."
+        ],
+        "elapsedMs": 57400
+      },
+      "score": 0,
+      "evidence": [
+        {
+          "kind": "frame",
+          "text": "| -",
+          "startMs": 0,
+          "endMs": 0
+        }
+      ]
+    },
+    {
+      "fixture": "synthetic-spoken-promotion",
+      "elapsedMs": 86810,
+      "recognizedText": "Реклама казино. Зарегистрируйся по промокоду, пополни депозит и получи бонус.",
+      "coverage": {
+        "text": true,
+        "textReason": null,
+        "qr": {
+          "checked": false,
+          "reason": "not_a_frame"
+        },
+        "visualObjects": false,
+        "aiTranscript": false
+      },
+      "ai": {
+        "provider": "ollama",
+        "mode": "local",
+        "model": "qwen3-vl:2b",
+        "busy": true,
+        "ok": false,
+        "status": "invalid_response",
+        "reason": "invalid_response",
+        "observations": [],
+        "category": "uncertain",
+        "promotional": false,
+        "context": "uncertain",
+        "summary": "",
+        "risk": null,
+        "reviewRecommended": false,
+        "limitations": [
+          "Вывод модели — предварительное наблюдение, а не доказательство мошенничества или нарушения закона.",
+          "Проверяется только переданный кадр или расшифровка. Скрытые части видео и другие публикации не проверены.",
+          "Модель может ошибаться; распознанную рекламу и её контекст нужно проверить."
+        ],
+        "elapsedMs": 42148
+      },
+      "score": 92,
+      "evidence": [
+        {
+          "kind": "audio",
+          "text": "Реклама казино.",
+          "startMs": 0,
+          "endMs": 2030
+        },
+        {
+          "kind": "audio",
+          "text": "Зарегистрируйся по промокоду, пополни депозит и получи бонус.",
+          "startMs": 2030,
+          "endMs": 7030
+        }
+      ]
+    }
+  ],
+  "runtimeModels": {
+    "models": [
+      {
+        "name": "qwen3-vl:2b",
+        "model": "qwen3-vl:2b",
+        "size": 2337653389,
+        "digest": "0635d9d857d497aeadba3d7d27485746c50554446f9f6ec01ef39788221adbe8",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3vl",
+          "families": [
+            "qwen3vl"
+          ],
+          "parameter_size": "2.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-10-24T15:02:09.2903313+05:00",
+        "size_vram": 1911711334,
+        "context_length": 4096,
+        "runner": "llamacpp"
+      }
+    ]
+  },
+  "passed": false
+}

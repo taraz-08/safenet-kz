@@ -1,0 +1,60 @@
+TAP version 13
+# Subtest: monitoring disabled by default leaves no files, counts, recent items or cases
+ok 1 - monitoring disabled by default leaves no files, counts, recent items or cases
+  ---
+  duration_ms: 2.9825
+  ...
+# Subtest: canonical public permalinks exclude feeds, comments, credentials, custom ports and private routes
+ok 2 - canonical public permalinks exclude feeds, comments, credentials, custom ports and private routes
+  ---
+  duration_ms: 0.5208
+  ...
+# Subtest: enabled monitoring rejects untrusted source and private/feed URLs without retaining metadata
+ok 3 - enabled monitoring rejects untrusted source and private/feed URLs without retaining metadata
+  ---
+  duration_ms: 5.0585
+  ...
+# Subtest: permalink and normalized caption deduplication persists count and first/last provenance
+ok 4 - permalink and normalized caption deduplication persists count and first/last provenance
+  ---
+  duration_ms: 6.9057
+  ...
+# Subtest: RU and KK watch words match literally case-insensitively, config validation is atomic
+ok 5 - RU and KK watch words match literally case-insensitively, config validation is atomic
+  ---
+  duration_ms: 3.7764
+  ...
+# Subtest: recent buffer is bounded and disabled monitoring resumes without deleting existing cases
+ok 6 - recent buffer is bounded and disabled monitoring resumes without deleting existing cases
+  ---
+  duration_ms: 31.4195
+  ...
+# Subtest: media monitoring saves only recognized text and bounded timestamped evidence, never raw bytes
+ok 7 - media monitoring saves only recognized text and bounded timestamped evidence, never raw bytes
+  ---
+  duration_ms: 2.9838
+  ...
+# Subtest: evidence hash is independently reproducible, order-independent, tamper-sensitive, and disclaims authenticity
+ok 8 - evidence hash is independently reproducible, order-independent, tamper-sensitive, and disclaims authenticity
+  ---
+  duration_ms: 0.5202
+  ...
+# Subtest: shared indicators connect cases without identifying the owner; wallet matching is exact
+ok 9 - shared indicators connect cases without identifying the owner; wallet matching is exact
+  ---
+  duration_ms: 0.6257
+  ...
+# Subtest: monitoring API is local-only; authenticated extension scans save and export bounded evidence
+ok 10 - monitoring API is local-only; authenticated extension scans save and export bounded evidence
+  ---
+  duration_ms: 234.6749
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 492.2623

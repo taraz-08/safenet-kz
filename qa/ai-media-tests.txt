@@ -1,0 +1,175 @@
+TAP version 13
+# Subtest: requires exact loopback configuration and rejects remote cloud models without requests
+ok 1 - requires exact loopback configuration and rejects remote cloud models without requests
+  ---
+  duration_ms: 2.2402
+  ...
+# Subtest: status discovers exact installed model and capabilities, and pins localhost to loopback
+ok 2 - status discovers exact installed model and capabilities, and pins localhost to loopback
+  ---
+  duration_ms: 38.9693
+  ...
+# Subtest: status never claims a missing model or absent vision capability
+ok 3 - status never claims a missing model or absent vision capability
+  ---
+  duration_ms: 8.7257
+  ...
+# Subtest: rejects remote-host backed Ollama models before any raw media is submitted
+ok 4 - rejects remote-host backed Ollama models before any raw media is submitted
+  ---
+  duration_ms: 1.7153
+  ...
+# Subtest: sends input only as untrusted data with constrained JSON schema, never tools or credentials
+ok 5 - sends input only as untrusted data with constrained JSON schema, never tools or credentials
+  ---
+  duration_ms: 2.2281
+  ...
+# Subtest: visual observations require supplied image and cannot contain fabricated verbatim quotes
+ok 6 - visual observations require supplied image and cannot contain fabricated verbatim quotes
+  ---
+  duration_ms: 3
+  ...
+# Subtest: transcript quotes must be exact contiguous provided text, not translation or invented speech
+ok 7 - transcript quotes must be exact contiguous provided text, not translation or invented speech
+  ---
+  duration_ms: 5.4287
+  ...
+# Subtest: fails closed for malformed JSON, extra actions, unsupported categories, contradictions and truncated output
+ok 8 - fails closed for malformed JSON, extra actions, unsupported categories, contradictions and truncated output
+  ---
+  duration_ms: 11.3925
+  ...
+# Subtest: news or warning context stays low and never becomes an advertising accusation
+ok 9 - news or warning context stays low and never becomes an advertising accusation
+  ---
+  duration_ms: 1.5503
+  ...
+# Subtest: input limits reject URLs as images, empty transcript, caption-only and unsupported binary before transport
+ok 10 - input limits reject URLs as images, empty transcript, caption-only and unsupported binary before transport
+  ---
+  duration_ms: 1.2263
+  ...
+# Subtest: rejects excessive decoded image dimensions despite small encoded body
+ok 11 - rejects excessive decoded image dimensions despite small encoded body
+  ---
+  duration_ms: 0.4128
+  ...
+# Subtest: one inference at a time, busy returns immediately without extra data submission
+ok 12 - one inference at a time, busy returns immediately without extra data submission
+  ---
+  duration_ms: 1.2709
+  ...
+# Subtest: deadline bounds transport even when a fetch stub ignores AbortSignal and recovers busy state
+ok 13 - deadline bounds transport even when a fetch stub ignores AbortSignal and recovers busy state
+  ---
+  duration_ms: 68.958
+  ...
+# Subtest: caps advertised response size and streamed body bytes
+ok 14 - caps advertised response size and streamed body bytes
+  ---
+  duration_ms: 4.3885
+  ...
+# Subtest: transport failures are sanitized and do not return provider content or pretend clean results
+ok 15 - transport failures are sanitized and do not return provider content or pretend clean results
+  ---
+  duration_ms: 1.4831
+  ...
+# Subtest: close stops future requests and returned limitations are localized
+ok 16 - close stops future requests and returned limitations are localized
+  ---
+  duration_ms: 1.6441
+  ...
+# Subtest: close cancels active inference promptly even when mocked transport ignores abort
+ok 17 - close cancels active inference promptly even when mocked transport ignores abort
+  ---
+  duration_ms: 0.5861
+  ...
+# Subtest: media validates public sources, excludes private routes and strips tracking
+ok 18 - media validates public sources, excludes private routes and strips tracking
+  ---
+  duration_ms: 5.2095
+  ...
+# Subtest: media bounds payload bytes, declared format, pixel count and timestamps before processing
+ok 19 - media bounds payload bytes, declared format, pixel count and timestamps before processing
+  ---
+  duration_ms: 6.0406
+  ...
+# Subtest: recognized frame text becomes localized evidence without persistent case data
+ok 20 - recognized frame text becomes localized evidence without persistent case data
+  ---
+  duration_ms: 170.1146
+  ...
+# Subtest: speech segments retain offset timestamps and silence does not fabricate evidence
+ok 21 - speech segments retain offset timestamps and silence does not fabricate evidence
+  ---
+  duration_ms: 101.615
+  ...
+# Subtest: one job runs at a time and excess queued work is rejected
+ok 22 - one job runs at a time and excess queued work is rejected
+  ---
+  duration_ms: 4.268
+  ...
+# Subtest: missing runtime/model and timeout failures stay explicit
+ok 23 - missing runtime/model and timeout failures stay explicit
+  ---
+  duration_ms: 20.6608
+  ...
+# Subtest: QR findings keep a distinct evidence source and do not open decoded URLs
+ok 24 - QR findings keep a distinct evidence source and do not open decoded URLs
+  ---
+  duration_ms: 1.9233
+  ...
+# Subtest: QR unavailable is partial coverage and preserves successful OCR results
+ok 25 - QR unavailable is partial coverage and preserves successful OCR results
+  ---
+  duration_ms: 1.5815
+  ...
+# Subtest: visual-only finding is saveable but generated description never enters text rule engine
+ok 26 - visual-only finding is saveable but generated description never enters text rule engine
+  ---
+  duration_ms: 2.4858
+  ...
+# Subtest: AI unavailable preserves actual OCR rule findings and reports incomplete visual coverage
+ok 27 - AI unavailable preserves actual OCR rule findings and reports incomplete visual coverage
+  ---
+  duration_ms: 2.4604
+  ...
+# Subtest: successful AI never reduces existing rule score or changes original evidence quotes
+ok 28 - successful AI never reduces existing rule score or changes original evidence quotes
+  ---
+  duration_ms: 2.8181
+  ...
+# Subtest: speech AI analyzes recognized words while retaining verbatim segments and timestamps
+ok 29 - speech AI analyzes recognized words while retaining verbatim segments and timestamps
+  ---
+  duration_ms: 0.7201
+  ...
+# Subtest: silent audio does not ask AI to invent a transcript and retains no evidence
+ok 30 - silent audio does not ask AI to invent a transcript and retains no evidence
+  ---
+  duration_ms: 0.5381
+  ...
+# Subtest: frame AI can continue when OCR is unavailable without claiming text was recognized
+ok 31 - frame AI can continue when OCR is unavailable without claiming text was recognized
+  ---
+  duration_ms: 0.9173
+  ...
+# Subtest: timed-out media job cannot start delayed AI work after recognition resolves
+ok 32 - timed-out media job cannot start delayed AI work after recognition resolves
+  ---
+  duration_ms: 18.1042
+  ...
+# Subtest: timed-out active AI is cancelled and later jobs can still proceed
+ok 33 - timed-out active AI is cancelled and later jobs can still proceed
+  ---
+  duration_ms: 16.5171
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 594.495

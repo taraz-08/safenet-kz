@@ -1,0 +1,63 @@
+{
+ "output": "safenet-kz-defense-ru.mp4",
+ "durationSeconds": 142.14,
+ "fps": 30,
+ "size": [
+  1920,
+  1080
+ ],
+ "scenes": [
+  {
+   "id": "intro",
+   "start": 0.0,
+   "end": 17.56,
+   "speed": null
+  },
+  {
+   "id": "overview",
+   "start": 17.56,
+   "end": 37.39,
+   "speed": 1.15
+  },
+  {
+   "id": "pipeline",
+   "start": 37.39,
+   "end": 50.81,
+   "speed": 1.42
+  },
+  {
+   "id": "review",
+   "start": 50.81,
+   "end": 78.1,
+   "speed": 1.27
+  },
+  {
+   "id": "networks",
+   "start": 78.1,
+   "end": 96.07,
+   "speed": 1.11
+  },
+  {
+   "id": "discovery",
+   "start": 96.07,
+   "end": 112.09,
+   "speed": 1.45
+  },
+  {
+   "id": "quality",
+   "start": 112.09,
+   "end": 130.63,
+   "speed": 1.3
+  },
+  {
+   "id": "outro",
+   "start": 130.63,
+   "end": 142.14,
+   "speed": null
+  }
+ ],
+ "subtitles": 34,
+ "voice": "ElevenLabs Eleven v4, voice Nurlan, Russian",
+ "intro": "Google Flow (Omni 1.1 Flash) generated clips; labelled on screen, not evidence",
+ "screens": "Headless Chrome screencast of the running app (record.py)"
+}

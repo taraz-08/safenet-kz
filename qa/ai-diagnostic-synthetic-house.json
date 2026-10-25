@@ -1,0 +1,46 @@
+{
+  "fixture": "synthetic-house",
+  "synthetic": true,
+  "recognizedText": "| -",
+  "coverage": {
+    "text": true,
+    "textReason": null,
+    "qr": {
+      "checked": true,
+      "reason": null
+    },
+    "visualObjects": false,
+    "aiTranscript": false
+  },
+  "ai": {
+    "provider": "ollama",
+    "mode": "local",
+    "model": "qwen3-vl:2b-instruct",
+    "busy": false,
+    "ok": false,
+    "status": "invalid_response",
+    "reason": "invalid_response",
+    "observations": [],
+    "category": "uncertain",
+    "promotional": false,
+    "context": "uncertain",
+    "summary": "",
+    "risk": null,
+    "reviewRecommended": false,
+    "limitations": [
+      "Модель қорытындысы — бастапқы байқау, алаяқтықтың немесе заң бұзудың дәлелі емес.",
+      "Тек берілген кадр немесе дыбыс мәтіні тексеріледі. Видеоның қалған бөлігі мен өзге жарияланымдар тексерілген жоқ.",
+      "Модель қателесуі мүмкін; жарнама белгісін және оның мәнмәтінін тексеру қажет."
+    ],
+    "elapsedMs": 33471
+  },
+  "score": 0,
+  "evidence": [
+    {
+      "kind": "frame",
+      "text": "| -",
+      "startMs": 0,
+      "endMs": 0
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "fixture": "synthetic-slot",
+  "synthetic": true,
+  "recordedAt": "2026-10-24T10:07:00.111Z",
+  "httpStatus": 200,
+  "options": {
+    "temperature": 0,
+    "num_predict": 1000,
+    "num_ctx": 4096
+  },
+  "stream": false,
+  "think": false,
+  "model": "qwen3-vl:2b-instruct",
+  "body": "{\"model\":\"qwen3-vl:2b-instruct\",\"created_at\":\"2026-10-24T10:07:00.1078441Z\",\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"category\\\": \\\"gambling\\\",\\n  \\\"promotional\\\": false,\\n  \\\"context\\\": \\\"uncertain\\\",\\n  \\\"summary\\\": \\\"Изображение слот-машины с изображением ягод, вероятно, символа выигрыша, но без дополнительной информации о рекламе или предупреждении.\\\",\\n  \\\"observations\\\": [\\n    {\\n      \\\"modality\\\": \\\"visual\\\",\\n      \\\"kind\\\": \\\"slot_machine\\\",\\n      \\\"description\\\": \\\"Слот-машина с тремя барабанами, на которых отображены ягоды, что может указывать на выигрышный результат.\\\",\\n      \\\"quote\\\": \\\"\\\"\\n    }\\n  ]\\n}\"},\"done\":true,\"done_reason\":\"stop\",\"total_duration\":5670975100,\"load_duration\":21021300,\"prompt_eval_count\":1713,\"prompt_eval_cached_count\":1556,\"prompt_eval_duration\":329841000,\"eval_count\":150,\"eval_duration\":5196119000}"
+}

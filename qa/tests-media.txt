@@ -1,0 +1,151 @@
+✔ scan payload caps text and strips URL query/hash (6.1066ms)
+✔ background rejects arbitrary URLs, private routes, and external senders (1.9255ms)
+✔ worker limits concurrent scans to two, shares token and deduplicates cached payloads (19.8225ms)
+✔ worker renews an expired token after HTTP 401 (7.9775ms)
+✔ disabled automatic mode never sends a scan (1.9275ms)
+✔ Instagram feed never falls back to scanning the whole document (6.7913ms)
+✔ single Instagram post allows a caption fallback only (1.8184ms)
+✔ demo selector is enabled only on the exact local demo path (4.3927ms)
+✔ private messages are excluded and text fingerprints distinguish locale/content (2.4168ms)
+✔ logged-out public post finds visible caption beside owner header without article/h1 (1.9139ms)
+✔ public caption supports username-prefixed single-post route (1.7476ms)
+✔ an unrelated article does not suppress the current public-post caption (2.3434ms)
+✔ public fallback rejects comments, hidden captions, unrelated UI and metadata mismatch (8.2594ms)
+✔ public fallback never runs on feeds, profiles or comment permalink routes (3.6323ms)
+✔ Reels feed captures one visible caption within its own video player (2.2026ms)
+✔ Reels overlay supports sibling video within a bounded single-player media container (1.5442ms)
+✔ Reels never borrows sibling video from multiple players or distant ancestors (2.3513ms)
+✔ Reels skips hidden, ambiguous, nested-player and UI-containing candidates (8.7864ms)
+✔ automatic browsing requires opt-in, active visible Instagram feed and working analyzer (1.5406ms)
+✔ continuous scroll or mutation events cannot postpone discovery beyond 1500ms (2.1757ms)
+✔ media capture refuses private, hidden and unfocused pages before reading video geometry (4.6338ms)
+✔ media capture bounds its crop to visible viewport and selects largest visible video (1.7287ms)
+✔ missing or tiny video has no media capture target (2.1925ms)
+✔ same-route recycled video source receives a new media identity (2.8708ms)
+✔ tab audio is never attributed when multiple players or a different offscreen player are audible (1.6462ms)
+✔ media context is clipped to visible video and rejects private or malformed input (10.5094ms)
+✔ media capture can start only through this extensions popup, with explicit target tab (6.4842ms)
+✔ media session status is not disclosed to another page tab (3.1156ms)
+✔ media processing pauses for an inactive tab and stops on private navigation (16.7108ms)
+✔ old post results are aborted and never forwarded after a route change (4.2719ms)
+✔ switching videos on the same home-feed URL invalidates pending results (6.2322ms)
+✔ media expires after the 15 minute session cap (3.0548ms)
+✔ only one frame job is in flight and STATE precedes a valid RESULT (6.5723ms)
+✔ media payload validates duration, MIME and size before sending anything (2.4745ms)
+✔ captured frames are cropped to the video region and bounded to 1280px (2.6791ms)
+✔ audio continuity rejects route changes, seeks, loops, pauses and muted video (1.571ms)
+✔ SafeNet overlay masks use crop coordinates and ignore regions outside the video (1.5545ms)
+✔ non-normal playback speed never starts audio with misleading timestamps (1.367ms)
+✔ short reels get a complete audio segment before the loop instead of waiting four seconds (1.0051ms)
+✔ each audio upload is a complete new recorder segment, never a timeslice fragment (5.007ms)
+✔ route-invalidated recording discards its bytes instead of posting them (1.4278ms)
+✖ manifest limits automatic injection to Instagram/TikTok and network access to local API (4.9173ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'activeTab',
+      'scripting',
+      'storage',
+  +   'tabCapture',
+  +   'offscreen'
+    ]
+  
+      at TestContext.<anonymous> (file:///C:/Users/dimas/OneDrive/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/Treval/%D1%85%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD/extension/popup.test.mjs:36:10)
+      at Test.runInAsyncScope (node:async_hooks:211:14)
+      at Test.run (node:internal/test_runner/test:934:25)
+      at Test.start (node:internal/test_runner/test:833:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'activeTab', 'scripting', 'storage', 'tabCapture', 'offscreen' ],
+    expected: [ 'activeTab', 'scripting', 'storage' ],
+    operator: 'deepStrictEqual'
+  }
+
+✔ opening popup never reads the current tab or captures its contents (4.6553ms)
+✔ capture previews editable text; explicit analysis forwards edits and a sanitized source (3.2206ms)
+✔ restricted pages give a usable error and never invoke script injection (1.7366ms)
+✔ clearing removes text and source before the next manual submission (2.8586ms)
+✔ platform identification does not trust lookalike domains (2.9026ms)
+✔ viewport capture excludes hidden elements, editable fields and offscreen text (2.3826ms)
+✔ validation rejects missing data and unsafe URL schemes (70.9321ms)
+✔ case analysis, review, persistence, export and deletion form one working flow (185.5355ms)
+✔ batch import is atomic when any input is invalid (59.3042ms)
+✔ cross-origin websites cannot read or mutate local case data (12.8032ms)
+✔ URL-only input remains metadata, not a claimed fetched post (39.5186ms)
+✔ CSV protects spreadsheet formulas and demo seed is idempotent (23.5388ms)
+✔ related case graph uses extracted entities and source readiness is honest (5.1903ms)
+✔ automatic extension scan requires token, explains risk and never stores a post (24.8127ms)
+✔ media endpoints require extension token and preserve local-only origin policy (12.6824ms)
+✔ media scan validates sources and returns timestamped evidence without saving cases (23.3955ms)
+✔ only media endpoint accepts its larger JSON body limit (40.552ms)
+✔ stable complete schema for empty and absent input (173.4219ms)
+✔ paid lottery requires both giveaway and paid entry (67.9628ms)
+✔ Kazakh paid entry and original exact evidence (0.6502ms)
+✔ casino promotion and mixed script evasion are recognized (1.0492ms)
+✔ gambling news and anti-fraud education are not promotion (0.769ms)
+✔ bank deposit, interest rate and ordinary referral do not imply pyramid (0.6605ms)
+✔ pyramid detects promise, recruitment and rapid returns in both languages (1.6543ms)
+✔ phishing detects code theft and bank impersonation (0.5496ms)
+✔ brand suffix spoofing differs from a real subdomain (1.5829ms)
+✔ supplied URL is not fetched and exposes lexical screening limits (0.9935ms)
+✔ publication provenance never adds a caption link signal or score (1.3706ms)
+✔ caption links remain evidence when a different publication URL is supplied (1.2355ms)
+✔ publication URL does not hide a caption link-in-bio explanation (0.3583ms)
+✔ entity extraction trims punctuation and deduplicates URLs (0.3324ms)
+✔ scores bounded, duplicate rule instances never inflate score (1.8875ms)
+✔ all normalized quotes remain literal substrings of original text (0.4708ms)
+✔ long input is bounded and explained (15.32ms)
+✔ free Kazakh participation instructions and no-entry-fee raffle stay low (0.7436ms)
+✔ a scammers denial does not override high risk financial promises (0.3815ms)
+✔ plain Cyrillic slot words are recognized (0.3308ms)
+✔ paid numbers and randomizer are recognized as a lottery (0.4244ms)
+✔ numeric multiplication promise and spelled-out recruitment strengthen pyramid finding (0.6028ms)
+✔ Kazakh numeric returns are detected without inventing evidence (0.3746ms)
+✔ ordinary price pairs are not investment multiplication promises (0.328ms)
+✔ Russian localization preserves scores, source quotes and other signal fields (0.8212ms)
+✔ all static and dynamic signals have complete Russian translations (1.6062ms)
+✔ Russian summaries cover medium, low, warning context and truncation (7.6901ms)
+✔ Kazakh default and unknown locales retain original explanations (0.4865ms)
+✔ media validates public sources, excludes private routes and strips tracking (13.8241ms)
+✔ media bounds payload bytes, declared format, pixel count and timestamps before processing (4.8482ms)
+✔ recognized frame text becomes localized evidence without persistent case data (188.7557ms)
+✔ speech segments retain offset timestamps and silence does not fabricate evidence (117.4865ms)
+✔ one job runs at a time and excess queued work is rejected (4.1466ms)
+✔ missing runtime/model and timeout failures stay explicit (16.4063ms)
+ℹ tests 93
+ℹ suites 0
+ℹ pass 92
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1028.4604
+
+✖ failing tests:
+
+test at extension\popup.test.mjs:34:1
+✖ manifest limits automatic injection to Instagram/TikTok and network access to local API (4.9173ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'activeTab',
+      'scripting',
+      'storage',
+  +   'tabCapture',
+  +   'offscreen'
+    ]
+  
+      at TestContext.<anonymous> (file:///C:/Users/dimas/OneDrive/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/Treval/%D1%85%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD/extension/popup.test.mjs:36:10)
+      at Test.runInAsyncScope (node:async_hooks:211:14)
+      at Test.run (node:internal/test_runner/test:934:25)
+      at Test.start (node:internal/test_runner/test:833:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'activeTab', 'scripting', 'storage', 'tabCapture', 'offscreen' ],
+    expected: [ 'activeTab', 'scripting', 'storage' ],
+    operator: 'deepStrictEqual'
+  }

@@ -1,0 +1,51 @@
+{
+  "verifiedAt": "2026-10-24T07:46:14.330Z",
+  "version": "3.0.0",
+  "engine": "rules-v3",
+  "tests": {
+    "fullSuite": 147,
+    "passed": 147,
+    "log": "qa/safenet-v3-tests.txt",
+    "finalMonitoringSuite": "qa/safenet-v3-final-monitoring-tests.txt"
+  },
+  "productionBuild": "passed",
+  "evidence": {
+    "downloadStatus": 200,
+    "sha256Verified": true,
+    "demo": true,
+    "path": "qa/safenet-v3-evidence-demo.json"
+  },
+  "migration": {
+    "caseCount": 13,
+    "backupCount": 13,
+    "idsPreserved": true,
+    "legacyAnalysisPreserved": true,
+    "quoteCorrected": true
+  },
+  "monitoring": {
+    "enabled": true,
+    "minScore": 30,
+    "liveScanned": 0,
+    "scope": "visible_public_posts"
+  },
+  "metaConfigured": false,
+  "qr": {
+    "test": "synthetic fixture through actual OCR/OpenCV",
+    "report": "qa/qr-verification.json"
+  },
+  "ui": {
+    "languages": [
+      "ru",
+      "kk"
+    ],
+    "mobileWidth": 390,
+    "horizontalOverflow": false
+  },
+  "liveInstagramV3Verified": false,
+  "limitations": [
+    "Chrome unavailable to browser automation during this test",
+    "No visual-only logo/slot object detection model",
+    "Meta access token not configured",
+    "No whole-platform crawler, private-message access, or automatic state blocking"
+  ]
+}

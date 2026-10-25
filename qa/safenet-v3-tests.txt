@@ -1,0 +1,749 @@
+
+> safenet-kz@3.0.0 test
+> node --test server/*.test.mjs extension/*.test.mjs
+
+TAP version 13
+# Subtest: scan payload caps text and strips URL query/hash
+ok 1 - scan payload caps text and strips URL query/hash
+  ---
+  duration_ms: 4.9819
+  ...
+# Subtest: background rejects arbitrary URLs, private routes, and external senders
+ok 2 - background rejects arbitrary URLs, private routes, and external senders
+  ---
+  duration_ms: 1.6282
+  ...
+# Subtest: worker limits concurrent scans to two, shares token and deduplicates cached payloads
+ok 3 - worker limits concurrent scans to two, shares token and deduplicates cached payloads
+  ---
+  duration_ms: 38.5029
+  ...
+# Subtest: worker renews an expired token after HTTP 401
+ok 4 - worker renews an expired token after HTTP 401
+  ---
+  duration_ms: 8.037
+  ...
+# Subtest: disabled automatic mode never sends a scan
+ok 5 - disabled automatic mode never sends a scan
+  ---
+  duration_ms: 4.7762
+  ...
+# Subtest: monitoring storage receipt reaches content without falsely claiming success
+ok 6 - monitoring storage receipt reaches content without falsely claiming success
+  ---
+  duration_ms: 28.1454
+  ...
+# Subtest: monitoring config refresh invalidates a previously non-saving cached scan
+ok 7 - monitoring config refresh invalidates a previously non-saving cached scan
+  ---
+  duration_ms: 32.8343
+  ...
+# Subtest: Instagram feed never falls back to scanning the whole document
+ok 8 - Instagram feed never falls back to scanning the whole document
+  ---
+  duration_ms: 4.8667
+  ...
+# Subtest: single Instagram post allows a caption fallback only
+ok 9 - single Instagram post allows a caption fallback only
+  ---
+  duration_ms: 1.5791
+  ...
+# Subtest: demo selector is enabled only on the exact local demo path
+ok 10 - demo selector is enabled only on the exact local demo path
+  ---
+  duration_ms: 3.3923
+  ...
+# Subtest: private messages are excluded and text fingerprints distinguish locale/content
+ok 11 - private messages are excluded and text fingerprints distinguish locale/content
+  ---
+  duration_ms: 2.1441
+  ...
+# Subtest: logged-out public post finds visible caption beside owner header without article/h1
+ok 12 - logged-out public post finds visible caption beside owner header without article/h1
+  ---
+  duration_ms: 1.7391
+  ...
+# Subtest: public caption supports username-prefixed single-post route
+ok 13 - public caption supports username-prefixed single-post route
+  ---
+  duration_ms: 1.8403
+  ...
+# Subtest: an unrelated article does not suppress the current public-post caption
+ok 14 - an unrelated article does not suppress the current public-post caption
+  ---
+  duration_ms: 1.2216
+  ...
+# Subtest: public fallback rejects comments, hidden captions, unrelated UI and metadata mismatch
+ok 15 - public fallback rejects comments, hidden captions, unrelated UI and metadata mismatch
+  ---
+  duration_ms: 7.0262
+  ...
+# Subtest: public fallback never runs on feeds, profiles or comment permalink routes
+ok 16 - public fallback never runs on feeds, profiles or comment permalink routes
+  ---
+  duration_ms: 3.6071
+  ...
+# Subtest: Reels feed captures one visible caption within its own video player
+ok 17 - Reels feed captures one visible caption within its own video player
+  ---
+  duration_ms: 2.6468
+  ...
+# Subtest: Reels overlay supports sibling video within a bounded single-player media container
+ok 18 - Reels overlay supports sibling video within a bounded single-player media container
+  ---
+  duration_ms: 1.2587
+  ...
+# Subtest: Reels never borrows sibling video from multiple players or distant ancestors
+ok 19 - Reels never borrows sibling video from multiple players or distant ancestors
+  ---
+  duration_ms: 2.5718
+  ...
+# Subtest: Reels skips hidden, ambiguous, nested-player and UI-containing candidates
+ok 20 - Reels skips hidden, ambiguous, nested-player and UI-containing candidates
+  ---
+  duration_ms: 3.646
+  ...
+# Subtest: automatic browsing requires opt-in, active visible Instagram feed and working analyzer
+ok 21 - automatic browsing requires opt-in, active visible Instagram feed and working analyzer
+  ---
+  duration_ms: 1.3514
+  ...
+# Subtest: continuous scroll or mutation events cannot postpone discovery beyond 1500ms
+ok 22 - continuous scroll or mutation events cannot postpone discovery beyond 1500ms
+  ---
+  duration_ms: 1.0678
+  ...
+# Subtest: media capture refuses private, hidden and unfocused pages before reading video geometry
+ok 23 - media capture refuses private, hidden and unfocused pages before reading video geometry
+  ---
+  duration_ms: 3.8777
+  ...
+# Subtest: media capture bounds its crop to visible viewport and selects largest visible video
+ok 24 - media capture bounds its crop to visible viewport and selects largest visible video
+  ---
+  duration_ms: 1.4068
+  ...
+# Subtest: missing or tiny video has no media capture target
+ok 25 - missing or tiny video has no media capture target
+  ---
+  duration_ms: 2.5505
+  ...
+# Subtest: same-route recycled video source receives a new media identity
+ok 26 - same-route recycled video source receives a new media identity
+  ---
+  duration_ms: 1.2751
+  ...
+# Subtest: tab audio is never attributed when multiple players or a different offscreen player are audible
+ok 27 - tab audio is never attributed when multiple players or a different offscreen player are audible
+  ---
+  duration_ms: 1.0353
+  ...
+# Subtest: media context is clipped to visible video and rejects private or malformed input
+ok 28 - media context is clipped to visible video and rejects private or malformed input
+  ---
+  duration_ms: 9.7295
+  ...
+# Subtest: media capture can start only through this extensions popup, with explicit target tab
+ok 29 - media capture can start only through this extensions popup, with explicit target tab
+  ---
+  duration_ms: 4.964
+  ...
+# Subtest: a private page on first context reports the stop reason instead of startup success
+ok 30 - a private page on first context reports the stop reason instead of startup success
+  ---
+  duration_ms: 2.0942
+  ...
+# Subtest: stopping while the first context is pending cannot return successful startup
+ok 31 - stopping while the first context is pending cannot return successful startup
+  ---
+  duration_ms: 17.926
+  ...
+# Subtest: popup focus pause still allows a live session to start and resume after popup closes
+ok 32 - popup focus pause still allows a live session to start and resume after popup closes
+  ---
+  duration_ms: 2.5925
+  ...
+# Subtest: healthy audio worker cold start beyond the old timeout can still begin capture
+ok 33 - healthy audio worker cold start beyond the old timeout can still begin capture
+  ---
+  duration_ms: 4.2342
+  ...
+# Subtest: unresponsive media readiness remains bounded and never starts capture later
+ok 34 - unresponsive media readiness remains bounded and never starts capture later
+  ---
+  duration_ms: 3.4171
+  ...
+# Subtest: media session status is not disclosed to another page tab
+ok 35 - media session status is not disclosed to another page tab
+  ---
+  duration_ms: 2.5408
+  ...
+# Subtest: media processing pauses for an inactive tab and stops on private navigation
+ok 36 - media processing pauses for an inactive tab and stops on private navigation
+  ---
+  duration_ms: 4.8292
+  ...
+# Subtest: old post results are aborted and never forwarded after a route change
+ok 37 - old post results are aborted and never forwarded after a route change
+  ---
+  duration_ms: 5.0105
+  ...
+# Subtest: switching videos on the same home-feed URL invalidates pending results
+ok 38 - switching videos on the same home-feed URL invalidates pending results
+  ---
+  duration_ms: 3.0166
+  ...
+# Subtest: media expires after the 15 minute session cap
+ok 39 - media expires after the 15 minute session cap
+  ---
+  duration_ms: 2.5032
+  ...
+# Subtest: only one frame job is in flight and STATE precedes a valid RESULT
+ok 40 - only one frame job is in flight and STATE precedes a valid RESULT
+  ---
+  duration_ms: 3.4064
+  ...
+# Subtest: media payload validates duration, MIME and size before sending anything
+ok 41 - media payload validates duration, MIME and size before sending anything
+  ---
+  duration_ms: 1.5739
+  ...
+# Subtest: captured frames are cropped to the video region and bounded to 1280px
+ok 42 - captured frames are cropped to the video region and bounded to 1280px
+  ---
+  duration_ms: 1.9406
+  ...
+# Subtest: audio continuity rejects route changes, seeks, loops, pauses and muted video
+ok 43 - audio continuity rejects route changes, seeks, loops, pauses and muted video
+  ---
+  duration_ms: 1.138
+  ...
+# Subtest: SafeNet overlay masks use crop coordinates and ignore regions outside the video
+ok 44 - SafeNet overlay masks use crop coordinates and ignore regions outside the video
+  ---
+  duration_ms: 1.2906
+  ...
+# Subtest: non-normal playback speed never starts audio with misleading timestamps
+ok 45 - non-normal playback speed never starts audio with misleading timestamps
+  ---
+  duration_ms: 2.0503
+  ...
+# Subtest: short reels get a complete audio segment before the loop instead of waiting four seconds
+ok 46 - short reels get a complete audio segment before the loop instead of waiting four seconds
+  ---
+  duration_ms: 1.0086
+  ...
+# Subtest: each audio upload is a complete new recorder segment, never a timeslice fragment
+ok 47 - each audio upload is a complete new recorder segment, never a timeslice fragment
+  ---
+  duration_ms: 1.7057
+  ...
+# Subtest: route-invalidated recording discards its bytes instead of posting them
+ok 48 - route-invalidated recording discards its bytes instead of posting them
+  ---
+  duration_ms: 0.8433
+  ...
+# Subtest: manifest limits automatic injection to Instagram/TikTok and network access to local API
+ok 49 - manifest limits automatic injection to Instagram/TikTok and network access to local API
+  ---
+  duration_ms: 4.0712
+  ...
+# Subtest: opening popup never reads the current tab or captures its contents
+ok 50 - opening popup never reads the current tab or captures its contents
+  ---
+  duration_ms: 2.6038
+  ...
+# Subtest: capture previews editable text; explicit analysis forwards edits and a sanitized source
+ok 51 - capture previews editable text; explicit analysis forwards edits and a sanitized source
+  ---
+  duration_ms: 1.9213
+  ...
+# Subtest: restricted pages give a usable error and never invoke script injection
+ok 52 - restricted pages give a usable error and never invoke script injection
+  ---
+  duration_ms: 1.263
+  ...
+# Subtest: clearing removes text and source before the next manual submission
+ok 53 - clearing removes text and source before the next manual submission
+  ---
+  duration_ms: 1.3952
+  ...
+# Subtest: platform identification does not trust lookalike domains
+ok 54 - platform identification does not trust lookalike domains
+  ---
+  duration_ms: 1.2282
+  ...
+# Subtest: viewport capture excludes hidden elements, editable fields and offscreen text
+ok 55 - viewport capture excludes hidden elements, editable fields and offscreen text
+  ---
+  duration_ms: 1.6639
+  ...
+# Subtest: validation rejects missing data and unsafe URL schemes
+ok 56 - validation rejects missing data and unsafe URL schemes
+  ---
+  duration_ms: 57.1177
+  ...
+# Subtest: case analysis, review, persistence, export and deletion form one working flow
+ok 57 - case analysis, review, persistence, export and deletion form one working flow
+  ---
+  duration_ms: 144.3655
+  ...
+# Subtest: batch import is atomic when any input is invalid
+ok 58 - batch import is atomic when any input is invalid
+  ---
+  duration_ms: 48.3327
+  ...
+# Subtest: cross-origin websites cannot read or mutate local case data
+ok 59 - cross-origin websites cannot read or mutate local case data
+  ---
+  duration_ms: 7.1701
+  ...
+# Subtest: URL-only input remains metadata, not a claimed fetched post
+ok 60 - URL-only input remains metadata, not a claimed fetched post
+  ---
+  duration_ms: 31.7856
+  ...
+# Subtest: CSV protects spreadsheet formulas and demo seed is idempotent
+ok 61 - CSV protects spreadsheet formulas and demo seed is idempotent
+  ---
+  duration_ms: 16.3613
+  ...
+# Subtest: related case graph uses extracted entities and source readiness is honest
+ok 62 - related case graph uses extracted entities and source readiness is honest
+  ---
+  duration_ms: 4.3349
+  ...
+# Subtest: automatic extension scan requires token, explains risk and never stores a post
+ok 63 - automatic extension scan requires token, explains risk and never stores a post
+  ---
+  duration_ms: 20.2914
+  ...
+# Subtest: media endpoints require extension token and preserve local-only origin policy
+ok 64 - media endpoints require extension token and preserve local-only origin policy
+  ---
+  duration_ms: 6.313
+  ...
+# Subtest: media scan validates sources and returns timestamped evidence without saving cases
+ok 65 - media scan validates sources and returns timestamped evidence without saving cases
+  ---
+  duration_ms: 428.431
+  ...
+# Subtest: only media endpoint accepts its larger JSON body limit
+ok 66 - only media endpoint accepts its larger JSON body limit
+  ---
+  duration_ms: 33.6474
+  ...
+# Subtest: legacy case migration refreshes analysis while preserving originals, identity, review and evidence
+ok 67 - legacy case migration refreshes analysis while preserving originals, identity, review and evidence
+  ---
+  duration_ms: 13.2086
+  ...
+# Subtest: migration never overwrites an existing archive or downgrades future analysis versions
+ok 68 - migration never overwrites an existing archive or downgrades future analysis versions
+  ---
+  duration_ms: 6.3995
+  ...
+# Subtest: stable complete schema for empty and absent input
+ok 69 - stable complete schema for empty and absent input
+  ---
+  duration_ms: 127.4463
+  ...
+# Subtest: paid lottery requires both giveaway and paid entry
+ok 70 - paid lottery requires both giveaway and paid entry
+  ---
+  duration_ms: 55.3455
+  ...
+# Subtest: Kazakh paid entry and original exact evidence
+ok 71 - Kazakh paid entry and original exact evidence
+  ---
+  duration_ms: 0.3857
+  ...
+# Subtest: casino promotion and mixed script evasion are recognized
+ok 72 - casino promotion and mixed script evasion are recognized
+  ---
+  duration_ms: 0.8614
+  ...
+# Subtest: public entity candidates retain exact wallets and do not confuse email with a handle
+ok 73 - public entity candidates retain exact wallets and do not confuse email with a handle
+  ---
+  duration_ms: 0.7646
+  ...
+# Subtest: gambling news and anti-fraud education are not promotion
+ok 74 - gambling news and anti-fraud education are not promotion
+  ---
+  duration_ms: 0.5705
+  ...
+# Subtest: bank deposit, interest rate and ordinary referral do not imply pyramid
+ok 75 - bank deposit, interest rate and ordinary referral do not imply pyramid
+  ---
+  duration_ms: 1.0207
+  ...
+# Subtest: pyramid detects promise, recruitment and rapid returns in both languages
+ok 76 - pyramid detects promise, recruitment and rapid returns in both languages
+  ---
+  duration_ms: 0.4473
+  ...
+# Subtest: phishing detects code theft and bank impersonation
+ok 77 - phishing detects code theft and bank impersonation
+  ---
+  duration_ms: 0.6715
+  ...
+# Subtest: brand suffix spoofing differs from a real subdomain
+ok 78 - brand suffix spoofing differs from a real subdomain
+  ---
+  duration_ms: 0.9286
+  ...
+# Subtest: supplied URL is not fetched and exposes lexical screening limits
+ok 79 - supplied URL is not fetched and exposes lexical screening limits
+  ---
+  duration_ms: 0.3322
+  ...
+# Subtest: publication provenance never adds a caption link signal or score
+ok 80 - publication provenance never adds a caption link signal or score
+  ---
+  duration_ms: 1.0479
+  ...
+# Subtest: caption links remain evidence when a different publication URL is supplied
+ok 81 - caption links remain evidence when a different publication URL is supplied
+  ---
+  duration_ms: 0.9015
+  ...
+# Subtest: publication URL does not hide a caption link-in-bio explanation
+ok 82 - publication URL does not hide a caption link-in-bio explanation
+  ---
+  duration_ms: 0.2531
+  ...
+# Subtest: entity extraction trims punctuation and deduplicates URLs
+ok 83 - entity extraction trims punctuation and deduplicates URLs
+  ---
+  duration_ms: 0.2082
+  ...
+# Subtest: scores bounded, duplicate rule instances never inflate score
+ok 84 - scores bounded, duplicate rule instances never inflate score
+  ---
+  duration_ms: 1.1107
+  ...
+# Subtest: all normalized quotes remain literal substrings of original text
+ok 85 - all normalized quotes remain literal substrings of original text
+  ---
+  duration_ms: 0.8359
+  ...
+# Subtest: long input is bounded and explained
+ok 86 - long input is bounded and explained
+  ---
+  duration_ms: 12.2833
+  ...
+# Subtest: free Kazakh participation instructions and no-entry-fee raffle stay low
+ok 87 - free Kazakh participation instructions and no-entry-fee raffle stay low
+  ---
+  duration_ms: 0.3213
+  ...
+# Subtest: a scammers denial does not override high risk financial promises
+ok 88 - a scammers denial does not override high risk financial promises
+  ---
+  duration_ms: 0.1602
+  ...
+# Subtest: plain Cyrillic slot words are recognized
+ok 89 - plain Cyrillic slot words are recognized
+  ---
+  duration_ms: 0.1153
+  ...
+# Subtest: paid numbers and randomizer are recognized as a lottery
+ok 90 - paid numbers and randomizer are recognized as a lottery
+  ---
+  duration_ms: 0.1656
+  ...
+# Subtest: numeric multiplication promise and spelled-out recruitment strengthen pyramid finding
+ok 91 - numeric multiplication promise and spelled-out recruitment strengthen pyramid finding
+  ---
+  duration_ms: 0.219
+  ...
+# Subtest: Kazakh numeric returns are detected without inventing evidence
+ok 92 - Kazakh numeric returns are detected without inventing evidence
+  ---
+  duration_ms: 0.118
+  ...
+# Subtest: ordinary price pairs are not investment multiplication promises
+ok 93 - ordinary price pairs are not investment multiplication promises
+  ---
+  duration_ms: 0.0999
+  ...
+# Subtest: Russian localization preserves scores, source quotes and other signal fields
+ok 94 - Russian localization preserves scores, source quotes and other signal fields
+  ---
+  duration_ms: 0.6056
+  ...
+# Subtest: all static and dynamic signals have complete Russian translations
+ok 95 - all static and dynamic signals have complete Russian translations
+  ---
+  duration_ms: 0.887
+  ...
+# Subtest: Russian summaries cover medium, low, warning context and truncation
+ok 96 - Russian summaries cover medium, low, warning context and truncation
+  ---
+  duration_ms: 5.5675
+  ...
+# Subtest: Kazakh default and unknown locales retain original explanations
+ok 97 - Kazakh default and unknown locales retain original explanations
+  ---
+  duration_ms: 0.4666
+  ...
+# Subtest: Kazakh link evidence localizes explanation but preserves exact quotes and addresses
+ok 98 - Kazakh link evidence localizes explanation but preserves exact quotes and addresses
+  ---
+  duration_ms: 0.7248
+  ...
+# Subtest: link route forwards bounded inputs and never echoes unexpected upstream errors
+ok 99 - link route forwards bounded inputs and never echoes unexpected upstream errors
+  ---
+  duration_ms: 40.1835
+  ...
+# Subtest: integration routes return actual payloads and apply a shared rate bound
+ok 100 - integration routes return actual payloads and apply a shared rate bound
+  ---
+  duration_ms: 52.9661
+  ...
+# Subtest: only one external inspection runs at a time and the lock is released on failure
+ok 101 - only one external inspection runs at a time and the lock is released on failure
+  ---
+  duration_ms: 11.5413
+  ...
+# Subtest: rejects non-public IPv4, reserved IPv6 and every mapped representation
+ok 102 - rejects non-public IPv4, reserved IPv6 and every mapped representation
+  ---
+  duration_ms: 7.4348
+  ...
+# Subtest: rejects dangerous URL schemes, credentials, ports and encoded loopback before transport
+ok 103 - rejects dangerous URL schemes, credentials, ports and encoded loopback before transport
+  ---
+  duration_ms: 3.4775
+  ...
+# Subtest: rejects entire DNS set when any answer is private or malformed
+ok 104 - rejects entire DNS set when any answer is private or malformed
+  ---
+  duration_ms: 2.0634
+  ...
+# Subtest: pins original DNS answer in transport lookup and preserves original TLS name
+ok 105 - pins original DNS answer in transport lookup and preserves original TLS name
+  ---
+  duration_ms: 3.069
+  ...
+# Subtest: pinned lookup supports Node all:true without performing another resolution
+ok 106 - pinned lookup supports Node all:true without performing another resolution
+  ---
+  duration_ms: 1.0431
+  ...
+# Subtest: checks DNS again on same-host redirects and blocks rebinding before second socket
+ok 107 - checks DNS again on same-host redirects and blocks rebinding before second socket
+  ---
+  duration_ms: 1.0547
+  ...
+# Subtest: redirect to literal metadata address is blocked without DNS or second request
+ok 108 - redirect to literal metadata address is blocked without DNS or second request
+  ---
+  duration_ms: 0.7683
+  ...
+# Subtest: records relative/external redirects and bounded page evidence
+ok 109 - records relative/external redirects and bounded page evidence
+  ---
+  duration_ms: 1.8212
+  ...
+# Subtest: script-only and binary occurrences do not create promotion signals
+ok 110 - script-only and binary occurrences do not create promotion signals
+  ---
+  duration_ms: 1.5028
+  ...
+# Subtest: limits redirects to five and detects cycles
+ok 111 - limits redirects to five and detects cycles
+  ---
+  duration_ms: 2.6629
+  ...
+# Subtest: hard deadline bounds stalled DNS and transports even if injected dependency ignores abort
+ok 112 - hard deadline bounds stalled DNS and transports even if injected dependency ignores abort
+  ---
+  duration_ms: 72.1381
+  ...
+# Subtest: enforces body cap even on a noncompliant injected transport
+ok 113 - enforces body cap even on a noncompliant injected transport
+  ---
+  duration_ms: 2.554
+  ...
+# Subtest: compares independent desktop/mobile bodies by hash without a cloaking verdict
+ok 114 - compares independent desktop/mobile bodies by hash without a cloaking verdict
+  ---
+  duration_ms: 1.0428
+  ...
+# Subtest: identical bodies cannot hide a changed mobile destination, route or HTTP status
+ok 115 - identical bodies cannot hide a changed mobile destination, route or HTTP status
+  ---
+  duration_ms: 1.1616
+  ...
+# Subtest: mobile-only promotion is analyzed with its exact quote and final source URL
+ok 116 - mobile-only promotion is analyzed with its exact quote and final source URL
+  ---
+  duration_ms: 0.5485
+  ...
+# Subtest: matching promotion in both variants keeps separate attributed evidence
+ok 117 - matching promotion in both variants keeps separate attributed evidence
+  ---
+  duration_ms: 0.5008
+  ...
+# Subtest: returns desktop result when mobile fails or shared deadline expires
+ok 118 - returns desktop result when mobile fails or shared deadline expires
+  ---
+  duration_ms: 26.3509
+  ...
+# Subtest: media validates public sources, excludes private routes and strips tracking
+ok 119 - media validates public sources, excludes private routes and strips tracking
+  ---
+  duration_ms: 4.259
+  ...
+# Subtest: media bounds payload bytes, declared format, pixel count and timestamps before processing
+ok 120 - media bounds payload bytes, declared format, pixel count and timestamps before processing
+  ---
+  duration_ms: 3.4921
+  ...
+# Subtest: recognized frame text becomes localized evidence without persistent case data
+ok 121 - recognized frame text becomes localized evidence without persistent case data
+  ---
+  duration_ms: 146.4338
+  ...
+# Subtest: speech segments retain offset timestamps and silence does not fabricate evidence
+ok 122 - speech segments retain offset timestamps and silence does not fabricate evidence
+  ---
+  duration_ms: 96.0431
+  ...
+# Subtest: one job runs at a time and excess queued work is rejected
+ok 123 - one job runs at a time and excess queued work is rejected
+  ---
+  duration_ms: 2.6711
+  ...
+# Subtest: missing runtime/model and timeout failures stay explicit
+ok 124 - missing runtime/model and timeout failures stay explicit
+  ---
+  duration_ms: 18.1924
+  ...
+# Subtest: QR findings keep a distinct evidence source and do not open decoded URLs
+ok 125 - QR findings keep a distinct evidence source and do not open decoded URLs
+  ---
+  duration_ms: 1.2311
+  ...
+# Subtest: QR unavailable is partial coverage and preserves successful OCR results
+ok 126 - QR unavailable is partial coverage and preserves successful OCR results
+  ---
+  duration_ms: 0.9545
+  ...
+# Subtest: status is truthful for missing, partial, invalid and configured env without claiming verified access
+ok 127 - status is truthful for missing, partial, invalid and configured env without claiming verified access
+  ---
+  duration_ms: 1.7596
+  ...
+# Subtest: requires explicit configuration and validates scope before any request
+ok 128 - requires explicit configuration and validates scope before any request
+  ---
+  duration_ms: 1.8323
+  ...
+# Subtest: validates known ISO countries, documented search length, control characters and ad type
+ok 129 - validates known ISO countries, documented search length, control characters and ad type
+  ---
+  duration_ms: 0.8168
+  ...
+# Subtest: uses fixed Graph endpoint, bearer header, known fields, one page and no token in query
+ok 130 - uses fixed Graph endpoint, bearer header, known fields, one page and no token in query
+  ---
+  duration_ms: 29.3245
+  ...
+# Subtest: allows ALL only for verified EU/UK set and permits KZ political scope
+ok 131 - allows ALL only for verified EU/UK set and permits KZ political scope
+  ---
+  duration_ms: 4.2051
+  ...
+# Subtest: sanitizes records, deduplicates text, caps at25 and never returns arbitrary provider fields
+ok 132 - sanitizes records, deduplicates text, caps at25 and never returns arbitrary provider fields
+  ---
+  duration_ms: 1.9968
+  ...
+# Subtest: never exposes raw upstream error bodies or thrown credential-bearing transport errors
+ok 133 - never exposes raw upstream error bodies or thrown credential-bearing transport errors
+  ---
+  duration_ms: 3.7355
+  ...
+# Subtest: rejects redirects without following them
+ok 134 - rejects redirects without following them
+  ---
+  duration_ms: 0.6762
+  ...
+# Subtest: bounds responses by actual streamed bytes and declared content length
+ok 135 - bounds responses by actual streamed bytes and declared content length
+  ---
+  duration_ms: 1.8629
+  ...
+# Subtest: bounds stalled fetch and streamed responses with shared deadline
+ok 136 - bounds stalled fetch and streamed responses with shared deadline
+  ---
+  duration_ms: 55.4173
+  ...
+# Subtest: handles empty data without fake records and rejects malformed payloads
+ok 137 - handles empty data without fake records and rejects malformed payloads
+  ---
+  duration_ms: 1.0512
+  ...
+# Subtest: monitoring disabled by default leaves no files, counts, recent items or cases
+ok 138 - monitoring disabled by default leaves no files, counts, recent items or cases
+  ---
+  duration_ms: 4.3303
+  ...
+# Subtest: canonical public permalinks exclude feeds, comments, credentials, custom ports and private routes
+ok 139 - canonical public permalinks exclude feeds, comments, credentials, custom ports and private routes
+  ---
+  duration_ms: 0.554
+  ...
+# Subtest: enabled monitoring rejects untrusted source and private/feed URLs without retaining metadata
+ok 140 - enabled monitoring rejects untrusted source and private/feed URLs without retaining metadata
+  ---
+  duration_ms: 6.6647
+  ...
+# Subtest: permalink and normalized caption deduplication persists count and first/last provenance
+ok 141 - permalink and normalized caption deduplication persists count and first/last provenance
+  ---
+  duration_ms: 10.3028
+  ...
+# Subtest: RU and KK watch words match literally case-insensitively, config validation is atomic
+ok 142 - RU and KK watch words match literally case-insensitively, config validation is atomic
+  ---
+  duration_ms: 4.9502
+  ...
+# Subtest: recent buffer is bounded and disabled monitoring resumes without deleting existing cases
+ok 143 - recent buffer is bounded and disabled monitoring resumes without deleting existing cases
+  ---
+  duration_ms: 48.6731
+  ...
+# Subtest: media monitoring saves only recognized text and bounded timestamped evidence, never raw bytes
+ok 144 - media monitoring saves only recognized text and bounded timestamped evidence, never raw bytes
+  ---
+  duration_ms: 4.9624
+  ...
+# Subtest: evidence hash is independently reproducible, order-independent, tamper-sensitive, and disclaims authenticity
+ok 145 - evidence hash is independently reproducible, order-independent, tamper-sensitive, and disclaims authenticity
+  ---
+  duration_ms: 0.6776
+  ...
+# Subtest: shared indicators connect cases without identifying the owner; wallet matching is exact
+ok 146 - shared indicators connect cases without identifying the owner; wallet matching is exact
+  ---
+  duration_ms: 0.8004
+  ...
+# Subtest: monitoring API is local-only; authenticated extension scans save and export bounded evidence
+ok 147 - monitoring API is local-only; authenticated extension scans save and export bounded evidence
+  ---
+  duration_ms: 249.5706
+  ...
+1..147
+# tests 147
+# suites 0
+# pass 147
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1179.3533

@@ -1,0 +1,355 @@
+TAP version 13
+# Subtest: scan payload caps text and strips URL query/hash
+ok 1 - scan payload caps text and strips URL query/hash
+  ---
+  duration_ms: 14.4134
+  ...
+# Subtest: background rejects arbitrary URLs, private routes, and external senders
+ok 2 - background rejects arbitrary URLs, private routes, and external senders
+  ---
+  duration_ms: 3.1547
+  ...
+# Subtest: worker limits concurrent scans to two, shares token and deduplicates cached payloads
+ok 3 - worker limits concurrent scans to two, shares token and deduplicates cached payloads
+  ---
+  duration_ms: 62.3903
+  ...
+# Subtest: worker renews an expired token after HTTP 401
+ok 4 - worker renews an expired token after HTTP 401
+  ---
+  duration_ms: 11.9543
+  ...
+# Subtest: disabled automatic mode never sends a scan
+ok 5 - disabled automatic mode never sends a scan
+  ---
+  duration_ms: 7.5409
+  ...
+# Subtest: monitoring storage receipt reaches content without falsely claiming success
+ok 6 - monitoring storage receipt reaches content without falsely claiming success
+  ---
+  duration_ms: 43.3532
+  ...
+# Subtest: monitoring config refresh invalidates a previously non-saving cached scan
+ok 7 - monitoring config refresh invalidates a previously non-saving cached scan
+  ---
+  duration_ms: 33.0396
+  ...
+# Subtest: Instagram feed never falls back to scanning the whole document
+ok 8 - Instagram feed never falls back to scanning the whole document
+  ---
+  duration_ms: 10.0208
+  ...
+# Subtest: single Instagram post allows a caption fallback only
+ok 9 - single Instagram post allows a caption fallback only
+  ---
+  duration_ms: 6.7182
+  ...
+# Subtest: demo selector is enabled only on the exact local demo path
+ok 10 - demo selector is enabled only on the exact local demo path
+  ---
+  duration_ms: 7.7638
+  ...
+# Subtest: private messages are excluded and text fingerprints distinguish locale/content
+ok 11 - private messages are excluded and text fingerprints distinguish locale/content
+  ---
+  duration_ms: 4.1948
+  ...
+# Subtest: logged-out public post finds visible caption beside owner header without article/h1
+ok 12 - logged-out public post finds visible caption beside owner header without article/h1
+  ---
+  duration_ms: 9.4668
+  ...
+# Subtest: public caption supports username-prefixed single-post route
+ok 13 - public caption supports username-prefixed single-post route
+  ---
+  duration_ms: 2.2309
+  ...
+# Subtest: an unrelated article does not suppress the current public-post caption
+ok 14 - an unrelated article does not suppress the current public-post caption
+  ---
+  duration_ms: 5.821
+  ...
+# Subtest: public fallback rejects comments, hidden captions, unrelated UI and metadata mismatch
+ok 15 - public fallback rejects comments, hidden captions, unrelated UI and metadata mismatch
+  ---
+  duration_ms: 18.7563
+  ...
+# Subtest: public fallback never runs on feeds, profiles or comment permalink routes
+ok 16 - public fallback never runs on feeds, profiles or comment permalink routes
+  ---
+  duration_ms: 21.4094
+  ...
+# Subtest: Reels feed captures one visible caption within its own video player
+ok 17 - Reels feed captures one visible caption within its own video player
+  ---
+  duration_ms: 8.7307
+  ...
+# Subtest: Reels overlay supports sibling video within a bounded single-player media container
+ok 18 - Reels overlay supports sibling video within a bounded single-player media container
+  ---
+  duration_ms: 7.8054
+  ...
+# Subtest: Reels never borrows sibling video from multiple players or distant ancestors
+ok 19 - Reels never borrows sibling video from multiple players or distant ancestors
+  ---
+  duration_ms: 11.4675
+  ...
+# Subtest: Reels skips hidden, ambiguous, nested-player and UI-containing candidates
+ok 20 - Reels skips hidden, ambiguous, nested-player and UI-containing candidates
+  ---
+  duration_ms: 7.3404
+  ...
+# Subtest: automatic browsing requires opt-in, active visible Instagram feed and working analyzer
+ok 21 - automatic browsing requires opt-in, active visible Instagram feed and working analyzer
+  ---
+  duration_ms: 6.0522
+  ...
+# Subtest: TikTok automatic browsing allows only active visible public feed routes and retains every safety gate
+ok 22 - TikTok automatic browsing allows only active visible public feed routes and retains every safety gate
+  ---
+  duration_ms: 3.7715
+  ...
+# Subtest: TikTok browse tick scrolls the visible video container, never another hidden feed or a page control
+ok 23 - TikTok browse tick scrolls the visible video container, never another hidden feed or a page control
+  ---
+  duration_ms: 6.4349
+  ...
+# Subtest: continuous scroll or mutation events cannot postpone discovery beyond 1500ms
+ok 24 - continuous scroll or mutation events cannot postpone discovery beyond 1500ms
+  ---
+  duration_ms: 4.2526
+  ...
+# Subtest: media capture refuses private, hidden and unfocused pages before reading video geometry
+ok 25 - media capture refuses private, hidden and unfocused pages before reading video geometry
+  ---
+  duration_ms: 11.7939
+  ...
+# Subtest: media capture bounds its crop to visible viewport and selects largest visible video
+ok 26 - media capture bounds its crop to visible viewport and selects largest visible video
+  ---
+  duration_ms: 2.0169
+  ...
+# Subtest: missing or tiny video has no media capture target
+ok 27 - missing or tiny video has no media capture target
+  ---
+  duration_ms: 7.6401
+  ...
+# Subtest: same-route recycled video source receives a new media identity
+ok 28 - same-route recycled video source receives a new media identity
+  ---
+  duration_ms: 4.4659
+  ...
+# Subtest: tab audio is never attributed when multiple players or a different offscreen player are audible
+ok 29 - tab audio is never attributed when multiple players or a different offscreen player are audible
+  ---
+  duration_ms: 1.8013
+  ...
+# Subtest: autoscroll waits for three evaluated frames and speech rather than passing a slow model after32seconds
+ok 30 - autoscroll waits for three evaluated frames and speech rather than passing a slow model after32seconds
+  ---
+  duration_ms: 2.411
+  ...
+# Subtest: autoscroll cannot reuse coverage from an old media identity, and timeout is explicitly incomplete
+ok 31 - autoscroll cannot reuse coverage from an old media identity, and timeout is explicitly incomplete
+  ---
+  duration_ms: 2.8083
+  ...
+# Subtest: risk detection cancels the one-click sessions scroll even when manual scrolling was never enabled
+ok 32 - risk detection cancels the one-click sessions scroll even when manual scrolling was never enabled
+  ---
+  duration_ms: 9.5091
+  ...
+# Subtest: one-action media popup labels both actions and sends opt-in only after the actual click
+ok 33 - one-action media popup labels both actions and sends opt-in only after the actual click
+  ---
+  duration_ms: 43.5475
+  ...
+# Subtest: capture refusal stays visible in the popup without claiming a running session
+ok 34 - capture refusal stays visible in the popup without claiming a running session
+  ---
+  duration_ms: 2.011
+  ...
+# Subtest: media context is clipped to visible video and rejects private or malformed input
+ok 35 - media context is clipped to visible video and rejects private or malformed input
+  ---
+  duration_ms: 15.8619
+  ...
+# Subtest: media capture can start only through this extensions popup, with explicit target tab
+ok 36 - media capture can start only through this extensions popup, with explicit target tab
+  ---
+  duration_ms: 9.2412
+  ...
+# Subtest: a private page on first context reports the stop reason instead of startup success
+ok 37 - a private page on first context reports the stop reason instead of startup success
+  ---
+  duration_ms: 5.5557
+  ...
+# Subtest: stopping while the first context is pending cannot return successful startup
+ok 38 - stopping while the first context is pending cannot return successful startup
+  ---
+  duration_ms: 51.4604
+  ...
+# Subtest: popup focus pause still allows a live session to start and resume after popup closes
+ok 39 - popup focus pause still allows a live session to start and resume after popup closes
+  ---
+  duration_ms: 6.5804
+  ...
+# Subtest: healthy audio worker cold start beyond the old timeout can still begin capture
+ok 40 - healthy audio worker cold start beyond the old timeout can still begin capture
+  ---
+  duration_ms: 14.6403
+  ...
+# Subtest: unresponsive media readiness remains bounded and never starts capture later
+ok 41 - unresponsive media readiness remains bounded and never starts capture later
+  ---
+  duration_ms: 4.5129
+  ...
+# Subtest: media session status is not disclosed to another page tab
+ok 42 - media session status is not disclosed to another page tab
+  ---
+  duration_ms: 3.8124
+  ...
+# Subtest: media processing pauses for an inactive tab and stops on private navigation
+ok 43 - media processing pauses for an inactive tab and stops on private navigation
+  ---
+  duration_ms: 7.7996
+  ...
+# Subtest: old post results are aborted and never forwarded after a route change
+ok 44 - old post results are aborted and never forwarded after a route change
+  ---
+  duration_ms: 10.1478
+  ...
+# Subtest: switching videos on the same home-feed URL invalidates pending results
+ok 45 - switching videos on the same home-feed URL invalidates pending results
+  ---
+  duration_ms: 8.6801
+  ...
+# Subtest: media expires after the 15 minute session cap
+ok 46 - media expires after the 15 minute session cap
+  ---
+  duration_ms: 3.3595
+  ...
+# Subtest: only one frame job is in flight and STATE precedes a valid RESULT
+ok 47 - only one frame job is in flight and STATE precedes a valid RESULT
+  ---
+  duration_ms: 8.4344
+  ...
+# Subtest: media payload validates duration, MIME and size before sending anything
+ok 48 - media payload validates duration, MIME and size before sending anything
+  ---
+  duration_ms: 2.2657
+  ...
+# Subtest: captured frames are cropped to the video region and bounded to 1280px
+ok 49 - captured frames are cropped to the video region and bounded to 1280px
+  ---
+  duration_ms: 3.1967
+  ...
+# Subtest: audio continuity rejects route changes, seeks, loops, pauses and muted video
+ok 50 - audio continuity rejects route changes, seeks, loops, pauses and muted video
+  ---
+  duration_ms: 2.183
+  ...
+# Subtest: SafeNet overlay masks use crop coordinates and ignore regions outside the video
+ok 51 - SafeNet overlay masks use crop coordinates and ignore regions outside the video
+  ---
+  duration_ms: 2.6785
+  ...
+# Subtest: non-normal playback speed never starts audio with misleading timestamps
+ok 52 - non-normal playback speed never starts audio with misleading timestamps
+  ---
+  duration_ms: 4.4914
+  ...
+# Subtest: audio sample is up to12seconds and short reels finish before the loop
+ok 53 - audio sample is up to12seconds and short reels finish before the loop
+  ---
+  duration_ms: 3.1974
+  ...
+# Subtest: each audio upload is a complete new recorder segment, never a timeslice fragment
+ok 54 - each audio upload is a complete new recorder segment, never a timeslice fragment
+  ---
+  duration_ms: 12.018
+  ...
+# Subtest: route-invalidated recording discards its bytes instead of posting them
+ok 55 - route-invalidated recording discards its bytes instead of posting them
+  ---
+  duration_ms: 3.7078
+  ...
+# Subtest: an aborted old generation cannot remove the next posts in-flight job or reuse coverage
+ok 56 - an aborted old generation cannot remove the next posts in-flight job or reuse coverage
+  ---
+  duration_ms: 16.1258
+  ...
+# Subtest: slow inference survives90seconds but is bounded at210seconds without a false completed status
+ok 57 - slow inference survives90seconds but is bounded at210seconds without a false completed status
+  ---
+  duration_ms: 8.9805
+  ...
+# Subtest: sampled vision coverage and actual model status reach content and popup without altering evidence
+ok 58 - sampled vision coverage and actual model status reach content and popup without altering evidence
+  ---
+  duration_ms: 9.8555
+  ...
+# Subtest: autoscroll sampling stops at3frames and1audio with no queue flood while manual mode can continue
+ok 59 - autoscroll sampling stops at3frames and1audio with no queue flood while manual mode can continue
+  ---
+  duration_ms: 2.5227
+  ...
+# Subtest: one-click popup start enables scanning and session-scoped scrolling only after successful capture
+ok 60 - one-click popup start enables scanning and session-scoped scrolling only after successful capture
+  ---
+  duration_ms: 4.7644
+  ...
+# Subtest: one-click media start leaves single posts stationary and never starts browsing after capture refusal
+ok 61 - one-click media start leaves single posts stationary and never starts browsing after capture refusal
+  ---
+  duration_ms: 14.3578
+  ...
+# Subtest: the current tab can stop session scrolling and expiry/private navigation remove it without persistence
+ok 62 - the current tab can stop session scrolling and expiry/private navigation remove it without persistence
+  ---
+  duration_ms: 11.9588
+  ...
+# Subtest: manifest limits automatic injection to Instagram/TikTok and network access to local API
+ok 63 - manifest limits automatic injection to Instagram/TikTok and network access to local API
+  ---
+  duration_ms: 5.8702
+  ...
+# Subtest: opening popup never reads the current tab or captures its contents
+ok 64 - opening popup never reads the current tab or captures its contents
+  ---
+  duration_ms: 9.9002
+  ...
+# Subtest: capture previews editable text; explicit analysis forwards edits and a sanitized source
+ok 65 - capture previews editable text; explicit analysis forwards edits and a sanitized source
+  ---
+  duration_ms: 4.3566
+  ...
+# Subtest: restricted pages give a usable error and never invoke script injection
+ok 66 - restricted pages give a usable error and never invoke script injection
+  ---
+  duration_ms: 4.9797
+  ...
+# Subtest: clearing removes text and source before the next manual submission
+ok 67 - clearing removes text and source before the next manual submission
+  ---
+  duration_ms: 5.7163
+  ...
+# Subtest: platform identification does not trust lookalike domains
+ok 68 - platform identification does not trust lookalike domains
+  ---
+  duration_ms: 6.0456
+  ...
+# Subtest: viewport capture excludes hidden elements, editable fields and offscreen text
+ok 69 - viewport capture excludes hidden elements, editable fields and offscreen text
+  ---
+  duration_ms: 5.5669
+  ...
+1..69
+# tests 69
+# suites 0
+# pass 69
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 680.5198

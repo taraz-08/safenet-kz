@@ -1,0 +1,20 @@
+
+> safenet-kz@4.0.0 prebuild
+> node scripts/package-extension.mjs && node scripts/setup-ocr.mjs
+
+Chrome/Edge extension packaged.
+Local OCR assets ready: English, Russian, Kazakh. Images stay in your browser.
+
+> safenet-kz@4.0.0 build
+> vite build
+
+vite v6.4.4 building for production...
+transforming...
+✓ 1610 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.05 kB │ gzip:   0.67 kB
+dist/assets/index-D0MeDko3.css  130.13 kB │ gzip:  27.29 kB
+dist/assets/index-ClhMWc7S.js    15.89 kB │ gzip:   6.87 kB
+dist/assets/index-gkbMCSXR.js   432.64 kB │ gzip: 127.45 kB
+✓ built in 11.93s
