@@ -433,15 +433,7 @@ export function analyzeContent({ text = '', url = '', platform = 'other' } = {})
   const score = categoryList[0]?.score ?? 0;
   const level = score >= 60 ? 'high' : score >= 30 ? 'medium' : 'low';
   const category = score >= 25 ? categoryList[0].id : 'none';
-  const summary = mixedContext
-    ? 'Ескерту мен тәуекелді ұсынысқа шақыру қатар кездеседі. Бұл аралас мәтінді адам тексеруі керек; ескерту сөзі балды төмендеткен жоқ.'
-    : level === 'high'
-    ? 'Бірнеше айқын тәуекел белгісі табылды. Ақша не құпия дерек жібермей, ұсынысты тәуелсіз тексеріңіз.'
-    : level === 'medium'
-      ? 'Күмән тудыратын белгілер бар. Ұсыныстың мәнін және дереккөзін қосымша тексеру керек.'
-      : prevention && signals.length
-        ? 'Мәтін ескертуге немесе ақпараттық хабарға ұқсайды. Контекст ескеріліп, тәуекел балы төмендетілді.'
-        : 'Таңдалған ережелер бойынша айқын тәуекел белгілері аз. Бұл қауіпсіздік кепілдігі емес.';
+  const summary = summaryKk({ level, riskContext, warning: Boolean(prevention && signals.length) });
   const sortedSignals = signals.sort((a, b) => b.weight - a.weight);
   const analysis = {
     score, level, category, track: TRACKS[category] ?? null, categories: categoryList, riskContext, riskContextMethod:'rules',
@@ -472,8 +464,11 @@ export function applyExtraSignals(analysis, extraSignals) {
   const category = score >= 25 ? categories[0].id : 'none';
   const sorted = signals.sort((a, b) => b.weight - a.weight);
   const merge = (locale, label, description) => ({ ...analysis.translations?.[locale], signals: [...(analysis.translations?.[locale]?.signals ?? []).filter(signal => !extraSignals.some(extra => extra.id === signal.id)), ...extraSignals.map(signal => ({ id: signal.id, label: signal[label] ?? signal.label, description: signal[description] ?? signal.description }))] });
-  return { ...analysis, categories, score, level: score >= 60 ? 'high' : score >= 30 ? 'medium' : 'low', category, track: TRACKS[category] ?? null, signals: sorted, elements: schemeElements(category, sorted),
-    ...(analysis.translations ? { translations: { ru: merge('ru', 'labelRu', 'descriptionRu'), kk: merge('kk', 'label', 'description') } } : {}) };
+  const level = score >= 60 ? 'high' : score >= 30 ? 'medium' : 'low';
+  const tone = { level, riskContext: analysis.riskContext, warning: sorted.some(signal => signal.id === 'prevention_context') };
+  const summary = summaryKk(tone);
+  return { ...analysis, categories, score, level, summary, category, track: TRACKS[category] ?? null, signals: sorted, elements: schemeElements(category, sorted),
+    ...(analysis.translations ? { translations: { ru: { ...merge('ru', 'labelRu', 'descriptionRu'), summary: summaryRu(tone) }, kk: { ...merge('kk', 'label', 'description'), summary } } } : {}) };
 }
 
 /** Hybrid screening: rules first; the n-gram model may add one explained signal when the rules found too little. */
@@ -562,17 +557,34 @@ const RUSSIAN_SIGNALS = {
   mixed_context: ['Предупреждение вместе с прямым призывом', 'В тексте есть предупреждение и прямой призыв вне цитаты. Слово-предупреждение не снижает балл риска; смысл должен проверить человек.'],
 };
 
-function buildTranslations(analysis) {
-  const warningContext = analysis.signals.some(signal => signal.id === 'prevention_context');
-  const russianSummary = analysis.riskContext === 'mixed_requires_review'
+/** The one-sentence case summary follows the risk level, so it is recomputed whenever the level changes. */
+function summaryKk({ level, riskContext, warning }) {
+  return riskContext === 'mixed_requires_review'
+    ? 'Ескерту мен тәуекелді ұсынысқа шақыру қатар кездеседі. Бұл аралас мәтінді адам тексеруі керек; ескерту сөзі балды төмендеткен жоқ.'
+    : level === 'high'
+    ? 'Бірнеше айқын тәуекел белгісі табылды. Ақша не құпия дерек жібермей, ұсынысты тәуелсіз тексеріңіз.'
+    : level === 'medium'
+      ? 'Күмән тудыратын белгілер бар. Ұсыныстың мәнін және дереккөзін қосымша тексеру керек.'
+      : warning
+        ? 'Мәтін ескертуге немесе ақпараттық хабарға ұқсайды. Контекст ескеріліп, тәуекел балы төмендетілді.'
+        : 'Таңдалған ережелер бойынша айқын тәуекел белгілері аз. Бұл қауіпсіздік кепілдігі емес.';
+}
+
+function summaryRu({ level, riskContext, warning }) {
+  return riskContext === 'mixed_requires_review'
     ? 'Предупреждение сочетается с призывом к рискованному предложению. Смешанный контекст должен проверить человек; слово-предупреждение не снизило балл.'
-    : analysis.level === 'high'
+    : level === 'high'
     ? 'Обнаружено несколько выраженных признаков риска. Не отправляйте деньги или секретные данные до независимой проверки предложения.'
-    : analysis.level === 'medium'
+    : level === 'medium'
       ? 'Есть подозрительные признаки. Содержание предложения и его источник требуют дополнительной проверки.'
-      : warningContext
+      : warning
         ? 'Текст похож на предупреждение или информационное сообщение. С учётом контекста балл риска снижен.'
         : 'По используемым правилам явных признаков риска мало. Это не гарантирует безопасность.';
+}
+
+function buildTranslations(analysis) {
+  const warningContext = analysis.signals.some(signal => signal.id === 'prevention_context');
+  const russianSummary = summaryRu({ level: analysis.level, riskContext: analysis.riskContext, warning: warningContext });
   return {
     kk: {
       summary: analysis.summary,

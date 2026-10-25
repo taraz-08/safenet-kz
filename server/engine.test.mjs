@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { analyzeContent, analyzeItem, localizeAnalysis } from './engine.mjs';
+import { analyzeContent, analyzeItem, applyExtraSignals, localizeAnalysis } from './engine.mjs';
 
 test('stable complete schema for empty and absent input', () => {
   for (const input of [undefined, {}, { text: '' }, { text: null }]) {
@@ -436,4 +436,14 @@ test('deposit top-ups, casino brands and gambling slang from live profiles; ever
     'Промокод на пополнение баланса +10% для абонентов, подробности на сайте оператора', 'Занос мебели на этаж, грузчики, недорого']) {
     assert.equal(analyzeContent({ text }).score, 0, text);
   }
+});
+
+test('an extra signal that changes the level also changes the case summary in both languages', () => {
+  const base = analyzeContent({ text: 'Пригласи друга в нашу команду, расскажу в лс' });
+  assert.equal(base.level, 'low');
+  const lifted = applyExtraSignals(base, [{ id: 'ml_model', category: 'pyramid', weight: 40, quote: 'команду', modality: null, label: 'Модель', description: 'Модель', labelRu: 'Модель', descriptionRu: 'Модель' }]);
+  assert.equal(lifted.level, 'medium');
+  assert.notEqual(lifted.summary, base.summary);
+  assert.match(lifted.translations.ru.summary, /подозрительные признаки/);
+  assert.equal(lifted.translations.kk.summary, lifted.summary);
 });

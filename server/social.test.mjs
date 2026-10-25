@@ -36,6 +36,7 @@ function setup(extra = {}) {
   const telegram = [];
   const social = createSocialDiscovery({ storePath: join(dir, 'social.json'), getCases: () => cases, persistCases: next => { cases = next; }, analysisVersion: 'rules-v5',
     openProfile, search: async () => ({ status: 200, html: '' }), onTelegramRef: (handle, via) => telegram.push({ handle, via }), now: () => clock, ...extra });
+  social.update({ enabled: true });
   return { dir, social, telegram, cases: () => cases, advance: minutes => { clock += minutes * 60000; } };
 }
 
@@ -177,6 +178,7 @@ test('social search API: seeds, strict toggle and run', async () => {
     assert.equal((await call('/api/social/seeds', 'POST', { account: 'https://www.tiktok.com/@spin_promo_kz' })).status, 200);
     assert.equal((await call('/api/social/seeds', 'POST', { account: 'not a profile' })).status, 400);
     assert.equal((await call('/api/social', 'PUT', { enabled: 'no' })).status, 400);
+    assert.equal((await call('/api/social', 'PUT', { enabled: true })).body.enabled, true);
     const run = await call('/api/social/run', 'POST', {});
     assert.equal(run.body.risky[0].key, 'tiktok:spin_promo_kz');
     const removed = await call('/api/social/seeds/tiktok/spin_promo_kz', 'DELETE');
@@ -188,4 +190,34 @@ test('social search API: seeds, strict toggle and run', async () => {
     app.locals.aiService?.close?.();
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('social search stays off until the operator turns it on', async () => {
+  const social = createSocialDiscovery({ getCases: () => [], persistCases: () => {}, analysisVersion: 'rules-v5', openProfile: async () => { throw new Error('must not open'); }, search: async () => { throw new Error('must not search'); } });
+  assert.equal(social.snapshot().enabled, false);
+  assert.deepEqual(await social.tick(), { skipped: true });
+  assert.equal(social.update({ enabled: true }).enabled, true);
+});
+
+test('a full account list refuses a new seed cleanly and search hits beyond the cap are skipped', async () => {
+  let cases = [];
+  const social = createSocialDiscovery({ getCases: () => cases, persistCases: next => { cases = next; }, analysisVersion: 'rules-v5', openProfile, search: async () => ({ status: 200, html: searchHtml }) });
+  social.update({ enabled: true });
+  for (let i = 0; social.snapshot().counts.accounts < 600; i++) social.addCandidate('instagram', `filler_${i}`, { from: null, kind: 'search' });
+  assert.throws(() => social.addSeed('tt:@spin_promo_kz'), error => error.status === 409);
+  assert.equal(social.snapshot().seeds.length, 0);
+  await assert.doesNotReject(social.tick());
+});
+
+test('saved social cases use the methodology priority with follower reach, and skip posts already queued from another source', async () => {
+  let cases = [{ id: 'old', source: 'extension', url: 'https://www.tiktok.com/@spin_promo_kz/video/1', text: 'x' }];
+  const social = createSocialDiscovery({ getCases: () => cases, persistCases: next => { cases = next; }, analysisVersion: 'rules-v5',
+    openProfile: async (platform, handle) => ({ ...(await openProfile(platform, handle)), followers: '1 816' }), search: async () => ({ status: 200, html: '' }) });
+  social.update({ enabled: true });
+  social.addSeed('tt:@spin_promo_kz');
+  await social.tick();
+  const added = cases.filter(record => record.source === 'social_discovery');
+  assert.ok(added.length >= 1);
+  assert.ok(added.every(record => record.priorityParts.reach === 7 && record.priority === record.priorityParts.risk + 7));
+  assert.equal(cases.filter(record => record.url === 'https://www.tiktok.com/@spin_promo_kz/video/1').length, 1);
 });

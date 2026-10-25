@@ -81,3 +81,32 @@ test('rate limiting pauses discovery and unavailable channels are backed off', a
   assert.equal(outcome.skipped, undefined);
   rmSync(dir, { recursive: true, force: true });
 });
+
+test('a post already queued by another source is not saved twice, and saved posts use the methodology priority', async () => {
+  const first = setup();
+  try {
+    first.discovery.addSeed('seed_channel');
+    await first.discovery.tick();
+    await first.discovery.tick();
+    const saved = first.cases().filter(record => record.source === 'telegram_discovery');
+    assert.ok(saved.length >= 1);
+    assert.ok(saved.every(record => record.priorityParts.reach === 4 && record.priority === record.priorityParts.risk + 4));
+    const url = saved[0].url;
+    const second = setup();
+    try {
+      second.discovery.addSeed('seed_channel');
+      const existing = { id: 'monitored', source: 'public_telegram', url, text: 'same post' };
+      let cases = [existing];
+      const discovery = createDiscovery({ getCases: () => cases, persistCases: next => { cases = next; }, analysisVersion: 'rules-v5', fetchPreview: fakeFetch, now: () => Date.parse('2026-10-25T00:00:00Z'), sleep: async () => {} });
+      discovery.addSeed('seed_channel');
+      await discovery.tick();
+      await discovery.tick();
+      assert.equal(cases.filter(record => record.url === url).length, 1);
+    } finally { rmSync(second.dir, { recursive: true, force: true }); }
+  } finally { rmSync(first.dir, { recursive: true, force: true }); }
+});
+
+test('the discovery switch accepts only true or false', () => {
+  const { dir, discovery } = setup();
+  try { assert.throws(() => discovery.update({ enabled: 'yes' }), error => error.status === 400); } finally { rmSync(dir, { recursive: true, force: true }); }
+});

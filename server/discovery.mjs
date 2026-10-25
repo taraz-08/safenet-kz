@@ -7,11 +7,11 @@ import { analyzeItem } from './engine.mjs';
 import { fetchTelegramPreview, parseTelegramPreview, telegramHandle } from './watchtower.mjs';
 import { writeFileAtomic } from './storage.mjs';
 import { socialRef } from './social.mjs';
+import { addVia, queuePriority, ruleBackedRisk } from './review-queue.mjs';
 
 export const DISCOVERY_LIMITS = Object.freeze({ channels: 400, seeds: 50, maxDepth: 3, probesPerTick: 2, tickMs: 20000, gapMs: 3000, casesPerProbe: 5, log: 120, cases: 5000 });
 const MINUTE = 60000;
 const RECHECK = { risky: 30, seed: 60, clean: 24 * 60, unavailable: 72 * 60, error: 30 };
-const QUEUE_SCORE = 30;
 const sha = value => createHash('sha256').update(value).digest('hex');
 const iso = ms => new Date(ms).toISOString();
 
@@ -96,7 +96,7 @@ export function createDiscovery({ storePath, getCases, persistCases, analysisVer
         if (!text) continue;
         const analysis = analyze({ text, url: post.url, platform: 'telegram' });
         // Real channels are flagged on rule evidence only; a model-only score is too noisy on live news and job posts.
-        const risky = analysis.score >= QUEUE_SCORE && analysis.riskContext !== 'warning_or_news' && !analysis.signals.some(signal => signal.id === 'ml_model');
+        const risky = ruleBackedRisk(analysis);
         if (risky) { flagged.push({ post, text, analysis }); categories[analysis.category] = (categories[analysis.category] ?? 0) + 1; maxScore = Math.max(maxScore, analysis.score); }
       }
       flagged.sort((a, b) => b.analysis.score - a.analysis.score);
@@ -117,7 +117,7 @@ export function createDiscovery({ storePath, getCases, persistCases, analysisVer
         for (const ref of refs) {
           const via = { from: handle, kind: ref.kind, postUrl: ref.postUrl };
           const known = state.channels[ref.handle];
-          if (known) { if (!known.foundVia.some(item => item.from === handle)) known.foundVia = [...known.foundVia, via].slice(0, 8); continue; }
+          if (known) { known.foundVia = addVia(known.foundVia, via); continue; }
           if (Object.keys(state.channels).length >= DISCOVERY_LIMITS.channels) break;
           state.channels[ref.handle] = blankChannel(ref.handle, channel.depth + 1, via, nowIso());
           discovered++;
@@ -148,12 +148,13 @@ export function createDiscovery({ storePath, getCases, persistCases, analysisVer
     if (!flagged.length) return 0;
     const cases = getCases();
     if (cases.length >= DISCOVERY_LIMITS.cases) return 0;
-    const known = new Set(cases.filter(record => record.source === 'telegram_discovery').map(record => record.url));
+    // A post already queued by any source (monitoring, extension, an earlier probe) is not queued again.
+    const known = new Set(cases.map(record => record.url).filter(Boolean));
     const observedAt = nowIso();
     const added = flagged.filter(item => !known.has(item.post.url)).map(({ post, text, analysis }) => ({
       id: randomUUID(), source: 'telegram_discovery', demo: false, status: 'new', kind: 'channel_post', platform: 'telegram',
       text, originalText: post.text, url: post.url, author: `@${channel.handle}`, createdAt: observedAt, publishedAt: post.publishedAt, capturedAt: observedAt,
-      analysis, analysisVersion, analyzedAt: observedAt, priority: Math.round(analysis.score * 0.8 + 6), priorityParts: { risk: Math.round(analysis.score * 0.8), reach: 6, network: 0 },
+      analysis, analysisVersion, analyzedAt: observedAt, ...queuePriority(analysis.score),
       links: post.links,
       provenance: { source: 'telegram_discovery', method: 'public_preview', scope: 'publicly_available_preview', canonicalUrl: post.url, fingerprint: sha(`${post.url}\n${text}`), observedAt, publishedAt: post.publishedAt,
         channel: channel.handle, channelTitle: channel.title, depth: channel.depth, discoveredVia: channel.foundVia.slice(0, 3), publicVisibilityVerified: true, locationVerified: false, mediaAnalyzed: false,
@@ -193,7 +194,14 @@ export function createDiscovery({ storePath, getCases, persistCases, analysisVer
         notes: { ru: 'Только публичные каналы через веб-предпросмотр t.me/s. Система не входит в аккаунт, не вступает в закрытые группы и не пишет сообщения. Признаки — повод для проверки, не обвинение.', kk: 'Тек t.me/s арқылы ашық арналар. Жүйе аккаунтқа кірмейді, жабық топтарға қосылмайды және хат жазбайды. Белгілер — тексеру себебі, айып емес.' },
       });
     },
-    update(patch = {}) { if (typeof patch.enabled === 'boolean') state.enabled = patch.enabled; save(); return api.snapshot(); },
+    update(patch = {}) {
+      if (patch.enabled !== undefined) {
+        if (typeof patch.enabled !== 'boolean') throw Object.assign(new Error('enabled должен быть true или false.'), { status: 400 });
+        state.enabled = patch.enabled;
+      }
+      save();
+      return api.snapshot();
+    },
     addSeed(input, note = '') {
       const handle = parseChannelInput(input);
       if (state.seeds.some(seed => seed.handle === handle)) return api.snapshot();
@@ -210,7 +218,7 @@ export function createDiscovery({ storePath, getCases, persistCases, analysisVer
       let clean;
       try { clean = telegramHandle(handle); } catch { return false; }
       const known = state.channels[clean];
-      if (known) { if (!known.foundVia.some(item => item.from === via?.from)) known.foundVia = [...known.foundVia, via].slice(0, 8); return false; }
+      if (known) { known.foundVia = addVia(known.foundVia, via); return false; }
       if (Object.keys(state.channels).length >= DISCOVERY_LIMITS.channels) return false;
       state.channels[clean] = blankChannel(clean, 1, via, nowIso());
       save();

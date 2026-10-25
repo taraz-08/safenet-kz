@@ -8,13 +8,13 @@ import { randomUUID, createHash } from 'node:crypto';
 import { analyzeItem } from './engine.mjs';
 import { createBrowser } from './browser.mjs';
 import { writeFileAtomic } from './storage.mjs';
+import { addVia, parseFollowers, queuePriority, ruleBackedRisk } from './review-queue.mjs';
 import { EXTRACT_PROFILE, PLATFORMS, accountKey, cleanBio, cleanCaption, parseSearchResults, parseSocialInput, profileUrl, searchHitAccount, socialHandle, socialReferences } from './social.mjs';
 
 export const SOCIAL_LIMITS = Object.freeze({ accounts: 600, seeds: 80, maxDepth: 3, tickMs: 45000, casesPerProbe: 6, log: 150, cases: 5000, searchEveryMinutes: 20 });
 const MINUTE = 60000;
 const RECHECK = { risky: 6 * 60, seed: 12 * 60, clean: 3 * 24 * 60, unavailable: 7 * 24 * 60, private: 7 * 24 * 60, error: 60 };
 const COOLDOWN = { platform: [15, 6 * 60], search: [60, 24 * 60] };
-const QUEUE_SCORE = 30;
 const TERMS_NOTE = 'Сбор с публичных страниц без входа в аккаунт. Правила Meta и TikTok запрещают автоматический сбор — режим включён оператором осознанно.';
 const SEARCH_TERMS = ['казино промокод фриспины', 'казино бонус депозит казахстан', 'слоты занос промокод', 'ставки промокод бонус пополнение', 'заработок без вложений каспи',
   'инвестиции доход в день процентов', 'пассивный доход пригласи друга бонус', 'розыгрыш билет каспи перевод', 'розыгрыш айфон купи билет', 'казино ойын бонус промокод',
@@ -46,7 +46,8 @@ const blankAccount = (platform, handle, depth, via, nowIso) => ({ key: accountKe
 
 export function createSocialDiscovery({ storePath, getCases, persistCases, analysisVersion, openProfile, search = defaultSearch, analyze = analyzeItem,
   onTelegramRef = () => {}, now = () => Date.now() } = {}) {
-  let state = { enabled: true, seeds: [], accounts: {}, platforms: Object.fromEntries(PLATFORMS.map(platform => [platform, { blockedUntil: null, strikes: 0, reason: null }])),
+  // Off until the operator turns it on in the interface (see docs/adr/0003).
+  let state = { enabled: false, seeds: [], accounts: {}, platforms: Object.fromEntries(PLATFORMS.map(platform => [platform, { blockedUntil: null, strikes: 0, reason: null }])),
     search: { cursor: 0, nextAt: null, blockedUntil: null, strikes: 0, lastQuery: null }, stats: { probes: 0, savedCases: 0, flaggedPosts: 0, searches: 0, searchHits: 0, lastRunAt: null, startedAt: null }, log: [] };
   if (storePath && existsSync(storePath)) {
     try {
@@ -65,7 +66,7 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
     const key = accountKey(platform, handle);
     const known = state.accounts[key];
     if (known) {
-      if (via && !known.foundVia.some(item => item.from === via.from && item.kind === via.kind)) known.foundVia = [...known.foundVia, via].slice(0, 8);
+      known.foundVia = addVia(known.foundVia, via);
       if (hint && (!known.hint || hint.score > known.hint.score)) known.hint = hint;
       return false;
     }
@@ -118,7 +119,7 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
       for (const item of items) {
         const analysis = analyze({ text: item.text.slice(0, 30000), url: item.url, platform });
         // Live accounts are flagged on rule evidence only, as in the Telegram search: model-only scores are too noisy on real feeds.
-        const risky = analysis.score >= QUEUE_SCORE && analysis.riskContext !== 'warning_or_news' && !analysis.signals.some(signal => signal.id === 'ml_model');
+        const risky = ruleBackedRisk(analysis);
         if (risky) { flagged.push({ item, analysis }); categories[analysis.category] = (categories[analysis.category] ?? 0) + 1; maxScore = Math.max(maxScore, analysis.score); }
       }
       flagged.sort((a, b) => b.analysis.score - a.analysis.score);
@@ -153,16 +154,18 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
     const cases = getCases();
     if (cases.length >= SOCIAL_LIMITS.cases) return 0;
     const known = new Set(cases.filter(record => record.source === 'social_discovery').map(record => record.provenance?.fingerprint));
+    // A post already queued by any source (extension, Telegram, an earlier probe) is not queued again.
+    const queuedUrls = new Set(cases.filter(record => record.url && record.kind !== 'profile_bio').map(record => record.url));
     const observedAt = nowIso();
     const added = [];
     for (const { item, analysis } of flagged) {
       const fingerprint = sha(`${item.url}\n${item.text}`);
-      if (known.has(fingerprint)) continue;
+      if (known.has(fingerprint) || (item.kind !== 'profile_bio' && queuedUrls.has(item.url))) continue;
       known.add(fingerprint);
       added.push({
         id: randomUUID(), source: 'social_discovery', demo: false, status: 'new', kind: item.kind, platform: account.platform,
         text: item.text, originalText: item.text, url: item.url, author: `@${account.handle}`, createdAt: observedAt, capturedAt: observedAt,
-        analysis, analysisVersion, analyzedAt: observedAt, priority: Math.round(analysis.score * 0.8 + 6), priorityParts: { risk: Math.round(analysis.score * 0.8), reach: 6, network: 0 },
+        analysis, analysisVersion, analyzedAt: observedAt, ...queuePriority(analysis.score, parseFollowers(account.followers)),
         links: [],
         provenance: { source: 'social_discovery', method, scope: 'publicly_available_page', canonicalUrl: item.url, fingerprint, observedAt, platform: account.platform,
           account: account.handle, accountName: account.name, depth: account.depth, discoveredVia: account.foundVia.slice(0, 3), query,
@@ -199,10 +202,10 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
         if (!ref) continue;
         const text = `${hit.title}\n${hit.snippet}`.trim();
         const analysis = analyze({ text, url: hit.url, platform: ref.platform });
-        const risky = analysis.score >= QUEUE_SCORE && analysis.riskContext !== 'warning_or_news' && !analysis.signals.some(signal => signal.id === 'ml_model');
+        const risky = ruleBackedRisk(analysis);
         if (addAccount(ref.platform, ref.handle, 1, { from: null, kind: 'search', postUrl: hit.url, query }, { risky, score: analysis.score })) added++;
-        if (risky) {
-          const account = state.accounts[accountKey(ref.platform, ref.handle)];
+        const account = state.accounts[accountKey(ref.platform, ref.handle)];
+        if (risky && account) {
           saved += saveCases(account, [{ item: { kind: 'search_snippet', url: hit.url, text }, analysis }], 'search_index', query);
         }
       }
@@ -262,6 +265,7 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
     addSeed(input, platform, note = '') {
       const ref = parseSocialInput(input, platform);
       const key = accountKey(ref.platform, ref.handle);
+      if (!state.accounts[key] && Object.keys(state.accounts).length >= SOCIAL_LIMITS.accounts) throw Object.assign(new Error(`Список аккаунтов заполнен (${SOCIAL_LIMITS.accounts}). Удалите старые кандидаты, чтобы добавить новый.`), { status: 409 });
       if (!state.seeds.some(seed => accountKey(seed.platform, seed.handle) === key)) {
         if (state.seeds.length >= SOCIAL_LIMITS.seeds) throw Object.assign(new Error(`Не более ${SOCIAL_LIMITS.seeds} стартовых аккаунтов.`), { status: 409 });
         state.seeds = [...state.seeds, { ...ref, addedAt: nowIso(), note: String(note).slice(0, 120) }];

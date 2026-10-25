@@ -286,8 +286,8 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
   });
   app.get('/api/graph',(_req,res)=>res.json(buildGraph(cases)));
   app.get('/api/sources',(_req,res)=>res.json({sources:[
-    {id:'instagram',name:'Instagram',mode:'extension',status:'extension_required',description:'Автопроверка видимых публикаций после установки расширения. Личные сообщения исключены. Сбор всей сети не подключён.'},
-    {id:'tiktok',name:'TikTok',mode:'extension',status:'extension_required',description:'Автопроверка загруженных подписей при просмотре ленты через расширение. Захват видео и звука из расширения доступен только для Instagram.'},
+    {id:'instagram',name:'Instagram',mode:'extension_and_public_profiles',status:'extension_required',description:'Автопроверка видимых публикаций через расширение и автопоиск публичных профилей без входа в аккаунт (страница «Поиск в Instagram и TikTok», включает оператор). Личные сообщения и закрытые аккаунты исключены. Правила Meta автоматический сбор запрещают, см. docs/adr/0003.'},
+    {id:'tiktok',name:'TikTok',mode:'extension_and_public_profiles',status:'extension_required',description:'Автопроверка подписей при просмотре ленты через расширение и автопоиск публичных профилей без входа. TikTok обычно показывает капчу автоматическому браузеру: читается только описание профиля, затем платформа ставится на паузу. Захват видео и звука из расширения доступен только для Instagram.'},
     {id:'telegram',name:'Telegram',mode:'public_preview',status:'ready',description:'Автоматическая проверка выбранных открытых каналов по расписанию. Профиль Казахстана содержит официальные сообщения о схемах; закрытые чаты не подключены.'},
     {id:'whatsapp',name:'WhatsApp',mode:'import',status:'manual',description:'Вставка или TXT-экспорт чата, которым вы вправе поделиться. Закрытые чаты не подключены.'},
     {id:'ocr',name:'Скриншоты',mode:'local',status:'ready',description:'OCR в браузере: русский, казахский, английский. Изображение не отправляется на сервер.'}

@@ -5,7 +5,8 @@ import { randomUUID } from 'node:crypto';
 import { analyzeItem, applyExtraSignals } from './engine.mjs';
 import { demoItems } from './demo.mjs';
 
-export const QUEUE_THRESHOLD = 30;
+import { QUEUE_THRESHOLD, queuePriority } from './review-queue.mjs';
+export { QUEUE_THRESHOLD };
 const LOG_LIMIT = 400;
 const PLATFORM_DOMAIN = /(?:^|\.)(?:instagram\.com|tiktok\.com|t\.me|telegram\.org|whatsapp\.com|chat\.whatsapp\.com|wa\.me|youtube\.com|youtu\.be|kaspi\.kz|halykbank\.kz|halyk\.kz|facebook\.com|vk\.com|random\.org|bit\.ly|clck\.ru|cutt\.ly|t\.ly|goo\.su|tinyurl\.com|egov\.kz|gov\.kz)$/u;
 const DEFAULT_STATE = { enabled: true, rate: 2, cursor: 0, runId: null, startedAt: null, finishedAt: null, processed: 0, cleared: 0, queued: 0, latencyTotalMs: 0, log: [] };
@@ -299,11 +300,8 @@ export function createPipeline({ statePath, corpusPath, getCases, persistCases, 
   }
 
   function priorityOf(score, followers, extra) {
-    // Risk first; audience reach and network context only order cases of similar risk.
-    const reach = followers ? Math.min(1, Math.log10(Math.max(10, followers)) / 6) : 0.3;
-    const network = extra.some(signal => signal.id === 'network_link') ? 1 : 0;
-    const parts = { risk: Math.round(score * 0.8), reach: Math.round(reach * 12), network: network * 8 };
-    return { value: parts.risk + parts.reach + parts.network, parts };
+    const { priority, priorityParts } = queuePriority(score, followers, extra.some(signal => signal.id === 'network_link'));
+    return { value: priority, parts: priorityParts };
   }
 
   const networkSummary = cluster => cluster && cluster.size > 1 ? {

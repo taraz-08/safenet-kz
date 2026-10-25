@@ -127,7 +127,7 @@ export function ReviewQueue({initialCase,initialTrack,onChanged}){
     <ul>{list.map(item=>{const model=item.analysis?.signals?.some(s=>s.id==='ml_model');return <li key={item.id}><button data-case={item.id} className={item.id===selected?.id?'active':''} onClick={()=>setSelectedId(item.id)}>
      <ScoreDial score={item.analysis.score} level={item.analysis.level} size={40}/>
      <span className="wb-q-main"><span className="wb-q-top"><strong>{item.author||L('Без автора','Авторсыз')}</strong><small>{ago(item.createdAt)}</small></span><span className="wb-q-text">{(item.text||item.ocrText||item.transcript||'').slice(0,110)}</span>
-      <span className="wb-q-meta"><PlatformIcon platform={item.platform} size={12}/><span>{kindName(item.kind)}</span>{item.ocrText&&<FileImage size={12} aria-label="OCR"/>}{item.transcript&&<Mic size={12} aria-label="ASR"/>}{item.network&&<Network size={12} aria-label={L('Сеть','Желі')}/>}<TrackTag category={item.analysis.category}/>{model&&<span className="wb-badge model">{L('только модель','тек модель')}</span>}{item.demo&&<span className="wb-badge demo" title={L('Вымышленный аккаунт из синтетического демо-потока','Синтетикалық демо-ағындағы ойдан шығарылған аккаунт')}>{L('демо','демо')}</span>}{item.review&&<span className={`wb-badge ${item.review.decision}`}>{item.review.decision==='dismissed'?L('ложное','жалған'):item.review.decision==='escalated'?L('передано','берілді'):L('подтверждено','расталды')}</span>}</span></span>
+      <span className="wb-q-meta"><b className={`wb-q-level ${item.analysis.level}`}>{levelName(item.analysis.level)}</b><PlatformIcon platform={item.platform} size={12}/><span>{kindName(item.kind)}</span>{item.ocrText&&<FileImage size={12} aria-label="OCR"/>}{item.transcript&&<Mic size={12} aria-label="ASR"/>}{item.network&&<Network size={12} aria-label={L('Сеть','Желі')}/>}<TrackTag category={item.analysis.category}/>{model&&<span className="wb-badge model">{L('только модель','тек модель')}</span>}{item.demo&&<span className="wb-badge demo" title={L('Вымышленный аккаунт из синтетического демо-потока','Синтетикалық демо-ағындағы ойдан шығарылған аккаунт')}>{L('демо','демо')}</span>}{item.review&&<span className={`wb-badge ${item.review.decision}`}>{item.review.decision==='dismissed'?L('ложное','жалған'):item.review.decision==='escalated'?L('передано','берілді'):L('подтверждено','расталды')}</span>}</span></span>
     </button></li>;})}</ul>}
    </aside>
    <section className="wb-dossier" aria-live="polite">{selected?<Dossier key={selected.id} item={selected} busy={busy} onDecide={tab==='open'?decide:null}/>:<p className="wb-empty">{L('Выберите случай слева.','Сол жақтан жағдайды таңдаңыз.')}</p>}</section>
@@ -361,7 +361,7 @@ export function QualityPage(){
 
 // ——— Discovery: real public Telegram channels found automatically from seed channels.
 const OUTCOME={risky:['признаки найдены','белгілер табылды'],clean:['признаков нет','белгі жоқ'],unavailable:['нет публичного предпросмотра','ашық алдын ала қарау жоқ'],error:['ошибка запроса','сұрау қатесі']};
-const VIA={seed:['стартовый канал','бастапқы арна'],link:['ссылка','сілтеме'],forward:['пересылка','қайта жіберу'],mention:['упоминание','атау']};
+const VIA={seed:['стартовый канал','бастапқы арна'],link:['ссылка','сілтеме'],forward:['пересылка','қайта жіберу'],mention:['упоминание','атау'],instagram_link:['ссылка из Instagram','Instagram сілтемесі'],tiktok_link:['ссылка из TikTok','TikTok сілтемесі']};
 export function DiscoveryPage({onOpen}){
  const [data,reload]=usePoll('/api/discovery',4000);
  const [input,setInput]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false);
@@ -371,7 +371,7 @@ export function DiscoveryPage({onOpen}){
  const kk=getLanguage()==='kk';const limited=data.stats.rateLimitedUntil&&Date.parse(data.stats.rateLimitedUntil)>Date.now();
  const userSeeds=new Set(data.seeds.map(seed=>seed.handle));
  const dominant=channel=>Object.entries(channel.categories||{}).sort((a,b)=>b[1]-a[1])[0]?.[0]??'none';
- const via=channel=>channel.foundVia.length?channel.foundVia.slice(0,2).map(item=>item.from?`@${item.from} (${L(...(VIA[item.kind]??[item.kind,item.kind]))})`:L(...VIA.seed)).join(', '):L(...VIA.seed);
+ const via=channel=>channel.foundVia.length?channel.foundVia.slice(0,2).map(item=>item.from?`@${item.from.replace(/^(?:instagram|tiktok|telegram):/,'')} (${L(...(VIA[item.kind]??[item.kind,item.kind]))})`:L(...VIA.seed)).join(', '):L(...VIA.seed);
  return <div className="wb wb-discovery">
   <section className="wb-panel wb-pipe-head">
    <div><p className="wb-live">{limited?<><Clock3 size={15}/>{L('Telegram попросил паузу — продолжим через несколько минут','Telegram үзіліс сұрады — бірнеше минуттан кейін жалғасады')}</>:data.enabled?<><i className="wb-pulse"/>{L('Автопоиск работает: каналы проверяются каждые 20 секунд','Автоіздеу жұмыс істеп тұр: арналар әр 20 секунд сайын тексеріледі')}</>:<><Pause size={15}/>{L('Автопоиск на паузе','Автоіздеу кідіртілді')}</>}</p>

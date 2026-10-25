@@ -315,6 +315,7 @@
 .wb-found-sample,.wb-evidence-text,.wb-log-text,.wb-q-text,.wb-signals blockquote,.wb-chip{overflow-wrap:anywhere}
 .wb,.wb-panel,.wb-found>li{min-width:0}
 .wb-log{table-layout:fixed;min-width:0}
+.wb-q-level{font-weight:700;font-size:11.5px}.wb-q-level.high{color:var(--r-high)}.wb-q-level.medium{color:var(--r-medium)}.wb-q-level.low{color:var(--wb-muted)}
 .wb-terms{display:flex;gap:8px;align-items:flex-start}
 .wb-terms svg{flex:none;margin-top:3px;color:var(--r-medium,#b7791f)}
 .wb-log td,.wb-log td:first-child{white-space:normal;overflow-wrap:anywhere}

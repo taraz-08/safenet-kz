@@ -47,7 +47,7 @@ npm start          # http://127.0.0.1:4310
 
 Дополнительно:
 
-- `npm test` — 251 автотест;
+- `npm test` — 261 автотест;
 - `npm run train` — переобучение модели без отложенной выборки (после него снова `npm run evaluate`);
 - `npm run dev` — режим разработки.
 
@@ -196,7 +196,7 @@ npm.cmd run verify:qr
 npm.cmd run build
 ```
 
-В 5.0 проходят **251 автотест** (`npm test`). Они покрывают движок, конвейер и сети, API, мониторинг, Telegram-источники, поиск в Instagram и TikTok, проверку ссылок, Meta API, медиа, локальный ИИ и расширение. `npm run evaluate` пересчитывает `data/metrics.json` (раздел «Метрики» выше). Реальный локальный вывод ИИ на синтетических материалах проверяется отдельно командой `node scripts/verify-local-ai.mjs`; отчёт — `qa/ai-verification.json`. Он не подтверждает живой захват Instagram.
+В 5.0 проходят **261 автотест** (`npm test`). Они покрывают движок, конвейер и сети, API, мониторинг, Telegram-источники, поиск в Instagram и TikTok, проверку ссылок, Meta API, медиа, локальный ИИ и расширение. `npm run evaluate` пересчитывает `data/metrics.json` (раздел «Метрики» выше). Реальный локальный вывод ИИ на синтетических материалах проверяется отдельно командой `node scripts/verify-local-ai.mjs`; отчёт — `qa/ai-verification.json`. Он не подтверждает живой захват Instagram.
 
 **История проверки QR, 24.10.2026:** реальный локальный OCR/OpenCV прочитал QR из **синтетического** `qa/qr-fixture.png`. В [qa/qr-verification.json](qa/qr-verification.json) записаны исходная QR-строка, отметка кадра 4200 мс, `coverage.qr.checked:true` и `stored:false`. Это не захват Instagram и не запрос к URL внутри QR. Живой медиазахват версии 4.0 этим тестом не подтверждён.
 

@@ -116,9 +116,11 @@ const metrics = {
   model: (() => { try { const raw = JSON.parse(readFileSync(new URL('../data/model.json', import.meta.url), 'utf8')); return { hybridThreshold: raw.hybridThreshold, meta: raw.meta }; } catch { return null; } })(),
   benchmark: benchmark(test?.dataset ?? dev.dataset),
 };
-// Backward-compatible top-level fields for older UI widgets: they describe the held-out test set when present.
-const headline = metrics.test ?? metrics.dev;
-Object.assign(metrics, { total: headline.total, accuracy: headline.accuracy, precision: headline.precision, recall: headline.recall, f1: headline.f1, falsePositiveRate: headline.falsePositiveRate, confusionMatrix: headline.confusionMatrix, categoryAccuracy: headline.categoryAccuracy, perCategory: headline.perCategory, provenance: headline.provenance });
+// Backward-compatible top-level fields for older UI widgets: they describe the untouched holdout half of the blind
+// test set (docs/adr/0002), never the validation half the model was trained on.
+const holdout = metrics.test?.splits?.holdout;
+const headline = holdout ? { ...holdout, perCategory: metrics.test.holdoutBreakdown?.perCategory, provenance: metrics.test.provenance } : metrics.test ?? metrics.dev;
+Object.assign(metrics, { scope: holdout ? 'blind_test_holdout' : metrics.test ? 'blind_test' : 'development', total: headline.total, accuracy: headline.accuracy, precision: headline.precision, recall: headline.recall, f1: headline.f1, falsePositiveRate: headline.falsePositiveRate, confusionMatrix: headline.confusionMatrix, categoryAccuracy: headline.categoryAccuracy, perCategory: headline.perCategory, provenance: headline.provenance });
 delete metrics.dev.rows;
 await writeFile(new URL('../data/metrics.json', import.meta.url), `${JSON.stringify(metrics, null, 2)}\n`);
 const brief = result => result && ({ total: result.total, precision: result.precision, recall: result.recall, f1: result.f1, falsePositiveRate: result.falsePositiveRate, categoryAccuracy: result.categoryAccuracy, confusion: result.confusionMatrix });
