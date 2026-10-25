@@ -1,10 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createApp } from './app.mjs';
+import { parseTelegramSeeds } from './discovery.mjs';
 
 // fetch() cannot set Host, so requests go through node:http to imitate a public domain.
 function request(port, { path, method = 'GET', host = 'safenet.up.railway.app', body, auth }) {
@@ -27,7 +28,7 @@ async function withApp(options, run) {
   const app = createApp({ storePath: join(dir, 'cases.json'), seed: false, ...options });
   const server = app.listen(0, '127.0.0.1');
   await new Promise(resolve => server.once('listening', resolve));
-  try { await run(server.address().port, app); } finally {
+  try { await run(server.address().port, app, dir); } finally {
     server.close();
     for (const name of ['watchtower', 'pipeline', 'discovery', 'social']) app.locals[name]?.close?.();
     await app.locals.mediaService?.close?.();
@@ -62,6 +63,71 @@ test('a hosted install without an access key is a read-only public demo', async 
       assert.match(refused.json.error, /только для чтения/);
     }
     assert.equal(app.locals.social.snapshot().enabled, false);
+  });
+});
+
+test('createApp merges deployment starting points with analyst and enabled Kazakhstan sources without persisting them', async () => {
+  const telegramSeeds = parseTelegramSeeds('@Configured_Channel,analyst_channel');
+  await withApp({ autoProfile: true, telegramSeeds }, async (_port, app, dir) => {
+    const sources = app.locals.watchtower.snapshot().sources;
+    assert.ok(sources.length > 0, 'the Kazakhstan reference profile is present');
+    const snapshot = app.locals.discovery.addSeed('analyst_channel');
+    assert.deepEqual(new Set(snapshot.configuredSeeds), new Set([...telegramSeeds, ...sources.filter(source => source.enabled).map(source => source.handle)]));
+    assert.equal(snapshot.configuredSeeds.length, new Set(snapshot.configuredSeeds).size);
+    assert.deepEqual(snapshot.seeds.map(seed => seed.handle), ['analyst_channel']);
+    assert.deepEqual(app.locals.watchtower.snapshot().sources, sources, 'deployment starting points are not monitoring sources');
+    const saved = JSON.parse(readFileSync(join(dir, 'discovery.json'), 'utf8'));
+    assert.deepEqual(saved.seeds.map(seed => seed.handle), ['analyst_channel']);
+    const disabled = sources.find(source => source.enabled);
+    app.locals.watchtower.updateSource(disabled.id, { enabled: false });
+    assert.ok(!app.locals.discovery.snapshot().configuredSeeds.includes(disabled.handle), 'disabled monitoring sources are still excluded');
+    assert.ok(app.locals.discovery.snapshot().configuredSeeds.includes('configured_channel'));
+  });
+});
+
+test('hosted read-only discovery processes deployment starting points and preserves findings after configuration removal', async () => {
+  const handle = 'configured_channel';
+  const telegramSeeds = parseTelegramSeeds(`@${handle},https://t.me/${handle}`);
+  const fetched = [];
+  const discoveryFetchPreview = async channel => {
+    fetched.push(channel);
+    return `<div class="tgme_widget_message" data-post="${channel}/1"><div class="tgme_widget_message_text">Поднял 380к за вечер. Промокод AZ777 даёт +150% к первому депу, ссылка в шапке профиля.</div></div>`;
+  };
+  await withApp({ hosted: true, telegramSeeds, discoveryFetchPreview }, async (port, app, dir) => {
+    assert.equal((await request(port, { path: '/api/health' })).json.mode, 'public_read_only');
+    const initial = await request(port, { path: '/api/discovery' });
+    assert.equal(initial.status, 200);
+    assert.deepEqual(initial.json.configuredSeeds, [handle]);
+    assert.deepEqual(initial.json.seeds, []);
+    assert.deepEqual(app.locals.watchtower.snapshot().sources, []);
+    assert.deepEqual(fetched, [], 'configuration alone does not fetch channels');
+    for (const [method, path, body] of [
+      ['POST', '/api/discovery/seeds', { channel: 'visitor_channel' }],
+      ['DELETE', `/api/discovery/seeds/${handle}`, undefined],
+      ['PUT', '/api/discovery', { enabled: false }],
+      ['POST', '/api/discovery/run', {}],
+    ]) assert.equal((await request(port, { path, method, body })).status, 403, `${method} ${path}`);
+
+    await app.locals.discovery.tick();
+    assert.deepEqual(fetched, [handle], 'the server can process configured channels without public write access');
+    const findings = (await request(port, { path: '/api/cases' })).json.cases;
+    assert.equal(findings.length, 1);
+    assert.equal(findings[0].source, 'telegram_discovery');
+    assert.equal(findings[0].demo, false);
+    assert.equal(findings[0].provenance.channel, handle);
+    const saved = JSON.parse(readFileSync(join(dir, 'discovery.json'), 'utf8'));
+    assert.deepEqual(saved.seeds, [], 'configured starting points never become analyst seeds');
+    app.locals.discovery.close();
+
+    await withApp({ hosted: true, storePath: join(dir, 'cases.json'), discoveryFetchPreview }, async restartPort => {
+      const snapshot = (await request(restartPort, { path: '/api/discovery' })).json;
+      assert.deepEqual(snapshot.configuredSeeds, []);
+      assert.deepEqual(snapshot.seeds, []);
+      assert.equal(snapshot.counts.channels, 1);
+      assert.equal(snapshot.risky[0].handle, handle);
+      assert.equal(snapshot.risky[0].checks, 1);
+      assert.deepEqual((await request(restartPort, { path: '/api/cases' })).json.cases, findings);
+    });
   });
 });
 

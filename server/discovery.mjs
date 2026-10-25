@@ -24,6 +24,18 @@ export function parseChannelInput(value) {
   return telegramHandle(raw);
 }
 
+/** Deployment-only starting points; never persisted as analyst seeds or monitoring sources. */
+export function parseTelegramSeeds(value = '') {
+  const handles = new Set();
+  for (const entry of String(value ?? '').split(/[,\r\n]/u)) {
+    if (!entry.trim()) continue;
+    try { handles.add(parseChannelInput(entry)); }
+    catch (error) { throw new Error(`SAFENET_TELEGRAM_SEEDS: ${error.message}`, { cause: error }); }
+    if (handles.size > DISCOVERY_LIMITS.seeds) throw new Error(`SAFENET_TELEGRAM_SEEDS: не более ${DISCOVERY_LIMITS.seeds} уникальных публичных каналов.`);
+  }
+  return [...handles];
+}
+
 /** Channel references in a public preview: links, forwards and @mentions. Bots and the channel itself are skipped. */
 export function channelReferences(html, self, posts = []) {
   const refs = new Map();

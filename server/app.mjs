@@ -58,7 +58,7 @@ function refreshedAnalysis(record) {
   return analysis;
 }
 
-export function createApp({storePath=resolve('data/cases.json'),monitoringPath=resolve(dirname(storePath),'monitoring.json'),seed=true,aiService=createAiService(),mediaService=createMediaService({aiService}),watchtowerPath=resolve(dirname(storePath),'watchtower.json'),autoProfile=seed,watchtowerFetchPreview,pipelinePath=resolve(dirname(storePath),'pipeline.json'),corpusPath=resolve('data/stream/corpus.json'),autoPipeline=seed,discoveryPath=resolve(dirname(storePath),'discovery.json'),discoveryFetchPreview,socialPath=resolve(dirname(storePath),'social-discovery.json'),socialOpenProfile,socialSearch,hosted=false,allowedHosts=[],accessKey=null} = {}) {
+export function createApp({storePath=resolve('data/cases.json'),monitoringPath=resolve(dirname(storePath),'monitoring.json'),seed=true,aiService=createAiService(),mediaService=createMediaService({aiService}),watchtowerPath=resolve(dirname(storePath),'watchtower.json'),autoProfile=seed,watchtowerFetchPreview,pipelinePath=resolve(dirname(storePath),'pipeline.json'),corpusPath=resolve('data/stream/corpus.json'),autoPipeline=seed,discoveryPath=resolve(dirname(storePath),'discovery.json'),discoveryFetchPreview,telegramSeeds=[],socialPath=resolve(dirname(storePath),'social-discovery.json'),socialOpenProfile,socialSearch,hosted=false,allowedHosts=[],accessKey=null} = {}) {
   const app = express();
   const extensionToken = randomBytes(32).toString('hex');
   let scanWindow = Date.now(), scansThisMinute = 0;
@@ -98,9 +98,9 @@ export function createApp({storePath=resolve('data/cases.json'),monitoringPath=r
   app.locals.watchtower=watchtower;
   const pipeline=createPipeline({statePath:pipelinePath,corpusPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,autoStart:autoPipeline});
   app.locals.pipeline=pipeline;
-  // Real public Telegram channels: snowball discovery from seeds and the monitored sources.
+  // Deployment starting points stay separate from analyst seeds and Kazakhstan monitoring sources.
   let social=null;
-  const discovery=createDiscovery({storePath:discoveryPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,extraSeeds:()=>watchtower.snapshot().sources.filter(source=>source.enabled).map(source=>source.handle),onSocialRef:(ref,via)=>social?.addCandidate(ref.platform,ref.handle,via),...(discoveryFetchPreview?{fetchPreview:discoveryFetchPreview}:{})});
+  const discovery=createDiscovery({storePath:discoveryPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,extraSeeds:()=>[...telegramSeeds,...watchtower.snapshot().sources.filter(source=>source.enabled).map(source=>source.handle)],onSocialRef:(ref,via)=>social?.addCandidate(ref.platform,ref.handle,via),...(discoveryFetchPreview?{fetchPreview:discoveryFetchPreview}:{})});
   app.locals.discovery=discovery;
   // Public Instagram and TikTok profiles, opened by a headless browser without signing in; linked both ways with the Telegram search.
   social=createSocialDiscovery({storePath:socialPath,getCases:()=>cases,persistCases:persist,analysisVersion:ANALYSIS_VERSION,openProfile:socialOpenProfile??defaultOpenProfile(resolve(dirname(storePath),'browser-profile')),onTelegramRef:(handle,via)=>discovery.addCandidate(handle,via),...(socialSearch?{search:socialSearch}:{})});

@@ -3,9 +3,11 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { loadEnvFile } from 'node:process';
 import { createApp } from './app.mjs';
+import { parseTelegramSeeds } from './discovery.mjs';
 import { ensureLocalAiRuntime } from './local-ai-runtime.mjs';
 
 if(existsSync(resolve('.env')))loadEnvFile(resolve('.env'));
+const telegramSeeds=parseTelegramSeeds(process.env.SAFENET_TELEGRAM_SEEDS);
 // The web app stays reachable while the GPU runtime performs its cold start.
 void ensureLocalAiRuntime().catch(()=>console.error('Local AI runtime could not start; see the AI status panel.'));
 // On Railway (or with SAFENET_HOSTED=1) the server listens publicly; SAFENET_ACCESS_KEY puts the whole site behind a password.
@@ -13,7 +15,7 @@ const hosted=Boolean(process.env.RAILWAY_ENVIRONMENT)||process.env.SAFENET_HOSTE
 const allowedHosts=[process.env.RAILWAY_PUBLIC_DOMAIN,...String(process.env.SAFENET_ALLOWED_HOSTS||'').split(',')].map(value=>String(value||'').trim().toLowerCase()).filter(Boolean);
 // Keep mutable state on a volume without hiding the bundled model, corpus and metrics.
 const dataDir=resolve(process.env.SAFENET_DATA_DIR||process.env.RAILWAY_VOLUME_MOUNT_PATH||'data');
-const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null});
+const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null,telegramSeeds});
 app.locals.watchtower.start();
 // Automatic screening starts with the server: the demo stream is replayed once, humans only review the queue.
 app.locals.pipeline.start();

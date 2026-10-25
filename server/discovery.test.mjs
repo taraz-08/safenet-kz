@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createDiscovery, channelReferences, parseChannelInput } from './discovery.mjs';
+import { createDiscovery, channelReferences, parseChannelInput, parseTelegramSeeds } from './discovery.mjs';
 
 // Minimal public-preview HTML in Telegram's widget format (fictional channels).
 function preview(handle, posts, { title = handle, forwardFrom } = {}) {
@@ -29,6 +29,48 @@ test('channel input accepts names and public links, rejects private invites', ()
   assert.equal(parseChannelInput('@Bonus_Daily_KZ'), 'bonus_daily_kz');
   assert.equal(parseChannelInput('https://t.me/s/bonus_daily_kz/15'), 'bonus_daily_kz');
   assert.throws(() => parseChannelInput('https://t.me/+AbCdEfGh123'), /Закрытые приглашения/);
+});
+
+test('deployment starting points normalize comma/newline-separated public handles and URLs', () => {
+  assert.deepEqual(parseTelegramSeeds('  @Configured_Channel, configured_channel\r\nhttps://t.me/s/CONFIGURED_CHANNEL/12,\n t.me/another_channel \r https://telegram.me/third_channel\n, '), ['configured_channel', 'another_channel', 'third_channel']);
+  for (const empty of [undefined, null, '', ' , \r\n, ']) assert.deepEqual(parseTelegramSeeds(empty), []);
+});
+
+test('deployment starting points reject private invites and invalid values instead of ignoring them', () => {
+  for (const invalid of ['https://t.me/+AbCdEfGh123', 't.me/joinchat/AbCdEfGh123', '+AbCdEfGh123', 'not a channel', 'https://example.com/channel_name', 'https://t.me/', 'tiny', '123channel', 'bad-name', 'a'.repeat(33)]) {
+    assert.throws(() => parseTelegramSeeds(`valid_channel,${invalid}`), /SAFENET_TELEGRAM_SEEDS:/, invalid);
+  }
+});
+
+test('deployment starting points allow at most 50 unique channels after normalization', () => {
+  const handles = Array.from({ length: 50 }, (_, index) => `fixture_channel_${index}`);
+  const duplicates = handles.map(handle => `https://t.me/${handle.toUpperCase()}/123`);
+  assert.deepEqual(parseTelegramSeeds([...handles, ...duplicates].join(',')), handles);
+  assert.throws(() => parseTelegramSeeds([...handles, 'one_more_channel'].join('\n')), /SAFENET_TELEGRAM_SEEDS:.*50/);
+});
+
+test('removing a configured starting point keeps the channel but stops privileged rechecks and expansion', async () => {
+  let configured = ['configured_channel'];
+  let checks = 0;
+  const { dir, discovery, advance } = setup({
+    extraSeeds: () => configured,
+    fetchPreview: async () => preview('configured_channel', [++checks === 1 ? 'Сегодня кофе и прогулка.' : 'Сегодня прогулка с @new_candidate']),
+  });
+  try {
+    await discovery.tick();
+    const first = discovery.snapshot().checked[0];
+    assert.equal(Date.parse(first.nextCheckAt) - Date.parse(first.lastCheckedAt), 60 * 60000);
+    configured = [];
+    advance(60);
+    await discovery.tick();
+    const snapshot = discovery.snapshot();
+    assert.deepEqual(snapshot.seeds, []);
+    assert.deepEqual(snapshot.configuredSeeds, []);
+    assert.equal(snapshot.counts.channels, 1, 'a formerly configured clean channel no longer expands mentions');
+    assert.equal(snapshot.checked[0].handle, 'configured_channel');
+    assert.equal(snapshot.checked[0].checks, 2, 'the channel remains eligible for ordinary checks');
+    assert.equal(Date.parse(snapshot.checked[0].nextCheckAt) - Date.parse(snapshot.checked[0].lastCheckedAt), 24 * 60 * 60000);
+  } finally { discovery.close(); rmSync(dir, { recursive: true, force: true }); }
 });
 
 test('references come from links, forwards and mentions; bots and self are skipped', () => {
