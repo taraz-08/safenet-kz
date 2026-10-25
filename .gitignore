@@ -35,3 +35,11 @@ artifacts/video-project/v5/frames/
 # The blind synthetic test set is needed by npm run evaluate / train
 !data/test-set.json
 artifacts/video-project/assets/instagram-frames/
+
+# Jury video v6: raw screencast frames, scratch API snapshots and unused clip variants stay local
+artifacts/video-project/v6/frames/
+artifacts/video-project/v6/live/
+artifacts/video-project/v6/intro/clip-a.mp4
+artifacts/video-project/v6/intro/clip-b.mp4
+artifacts/video-project/v6/intro/*-sheet.jpg
+artifacts/video-project/v6/output/*-preview.*

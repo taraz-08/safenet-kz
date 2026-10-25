@@ -1,0 +1,63 @@
+{
+ "output": "safenet-kz-jury-ru.mp4",
+ "durationSeconds": 108.05,
+ "fps": 30,
+ "size": [
+  1920,
+  1080
+ ],
+ "scenes": [
+  {
+   "id": "intro",
+   "start": 0.0,
+   "end": 15.29,
+   "speed": null
+  },
+  {
+   "id": "live",
+   "start": 15.29,
+   "end": 28.96,
+   "speed": 1.26
+  },
+  {
+   "id": "telegram",
+   "start": 28.96,
+   "end": 42.38,
+   "speed": 1.45
+  },
+  {
+   "id": "case",
+   "start": 42.38,
+   "end": 59.15,
+   "speed": 1.0
+  },
+  {
+   "id": "check",
+   "start": 59.15,
+   "end": 71.65,
+   "speed": 1.45
+  },
+  {
+   "id": "social",
+   "start": 71.65,
+   "end": 81.32,
+   "speed": 1.45
+  },
+  {
+   "id": "strength",
+   "start": 81.32,
+   "end": 95.75,
+   "speed": 1.0
+  },
+  {
+   "id": "outro",
+   "start": 95.75,
+   "end": 108.05,
+   "speed": null
+  }
+ ],
+ "subtitles": 23,
+ "voice": "ElevenLabs Eleven v4, voice Serik, Russian",
+ "intro": "Google Flow: two Nano Banana keyframes, then a Veo 3.1 Fast frames-to-video clip between them",
+ "screens": "Screencast of https://safenet-kz.up.railway.app and of the same app on the team computer (social scene)"
+}
