@@ -1,6 +1,18 @@
 # Развёртывание SafeNet KZ на Railway
 
-Репозиторий: `taraz-08/safenet-kz`, ветка `main`. Конфигурация сборки, запуска и проверки готовности находится в `railway.json`.
+Репозиторий: `taraz-08/safenet-kz`, ветка `main`. Сборка, запуск и проверка готовности задаются в настройках сервиса Railway через плагин или панель управления.
+
+На 25.10.2026 Railway больше не разрешает подключать `railway.json` / `railway.toml` к новым сервисам. Поэтому устаревший файл удалён из репозитория. Для будущего управления инфраструктурой из кода используется `.railway/railway.ts`; при работе в общем проекте нужен именованный partial, чтобы не менять другие сервисы.
+
+| Настройка сервиса | Значение |
+|---|---|
+| Builder | Railpack |
+| Root Directory | `/` |
+| Build Command | `npm run build` |
+| Start Command | `npm start` |
+| Healthcheck Path | `/api/health` |
+| Healthcheck Timeout | 120 секунд |
+| Restart Policy | On Failure, максимум 3 попытки |
 
 ## Настройка сервиса
 
@@ -24,4 +36,4 @@
 
 После развёртывания проверить загрузку интерфейса, `/api/health`, `/api/metrics`, одну ручную проверку и сохранение решения после перезапуска приватного сервиса. Зафиксировать URL и deployment ID только после успешной проверки.
 
-Справка Railway: [конфигурация в коде](https://docs.railway.com/config-as-code/reference), [Volumes](https://docs.railway.com/guides/volumes).
+Справка Railway: [переход на Infrastructure as Code](https://docs.railway.com/infrastructure-as-code#migrating-from-config-as-code), [Volumes](https://docs.railway.com/guides/volumes).
