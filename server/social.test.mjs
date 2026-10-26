@@ -129,6 +129,27 @@ test('a captcha or login wall pauses the platform with growing waits; the other 
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
+test('a failed recheck keeps the last verdict: a risky account stays found while the browser is down', async () => {
+  let broken = false;
+  const { dir, social, advance } = setup({ openProfile: async (platform, handle) => {
+    if (broken) throw Object.assign(new Error('Браузер не запустился.'), { code: 'BROWSER_START' });
+    return openProfile(platform, handle);
+  } });
+  try {
+    social.addSeed('https://www.tiktok.com/@spin_promo_kz');
+    await social.tick();
+    assert.equal(social.snapshot().risky.length, 1);
+    broken = true;
+    advance(7 * 60);
+    await social.tick();
+    const snapshot = social.snapshot();
+    assert.deepEqual(snapshot.risky.map(account => account.key), ['tiktok:spin_promo_kz']);
+    assert.equal(snapshot.risky[0].error.code, 'BROWSER_START');
+    assert.equal(snapshot.counts.risky, 1);
+    assert.equal(snapshot.log[0].outcome, 'error');
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
 test('an empty public page is a failed check, never a clean account or a saved finding', async () => {
   const { dir, social, cases } = setup({ search: async () => ({ status: 200, html: '' }), openProfile: async () => ({ name: 'Instagram', bio: '', posts: [], links: [] }) });
   try {

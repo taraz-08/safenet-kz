@@ -144,7 +144,9 @@ export function createSocialDiscovery({ storePath, getCases, persistCases, analy
       pushLog({ key: account.key, outcome: status, flagged: flagged.length, posts: posts.length, discovered, saved, score: maxScore, partial: Boolean(data.captcha) });
     } catch (error) {
       const attempts = (account.consecutiveErrors ?? 0) + 1;
-      Object.assign(account, { status: 'error', lastCheckedAt: checkedAt, consecutiveErrors: attempts, error: { code: error.code ?? 'ERROR', message: error.message },
+      // A failed recheck (browser down, page not loaded) says nothing about the account: keep the last verdict.
+      const status = account.status === 'risky' || account.status === 'clean' ? account.status : 'error';
+      Object.assign(account, { status, lastCheckedAt: checkedAt, consecutiveErrors: attempts, error: { code: error.code ?? 'ERROR', message: error.message },
         nextCheckAt: iso(now() + Math.min(24 * 60, RECHECK.error * 2 ** Math.min(attempts - 1, 5)) * MINUTE) });
       pushLog({ key: account.key, outcome: 'error', code: error.code ?? 'ERROR' });
     }

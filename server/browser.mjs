@@ -20,7 +20,7 @@ const coded = (message, code) => Object.assign(new Error(message), { code });
 
 export function findChrome() { return CANDIDATES.find(path => path && existsSync(path)) ?? null; }
 
-export function createBrowser({ chromePath = findChrome(), profileDir, allowHosts = [], timeoutMs = 40000 } = {}) {
+export function createBrowser({ chromePath = findChrome(), profileDir, allowHosts = [], timeoutMs = 40000, startMs = 20000, spawnProcess = spawn } = {}) {
   let child = null, socket = null, nextId = 0, starting = null, queue = Promise.resolve(), closed = false;
   const pending = new Map();
 
@@ -36,21 +36,36 @@ export function createBrowser({ chromePath = findChrome(), profileDir, allowHost
     });
   }
 
+  function stopChild() {
+    try { socket?.close(); } catch { /* already closed */ }
+    try { child?.kill(); } catch { /* already gone */ }
+    socket = null; child = null;
+  }
+
   async function launch() {
     if (!chromePath) throw coded('Chrome или Edge не найден. Укажите путь в переменной CHROME_PATH.', 'BROWSER_MISSING');
+    // A browser whose connection dropped still holds the profile; a new one on the same profile would hand off to it
+    // and exit, so every later start would fail. Stop the old one first, and stop a start that does not come up.
+    stopChild();
+    try { await start(); } catch (error) { stopChild(); throw error; }
+  }
+
+  async function start() {
     mkdirSync(profileDir, { recursive: true });
     const portFile = join(profileDir, 'DevToolsActivePort');
     rmSync(portFile, { force: true });
     // Chromium in the isolated Linux container has a small /dev/shm and runs as root.
     // Desktop installs retain Chromium's sandbox; the container opts in explicitly.
     const containerFlags = process.platform === 'linux' ? ['--disable-dev-shm-usage', ...(process.env.CHROME_NO_SANDBOX === '1' ? ['--no-sandbox'] : [])] : [];
-    child = spawn(chromePath, ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profileDir}`, '--no-first-run', '--no-default-browser-check',
+    const proc = spawnProcess(chromePath, ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profileDir}`, '--no-first-run', '--no-default-browser-check',
       ...containerFlags, '--disk-cache-size=10485760', '--disable-extensions', '--disable-sync', '--mute-audio', '--window-size=1366,900', '--lang=ru-RU', 'about:blank'], { stdio: 'ignore', windowsHide: true });
-    child.on('error', () => { child = null; socket = null; failPending(coded('Не удалось запустить браузер.', 'BROWSER_START')); });
-    child.on('exit', () => { child = null; socket = null; failPending(coded('Браузер закрылся.', 'BROWSER_GONE')); });
+    child = proc;
+    // Events of a browser that was already replaced must not clear the current one.
+    proc.on('error', () => { if (child !== proc) return; child = null; socket = null; failPending(coded('Не удалось запустить браузер.', 'BROWSER_START')); });
+    proc.on('exit', () => { if (child !== proc) return; child = null; socket = null; failPending(coded('Браузер закрылся.', 'BROWSER_GONE')); });
     let port = null;
-    for (const deadline = Date.now() + 20000; !port; await sleep(150)) {
-      if (Date.now() > deadline || !child) throw coded('Браузер не запустился.', 'BROWSER_START');
+    for (const deadline = Date.now() + startMs; !port; await sleep(150)) {
+      if (Date.now() > deadline || child !== proc) throw coded('Браузер не запустился.', 'BROWSER_START');
       // Chrome writes "<port>\n<path>" once the DevTools endpoint is listening.
       try { port = Number(readFileSync(portFile, 'utf8').split('\n')[0]) || null; } catch { /* not written yet */ }
     }
@@ -100,9 +115,7 @@ export function createBrowser({ chromePath = findChrome(), profileDir, allowHost
     available: () => Boolean(chromePath),
     close() {
       closed = true;
-      try { socket?.close(); } catch { /* already closed */ }
-      try { child?.kill(); } catch { /* already gone */ }
-      socket = null; child = null;
+      stopChild();
     },
   };
 }
