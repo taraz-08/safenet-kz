@@ -1,7 +1,8 @@
 """Record the live SafeNet KZ site for the jury video.
 
-Headless Chrome at 1920x1080 is driven over the DevTools protocol; frames come from Page.startScreencast, so every
-pixel is the running site. Telegram scenes come from the public deployment, the Instagram/TikTok scene from the
+Headless Chrome at 1920x1080 CSS pixels and device scale 2 is driven over the DevTools protocol; frames (3840x2160,
+so zooms in the edit stay sharp) come from Page.startScreencast, so every pixel is the running site. Each step is
+logged with the cursor spot and the box of its target, which the edit uses for camera moves and click sounds. Telegram scenes come from the public deployment, the Instagram/TikTok scene from the
 same app on the team's computer (Railway's IP gets Instagram's login wall).
 Usage:  python artifacts/video-project/v6/record.py [scene ...]
 """
@@ -25,6 +26,7 @@ FRAMES = ROOT / 'frames'
 BASES = {'hosted': 'https://safenet-kz.up.railway.app/', 'local': 'http://127.0.0.1:4310/'}
 CHROME = Path('C:/Program Files/Google/Chrome/Application/chrome.exe')
 PORT = 9334
+SCALE = 1.5
 
 CURSOR_JS = r"""
 (() => {
@@ -44,30 +46,30 @@ CURSOR_JS = r"""
   const animate = (from, to, ms, apply) => { const t0 = performance.now(); const step = now => { const k = Math.min(1, (now - t0) / ms); apply(from + (to - from) * ease(k)); if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); };
   window.__demo = {
     move(target) {
-      const el = find(target); let x = 960, y = 540;
-      if (el) { const r = el.getBoundingClientRect(); x = r.left + Math.min(r.width / 2, 120); y = r.top + Math.min(r.height / 2, 30); }
+      const el = find(target); let x = 960, y = 540, box = null;
+      if (el) { const r = el.getBoundingClientRect(); x = r.left + Math.min(r.width / 2, 120); y = r.top + Math.min(r.height / 2, 30); box = [r.left, r.top, r.width, r.height]; }
       cursor.style.left = `${x}px`; cursor.style.top = `${y}px`;
-      return Boolean(el);
+      return el ? { x, y, box } : false;
     },
     click(target) {
       const el = find(target); if (!el) return false;
       el.scrollIntoView({ block: 'center', behavior: 'instant' });
-      this.move(target);
+      const spot = this.move(target);
       setTimeout(() => {
         const r = cursor.getBoundingClientRect(); const ripple = document.createElement('div'); ripple.className = 'demo-ripple';
         ripple.style.left = `${r.left + 4}px`; ripple.style.top = `${r.top + 4}px`; document.body.appendChild(ripple); setTimeout(() => ripple.remove(), 700);
         el.click();
       }, 750);
-      return true;
+      return spot;
     },
     type(target, text, ms) {
       // Types into a React-controlled field letter by letter, the way a person would.
       const el = find(target); if (!el) return false;
-      el.focus(); this.move(target);
+      el.focus(); const spot = this.move(target);
       const setter = Object.getOwnPropertyDescriptor(el.tagName === 'TEXTAREA' ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype, 'value').set;
       let i = 0; const step = Math.max(8, ms / Math.max(1, text.length));
       const tick = () => { i++; setter.call(el, text.slice(0, i)); el.dispatchEvent(new Event('input', { bubbles: true })); if (i < text.length) setTimeout(tick, step); };
-      tick(); return true;
+      tick(); return spot;
     },
     scroll(y, ms) { animate(window.scrollY, y, ms, value => window.scrollTo(0, value)); return true; },
     scrollBy(dy, ms) { return this.scroll(window.scrollY + dy, ms); },
@@ -80,21 +82,22 @@ CURSOR_JS = r"""
 
 CHECK_TEXT = 'Салымсыз табыс! 5000 теңге сал, ертең 15 000 ал. Каспиге аудар, тек бүгін 3 орын қалды. Досыңды шақыр — бонус аласың.'
 
-# Each step: (method of window.__demo, arguments, seconds to wait afterwards). Animated steps last ~65% of the wait.
+# Each step: (method of window.__demo, arguments, seconds to wait afterwards[, how far the edit may zoom in on its
+# target]). Animated steps last ~65% of the wait.
 SCENES = {
-    'live': ('hosted', '#/overview', [('move', ['.wb-pipe-head h2'], 3.0), ('move', ['.wb-pipe-head'], 2.5), ('scrollTo', ['.wb-split'], 3.0), ('move', ['.wb-split h3'], 3.0), ('scrollTo', ['section.wb-panel::Находки, ожидающие решения'], 3.5), ('move', ['main .wb button::@olimp_casino'], 3.5)]),
-    'telegram': ('hosted', '#/discovery', [('move', ['.wb-pipe-head h2'], 3.0), ('move', ['.wb-kpis'], 2.5), ('scrollTo', ['.wb-found'], 3.0), ('move', ['.wb-found-head a'], 3.0), ('move', ['.wb-found-meta'], 3.0), ('move', ['.wb-found-sample'], 3.5), ('scrollBy', [600], 3.5), ('move', ['.wb-found li:nth-child(3) .wb-found-head a'], 3.0)]),
-    'case': ('hosted', '#/review?case=808398f8-a2ac-41be-a139-fa3d586e6563', [('move', ['.wb-queue button.active'], 3.0), ('move', ['.wb-dossier h2'], 2.5), ('move', ['.wb-elements'], 3.0), ('scrollIn', ['.wb-dossier', 420], 3.0), ('move', ['.wb-signals li'], 3.5), ('move', ['.wb-signals li:nth-child(2)'], 3.0), ('move', ['.wb-signals li:nth-child(4)'], 3.0), ('scrollIn', ['.wb-dossier', 480], 3.0)]),
-    'check': ('hosted', '#/analyze', [('move', ['#post-text'], 1.5), ('type', ['#post-text', CHECK_TEXT], 5.5), ('click', ['.analyze-form button.primary'], 4.5), ('move', ['#case-detail-title'], 3.0), ('scrollIn', ['.case-drawer', 500], 3.5), ('scrollIn', ['.case-drawer', 500], 3.0)]),
-    'social': ('local', '#/social', [('move', ['.wb-pipe-head h2'], 3.0), ('move', ['.wb-kpis'], 3.0), ('scrollTo', ['.wb-found'], 3.0), ('move', ['.wb-found-head a'], 3.0), ('move', ['.wb-found-sample'], 3.0), ('scrollBy', [520], 3.5), ('move', ['.wb-found li:nth-child(4) .wb-found-head a'], 3.0)]),
-    'strength': ('hosted', '#/quality', [('move', ['.wb-table tr.main'], 4.0), ('scroll', [600], 3.5), ('move', ['.wb-bars li'], 3.5), ('scroll', [0], 2.5)]),
+    'live': ('hosted', '#/overview', [('move', ['.wb-pipe-head h2'], 3.0), ('move', ['.wb-pipe-head'], 2.5), ('scrollTo', ['.wb-split'], 3.0), ('move', ['.wb-split h3'], 3.0, 1.25), ('scrollTo', ['section.wb-panel::Находки, ожидающие решения'], 3.5), ('move', ['main .wb button::@olimp_casino'], 3.5, 1.45)]),
+    'telegram': ('hosted', '#/discovery', [('move', ['.wb-pipe-head h2'], 3.0), ('move', ['.wb-kpis'], 2.5, 1.5), ('scrollTo', ['.wb-found'], 3.0), ('move', ['.wb-found-head a'], 3.0, 1.4), ('move', ['.wb-found-meta'], 3.0, 1.4), ('move', ['.wb-found-sample'], 3.5, 1.4), ('scrollBy', [600], 3.5), ('move', ['.wb-found li:nth-child(3) .wb-found-head a'], 3.0, 1.35)]),
+    'case': ('hosted', '#/review?case=808398f8-a2ac-41be-a139-fa3d586e6563', [('move', ['.wb-dossier h2'], 2.5, 1.3), ('move', ['.wb-elements'], 3.0, 1.45), ('move', ['section.wb-block::Материал'], 3.0, 1.4), ('scrollTo', ['.wb-signals'], 3.0), ('move', ['.wb-signals li'], 3.0, 1.45), ('move', ['.wb-signals li:nth-child(3)'], 2.5, 1.45), ('move', ['.wb-signals li:nth-child(4)'], 2.5, 1.45), ('move', ['footer.wb-decision'], 3.0, 1.35)]),
+    'check': ('hosted', '#/analyze', [('move', ['#post-text'], 1.5, 1.4), ('type', ['#post-text', CHECK_TEXT], 5.5, 1.5), ('click', ['.analyze-form button.primary'], 4.5, 1.5), ('move', ['#case-detail-title'], 3.0, 1.35), ('scrollIn', ['.case-drawer', 500], 3.5), ('scrollIn', ['.case-drawer', 500], 3.0)]),
+    'social': ('local', '#/social', [('move', ['.wb-pipe-head h2'], 3.0), ('move', ['.wb-kpis'], 3.0, 1.5), ('scrollTo', ['.wb-found'], 3.0), ('move', ['.wb-found-head a'], 3.0, 1.4), ('move', ['.wb-found-sample'], 3.0, 1.4), ('scrollBy', [520], 3.5), ('move', ['.wb-found li:nth-child(4) .wb-found-head a'], 3.0, 1.35)]),
+    'strength': ('hosted', '#/quality', [('move', ['.wb-table tr.main'], 4.0, 1.4), ('scroll', [600], 3.5), ('move', ['.wb-bars li'], 3.5, 1.35), ('scroll', [0], 2.5)]),
 }
 ANIMATED = {'scroll', 'scrollBy', 'scrollTo', 'scrollIn', 'type'}
 
 
 class Cdp:
     def __init__(self, ws):
-        self.ws, self.next_id, self.pending, self.frames, self.recording = ws, 0, {}, [], None
+        self.ws, self.next_id, self.pending, self.frames, self.events, self.recording = ws, 0, {}, [], [], None
 
     async def reader(self):
         async for raw in self.ws:
@@ -136,26 +139,29 @@ async def run_scene(cdp, name, source, path, steps):
     folder = FRAMES / name
     shutil.rmtree(folder, ignore_errors=True)
     folder.mkdir(parents=True)
-    cdp.frames, cdp.recording = [], folder
-    await cdp.send('Page.startScreencast', {'format': 'jpeg', 'quality': 90, 'maxWidth': 1920, 'maxHeight': 1080, 'everyNthFrame': 1})
+    cdp.frames, cdp.events, cdp.recording = [], [], folder
+    await cdp.send('Page.startScreencast', {'format': 'jpeg', 'quality': 82, 'maxWidth': round(1920 * SCALE), 'maxHeight': round(1080 * SCALE), 'everyNthFrame': 1})
     started = time.time()
     await asyncio.sleep(0.8)
-    for method, args, wait in steps:
+    for method, args, wait, *hint in steps:
         call_args = [*args, int(wait * 650)] if method in ANIMATED else args
+        at = time.time()
         ok = await cdp.js(f"window.__demo.{method}({', '.join(json.dumps(a, ensure_ascii=False) for a in call_args)})")
         if not ok:
             print(f'  ! {name}: {method} {args[0]} not found', file=sys.stderr)
+        # Times share the epoch clock of the frame timestamps; x, y and box are CSS pixels of the 1920x1080 viewport.
+        cdp.events.append({'t': at, 'method': method, 'seconds': wait, 'zoom': hint[0] if hint else 1.0, **(ok if isinstance(ok, dict) else {})})
         await asyncio.sleep(wait)
     await cdp.send('Page.stopScreencast')
     await asyncio.sleep(0.3)
     cdp.recording = None
-    (folder / 'timestamps.json').write_text(json.dumps({'scene': name, 'seconds': round(time.time() - started, 2), 'frames': cdp.frames}, ensure_ascii=False), encoding='utf-8')
+    (folder / 'timestamps.json').write_text(json.dumps({'scene': name, 'seconds': round(time.time() - started, 2), 'scale': SCALE, 'frames': cdp.frames, 'events': cdp.events}, ensure_ascii=False), encoding='utf-8')
     print(f'{name}: {len(cdp.frames)} frames, {time.time() - started:.1f}s')
 
 
 async def main(only):
     profile = Path(tempfile.mkdtemp(prefix='safenet-rec6-'))
-    chrome = subprocess.Popen([str(CHROME), '--headless=new', f'--remote-debugging-port={PORT}', '--window-size=1920,1080', '--force-device-scale-factor=1',
+    chrome = subprocess.Popen([str(CHROME), '--headless=new', f'--remote-debugging-port={PORT}', '--window-size=1920,1080', f'--force-device-scale-factor={SCALE}',
                                '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', f'--user-data-dir={profile}', 'about:blank'])
     try:
         for _ in range(60):
@@ -172,7 +178,7 @@ async def main(only):
             await cdp.send('Runtime.enable')
             # Russian interface from the very first page load on every origin.
             await cdp.send('Page.addScriptToEvaluateOnNewDocument', {'source': "try{localStorage.setItem('safenet-language','ru')}catch(e){}"})
-            await cdp.send('Emulation.setDeviceMetricsOverride', {'width': 1920, 'height': 1080, 'deviceScaleFactor': 1, 'mobile': False})
+            await cdp.send('Emulation.setDeviceMetricsOverride', {'width': 1920, 'height': 1080, 'deviceScaleFactor': SCALE, 'mobile': False})
             for name, (source, path, steps) in SCENES.items():
                 if name in only:
                     await run_scene(cdp, name, source, path, steps)

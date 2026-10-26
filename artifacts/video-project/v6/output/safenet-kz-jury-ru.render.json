@@ -17,7 +17,7 @@
    "id": "live",
    "start": 15.29,
    "end": 28.96,
-   "speed": 1.26
+   "speed": 1.17
   },
   {
    "id": "telegram",
@@ -29,7 +29,7 @@
    "id": "case",
    "start": 42.38,
    "end": 59.15,
-   "speed": 1.0
+   "speed": 1.22
   },
   {
    "id": "check",
@@ -56,8 +56,10 @@
    "speed": null
   }
  ],
+ "titleAt": 11.49,
  "subtitles": 23,
  "voice": "ElevenLabs Eleven v4, voice Serik, Russian",
+ "music": "sound.py: D-major underscore at 96 BPM, ducked under the voice; clicks, keys, whooshes, riser, impact, chime",
  "intro": "Google Flow: two Nano Banana keyframes, then a Veo 3.1 Fast frames-to-video clip between them",
  "screens": "Screencast of https://safenet-kz.up.railway.app and of the same app on the team computer (social scene)"
 }
