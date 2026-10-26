@@ -23,6 +23,7 @@ data/runtime/
 data/pipeline.json
 data/pipeline.json.tmp
 data/cases.json.pre-v5.bak
+data/cases.json.pre-live-only.bak
 data/discovery.json
 data/discovery.json.tmp
 data/social-discovery.json

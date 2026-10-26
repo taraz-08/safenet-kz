@@ -15,10 +15,15 @@ const socialEnabled=socialEnabledValue===undefined?undefined:socialEnabledValue=
 void ensureLocalAiRuntime().catch(()=>console.error('Local AI runtime could not start; see the AI status panel.'));
 // On Railway (or with SAFENET_HOSTED=1) the server listens publicly; SAFENET_ACCESS_KEY puts the whole site behind a password.
 const hosted=Boolean(process.env.RAILWAY_ENVIRONMENT)||process.env.SAFENET_HOSTED==='1';
+// Genuine findings only, locally as on the hosted site; editing stays local. SAFENET_LIVE_ONLY=0 brings back the
+// demo cases and the synthetic stream for development on this computer.
+const liveOnlyValue=process.env.SAFENET_LIVE_ONLY;
+if(liveOnlyValue!==undefined&&!['0','1'].includes(liveOnlyValue))throw new Error('SAFENET_LIVE_ONLY must be 1 or 0, or unset.');
+const liveOnly=hosted||liveOnlyValue!=='0';
 const allowedHosts=[process.env.RAILWAY_PUBLIC_DOMAIN,...String(process.env.SAFENET_ALLOWED_HOSTS||'').split(',')].map(value=>String(value||'').trim().toLowerCase()).filter(Boolean);
 // Keep mutable state on a volume without hiding the bundled model, corpus and metrics.
 const dataDir=resolve(process.env.SAFENET_DATA_DIR||process.env.RAILWAY_VOLUME_MOUNT_PATH||'data');
-const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null,adminCode:process.env.SAFENET_ADMIN_CODE||null,telegramSeeds,socialEnabled});
+const app=createApp({storePath:resolve(dataDir,'cases.json'),hosted,liveOnly,allowedHosts,accessKey:process.env.SAFENET_ACCESS_KEY||null,adminCode:process.env.SAFENET_ADMIN_CODE||null,telegramSeeds,socialEnabled});
 app.locals.watchtower.start();
 // Synthetic replay is available only in local/offline mode.
 if(!app.locals.liveOnly)app.locals.pipeline.start();
@@ -42,7 +47,7 @@ if(process.argv.includes('--dev')){
   app.get('/{*path}',(req,res)=>/\.[a-z0-9]+$/i.test(req.path)?res.sendStatus(404):res.sendFile(resolve(dist,'index.html')));
 }
 const bindHost=process.env.HOST||(hosted?'0.0.0.0':'127.0.0.1');
-const server=app.listen(port,bindHost,()=>console.log(`SafeNet KZ ready at http://${bindHost}:${port} (${hosted?(process.env.SAFENET_ACCESS_KEY?'hosted, password':'hosted, read-only'):'local'})`));
+const server=app.listen(port,bindHost,()=>console.log(`SafeNet KZ ready at http://${bindHost}:${port} (${hosted?(process.env.SAFENET_ACCESS_KEY?'hosted, password':'hosted, read-only'):liveOnly?'local, live only':'local'})`));
 server.on('error',error=>{console.error(error.code==='EADDRINUSE'?`Port ${port} is in use. Open http://127.0.0.1:${port} or set PORT.`:error);process.exit(1);});
 async function shutdown(){app.locals.watchtower.close();app.locals.pipeline.close();app.locals.discovery.close();app.locals.social.close();app.locals.aiService.close();server.close();await app.locals.mediaService?.close();process.exit(0);}
 process.once('SIGTERM',shutdown);process.once('SIGINT',shutdown);
