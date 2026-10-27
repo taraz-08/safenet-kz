@@ -7,6 +7,7 @@ import { CheckCircle2, CircleAlert, X } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
 import { overviewSchema, sessionSchema, type Locale, type Mode } from "@/lib/schema";
 import { translator, type Translate } from "@/lib/i18n";
+import { ThemeProvider } from "./theme-provider";
 
 type Toast = { id: number; message: string; error: boolean };
 function useSession() { return useQuery({ queryKey: ["session"], queryFn: ({ signal }) => api("/session", sessionSchema, { signal }), refetchInterval: 30000, retry: 1 }); }
@@ -111,7 +112,7 @@ function WorkspaceProvider({ children }: { children: ReactNode }) {
 }
 export function Providers({ children }: { children: ReactNode }) {
   const [client] = useState(() => new QueryClient({ defaultOptions: { queries: { staleTime: 3000, retry: 1, refetchOnWindowFocus: true }, mutations: { retry: false } } }));
-  return <QueryClientProvider client={client}><MotionConfig reducedMotion="user"><WorkspaceProvider>{children}</WorkspaceProvider></MotionConfig></QueryClientProvider>;
+  return <ThemeProvider><QueryClientProvider client={client}><MotionConfig reducedMotion="user"><WorkspaceProvider>{children}</WorkspaceProvider></MotionConfig></QueryClientProvider></ThemeProvider>;
 }
 export function useAction() {
   const { canManage, setLoginOpen, notify, t } = useWorkspace();

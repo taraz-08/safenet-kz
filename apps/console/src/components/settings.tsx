@@ -7,6 +7,7 @@ import { healthSchema, sessionSchema, settingsSchema, type Locale } from "@/lib/
 import { statusText, type CopyKey } from "@/lib/i18n";
 import { useAction, useWorkspace } from "./providers";
 import { Badge, Button, ErrorState, Loading, Modal, Panel } from "./ui";
+import { ThemePreferenceControl } from "./theme-controls";
 import { mediaCapabilities } from "@/lib/media";
 import { MediaCapabilities, MediaRuntime } from "./media-details";
 
@@ -47,7 +48,7 @@ export function SettingsScreen() {
     <Panel title={t("health")} aside={<Button variant="ghost" onClick={() => health.refetch()}>{t("refresh")}</Button>}>
       {health.isPending && <Loading />}{health.isError && <ErrorState error={health.error} retry={() => health.refetch()} stale={!!health.data} />}{health.data && <dl className="settings-list">{row(t("status"), <Badge tone={health.data.status === "ok" ? "low" : "medium"}>{health.data.status}</Badge>, <Server size={16} />)}{row(t("database"), <CapabilityValue value={health.data.database} />, <Database size={16} />)}{row(t("queue"), <CapabilityValue value={health.data.queue} />, <Layers size={16} />)}{row(t("llm"), <CapabilityValue value={health.data.llm} />)}{row(t("browser"), <CapabilityValue value={health.data.browser} />)}{row(t("version"), <code>{health.data.version}</code>)}</dl>}
       {health.data && <div className="settings-media"><MediaCapabilities capabilities={mediaCapabilities(health.isError ? undefined : health.data)} t={t} /></div>}
-    </Panel></div><div className="screen-stack"><Panel title={t("settings")}><div className="settings-preferences"><LanguageSelect /><dl className="settings-list">{row(t("mode"), <Badge>{mode.toUpperCase()}</Badge>)}{row(t("retention"), settings.data ? `${settings.data.retention_days} ${t("days")}` : "—")}</dl></div></Panel><Panel title={t("capabilities")} description={t("settingsReadonly")}>
+    </Panel></div><div className="screen-stack"><Panel title={t("settings")}><div className="settings-preferences"><ThemePreferenceControl /><LanguageSelect /><dl className="settings-list">{row(t("mode"), <Badge>{mode.toUpperCase()}</Badge>)}{row(t("retention"), settings.data ? `${settings.data.retention_days} ${t("days")}` : "—")}</dl></div></Panel><Panel title={t("capabilities")} description={t("settingsReadonly")}>
       {settings.isPending && <Loading />}{settings.isError && <ErrorState error={settings.error} retry={() => settings.refetch()} stale={!!settings.data} />}{cap && typeof cap === "object" && !Array.isArray(cap) ? <dl className="settings-list">{Object.entries(cap).map(([key, value]) => row(capabilityKeys.includes(key) ? t(key as CopyKey) : key, key === "media_processing" ? <MediaRuntime value={value} t={t} /> : <CapabilityValue value={value} />))}</dl> : settings.data && <div className="p-5"><CapabilityValue value={cap} /></div>}
     </Panel></div></div>;
 }

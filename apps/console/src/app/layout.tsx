@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Providers } from "@/components/providers";
+import { themeBootstrap } from "@/lib/theme";
 import "@fontsource-variable/inter";
 import "./globals.css";
 
@@ -11,5 +12,5 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = { themeColor: "#10161e", width: "device-width", initialScale: 1 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ru" className="dark"><body><Providers>{children}</Providers></body></html>;
+  return <html lang="ru" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeBootstrap }} /></head><body><Providers>{children}</Providers></body></html>;
 }
