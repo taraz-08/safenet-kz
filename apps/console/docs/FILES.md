@@ -1,0 +1,42 @@
+# Console file inventory
+
+All authored files are inside `apps/console`. Installed dependencies, `.next`, TypeScript caches and runtime logs are generated and ignored.
+
+- `.dockerignore`
+- `.env.example`
+- `.gitignore`
+- `Dockerfile`
+- `README.md`
+- `next-env.d.ts`
+- `next.config.ts`
+- `package.json`
+- `package-lock.json`
+- `postcss.config.mjs`
+- `tsconfig.json`
+- `public/icon.svg`
+- `src/app/[[...section]]/page.tsx`
+- `src/app/layout.tsx`
+- `src/app/globals.css`
+- `src/app/error.tsx`
+- `src/app/not-found.tsx`
+- `src/components/console.tsx`
+- `src/components/providers.tsx`
+- `src/components/ui.tsx`
+- `src/components/charts.tsx`
+- `src/components/dashboard.tsx`
+- `src/components/agents.tsx`
+- `src/components/scanner.tsx`
+- `src/components/scan-detail.tsx`
+- `src/components/scan-table.tsx`
+- `src/components/assistant.tsx`
+- `src/components/reports.tsx`
+- `src/components/settings.tsx`
+- `src/lib/api.ts`
+- `src/lib/schema.ts`
+- `src/lib/i18n.ts`
+- `tests/api.test.ts`
+- `tests/contract-smoke.ts`
+- `docs/DESIGN.md`
+- `docs/FILES.md`
+- `evidence/QA.md`
+- `evidence/design-evidence.json`

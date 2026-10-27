@@ -1,4 +1,11 @@
 node_modules/
+.venv/
+**/.pytest_cache/
+**/.next/
+**/.next-*/
+**/*.tsbuildinfo
+services/intelligence/runtime/
+.env.ai
 dist/
 data/cases.json
 data/cases.json.tmp

@@ -17,3 +17,9 @@ data/*
 data/stream/*
 !data/stream/corpus.json
 **/__pycache__
+**/.venv
+**/node_modules
+**/.next
+**/.next-*
+services/intelligence/runtime
+.claude

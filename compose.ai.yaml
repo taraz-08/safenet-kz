@@ -1,0 +1,90 @@
+name: safenet-ai
+x-backend: &backend
+  build:
+    context: .
+    dockerfile: services/intelligence/Dockerfile
+  env_file: .env.ai
+  environment:
+    SAFENET_DATABASE_HOST: postgres
+    SAFENET_DATABASE_USER: safenet
+    SAFENET_DATABASE_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env.ai}
+    SAFENET_DATABASE_NAME: safenet
+    SAFENET_REDIS_URL: redis://redis:6379/0
+    SAFENET_QUEUE: celery
+    SAFENET_LOCAL_ADMIN: "false"
+    SAFENET_MEDIA_ROOT: /app/runtime/media
+    SAFENET_WHISPER_MODEL: /app/data/models/faster-whisper-small
+    # Optional scene descriptions require a same-host loopback Ollama service.
+    SAFENET_VISION_URL: ""
+  volumes:
+    - media_data:/app/runtime/media
+    - ./data/models:/app/data/models:ro
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  restart: unless-stopped
+  security_opt:
+    - no-new-privileges:true
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: safenet
+      POSTGRES_DB: safenet
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env.ai}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U safenet -d safenet]
+      interval: 5s
+      retries: 12
+    restart: unless-stopped
+  redis:
+    image: redis:7-alpine
+    command: [redis-server, --appendonly, "yes", --maxmemory, 256mb, --maxmemory-policy, noeviction]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      retries: 12
+    restart: unless-stopped
+  api:
+    <<: *backend
+    ports: ["127.0.0.1:8100:8100"]
+  worker:
+    <<: *backend
+    command: [celery, -A, safenet.worker:celery, worker, --concurrency=4, --loglevel=INFO]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      disable: true
+  scheduler:
+    <<: *backend
+    command: [celery, -A, safenet.worker:celery, beat, --schedule=/tmp/safenet-beat, --loglevel=INFO]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      disable: true
+  console:
+    build:
+      context: apps/console
+      args:
+        SAFENET_API_URL: http://api:8100
+        NEXT_PUBLIC_WS_URL: ${NEXT_PUBLIC_WS_URL:-ws://127.0.0.1:8100/events}
+    environment:
+      SAFENET_API_URL: http://api:8100
+      HOSTNAME: 0.0.0.0
+    ports: ["127.0.0.1:3000:3000"]
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  redis_data:
+  media_data:

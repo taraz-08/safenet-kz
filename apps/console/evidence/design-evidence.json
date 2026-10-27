@@ -1,0 +1,17 @@
+{
+  "contract": "../docs/DESIGN.md; ../../../docs/SAFENET-AI-CONTRACT.md",
+  "targetViewports": ["1440x900", "390x844"],
+  "accessibility": { "status": "pass", "evidence": "Mobile Lighthouse snapshot scored 100; modal keyboard focus/escape restoration and all three language switches were checked. See QA.md for desktop limitations." },
+  "responsive": { "status": "pass", "evidence": "Desktop and mobile screenshots inspected inline; mobile table overflow fixed and measured clientWidth=scrollWidth=390 at 390x844. Desktop width fit at 1440x900." },
+  "contentStates": {
+    "loading": { "status": "pass", "evidence": "Real submitted Demo scan displayed running/saving before completing with server-returned analysis." },
+    "empty": { "status": "pass", "evidence": "Scanner and assistant displayed meaningful initial empty states; initial Demo API contained zero records." },
+    "error": { "status": "unverified", "evidence": "Transport failure unit tests pass; supplemental browser fault injection timed out." },
+    "partial": { "status": "pass", "evidence": "Real TikTok/YouTube failures and Threads blocked state remained visible alongside successful Instagram and stored scans." },
+    "success": { "status": "pass", "evidence": "Demo scan, weighted quotations, saved review and mode-labelled report were verified through UI and persisted API responses." },
+    "permission": { "status": "unverified", "evidence": "Local admin exercised. Admin-code login/unauthenticated browser flow not completed." }
+  },
+  "renderedEvidence": [],
+  "gateStatus": "not-passed",
+  "limitation": "Screenshot filePath was denied by the browser tool workspace-root check. Inline screenshots were inspected. The limitation is recorded; no permission workaround was used. Screenshot artifact gate remains unpassed."
+}

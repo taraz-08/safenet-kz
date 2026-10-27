@@ -1,6 +1,6 @@
 {
   "name": "SafeNet KZ evaluation",
-  "generatedAt": "2026-10-25T14:46:18.598Z",
+  "generatedAt": "2026-10-27T05:53:42.337Z",
   "threshold": 30,
   "engineSha256": "9efb71f5d76ed3041ed38a8f1115688f606bffdbe1eeb425d28e6c812022b674",
   "disclaimer": "Синтетические данные. Метрики описывают поведение правил на этих наборах и не равны точности на реальном потоке соцсетей.",
@@ -1442,9 +1442,9 @@
   },
   "benchmark": {
     "items": 5280,
-    "seconds": 2.97,
-    "itemsPerSecond": 1776,
-    "msPerItem": 0.563,
+    "seconds": 3.7,
+    "itemsPerSecond": 1427,
+    "msPerItem": 0.701,
     "note": "Один поток Node.js на локальном компьютере: правила + n-граммная модель (без OCR/ASR/ИИ)."
   },
   "scope": "blind_test_holdout",
